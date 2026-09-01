@@ -145,6 +145,50 @@ The 0.18 maximum is a common MAD1L1 intronic polymorphism (gnomAD AF 0.77); amon
 guard matters: blank means SpliceAI has no data for that position, which is not the same
 as a score of zero and must not be counted as a pass.
 
+## 6. Optional: alignment slice and coverage measurement
+
+**Not part of the submitted analysis.** These two scripts exist because the report's single largest
+limitation — the input is a sites-only VCF, so absence of a call and absence of coverage are
+indistinguishable — is closable with the alignment file, and the alignment file does not need to be
+downloaded whole to close it.
+
+The full dataset is ~85 GB across 11 files (Hugging Face recommends 100–150 GB of working space).
+Most of that answers nothing here: FASTQ adds nothing over an alignment unless you intend to
+re-align. And `samtools` built with `libcurl` can slice a region straight out of a remote CRAM given
+its index — tens of MB rather than 15–30 GB.
+
+Authenticate yourself first (neither script handles credentials):
+
+```bash
+pip install -U huggingface_hub
+hf auth login
+```
+
+```bash
+# see what the dataset actually contains, with sizes
+./fetch_alignment_slice.sh --list
+
+# pull just the BUB1B, CEP57 and TRIP13 regions out of the remote alignment
+./fetch_alignment_slice.sh --file <NAME.cram>
+
+# measure callability, and test the five deletion windows against BUB1B's own baseline
+python3 coverage_analysis.py --bam ../data-notes/raw/<NAME>.slice.bam
+```
+
+`coverage_analysis.py` answers three questions the VCF cannot: what fraction of each gene is callable
+at usable depth (which turns "no rare damaging variant in CEP57" into a measured statement); whether
+any of the five permissive deletion windows shows the depth halving a hemizygous deletion produces —
+the leading alternative second allele; and the BUB1B depth profile in 1 kb bins, so the two
+homozygous-alternate calls inside the exon 9–16 window can be read against local coverage.
+
+**What this cannot resolve**, so it is not oversold: phase. The two variants are ~11 kb apart, beyond
+short-read fragment span, and read-backed phasing on the same reads faces the identical physical
+limit. Nor can it address the MVA diagnosis itself, which needs a karyotype that is not in the
+dataset at all.
+
+Slices land in `data-notes/raw/` — gitignored, and covered by the same 30-day deletion obligation as
+the rest of the data.
+
 ## Notes on the gnomAD AF field
 
 Two distinct defects were found in this field, at different times. Both were permissive

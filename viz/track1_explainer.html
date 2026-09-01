@@ -1,0 +1,1223 @@
+<title>BUB1B Evidence Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* ============================================================
+   BUB1B Evidence Atlas
+   Palette: cool lab paper + ink. Colour is reserved entirely for
+   evidence status. Unmeasured is rendered EMPTY (hatch / outline),
+   never as a zero — the same blank-vs-zero invariant the pipeline
+   itself enforces on the SpliceAI and gnomAD-AF columns.
+   ============================================================ */
+:root{
+  --ground:#F7F8FA; --surface:#FFFFFF; --sunken:#EFF2F6;
+  --rule:#D8DDE4; --rule-strong:#B8C1CC;
+  --ink:#16202B; --ink-2:#5A6672; --ink-3:#8794A1;
+  --accent:#1D4E89; --accent-soft:#E3EBF4;
+  --applied:#2C6E49;  --applied-soft:#E2EFE7;
+  --struck:#8C2F39;   --struck-soft:#F5E4E5;
+  --indet:#A6761D;    --indet-soft:#F7EEDC;
+  --exon:#2E3E4E; --utr:#9AA7B4;
+  --shadow:0 1px 2px rgba(22,32,43,.06),0 8px 24px -12px rgba(22,32,43,.14);
+  --maxw:1180px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0F141A; --surface:#161C24; --sunken:#1C242E;
+    --rule:#2A3540; --rule-strong:#3C4A58;
+    --ink:#E4E9EF; --ink-2:#93A1AF; --ink-3:#6B7887;
+    --accent:#7FB0DE; --accent-soft:#1B2C3E;
+    --applied:#63BC8B; --applied-soft:#16281F;
+    --struck:#E0808B;  --struck-soft:#2C1A1D;
+    --indet:#DDAE4E;   --indet-soft:#2A2113;
+    --exon:#B9C6D3; --utr:#5D6B7A;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F141A; --surface:#161C24; --sunken:#1C242E;
+  --rule:#2A3540; --rule-strong:#3C4A58;
+  --ink:#E4E9EF; --ink-2:#93A1AF; --ink-3:#6B7887;
+  --accent:#7FB0DE; --accent-soft:#1B2C3E;
+  --applied:#63BC8B; --applied-soft:#16281F;
+  --struck:#E0808B;  --struck-soft:#2C1A1D;
+  --indet:#DDAE4E;   --indet-soft:#2A2113;
+  --exon:#B9C6D3; --utr:#5D6B7A;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:15px; line-height:1.6; margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:Spectral,Georgia,"Times New Roman",serif;font-weight:600;text-wrap:balance;margin:0;letter-spacing:-.01em}
+p{margin:0}
+code,.mono,.num{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+
+/* ---------- shell ---------- */
+.shell{max-width:var(--maxw);margin:0 auto;padding:0 24px 96px}
+.lede{max-width:66ch}
+.rail{display:none}
+@media(min-width:1100px){
+  .shell{display:grid;grid-template-columns:172px minmax(0,1fr);gap:48px;padding-right:32px}
+  .shell > header,.shell > footer{grid-column:1/-1}
+  .rail{display:block;position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;
+        padding:32px 0 32px;border-right:1px solid var(--rule);margin-right:-24px}
+  .rail ol{list-style:none;margin:0;padding:0 20px 0 0;display:flex;flex-direction:column;gap:1px}
+  .rail a{display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:baseline;
+          padding:5px 8px 5px 0;text-decoration:none;color:var(--ink-2);font-size:12.5px;line-height:1.35;
+          border-left:2px solid transparent;padding-left:10px;transition:color .15s,border-color .15s}
+  .rail a:hover{color:var(--ink)}
+  .rail a.on{color:var(--ink);border-left-color:var(--accent);font-weight:500}
+  .rail .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+  .rail a.on .n{color:var(--accent)}
+  .rail-h{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);
+          padding:0 0 10px 12px;border-bottom:1px solid var(--rule);margin-bottom:12px}
+}
+
+/* ---------- specimen header ---------- */
+header{padding:40px 0 0}
+.brow{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;
+      font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);
+      border-bottom:1px solid var(--rule);padding-bottom:10px}
+.brow .sep{color:var(--rule-strong)}
+h1{font-size:clamp(34px,5.2vw,54px);line-height:1.05;margin:26px 0 0;letter-spacing:-.025em}
+h1 em{font-style:italic;color:var(--accent)}
+.sub{margin-top:16px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:62ch;font-family:Spectral,Georgia,serif}
+.sub strong{color:var(--ink);font-weight:500}
+
+.specimen{margin-top:32px;border:1px solid var(--rule);background:var(--surface);border-radius:3px;
+          box-shadow:var(--shadow);overflow:hidden}
+.specimen-h{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+            padding:9px 16px;background:var(--sunken);border-bottom:1px solid var(--rule);
+            font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.spec-cell{padding:14px 16px;border-right:1px solid var(--rule);border-top:1px solid var(--rule)}
+.spec-cell:first-child{border-top:none}
+@media(min-width:640px){.spec-cell{border-top:none}}
+.spec-cell:last-child{border-right:none}
+.spec-k{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+.spec-v{font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:500;font-variant-numeric:tabular-nums;line-height:1.45}
+.spec-v small{display:block;font-size:11.5px;font-weight:400;color:var(--ink-2);letter-spacing:0;margin-top:3px;font-family:"IBM Plex Sans",sans-serif}
+
+/* ---------- sections ---------- */
+section{padding-top:72px;scroll-margin-top:20px}
+.sec-h{display:flex;gap:14px;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:9px;margin-bottom:20px}
+.sec-n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums;
+       padding-top:4px;letter-spacing:.06em}
+.sec-h h2{font-size:clamp(21px,2.4vw,27px);line-height:1.2;flex:1}
+.sec-h .tag{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;padding-top:6px}
+.say{max-width:66ch;color:var(--ink-2);margin-bottom:20px}
+.say strong{color:var(--ink);font-weight:600}
+.say em{font-style:italic}
+
+/* ---------- figure frame ---------- */
+figure{margin:0 0 20px;border:1px solid var(--rule);background:var(--surface);border-radius:3px;overflow:hidden;box-shadow:var(--shadow)}
+.fig-h{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;
+       padding:9px 16px;border-bottom:1px solid var(--rule);background:var(--sunken);
+       font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.fig-body{padding:20px 16px}
+.fig-scroll{overflow-x:auto;overflow-y:hidden}
+figcaption{padding:12px 16px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-2);background:var(--sunken)}
+figcaption strong{color:var(--ink);font-weight:600}
+svg{display:block;max-width:100%;height:auto}
+svg text{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+svg .lbl{font-family:"IBM Plex Sans",sans-serif}
+
+/* ---------- legend / chips ---------- */
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:11.5px;color:var(--ink-2);align-items:center}
+.legend b{display:inline-flex;align-items:center;gap:6px;font-weight:400}
+.sw{width:11px;height:11px;border-radius:2px;flex:none;border:1px solid transparent}
+.sw.applied{background:var(--applied)} .sw.struck{background:var(--struck)}
+.sw.indet{background:var(--indet)} .sw.exon{background:var(--exon)}
+.sw.absent{background:transparent;border-color:var(--rule-strong)}
+.sw.accent{background:var(--accent)}
+
+.stat{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;
+      padding:2px 7px;border-radius:2px;white-space:nowrap;display:inline-block}
+.stat.applied{background:var(--applied-soft);color:var(--applied)}
+.stat.struck{background:var(--struck-soft);color:var(--struck)}
+.stat.indet{background:var(--indet-soft);color:var(--indet)}
+.stat.absent{background:transparent;color:var(--ink-3);border:1px dashed var(--rule-strong)}
+
+/* ---------- detail disclosure ---------- */
+details{border-top:1px solid var(--rule);margin-top:-20px;margin-bottom:20px}
+details > summary{cursor:pointer;list-style:none;padding:11px 0;font-size:11.5px;letter-spacing:.06em;
+                  text-transform:uppercase;color:var(--ink-3);display:flex;align-items:center;gap:8px;user-select:none}
+details > summary::-webkit-details-marker{display:none}
+details > summary::before{content:"+";font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--accent);width:11px}
+details[open] > summary::before{content:"\2212"}
+details > summary:hover{color:var(--ink)}
+.detail-body{padding:0 0 20px;max-width:70ch;color:var(--ink-2);font-size:14px;display:flex;flex-direction:column;gap:12px}
+.detail-body strong{color:var(--ink);font-weight:600}
+
+/* ---------- data table ---------- */
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:7px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:500;white-space:nowrap}
+td.n,th.n{text-align:right;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tr.hi td{background:var(--accent-soft)}
+.tw{overflow-x:auto}
+
+/* ---------- callout ---------- */
+.callout{border-left:2px solid var(--accent);background:var(--sunken);padding:13px 16px;
+         font-size:13.5px;color:var(--ink-2);margin-bottom:20px;max-width:70ch;border-radius:0 3px 3px 0}
+.callout.warn{border-left-color:var(--struck)}
+.callout strong{color:var(--ink);font-weight:600}
+.callout .h{display:block;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+
+footer{margin-top:88px;padding-top:20px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--ink-3);max-width:76ch;display:flex;flex-direction:column;gap:10px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ---------- interactive controls ---------- */
+button.seg{font:500 11.5px/1 "IBM Plex Sans",sans-serif;letter-spacing:.02em;color:var(--ink-2);
+  background:var(--surface);border:1px solid var(--rule);padding:5px 10px;border-radius:2px;cursor:pointer;
+  margin-left:5px;transition:color .15s,border-color .15s,background .15s;text-transform:none}
+button.seg:hover{color:var(--ink);border-color:var(--rule-strong)}
+button.seg.on{color:var(--surface);background:var(--accent);border-color:var(--accent)}
+.pm2-grid{display:grid;gap:28px;align-items:start}
+@media(min-width:820px){.pm2-grid{grid-template-columns:290px minmax(0,1fr)}}
+.pm2-ctl{display:flex;flex-direction:column;gap:17px}
+.ctl{display:flex;flex-direction:column;gap:6px}
+.ctl-t{display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+  font-size:11.5px;color:var(--ink-2);line-height:1.3}
+.ctl-t em{font-style:normal;font-family:"IBM Plex Mono",monospace;color:var(--accent);font-weight:600}
+.ctl-t output{font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:22px;background:transparent;cursor:pointer;margin:0}
+input[type=range]::-webkit-slider-runnable-track{height:3px;background:var(--rule-strong);border-radius:2px}
+input[type=range]::-moz-range-track{height:3px;background:var(--rule-strong);border-radius:2px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;
+  background:var(--accent);border:2px solid var(--surface);margin-top:-6px;box-shadow:0 0 0 1px var(--accent)}
+input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:var(--accent);
+  border:2px solid var(--surface);box-shadow:0 0 0 1px var(--accent)}
+.presets{display:flex;flex-wrap:wrap;gap:5px;padding-top:14px;border-top:1px solid var(--rule)}
+.presets button.seg{margin-left:0;font-family:"IBM Plex Mono",monospace;font-size:10.5px}
+.pre-h{width:100%;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px}
+.pm2-read{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-top:14px;
+  padding-top:14px;border-top:1px solid var(--rule)}
+.pm2-note{font-size:12.5px;color:var(--ink-2)}
+.pm2-note b{color:var(--ink);font-weight:600}
+.leaf{cursor:pointer}
+.leaf:hover .leaf-box{stroke-width:2}
+</style>
+
+<div class="shell">
+
+<header>
+  <div class="brow">
+    <span>MVA Hackathon 2026</span><span class="sep">/</span>
+    <span>Track 1 &middot; Variant Prediction</span><span class="sep">/</span>
+    <span>Team Gummietech</span><span class="sep">/</span>
+    <span>Rev. 2026-09-01</span>
+  </div>
+
+  <h1>What disrupts the <em>second</em> allele?</h1>
+
+  <p class="sub">A whole-genome search in a child with mosaic variegated aneuploidy returned a
+  confirmed pathogenic nonsense variant in <strong>BUB1B</strong> and one ultra-rare missense
+  variant 11&nbsp;kb away. The disease is recessive, so something must disrupt the second copy.
+  This atlas draws every piece of evidence that bears on which candidate does &mdash; including the
+  evidence that was tested and <strong>thrown out</strong>.</p>
+
+  <div class="specimen">
+    <div class="specimen-h"><span>Submitted prediction</span><span>EPCR 0.95 &middot; primary</span></div>
+    <div class="spec-grid">
+      <div class="spec-cell">
+        <div class="spec-k">Proband</div>
+        <div class="spec-v">WGS_EX2312012<small>GRCh38 &middot; single-sample &middot; sites-only</small></div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-k">Variant 1 &mdash; likely pathogenic</div>
+        <div class="spec-v">chr15:40209701 T&gt;G<small>c.2210T&gt;G &middot; p.Leu737Ter &middot; 9 points</small></div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-k">Variant 2 &mdash; VUS</div>
+        <div class="spec-v">chr15:40220612 T&gt;G<small>c.3006T&gt;G &middot; p.Asn1002Lys &middot; 2 points</small></div>
+      </div>
+      <div class="spec-cell">
+        <div class="spec-k">Phase</div>
+        <div class="spec-v">UNRESOLVED<small>~11 kb apart &middot; no informative reads</small></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail" aria-label="Sections">
+  <div class="rail-h">Tracks</div>
+  <ol id="rail"></ol>
+</nav>
+
+<main>
+
+<!-- 1 ============================================================ -->
+<section id="s1">
+  <div class="sec-h"><span class="sec-n">01</span><h2>From two million records to two candidates</h2><span class="tag">Pipeline</span></div>
+  <p class="say">Two gene panels, one pipeline, run end to end by scripts in the repository.
+  The primary panel is nine MVA and spindle-checkpoint genes; the secondary is eleven genes chosen
+  for two clinical features that fall outside the MVA spectrum. Every stage below is a command in
+  <code>pipeline/README.md</code>, not a described procedure.</p>
+  <figure>
+    <div class="fig-h"><span>Candidate funnel</span><span>primary 9 genes &middot; secondary 11 genes</span></div>
+    <div class="fig-body fig-scroll"><div id="funnel"></div></div>
+    <figcaption>The rarity + impact filter is where <strong>1,281 annotated variants become 2</strong>.
+    The secondary panel survives the same filter with nothing at all &mdash; a clean negative, and the
+    report treats it as one.</figcaption>
+  </figure>
+  <details>
+    <summary>The detail</summary>
+    <div class="detail-body">
+      <p>Filter criteria: gnomAD max subpopulation AF &lt; 0.001 <strong>and</strong> VEP impact
+      MODERATE or HIGH on the canonical transcript. Deep-intronic variants are MODIFIER impact and are
+      therefore discarded by design &mdash; that is what the filter is for. One was recovered
+      deliberately, by re-running the same script at <code>--impacts MODIFIER</code> restricted to
+      BUB1B: of 10 rare MODIFIER variants across the nine-gene panel, exactly one sits in BUB1B. That
+      is a narrow stated query, not a hunt through intronic space until something interesting appears.</p>
+      <p>The PASS filter removes <span class="num">7</span> records from the primary panel and
+      <span class="num">20</span> from the secondary. Those were later inspected rather than left
+      unexamined: the only BUB1B record among them is an intronic indel, but eight of the secondary
+      panel's twenty sit in <em>NF1</em>, seven carrying the <code>MQ40</code> signature of that gene's
+      segmental duplications &mdash; a genuine sensitivity gap, disclosed rather than hidden.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 2 ============================================================ -->
+<section id="s2">
+  <div class="sec-h"><span class="sec-n">02</span><h2>The gene, drawn to scale</h2><span class="tag">BUB1B &middot; chr15</span></div>
+  <p class="say">All 23 exons at their true coordinates, fetched from Ensembl and checked against
+  three positions the report derived independently. Read it as three questions stacked on one axis:
+  <strong>where the variants are</strong>, <strong>where the genome is provably diploid</strong>, and
+  <strong>where a deletion could still be hiding</strong>.</p>
+  <figure>
+    <div class="fig-h"><span>ENST00000287598 &middot; GRCh38</span><span>60,153 bp &middot; + strand</span></div>
+    <div class="fig-body fig-scroll"><div id="genemap"></div></div>
+    <figcaption>Eight heterozygous calls span <strong>53,157 bp of the 60,153 bp gene</strong>. A
+    heterozygous call is positive evidence of two copies at that position, so a whole-gene deletion in
+    trans is <strong>excluded</strong> &mdash; and two of the eight sit at the causal positions
+    themselves. What survives is the hatched intervals <em>between</em> them.</figcaption>
+  </figure>
+  <div class="callout">
+    <span class="h">Why the hatching matters</span>
+    A hatched band is not a finding. It marks an interval the assay could not interrogate &mdash; the
+    largest, <span class="num">16,809 bp</span>, contains <strong>exons 9&ndash;16</strong>. A
+    multi-exon deletion there remains the leading alternative second allele, and only an assay this
+    pipeline does not have (MLPA, microarray, or read-depth calling on the BAM) can close it.
+  </div>
+  <details>
+    <summary>The detail</summary>
+    <div class="detail-body">
+      <p>Across the padded region there are <strong>14 PASS calls at median depth 40</strong> (range
+      26&ndash;48), none below 10, and none showing the depth halving a hemizygous deletion would
+      produce. Eight are heterozygous. The two homozygous-alternate calls inside the exon 9&ndash;16
+      window are formally consistent with hemizygosity, though their entirely normal depth
+      (<span class="num">42</span> and <span class="num">36</span>) argues against it.</p>
+      <p><strong>Published allelic architecture cuts against the deletion hypothesis.</strong> In the
+      four biallelic families of the 2010 Suijkerbuijk series, each pairs a truncating allele with a
+      missense one &mdash; truncating alleles yield no transcript, so what patients live on is a
+      residual pool of unstable missense protein. A multi-exon deletion in trans with p.Leu737Ter
+      would be truncating/truncating. Four families is too narrow a base for a universal claim, and
+      the report makes only the narrow one.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 3 ============================================================ -->
+<section id="s3">
+  <div class="sec-h"><span class="sec-n">03</span><h2>The protein, and the domain that lost its evidence code</h2><span class="tag">BubR1 &middot; UniProt O60566</span></div>
+  <p class="say">The nonsense variant truncates at residue 737 and removes the <em>entire</em> kinase
+  domain. The missense variant sits inside that domain at residue 1002 &mdash; which looks like
+  textbook grounds for the ACMG code PM1. It is not, and the reason is directly below the protein bar.</p>
+  <figure>
+    <div class="fig-h"><span>Domain architecture &amp; missense density</span><span>1,050 aa</span></div>
+    <div class="fig-body fig-scroll"><div id="protein"></div></div>
+    <figcaption>PM1 requires a critical domain <strong>without benign variation</strong>. This domain
+    carries <strong>320 distinct missense variants across 69.8% of its residues</strong>, at
+    essentially the same density as the rest of the protein &mdash; plus standing variation at AF
+    <span class="num">1.12e-3</span> inside it and <span class="num">6.0e-4</span> two residues from
+    the candidate. Whatever that is, it is not absence.
+    <span class="stat struck">PM1 dropped</span></figcaption>
+  </figure>
+  <details>
+    <summary>The detail</summary>
+    <div class="detail-body">
+      <p><strong>PVS1 rests on nonsense-mediated decay, checked against real exon structure.</strong>
+      c.2210 lies in exon 17 of 23, and the final exon&ndash;exon junction falls at CDS position 2957
+      &mdash; placing the premature stop <strong>747 nt upstream</strong> of it, far outside the
+      ~50&ndash;55 nt window in which a stop escapes NMD. There is no cryptic-splice rescue either:
+      SpliceAI scores this variant 0.03 across all 22 transcripts.</p>
+      <p><strong>BubR1 is a pseudokinase.</strong> Suijkerbuijk et al. 2010 showed the 265-aa kinase
+      domain is dispensable for both mitotic-checkpoint activity and microtubule attachment &mdash; so
+      the "active site of an enzyme" archetype PM1 is written around does not transfer here. PM1 was
+      dropped rather than re-founded on the disease-specific spectrum, because that alternative footing
+      would have traded a wrong argument for an untested one: ClinVar now lists the in-domain members
+      of that same series as <em>Conflicting classifications</em>, while the only BUB1B missense
+      classified Likely pathogenic without conflict lies <em>outside</em> the domain.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 4 ============================================================ -->
+<section id="s4">
+  <div class="sec-h"><span class="sec-n">04</span><h2>The evidence ladder, and what fell off it</h2><span class="tag">ACMG / Tavtigian points</span></div>
+  <p class="say">Codes are combined with ClinGen's Bayesian points framework. Variant&nbsp;1 clears
+  Likely Pathogenic on <strong>PVS1 alone</strong>. Variant&nbsp;2 does not clear anything &mdash; and
+  the interesting part is the trajectory: it scored 6 points, then 4, then 2, as each supporting code
+  was tested against its own definition and failed.</p>
+  <figure>
+    <div class="fig-h">
+      <span>Points accumulation</span>
+      <span id="ladderCtl" role="group" aria-label="Ladder scenario"></span>
+    </div>
+    <div class="fig-body fig-scroll"><div id="ladder"></div></div>
+    <figcaption id="ladderCap"></figcaption>
+  </figure>
+  <figure>
+    <div class="fig-h"><span>Codes tested and discarded</span><span>4 dropped &middot; with cause</span></div>
+    <div class="tw"><table>
+      <thead><tr><th>Code</th><th class="n">Was worth</th><th>Why it was dropped</th></tr></thead>
+      <tbody>
+        <tr><td><code>PM1</code></td><td class="n">2</td><td>Requires a domain <em>without benign variation</em>. This one carries <strong>320 distinct gnomAD missense variants</strong> across 69.8% of its residues &mdash; essentially the same density as the rest of the protein &mdash; and gene-level missense constraint is absent (o/e 0.91).</td></tr>
+        <tr><td><code>PM3</code></td><td class="n">2</td><td>Scored on the ClinGen SVI recessive point scheme rather than the 2015 default: a single proband of unknown phase scores <strong>0.25 points</strong>, below the 0.5 floor for even Supporting.</td></tr>
+        <tr><td><code>PS4</code></td><td class="n">4</td><td>Requires case&ndash;control prevalence data. This analysis generated none, so the code does not apply &mdash; ClinVar concordance is reported as corroboration instead.</td></tr>
+        <tr><td><code>PP5</code></td><td class="n">1</td><td>The code that formally covers a reputable-source classification, but <strong>recommended against by ClinGen SVI since 2018</strong> because it double-counts evidence the primary codes already carry.</td></tr>
+      </tbody>
+    </table></div>
+    <figcaption>Nine points of evidence were available and declined. Dropping them does not change the
+    diagnosis, which rests on variant&nbsp;1 plus the phenotype match &mdash; it changes what the
+    submission is willing to claim.</figcaption>
+  </figure>
+  <details>
+    <summary>The detail</summary>
+    <div class="detail-body">
+      <p><strong>Which specification applies where.</strong> ClinGen SVI is used throughout &mdash;
+      PM2 at Supporting, PM3 on the recessive point scheme, and the Tavtigian points framework for
+      combining &mdash; rather than SVI where it happens to lower a code and the 2015 defaults where it
+      would not. That consistency is what moved PM3; adopting SVI for PM2 alone would have been
+      exactly the selective reading the report criticises elsewhere.</p>
+      <p>One consequence is worth naming: under the strict 2015 combining table, PVS1 plus a single
+      <em>Supporting</em> code would not formally reach Likely Pathogenic (that table wants 1 Very
+      Strong + 1 Moderate). Variant&nbsp;1's classification therefore rests on the points framework.
+      Either route gives the same answer &mdash; but the route is stated rather than glossed.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 5 ============================================================ -->
+<section id="s5">
+  <div class="sec-h"><span class="sec-n">05</span><h2>Is variant 1 actually rare enough?</h2><span class="tag">PM2 &middot; interactive</span></div>
+  <p class="say">PM2 asks whether a variant is rarer than the disease could tolerate. The threshold is
+  the Whiffin&ndash;Ware maximum credible population allele frequency &mdash; and for variant 1 it is a
+  <strong>close call that depends entirely on three numbers nobody has published</strong>. Move them
+  and watch the code fail.</p>
+  <figure>
+    <div class="fig-h"><span>max credible AF = A &times; &radic;(P&middot;G / f)</span><span>vs faf95 8.40e-5</span></div>
+    <div class="fig-body"><div id="pm2"></div></div>
+    <figcaption>Every position of these sliders is a defensible guess, and the report says so.
+    PM2 is applied on the judgement that MVA is substantially under-ascertained &mdash; a mosaic
+    aneuploidy phenotype needs a karyotype nobody orders without prior suspicion &mdash; but
+    <strong>the code is not load-bearing</strong>: variant 1 reaches 8 points on PVS1 alone.</figcaption>
+  </figure>
+  <div class="callout">
+    <span class="h">A reviewer challenged this formula, and was answered</span>
+    An expert panel proposed moving the allelic term <em>inside</em> the square root. Checked against
+    the framework's own manuscript source, the recessive form is
+    <code>&radic;P &times; A &times; &radic;G / &radic;f</code> &mdash; A outside, as drawn. The
+    obvious sanity check cannot settle it: at <span class="num">A = 1</span> both placements return
+    <span class="num">&radic;P</span>. The two forms differ by <span class="num">1/&radic;A</span> and
+    are distinguishable only at <span class="num">A &lt; 1</span>. <strong>Finding declined.</strong>
+  </div>
+</section>
+
+<!-- 6 ============================================================ -->
+<section id="s6">
+  <div class="sec-h"><span class="sec-n">06</span><h2>The code that scored a quarter of a point</h2><span class="tag">PM3 &middot; ClinGen SVI</span></div>
+  <p class="say">PM3 is the natural code for a second hit in trans with a known pathogenic variant in a
+  recessive gene. Under the 2015 defaults it would be Moderate, worth 2 points. Under the
+  specification this report says it follows, phase is unknown and the other allele is Likely
+  pathogenic &mdash; which is worth <strong>0.25</strong>.</p>
+  <figure>
+    <div class="fig-h"><span>SVI recessive point scheme &middot; v1.0</span><span>Table 1 &rarr; Table 2</span></div>
+    <div class="fig-body fig-scroll"><div id="pm3"></div></div>
+    <figcaption>Below the <strong>0.5 floor</strong>, so PM3 contributes nothing as things stand. The
+    two ghosted markers are what would lift it: taking variant 1 at ClinVar's Pathogenic tier reaches
+    Supporting; confirming phase in trans reaches Moderate. <strong>Neither lifts variant 2 out of
+    VUS.</strong></figcaption>
+  </figure>
+</section>
+
+<!-- 7 ============================================================ -->
+<section id="s7">
+  <div class="sec-h"><span class="sec-n">07</span><h2>Four predictors agree. The calibrated one abstains.</h2><span class="tag">PP3 &middot; dbNSFP</span></div>
+  <p class="say">It would be easy to report "5 of 6 predictors say damaging" and move on. But ClinGen's
+  SVI group recommends a <em>single calibrated</em> predictor over tool-counting &mdash; and against
+  its own published thresholds, that predictor lands in the dead zone.</p>
+  <figure>
+    <div class="fig-h"><span>In-silico evidence for p.Asn1002Lys</span><span>REVEL calibration &middot; Pejaver 2022</span></div>
+    <div class="fig-body fig-scroll"><div id="pred"></div></div>
+    <figcaption>Strictly applied, this calibration yields <strong>no PP3 at all</strong>. The report
+    invokes PP3 only as weak, on the strength of the concordant tools, with the caveat printed rather
+    than resolved by picking the tools that agree.</figcaption>
+  </figure>
+</section>
+
+<!-- 8 ============================================================ -->
+<section id="s8">
+  <div class="sec-h"><span class="sec-n">08</span><h2>A splice screen that found nothing, honestly</h2><span class="tag">SpliceAI &middot; 2,346 variants</span></div>
+  <p class="say">A splice-altering variant hiding below the impact filter was the most plausible blind
+  spot in this design, so it was closed rather than merely disclosed. Every PASS variant in both panels
+  was scored. <strong>Nothing reaches the threshold</strong> &mdash; and the variants that could not be
+  scored are drawn as what they are.</p>
+  <figure>
+    <div class="fig-h"><span>Delta score distribution</span><span>0.2 high-recall threshold</span></div>
+    <div class="fig-body fig-scroll"><div id="splice"></div></div>
+    <figcaption>The highest score anywhere, <span class="num">0.18</span>, belongs to a common
+    polymorphism at gnomAD AF <span class="num">0.77</span>. Among the 14 rare scored variants the
+    maximum is <span class="num">0.03</span>. The <strong>592 unscored rows are shown outlined, not at
+    zero</strong> &mdash; "not scored" is a different claim from "scored zero", and conflating them is
+    a real defect this pipeline was audited for and fixed.</figcaption>
+  </figure>
+</section>
+
+<!-- 9 ============================================================ -->
+<section id="s9">
+  <div class="sec-h"><span class="sec-n">09</span><h2>The limitation under every negative result</h2><span class="tag">Callability &middot; 20 genes</span></div>
+  <p class="say">The input is a sites-only VCF. It records where a variant was called and says nothing
+  about where none was &mdash; so absence of a call and absence of coverage are
+  <strong>indistinguishable</strong>. Every negative in this report rests on that undifferentiated
+  absence. As a partial proxy, call density inside each gene is compared with its own flanking sequence.</p>
+  <figure>
+    <div class="fig-h"><span>Call density &divide; flanking density</span><span>log scale &middot; 43-fold range</span></div>
+    <div class="fig-body fig-scroll"><div id="callability"></div></div>
+    <figcaption>BUB1B (<span class="num">0.14&times;</span>) and CEP57 (<span class="num">0.19&times;</span>)
+    are the most depleted genes on either panel. This cuts <strong>both ways</strong>: BUB1B is the most
+    depleted gene here and <em>both causal variants were nonetheless recovered from it</em>, which is
+    some evidence the depletion is genuine low diversity rather than dropout. CEP57 gets no such
+    reassurance &mdash; 4 calls in 47.1 kb &mdash; so its negative is the weakest on the page.</figcaption>
+  </figure>
+</section>
+
+<!-- 10 =========================================================== -->
+<section id="s10">
+  <div class="sec-h"><span class="sec-n">10</span><h2>The phenotype, including what is missing from it</h2><span class="tag">PP4 &middot; 8 HPO terms</span></div>
+  <p class="say">Eight coded features against the three classical MVA subtypes. The match to MVA1 is
+  close &mdash; but a matrix makes visible what prose let slide: <strong>one core MVA1 feature has no
+  code in the supplied list at all</strong>, and two coded features sit outside the spectrum entirely.</p>
+  <figure>
+    <div class="fig-h"><span>Feature &times; subtype concordance</span><span>MVA1 BUB1B &middot; MVA2 CEP57 &middot; MVA3 TRIP13</span></div>
+    <div class="fig-body fig-scroll"><div id="pheno"></div></div>
+    <figcaption>Empty cells are <strong>not evidence of absence</strong> &mdash; they are features this
+    report did not establish for that subtype, drawn empty for the same reason the SpliceAI blanks are.
+    The microcephaly row is the one that matters: absence of an HPO code is a gap in the input, not a
+    documented negative, and head circumference is a specific thing to ask the clinical team for.</figcaption>
+  </figure>
+  <details>
+    <summary>The detail</summary>
+    <div class="detail-body">
+      <p><strong>PP4 is carried qualitatively and scored into neither variant.</strong> The MVA1
+      features present here are individually non-specific; the discriminating one &mdash; mosaic
+      aneuploidy on karyotype &mdash; has not been assayed; and one core feature is uncoded. Scored
+      formally it would be PP4_Supporting at most, worth 1 point, moving variant 1 from 9 to 10 and so
+      from Likely Pathogenic to Pathogenic &mdash; a reclassification this evidence does not warrant.</p>
+      <p><strong>Nephrocalcinosis inverted the reasoning.</strong> Earlier versions offered two
+      acquired explanations, prematurity and chemotherapy nephrotoxicity, "each sufficient on its own."
+      The phenotype document states in the same table row that the finding is <em>present since birth</em>
+      &mdash; and both proposed mechanisms are necessarily postnatal. Congenital onset <em>raises</em>
+      the prior on a monogenic renal or metabolic cause, which makes the 6-gene renal subset run here a
+      materially weaker negative than it was presented as.</p>
+      <p><strong>Parental recurrent miscarriage is concordant, not competing.</strong> Parents of a
+      child with biallelic BUB1B loss are obligate carriers, so one conception in four is affected. If
+      constitutional aneuploidy on this scale carries high embryonic lethality, recurrent loss is closer
+      to a prediction of the diagnosis than a finding against it. That conditional is doing the work,
+      and it is stated as a conditional deliberately.</p>
+    </div>
+  </details>
+</section>
+
+<!-- 11 =========================================================== -->
+<section id="s11">
+  <div class="sec-h"><span class="sec-n">11</span><h2>The cheap test nobody has ordered</h2><span class="tag">Confirmatory assays</span></div>
+  <p class="say">MVA is defined <em>cytogenetically</em> &mdash; mosaic aneuploidy across multiple
+  chromosomes in more than a quarter of cells. Not molecularly. An earlier version of this report named
+  that gap and then recommended only the phase test. The order is now corrected: the assay that tests
+  the <strong>diagnosis</strong> comes before the assay that tests the <strong>pairing</strong>.</p>
+  <figure>
+    <div class="fig-h"><span>Decision tree from EPCR 0.95</span><span>select a branch</span></div>
+    <div class="fig-body fig-scroll"><div id="tree"></div></div>
+    <figcaption id="treeCap">Each leaf carries where the estimated probability of causal relationship
+    would land. Click any outcome to read what it would mean.</figcaption>
+  </figure>
+  <div class="callout warn">
+    <span class="h">The asymmetry worth seeing</span>
+    Confirming phase moves EPCR from <span class="num">0.95</span> to about
+    <span class="num">0.98</span> &mdash; a small gain. A <strong>negative karyotype</strong> would
+    undercut the diagnosis itself, in a way no amount of further variant-level evidence repairs. The
+    residual 5% is dominated by a test that costs almost nothing and has never been run.
+  </div>
+</section>
+
+<footer>
+  <p><strong>Every figure on this page is transcribed from
+  <code>submissions/track1/gummietech_track1_report.md</code></strong> and cross-checked against it.
+  The 23 exon coordinates are fetched live from Ensembl REST for ENST00000287598 and validated against
+  three positions the report derived independently &mdash; CDS length 3,153, the final exon&ndash;exon
+  junction at 2,957, and the exon 21 acceptor at 40,217,496. The SpliceAI distribution is computed from
+  the local annotated tables as <em>binned counts only</em>: no positions, no genotypes, no depths.</p>
+  <p>Per the hackathon's Data Transfer Agreement, the raw VCF, the phenotype document and the
+  genotype-level annotation output are not committed to version control and are deleted from every
+  environment within 30 days of hackathon close. This page contains nothing that is not already in the
+  submitted report.</p>
+  <p>Prepared with assistance from Claude (Opus 5) for drafting and visualisation. All variant calls,
+  frequencies and annotations are outputs of bcftools, Ensembl VEP, gnomAD, ClinVar and UniProt queried
+  directly against the proband's own data or public reference data.</p>
+</footer>
+
+</main>
+</div>
+
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const N=n=>n.toLocaleString("en-US");
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const svg=(w,h,inner,extra)=>'<svg viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+
+  '" role="img" '+(extra||'')+'>'+inner+'</svg>';
+/* diagonal hatch = "interval not interrogated" / "no evidence either way".
+   Used wherever the page must say UNMEASURED rather than ZERO. */
+const HATCH='<defs><pattern id="hx" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'+
+  '<rect width="7" height="7" fill="none"/><line x1="0" y1="0" x2="0" y2="7" stroke="var(--rule-strong)" stroke-width="1.4"/></pattern>'+
+  '<pattern id="hxr" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'+
+  '<rect width="7" height="7" fill="none"/><line x1="0" y1="0" x2="0" y2="7" stroke="var(--struck)" stroke-width="1.4" opacity=".55"/></pattern></defs>';
+
+/* =========================================================== 1 · FUNNEL */
+(function(){
+  const W=1100,L=250,BX=262,BW=548,rowH=52,top=44;
+  const stages=[
+    ["Genome-wide VCF","single-sample GATK/Sentieon",2000000,2000000],
+    ["Region-restricted","bcftools view -R  (±2 kb pad)",1288,1085],
+    ["PASS records only","vep_annotate.py -f PASS",1281,1065],
+    ["Annotated","Ensembl VEP REST + SpliceAI",1281,1065],
+    ["Rare + MODERATE/HIGH","filter_candidates.py",2,0]
+  ];
+  const mx=Math.log10(2000001), sc=n=>Math.log10(n+1)/mx*BW;
+  let g='<text class="lbl" x="'+BX+'" y="24" font-size="10.5" letter-spacing="1.1" fill="var(--ink-3)">PRIMARY PANEL · 9 GENES</text>'+
+        '<text class="lbl" x="'+BX+'" y="38" font-size="10.5" letter-spacing="1.1" fill="var(--ink-3)">SECONDARY PANEL · 11 GENES</text>';
+  stages.forEach((s,i)=>{
+    const y=top+i*rowH;
+    g+='<line x1="0" y1="'+(y-9)+'" x2="'+W+'" y2="'+(y-9)+'" stroke="var(--rule)"/>';
+    g+='<text class="lbl" x="0" y="'+(y+11)+'" font-size="13" font-weight="500" fill="var(--ink)">'+esc(s[0])+'</text>';
+    g+='<text x="0" y="'+(y+27)+'" font-size="10.5" fill="var(--ink-3)">'+esc(s[2])+'</text>';
+    [[s[2],0,"var(--accent)"],[s[3],1,"none"]].forEach(([n,k,fill])=>{
+      const by=y+(k?19:1), w=sc(n);
+      if(n===0){ /* a measured zero: a stub and an explicit 0, never an empty bar */
+        g+='<rect x="'+BX+'" y="'+by+'" width="3" height="14" fill="var(--ink-3)"/>';
+      } else if(k){
+        g+='<rect x="'+BX+'" y="'+by+'" width="'+w+'" height="14" fill="var(--accent)" opacity=".16" stroke="var(--accent)" stroke-width="1"/>';
+      } else {
+        g+='<rect x="'+BX+'" y="'+by+'" width="'+w+'" height="14" fill="var(--accent)"/>';
+      }
+      g+='<text x="'+(BX+BW+18)+'" y="'+(by+11)+'" font-size="12" font-weight="500" fill="'+
+         (n===0?"var(--ink-3)":"var(--ink)")+'">'+N(n)+(k?'  sec':'  pri')+'</text>';
+    });
+  });
+  const yEnd=top+stages.length*rowH;
+  g+='<line x1="0" y1="'+(yEnd-9)+'" x2="'+W+'" y2="'+(yEnd-9)+'" stroke="var(--rule-strong)"/>';
+  g+='<text class="lbl" x="0" y="'+(yEnd+12)+'" font-size="12" fill="var(--ink-2)">'+
+     'Re-run at <tspan font-family="IBM Plex Mono" fill="var(--ink)">--impacts MODIFIER</tspan> restricted to BUB1B — '+
+     '10 rare MODIFIER variants panel-wide, exactly <tspan font-weight="600" fill="var(--ink)">1 in BUB1B</tspan> → the secondary finding.</text>';
+  $("funnel").innerHTML=svg(W,yEnd+26,g,'aria-label="Candidate funnel from 2 million records to 2 candidates"');
+})();
+
+/* =========================================================== 2 · GENE MAP */
+const EXONS=[[1,40161069,40161255],[2,40165053,40165196],[3,40170062,40170121],[4,40170537,40170681],
+[5,40176477,40176673],[6,40183714,40183883],[7,40185165,40185379],[8,40185551,40185642],
+[9,40196545,40196774],[10,40199615,40199727],[11,40200244,40200359],[12,40200931,40200980],
+[13,40202405,40202465],[14,40202589,40202694],[15,40206184,40206458],[16,40208637,40208770],
+[17,40209635,40209775],[18,40210110,40210210],[19,40212499,40212648],[20,40213332,40213474],
+[21,40217496,40217667],[22,40218456,40218562],[23,40220564,40221123]];
+const CDS=[40161221,40220759];
+const HETS=[[40168264,24,24],[40181093,16,19],[40182809,13,13],[40192892,17,23],
+            [40209701,21,25],[40216470,28,18],[40220612,15,13],[40221421,24,14]];
+const WINDOWS=[[40160984,40168264,"exons 1–2"],[40168264,40181093,"exons 3–5"],
+  [40182809,40192892,"exons 6–8"],[40192892,40209701,"exons 9–16"],[40209701,40216470,"exons 18–20"]];
+const VARS=[[40209701,"p.Leu737Ter","c.2210T>G · stop_gained","struck"],
+            [40216470,"c.2679-1026A>G","deep intronic · SpliceAI 0.00","absent"],
+            [40220612,"p.Asn1002Lys","c.3006T>G · missense","indet"]];
+(function(){
+  const W=1120,M=32,IW=W-M*2;
+  function track(a,b,y0,showLabels){
+    const x=p=>M+(p-a)/(b-a)*IW; let g="";
+    /* deletion windows: hatched = could not be interrogated */
+    WINDOWS.forEach(w=>{ if(w[1]<a||w[0]>b) return;
+      const x0=x(Math.max(w[0],a)),x1=x(Math.min(w[1],b)),ww=x1-x0;
+      g+='<rect x="'+x0.toFixed(1)+'" y="'+(y0+62)+'" width="'+ww.toFixed(1)+'" height="14" fill="url(#hx)" opacity=".7"/>'+
+         '<rect x="'+x0.toFixed(1)+'" y="'+(y0+62)+'" width="'+ww.toFixed(1)+'" height="14" fill="none" stroke="var(--rule-strong)" stroke-dasharray="2 2"/>';
+      if(ww>96) g+='<text x="'+((x0+x1)/2).toFixed(1)+'" y="'+(y0+72.5)+'" font-size="9" fill="var(--ink-2)" text-anchor="middle">'+esc(w[2])+'</text>';
+      g+='<title>'+N(w[1]-w[0])+' bp · '+esc(w[2])+' · deletion not excluded here</title>';
+    });
+    /* ruler */
+    const step=(b-a)>30000?10000:5000;
+    for(let t=Math.ceil(a/step)*step;t<=b;t+=step){
+      g+='<line x1="'+x(t).toFixed(1)+'" y1="'+y0+'" x2="'+x(t).toFixed(1)+'" y2="'+(y0+6)+'" stroke="var(--rule-strong)"/>'+
+         '<text x="'+x(t).toFixed(1)+'" y="'+(y0-4)+'" font-size="9.5" fill="var(--ink-3)" text-anchor="middle">'+(t/1e6).toFixed(3)+'</text>';
+    }
+    g+='<line x1="'+M+'" y1="'+y0+'" x2="'+(M+IW)+'" y2="'+y0+'" stroke="var(--rule)"/>';
+    /* intron line + exons */
+    const ey=y0+30,eh=24;
+    g+='<line x1="'+M+'" y1="'+(ey+eh/2)+'" x2="'+(M+IW)+'" y2="'+(ey+eh/2)+'" stroke="var(--utr)" stroke-width="1.2"/>';
+    EXONS.forEach(e=>{ if(e[2]<a||e[1]>b) return;
+      const x0=x(Math.max(e[1],a)),x1=x(Math.min(e[2],b)),w=Math.max(x1-x0,1.6);
+      const coding=!(e[2]<CDS[0]||e[1]>CDS[1]);
+      g+='<rect x="'+x0.toFixed(1)+'" y="'+ey+'" width="'+w.toFixed(1)+'" height="'+eh+'" fill="'+
+         (coding?"var(--exon)":"var(--utr)")+'" rx="1"><title>exon '+e[0]+' · '+N(e[1])+'–'+N(e[2])+'</title></rect>';
+      if(showLabels) g+='<text x="'+((x0+x1)/2).toFixed(1)+'" y="'+(ey-6)+'" font-size="9.5" fill="var(--ink-3)" text-anchor="middle">'+e[0]+'</text>';
+    });
+    /* het calls = positive evidence of diploidy */
+    const hy=y0+96;
+    HETS.forEach(h=>{ if(h[0]<a||h[0]>b) return;
+      const cx=x(h[0]);
+      g+='<line x1="'+cx.toFixed(1)+'" y1="'+(ey+eh)+'" x2="'+cx.toFixed(1)+'" y2="'+(hy-5)+'" stroke="var(--applied)" stroke-width="1" opacity=".45"/>'+
+         '<path d="M'+cx.toFixed(1)+' '+(hy-5)+'l5 5-5 5-5-5z" fill="var(--applied)"><title>het call '+N(h[0])+
+         ' · AD '+h[1]+','+h[2]+' · DP '+(h[1]+h[2])+' — two copies present</title></path>';
+    });
+    return {g:g,x:x,ey:ey,eh:eh,hy:hy};
+  }
+  /* --- overview --- */
+  const A=40160500,B=40222200;
+  const t1=track(A,B,40,false);
+  let g=HATCH+t1.g;
+  g+='<text class="lbl" x="'+M+'" y="16" font-size="10.5" letter-spacing="1.1" fill="var(--ink-3)">BUB1B · chr15:40,160,984–40,221,137 · Mb</text>';
+  /* diploid span bracket */
+  const bx0=t1.x(40168264),bx1=t1.x(40221421),by=t1.hy+16;
+  g+='<path d="M'+bx0.toFixed(1)+' '+by+'v5h'+(bx1-bx0).toFixed(1)+'v-5" fill="none" stroke="var(--applied)" stroke-width="1"/>'+
+     '<text x="'+((bx0+bx1)/2).toFixed(1)+'" y="'+(by+18)+'" font-size="10.5" fill="var(--applied)" text-anchor="middle">'+
+     '8 heterozygous calls span 53,157 bp — whole-gene deletion excluded</text>';
+  /* zoom trapezoid */
+  const ZA=40205000,ZB=40222200, zy=by+30;
+  g+='<path d="M'+t1.x(ZA).toFixed(1)+' '+zy+'L'+t1.x(ZB).toFixed(1)+' '+zy+'L'+(M+IW)+' '+(zy+26)+'L'+M+' '+(zy+26)+'z" '+
+     'fill="var(--accent)" opacity=".07"/>'+
+     '<line x1="'+t1.x(ZA).toFixed(1)+'" y1="'+zy+'" x2="'+M+'" y2="'+(zy+26)+'" stroke="var(--accent)" stroke-width="1" opacity=".4"/>'+
+     '<line x1="'+t1.x(ZB).toFixed(1)+'" y1="'+zy+'" x2="'+(M+IW)+'" y2="'+(zy+26)+'" stroke="var(--accent)" stroke-width="1" opacity=".4"/>';
+  /* --- inset --- */
+  const iy=zy+52;
+  const t2=track(ZA,ZB,iy+14,true);
+  g+=t2.g;
+  g+='<text class="lbl" x="'+M+'" y="'+(iy-8)+'" font-size="10.5" letter-spacing="1.1" fill="var(--accent)">DETAIL · 40,205,000–40,222,200 · all three candidates</text>';
+  const py=t2.hy+30;
+  VARS.forEach(v=>{
+    const cx=t2.x(v[0]), col=v[3]==="struck"?"var(--struck)":v[3]==="indet"?"var(--indet)":"var(--ink-3)";
+    g+='<line x1="'+cx.toFixed(1)+'" y1="'+(t2.hy+8)+'" x2="'+cx.toFixed(1)+'" y2="'+py+'" stroke="'+col+'" stroke-width="1.2" stroke-dasharray="'+(v[3]==="absent"?"3 2":"0")+'"/>'+
+       '<circle cx="'+cx.toFixed(1)+'" cy="'+py+'" r="4" fill="'+(v[3]==="absent"?"var(--surface)":col)+'" stroke="'+col+'" stroke-width="1.5"/>'+
+       '<text x="'+cx.toFixed(1)+'" y="'+(py+20)+'" font-size="12" font-weight="600" fill="'+col+'" text-anchor="middle">'+esc(v[1])+'</text>'+
+       '<text x="'+cx.toFixed(1)+'" y="'+(py+34)+'" font-size="10" fill="var(--ink-3)" text-anchor="middle">'+esc(v[2])+'</text>'+
+       '<text x="'+cx.toFixed(1)+'" y="'+(py+47)+'" font-size="10" fill="var(--ink-3)" text-anchor="middle">'+N(v[0])+'</text>';
+  });
+  $("genemap").innerHTML=svg(W,py+62,g,'aria-label="BUB1B gene map: 23 exons, three variants, eight heterozygous calls, five permissive deletion windows"')+
+    '<div class="legend" style="margin-top:14px">'+
+    '<b><span class="sw exon"></span>coding exon</b>'+
+    '<b><span class="sw" style="background:var(--utr)"></span>UTR / intron</b>'+
+    '<b><span class="sw applied"></span>heterozygous call — two copies proven</b>'+
+    '<b><span class="sw absent"></span>hatched lane — deletion not excluded in this interval</b></div>';
+})();
+})();
+</script>
+
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const N=n=>n.toLocaleString("en-US");
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const svg=(w,h,inner,extra)=>'<svg viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+
+  '" role="img" '+(extra||'')+'>'+inner+'</svg>';
+const HATCH='<defs><pattern id="hy" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'+
+  '<rect width="7" height="7" fill="none"/><line x1="0" y1="0" x2="0" y2="7" stroke="var(--rule-strong)" stroke-width="1.4"/></pattern>'+
+  '<pattern id="hys" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'+
+  '<rect width="6" height="6" fill="none"/><line x1="0" y1="0" x2="0" y2="6" stroke="var(--struck)" stroke-width="1.5" opacity=".6"/></pattern></defs>';
+
+/* =========================================================== 3 · PROTEIN */
+(function(){
+  const W=1060,M=34,IW=W-M*2,x=aa=>M+(aa-1)/1049*IW;
+  const by=44,bh=26;
+  let g=HATCH;
+  g+='<text class="lbl" x="'+M+'" y="18" font-size="10.5" letter-spacing="1.1" fill="var(--ink-3)">BubR1 · 1,050 aa · UniProt O60566</text>';
+  g+='<rect x="'+M+'" y="'+by+'" width="'+IW+'" height="'+bh+'" fill="var(--sunken)" stroke="var(--rule)" rx="2"/>'+
+     '<rect x="'+M+'" y="'+by+'" width="'+(x(737)-M).toFixed(1)+'" height="'+bh+'" fill="var(--ink-2)" opacity=".14"/>'+
+     '<text x="'+((M+x(737))/2).toFixed(1)+'" y="'+(by+17)+'" font-size="11" fill="var(--ink-2)" text-anchor="middle">retained · 736 aa</text>';
+  g+='<rect x="'+x(766).toFixed(1)+'" y="'+by+'" width="'+(x(1050)-x(766)).toFixed(1)+'" height="'+bh+
+     '" fill="var(--accent)" opacity=".18" stroke="var(--accent)" rx="2"/>';
+  g+='<text x="'+((x(766)+x(1050))/2).toFixed(1)+'" y="'+(by+17)+'" font-size="11.5" font-weight="600" fill="var(--accent)" text-anchor="middle">kinase domain 766–1050</text>';
+  /* truncation: everything right of 737 is lost */
+  g+='<rect x="'+x(737).toFixed(1)+'" y="'+by+'" width="'+(x(1050)-x(737)).toFixed(1)+'" height="'+bh+'" fill="url(#hys)"/>';
+  g+='<line x1="'+x(737).toFixed(1)+'" y1="'+(by-12)+'" x2="'+x(737).toFixed(1)+'" y2="'+(by+bh+10)+'" stroke="var(--struck)" stroke-width="2"/>';
+  g+='<line x1="'+x(1002).toFixed(1)+'" y1="'+(by-12)+'" x2="'+x(1002).toFixed(1)+'" y2="'+(by+bh+10)+'" stroke="var(--indet)" stroke-width="2"/>';
+  g+='<text x="'+x(737).toFixed(1)+'" y="'+(by-18)+'" font-size="11.5" font-weight="600" fill="var(--struck)" text-anchor="middle">p.Leu737Ter</text>';
+  g+='<text x="'+x(1002).toFixed(1)+'" y="'+(by-18)+'" font-size="11.5" font-weight="600" fill="var(--indet)" text-anchor="end">p.Asn1002Lys</text>';
+  /* truncation bracket */
+  const ty=by+bh+22;
+  g+='<path d="M'+x(737).toFixed(1)+' '+ty+'v6h'+(x(1050)-x(737)).toFixed(1)+'v-6" fill="none" stroke="var(--struck)"/>'+
+     '<text x="'+((x(737)+x(1050))/2).toFixed(1)+'" y="'+(ty+20)+'" font-size="11" fill="var(--struck)" text-anchor="middle">313 aa lost to NMD — the entire kinase domain</text>';
+  [1,250,500,750,1050].forEach(t=>{
+    g+='<line x1="'+x(t).toFixed(1)+'" y1="'+(by+bh)+'" x2="'+x(t).toFixed(1)+'" y2="'+(by+bh+5)+'" stroke="var(--rule-strong)"/>';
+  });
+  /* density comparison, positioned under the regions they describe */
+  const dy=ty+52, unit=64;
+  g+='<line x1="'+M+'" y1="'+dy+'" x2="'+(M+IW)+'" y2="'+dy+'" stroke="var(--rule)"/>';
+  g+='<text class="lbl" x="'+M+'" y="'+(dy-12)+'" font-size="10.5" letter-spacing="1.1" fill="var(--ink-3)">DISTINCT gnomAD v4 MISSENSE, PER RESIDUE</text>';
+  [[1,765,1.25,"rest of protein  765 aa","953 variants · 73.3% of residues","var(--ink-2)"],
+   [766,1050,1.12,"kinase domain  285 aa","320 variants · 69.8% of residues","var(--accent)"]].forEach(d=>{
+    const x0=x(d[0])+(d[0]===1?0:4),x1=x(d[1]),h=d[2]*unit;
+    g+='<rect x="'+x0.toFixed(1)+'" y="'+dy+'" width="'+(x1-x0).toFixed(1)+'" height="'+h.toFixed(1)+
+       '" fill="'+d[5]+'" opacity=".16" stroke="'+d[5]+'" stroke-width="1"/>'+
+       '<text x="'+((x0+x1)/2).toFixed(1)+'" y="'+(dy+h-24).toFixed(1)+'" font-size="20" font-weight="600" fill="var(--ink)" text-anchor="middle">'+d[2].toFixed(2)+'</text>'+
+       '<text x="'+((x0+x1)/2).toFixed(1)+'" y="'+(dy+h-9).toFixed(1)+'" font-size="10" fill="var(--ink-2)" text-anchor="middle">'+esc(d[4])+'</text>'+
+       '<text class="lbl" x="'+((x0+x1)/2).toFixed(1)+'" y="'+(dy+h+15).toFixed(1)+'" font-size="11" fill="var(--ink-2)" text-anchor="middle">'+esc(d[3])+'</text>';
+  });
+  const H=dy+1.25*unit+30;
+  g+='<text class="lbl" x="'+(M+IW)+'" y="'+(H-4)+'" font-size="11" fill="var(--ink-3)" text-anchor="end">a ~10% difference — not the depletion PM1 requires</text>';
+  $("protein").innerHTML=svg(W,H,g,'aria-label="BubR1 protein domain map and missense density comparison"');
+})();
+
+/* =========================================================== 4 · ACMG LADDER */
+(function(){
+  const W=1060,M=110,IW=W-M-40,PMAX=12,x=p=>M+p/PMAX*IW;
+  const V1=[["PVS1",8,"applied",1],["PM2_Sup",1,"applied",1]];
+  const SC={
+    now:{v2:[["PM2_Sup",1,"applied",1],["PP3 weak",1,"indet",1]],
+         cap:"<strong>As submitted.</strong> Variant 2 reaches 2 points. Withhold the weak PP3 — which its own calibrated predictor does not support — and it is 1."},
+    phase:{v2:[["PM2_Sup",1,"applied",1],["PM3",2,"applied",1],["PP3 weak",1,"indet",1]],
+         cap:"<strong>The ceiling.</strong> Reached only if parental testing confirms trans <em>and</em> variant 1 is taken at ClinVar's Pathogenic tier: 4 points — <strong>still a VUS</strong>. No code combination reachable by this analysis lifts variant 2 out of VUS."},
+    old:{v2:[["PM2_Sup",1,"applied",1],["PM1",2,"struck",1],["PM3",2,"struck",1],["PP3 weak",1,"indet",1]],
+         cap:"<strong>Earlier versions of this report.</strong> 6 points, on two codes later tested against their own definitions and dropped — struck here because that is what became of them, though they counted at the time. Note where 6 points lands: <strong>inside the Likely Pathogenic band</strong>. Auditing PM1 and PM3 is what returned variant 2 to VUS, and the trajectory 6 → 4 → 2 is that audit, drawn."}
+  };
+  function draw(k){
+    const s=SC[k]; let g='';
+    /* classification zones */
+    [[0,6,"VUS","var(--ink-3)"],[6,10,"Likely pathogenic","var(--indet)"],[10,12,"Pathogenic","var(--applied)"]].forEach(z=>{
+      g+='<rect x="'+x(z[0]).toFixed(1)+'" y="26" width="'+(x(z[1])-x(z[0])).toFixed(1)+'" height="150" fill="'+z[3]+'" opacity=".05"/>'+
+         '<line x1="'+x(z[0]).toFixed(1)+'" y1="26" x2="'+x(z[0]).toFixed(1)+'" y2="176" stroke="var(--rule)"/>'+
+         '<text x="'+(x(z[0])+7).toFixed(1)+'" y="18" font-size="10" letter-spacing=".8" fill="'+z[3]+'" class="lbl">'+z[2].toUpperCase()+'</text>';
+    });
+    for(let p=0;p<=PMAX;p+=2) g+='<text x="'+x(p).toFixed(1)+'" y="192" font-size="10" fill="var(--ink-3)" text-anchor="middle">'+p+'</text>';
+    g+='<text class="lbl" x="'+(M+IW/2)+'" y="208" font-size="10.5" letter-spacing="1.1" fill="var(--ink-3)" text-anchor="middle">TAVTIGIAN POINTS</text>';
+    [["Variant 1",V1,54,"9 pts · Likely Pathogenic","var(--applied)"],
+     ["Variant 2",s.v2,120,null,"var(--ink-3)"]].forEach(row=>{
+      const [name,codes,y]=row; let acc=0;
+      g+='<text class="lbl" x="0" y="'+(y+16)+'" font-size="13" font-weight="600" fill="var(--ink)">'+name+'</text>';
+      codes.forEach(c=>{
+        const wd=c[2]==="struck", x0=x(acc), x1=x(acc+c[1]);
+        const col=c[2]==="applied"?"var(--applied)":c[2]==="indet"?"var(--indet)":"var(--struck)";
+        g+='<rect x="'+x0.toFixed(1)+'" y="'+y+'" width="'+(x1-x0).toFixed(1)+'" height="26" rx="2" fill="'+col+
+           '" opacity="'+(wd?".16":".85")+'" stroke="'+col+'" stroke-width="'+(wd?"1":"0")+'" stroke-dasharray="'+(wd?"3 2":"0")+'"/>';
+        if(x1-x0>52) g+='<text x="'+((x0+x1)/2).toFixed(1)+'" y="'+(y+17)+'" font-size="11" font-weight="600" fill="'+
+           (wd?col:"var(--surface)")+'" text-anchor="middle"'+(wd?' text-decoration="line-through"':'')+'>'+esc(c[0])+'</text>';
+        acc+=c[1];
+      });
+      const tot=codes.reduce((a,c)=>a+c[1],0);
+      const cls=tot>=10?"Pathogenic":tot>=6?"Likely Pathogenic":"VUS";
+      const ccol=tot>=10?"var(--applied)":tot>=6?"var(--indet)":"var(--ink-2)";
+      g+='<text class="lbl" x="0" y="'+(y+32)+'" font-size="11" fill="'+ccol+'">'+tot+' pts · '+cls+'</text>';
+      g+='<line x1="'+x(tot).toFixed(1)+'" y1="'+(y-6)+'" x2="'+x(tot).toFixed(1)+'" y2="'+(y+32)+'" stroke="'+ccol+'" stroke-width="1.5"/>';
+    });
+    $("ladder").innerHTML=svg(W,218,g,'aria-label="ACMG points ladder for both variants"');
+    $("ladderCap").innerHTML=s.cap;
+  }
+  const keys=[["now","as submitted"],["phase","if phase confirmed"],["old","earlier versions"]];
+  $("ladderCtl").innerHTML=keys.map((k,i)=>'<button type="button" data-k="'+k[0]+'" class="seg'+(i?'':' on')+'">'+k[1]+'</button>').join("");
+  $("ladderCtl").addEventListener("click",e=>{
+    const b=e.target.closest("button[data-k]"); if(!b) return;
+    [...$("ladderCtl").querySelectorAll("button")].forEach(x=>x.classList.toggle("on",x===b));
+    draw(b.dataset.k);
+  });
+  draw("now");
+})();
+
+/* =========================================================== 5 · PM2 CALCULATOR */
+(function(){
+  const FAF=8.40e-5, W=616,M=42,IW=W-M-30;
+  const LO=Math.log10(1e-6),HI=Math.log10(3e-3),x=v=>M+(Math.log10(v)-LO)/(HI-LO)*IW;
+  const host=$("pm2");
+  host.innerHTML=
+   '<div class="pm2-grid">'+
+     '<div class="pm2-ctl">'+
+       ctl("P","Prevalence of MVA1",-7,-4.3,0.001,-6,"P")+
+       ctl("G","Fraction of cases from BUB1B",0.05,1,0.05,0.5,"G")+
+       ctl("A","Max contribution of one allele",0.01,1,0.01,0.10,"A")+
+       '<div class="presets" id="pm2pre"></div>'+
+     '</div>'+
+     '<div class="pm2-out"><div id="pm2svg"></div></div>'+
+   '</div>';
+  function ctl(id,label,min,max,step,val,sym){
+    return '<label class="ctl" for="pm2'+id+'"><span class="ctl-t"><span>'+esc(label)+
+      ' <em>'+sym+'</em></span><output id="pm2'+id+'v" class="num"></output></span>'+
+      '<input type="range" id="pm2'+id+'" min="'+min+'" max="'+max+'" step="'+step+'" value="'+val+'"></label>';
+  }
+  const P=$("pm2P"),G=$("pm2G"),A=$("pm2A");
+  const fmt=v=>v.toExponential(2).replace("e-0","e-").replace("e+0","e+");
+  function render(){
+    const p=Math.pow(10,+P.value),g=+G.value,a=+A.value;
+    const maxAF=a*Math.sqrt(p*g/1);
+    $("pm2Pv").textContent=fmt(p); $("pm2Gv").textContent=g.toFixed(2); $("pm2Av").textContent=a.toFixed(2);
+    const holds=maxAF>FAF;
+    const flipP=Math.pow(FAF/a,2)/g;
+    let s='';
+    /* fail zone left of faf95, hold zone right */
+    s+='<rect x="'+M+'" y="34" width="'+(x(FAF)-M).toFixed(1)+'" height="46" fill="var(--struck)" opacity=".07"/>';
+    s+='<rect x="'+x(FAF).toFixed(1)+'" y="34" width="'+(M+IW-x(FAF)).toFixed(1)+'" height="46" fill="var(--applied)" opacity=".07"/>';
+    s+='<text class="lbl" x="'+((M+x(FAF))/2).toFixed(1)+'" y="26" font-size="10" letter-spacing=".8" fill="var(--struck)" text-anchor="middle">PM2 FAILS</text>';
+    s+='<text class="lbl" x="'+((x(FAF)+M+IW)/2).toFixed(1)+'" y="26" font-size="10" letter-spacing=".8" fill="var(--applied)" text-anchor="middle">PM2 HOLDS</text>';
+    /* axis */
+    s+='<line x1="'+M+'" y1="80" x2="'+(M+IW)+'" y2="80" stroke="var(--rule-strong)"/>';
+    [1e-6,1e-5,1e-4,1e-3].forEach(t=>{
+      s+='<line x1="'+x(t).toFixed(1)+'" y1="80" x2="'+x(t).toFixed(1)+'" y2="86" stroke="var(--rule-strong)"/>'+
+         '<text x="'+x(t).toFixed(1)+'" y="100" font-size="10" fill="var(--ink-3)" text-anchor="middle">'+fmt(t)+'</text>';
+    });
+    /* faf95 fixed */
+    s+='<line x1="'+x(FAF).toFixed(1)+'" y1="30" x2="'+x(FAF).toFixed(1)+'" y2="86" stroke="var(--ink)" stroke-width="2"/>'+
+       '<text x="'+x(FAF).toFixed(1)+'" y="120" font-size="11" font-weight="600" fill="var(--ink)" text-anchor="middle">faf95 8.40e-5</text>'+
+       '<text x="'+x(FAF).toFixed(1)+'" y="134" font-size="10" fill="var(--ink-3)" text-anchor="middle">observed in gnomAD</text>';
+    /* moving threshold */
+    const cx=Math.min(Math.max(x(maxAF),M),M+IW), col=holds?"var(--applied)":"var(--struck)";
+    s+='<path d="M'+cx.toFixed(1)+' 57l8 8-8 8-8-8z" fill="'+col+'"/>'+
+       '<line x1="'+cx.toFixed(1)+'" y1="40" x2="'+cx.toFixed(1)+'" y2="57" stroke="'+col+'" stroke-width="2"/>'+
+       '<rect x="'+(cx-30).toFixed(1)+'" y="38" width="60" height="15" fill="var(--surface)" rx="2"/>'+
+       '<text x="'+cx.toFixed(1)+'" y="'+(49)+'" font-size="11" font-weight="600" fill="'+col+'" text-anchor="middle">'+fmt(maxAF)+'</text>';
+    $("pm2svg").innerHTML=svg(W,146,s,'aria-label="Maximum credible allele frequency versus observed faf95"')+
+      '<div class="pm2-read"><span class="stat '+(holds?"applied":"struck")+'">'+(holds?"PM2_Supporting applies":"PM2 fails")+'</span>'+
+      '<span class="pm2-note">max credible AF <b class="num">'+fmt(maxAF)+'</b> vs observed <b class="num">8.40e-5</b>'+
+      ' &middot; at these G and A the conclusion flips at prevalence <b class="num">'+fmt(flipP)+'</b></span></div>';
+  }
+  [P,G,A].forEach(el=>el.addEventListener("input",render));
+  const PRE=[["1e-6 / 0.5 / 0.10",-6,.5,.10],["1e-6 / 0.5 / 0.05",-6,.5,.05],
+             ["3e-6 / 0.5 / 0.10",Math.log10(3e-6),.5,.10],["1e-5 / 0.5 / 0.10",-5,.5,.10]];
+  $("pm2pre").innerHTML='<span class="pre-h">The report’s four rows</span>'+
+    PRE.map((p,i)=>'<button type="button" class="seg" data-i="'+i+'">'+p[0]+'</button>').join("");
+  $("pm2pre").addEventListener("click",e=>{
+    const b=e.target.closest("button[data-i]"); if(!b) return;
+    const p=PRE[+b.dataset.i]; P.value=p[1]; G.value=p[2]; A.value=p[3]; render();
+  });
+  render();
+})();
+})();
+</script>
+
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const N=n=>n.toLocaleString("en-US");
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const svg=(w,h,inner,extra)=>'<svg viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+
+  '" role="img" '+(extra||'')+'>'+inner+'</svg>';
+const HZ='<defs><pattern id="hz" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">'+
+  '<rect width="7" height="7" fill="none"/><line x1="0" y1="0" x2="0" y2="7" stroke="var(--rule-strong)" stroke-width="1.4"/></pattern></defs>';
+
+/* =========================================================== 6 · PM3 LADDER */
+(function(){
+  const W=1060,M=50,IW=W-M-40,L=Math.log2(0.2),Hh=Math.log2(5);
+  /* log2 spacing — the SVI strength thresholds double (0.5→1→2→4),
+     so a linear axis crushes every one that matters into the left edge. */
+  const x=p=>M+(Math.log2(p)-L)/(Hh-L)*IW;
+  let g='';
+  [[0.2,0.5,"NOT APPLIED","var(--struck)"],[0.5,1,"PM3_Supporting","var(--ink-3)"],
+   [1,2,"PM3 · Moderate","var(--ink-3)"],[2,4,"PM3_Strong","var(--ink-3)"],[4,5,"Very Strong","var(--ink-3)"]].forEach(z=>{
+    g+='<rect x="'+x(z[0]).toFixed(1)+'" y="40" width="'+(x(z[1])-x(z[0])).toFixed(1)+'" height="34" fill="'+z[3]+'" opacity=".07"/>'+
+       '<line x1="'+x(z[0]).toFixed(1)+'" y1="40" x2="'+x(z[0]).toFixed(1)+'" y2="82" stroke="var(--rule-strong)"/>'+
+       '<text class="lbl" x="'+(x(z[0])+7).toFixed(1)+'" y="32" font-size="10" letter-spacing=".7" fill="'+z[3]+'">'+z[2].toUpperCase()+'</text>';
+  });
+  [0.25,0.5,1,2,4].forEach(t=>g+='<text x="'+x(t).toFixed(1)+'" y="96" font-size="10.5" fill="var(--ink-3)" text-anchor="middle">'+t.toFixed(2)+'</text>');
+  g+='<text class="lbl" x="'+(M+IW)+'" y="112" font-size="10.5" letter-spacing="1.1" fill="var(--ink-3)" text-anchor="end">SVI PM3 POINTS</text>';
+  /* the floor */
+  g+='<line x1="'+x(0.5).toFixed(1)+'" y1="34" x2="'+x(0.5).toFixed(1)+'" y2="82" stroke="var(--ink)" stroke-width="2" stroke-dasharray="4 3"/>';
+  const mk=(p,solid,lab,sub,dy)=>{
+    const cx=x(p),col=solid?"var(--struck)":"var(--ink-3)";
+    /* keep long captions inside the frame instead of centring them off the edge */
+    const an=cx<200?"start":cx>W-200?"end":"middle", ax=cx<200?M:cx>W-200?(W-30):cx;
+    return '<line x1="'+cx.toFixed(1)+'" y1="'+(126+dy)+'" x2="'+cx.toFixed(1)+'" y2="82" stroke="'+col+
+      '" stroke-width="'+(solid?2:1)+'" stroke-dasharray="'+(solid?"0":"3 3")+'" opacity="'+(solid?1:.65)+'"/>'+
+      '<circle cx="'+cx.toFixed(1)+'" cy="57" r="'+(solid?6:5)+'" fill="'+(solid?col:"var(--surface)")+'" stroke="'+col+'" stroke-width="1.6" opacity="'+(solid?1:.75)+'"/>'+
+      '<text x="'+ax.toFixed(1)+'" y="'+(140+dy)+'" font-size="11.5" font-weight="'+(solid?600:500)+'" fill="'+col+'" text-anchor="'+an+'">'+esc(lab)+'</text>'+
+      '<text x="'+ax.toFixed(1)+'" y="'+(154+dy)+'" font-size="10" fill="var(--ink-3)" text-anchor="'+an+'">'+esc(sub)+'</text>';
+  };
+  g+=mk(0.25,true,"THIS PROBAND — 0.25","phase unknown × Likely pathogenic other allele",0);
+  g+=mk(0.5,false,"0.50","if variant 1 taken at ClinVar's Pathogenic tier",40);
+  g+=mk(1.0,false,"1.00","only once phase is confirmed in trans",0);
+  $("pm3").innerHTML=svg(W,206,g,'aria-label="ClinGen SVI PM3 point scheme showing this proband at 0.25, below the 0.5 floor"');
+})();
+
+/* =========================================================== 7 · PREDICTORS */
+(function(){
+  const W=1060,M=40,IW=W-M*2,x=v=>M+v*IW;
+  let g=HZ;
+  const chips=[["AlphaMissense","0.92","likely pathogenic"],["CADD phred","24.5","damaging"],
+               ["PolyPhen-2","1.000","probably damaging"],["SIFT","0.00","deleterious"]];
+  const cw=IW/4;
+  chips.forEach((c,i)=>{
+    const x0=M+i*cw;
+    g+='<rect x="'+(x0+3)+'" y="26" width="'+(cw-6)+'" height="58" rx="3" fill="var(--applied)" opacity=".09" stroke="var(--applied)" stroke-width="1"/>'+
+       '<text class="lbl" x="'+(x0+cw/2)+'" y="44" font-size="11" fill="var(--ink-2)" text-anchor="middle">'+esc(c[0])+'</text>'+
+       '<text x="'+(x0+cw/2)+'" y="66" font-size="19" font-weight="600" fill="var(--applied)" text-anchor="middle">'+c[1]+'</text>'+
+       '<text class="lbl" x="'+(x0+cw/2)+'" y="79" font-size="9.5" fill="var(--ink-3)" text-anchor="middle">'+esc(c[2])+'</text>';
+  });
+  g+='<text class="lbl" x="'+M+'" y="18" font-size="10.5" letter-spacing="1.1" fill="var(--applied)">FOUR TOOLS · ALL CONCORDANT FOR DAMAGING</text>';
+  /* REVEL gauge */
+  const gy=134;
+  g+='<text class="lbl" x="'+M+'" y="'+(gy-16)+'" font-size="10.5" letter-spacing="1.1" fill="var(--indet)">REVEL · THE CALIBRATED META-PREDICTOR SVI RECOMMENDS INSTEAD</text>';
+  g+='<rect x="'+M+'" y="'+gy+'" width="'+(x(0.290)-M).toFixed(1)+'" height="30" fill="var(--applied)" opacity=".13"/>';
+  g+='<rect x="'+x(0.290).toFixed(1)+'" y="'+gy+'" width="'+(x(0.644)-x(0.290)).toFixed(1)+'" height="30" fill="url(#hz)" opacity=".7"/>';
+  g+='<rect x="'+x(0.644).toFixed(1)+'" y="'+gy+'" width="'+(M+IW-x(0.644)).toFixed(1)+'" height="30" fill="var(--struck)" opacity=".13"/>';
+  g+='<rect x="'+M+'" y="'+gy+'" width="'+IW+'" height="30" fill="none" stroke="var(--rule-strong)"/>';
+  g+='<text x="'+((M+x(0.290))/2).toFixed(1)+'" y="'+(gy+19)+'" font-size="10.5" fill="var(--ink-2)" text-anchor="middle" class="lbl">BP4 — benign-supporting</text>';
+  g+='<text x="'+((x(0.290)+x(0.644))/2).toFixed(1)+'" y="'+(gy+19)+'" font-size="10.5" font-weight="600" fill="var(--ink-2)" text-anchor="middle" class="lbl">INDETERMINATE — no evidence either way</text>';
+  g+='<text x="'+((x(0.644)+M+IW)/2).toFixed(1)+'" y="'+(gy+19)+'" font-size="10.5" fill="var(--ink-2)" text-anchor="middle" class="lbl">PP3 — pathogenic-supporting</text>';
+  [[0.290,"0.290"],[0.644,"0.644"]].forEach(t=>{
+    g+='<line x1="'+x(t[0]).toFixed(1)+'" y1="'+gy+'" x2="'+x(t[0]).toFixed(1)+'" y2="'+(gy+38)+'" stroke="var(--rule-strong)"/>'+
+       '<text x="'+x(t[0]).toFixed(1)+'" y="'+(gy+51)+'" font-size="10" fill="var(--ink-3)" text-anchor="middle">'+t[1]+'</text>';
+  });
+  const nx=x(0.472);
+  g+='<path d="M'+nx.toFixed(1)+' '+(gy-9)+'l7 -11h-14z" fill="var(--indet)"/>'+
+     '<line x1="'+nx.toFixed(1)+'" y1="'+(gy-9)+'" x2="'+nx.toFixed(1)+'" y2="'+(gy+30)+'" stroke="var(--indet)" stroke-width="2.5"/>'+
+     '<text x="'+nx.toFixed(1)+'" y="'+(gy-26)+'" font-size="15" font-weight="600" fill="var(--indet)" text-anchor="middle">0.472</text>';
+  g+='<text x="'+M+'" y="'+(gy+72)+'" font-size="10" fill="var(--ink-3)">0.00</text>'+
+     '<text x="'+(M+IW)+'" y="'+(gy+72)+'" font-size="10" fill="var(--ink-3)" text-anchor="end">1.00</text>'+
+     '<text class="lbl" x="'+(M+IW/2)+'" y="'+(gy+72)+'" font-size="10.5" fill="var(--ink-3)" text-anchor="middle">thresholds per Pejaver et al. 2022</text>';
+  $("pred").innerHTML=svg(W,gy+84,g,'aria-label="Four concordant predictors and the REVEL indeterminate band"');
+})();
+})();
+</script>
+
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const N=n=>n.toLocaleString("en-US");
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const svg=(w,h,inner,extra)=>'<svg viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+
+  '" role="img" '+(extra||'')+'>'+inner+'</svg>';
+
+/* =========================================================== 8 · SPLICEAI */
+(function(){
+  /* binned counts only — computed from the local annotated tables.
+     No positions, no genotypes, no depths. */
+  const PRI={0:934,1:39,2:10,3:10,4:2,5:5,7:1,8:1,9:3,10:1,18:1};
+  const SEC={0:707,1:19,2:6,3:4,4:2,5:4,8:1,9:1,11:1,13:2};
+  const W=1060,M=54,B=22,IW=W-M-190,bw=IW/B,H=250,base=190;
+  const mxc=1641, sc=n=>n<=0?0:Math.log10(n+1)/Math.log10(mxc+1)*(base-40);
+  let g='';
+  [1,10,100,1000].forEach(t=>{
+    const y=base-sc(t);
+    g+='<line x1="'+M+'" y1="'+y.toFixed(1)+'" x2="'+(M+IW)+'" y2="'+y.toFixed(1)+'" stroke="var(--rule)" stroke-dasharray="2 3"/>'+
+       '<text x="'+(M-8)+'" y="'+(y+3.5).toFixed(1)+'" font-size="10" fill="var(--ink-3)" text-anchor="end">'+N(t)+'</text>';
+  });
+  for(let i=0;i<B;i++){
+    const p=PRI[i]||0,s=SEC[i]||0,x0=M+i*bw;
+    if(p){const h=sc(p);g+='<rect x="'+(x0+1).toFixed(1)+'" y="'+(base-h).toFixed(1)+'" width="'+(bw/2-1.5).toFixed(1)+'" height="'+h.toFixed(1)+'" fill="var(--accent)"><title>primary · delta '+(i/100).toFixed(2)+'–'+((i+1)/100).toFixed(2)+' · '+p+' variants</title></rect>';}
+    if(s){const h=sc(s);g+='<rect x="'+(x0+bw/2+.5).toFixed(1)+'" y="'+(base-h).toFixed(1)+'" width="'+(bw/2-1.5).toFixed(1)+'" height="'+h.toFixed(1)+'" fill="var(--accent)" opacity=".2" stroke="var(--accent)" stroke-width="1"><title>secondary · delta '+(i/100).toFixed(2)+'–'+((i+1)/100).toFixed(2)+' · '+s+' variants</title></rect>';}
+    if(i%5===0) g+='<text x="'+x0.toFixed(1)+'" y="'+(base+16)+'" font-size="10" fill="var(--ink-3)" text-anchor="middle">'+(i/100).toFixed(2)+'</text>';
+  }
+  g+='<line x1="'+M+'" y1="'+base+'" x2="'+(M+IW)+'" y2="'+base+'" stroke="var(--rule-strong)"/>';
+  const tx=M+20*bw;
+  g+='<line x1="'+tx.toFixed(1)+'" y1="26" x2="'+tx.toFixed(1)+'" y2="'+(base+6)+'" stroke="var(--struck)" stroke-width="2"/>'+
+     '<text x="'+(tx-8).toFixed(1)+'" y="34" font-size="11" font-weight="600" fill="var(--struck)" text-anchor="end">0.20 high-recall threshold</text>'+
+     '<text x="'+(tx-8).toFixed(1)+'" y="48" font-size="10.5" fill="var(--ink-3)" text-anchor="end">nothing in either panel reaches it</text>';
+  /* the highest score anywhere */
+  const hx=M+18*bw+bw/4;
+  g+='<line x1="'+hx.toFixed(1)+'" y1="'+(base-sc(1)-6).toFixed(1)+'" x2="'+(hx-30).toFixed(1)+'" y2="86" stroke="var(--ink-3)" stroke-width="1"/>'+
+     '<text x="'+(hx-34).toFixed(1)+'" y="83" font-size="10.5" fill="var(--ink-2)" text-anchor="end">max 0.18 — a common polymorphism, gnomAD AF 0.77</text>';
+  g+='<text class="lbl" x="'+(M+IW/2)+'" y="'+(base+34)+'" font-size="10.5" letter-spacing="1.1" fill="var(--ink-3)" text-anchor="middle">MAX SPLICEAI DELTA SCORE · LOG COUNT</text>';
+  /* unscored block — outlined, never at zero */
+  const ux=M+IW+46;
+  g+='<rect x="'+ux+'" y="46" width="132" height="118" fill="none" stroke="var(--rule-strong)" stroke-dasharray="4 3" rx="3"/>'+
+     '<text class="lbl" x="'+(ux+66)+'" y="70" font-size="10" letter-spacing=".8" fill="var(--ink-3)" text-anchor="middle">NOT SCORED</text>'+
+     '<text x="'+(ux+66)+'" y="102" font-size="26" font-weight="600" fill="var(--ink-2)" text-anchor="middle">592</text>'+
+     '<text x="'+(ux+66)+'" y="122" font-size="10.5" fill="var(--ink-3)" text-anchor="middle">227 indels</text>'+
+     '<text x="'+(ux+66)+'" y="136" font-size="10.5" fill="var(--ink-3)" text-anchor="middle">365 SNVs outside</text>'+
+     '<text x="'+(ux+66)+'" y="150" font-size="10.5" fill="var(--ink-3)" text-anchor="middle">the precomputed set</text>'+
+     '<text x="'+(ux+66)+'" y="180" font-size="10" fill="var(--ink-3)" text-anchor="middle" class="lbl">blank ≠ zero</text>';
+  $("splice").innerHTML=svg(W,H,g,'aria-label="SpliceAI delta score distribution against the 0.2 threshold"')+
+    '<div class="legend" style="margin-top:12px"><b><span class="sw accent"></span>primary panel · 1,007 scored of 1,281</b>'+
+    '<b><span class="sw" style="background:var(--accent);opacity:.25;border-color:var(--accent)"></span>secondary panel · 747 scored of 1,065</b>'+
+    '<b><span class="sw absent"></span>not scored — drawn outlined, not at zero</b></div>';
+})();
+
+/* =========================================================== 9 · CALLABILITY */
+(function(){
+  /* ratios recomputed from unrounded densities (audit 2026-09-01); dividing the two
+     rounded columns by hand does not reproduce all of them. */
+  const D=[["BUB1B",0.22,1.50,0.14,1],["CEP57",0.08,0.46,0.19,1],["DICER1",0.38,1.72,0.22,0],
+    ["TP53",1.09,2.48,0.44,0],["SMC5",0.90,1.96,0.46,1],["CENATAC",0.68,1.38,0.49,1],
+    ["BUB1",0.19,0.26,0.73,1],["CLDN19",0.97,1.32,0.74,0],["AGXT",3.62,4.77,0.76,0],
+    ["SLC34A1",0.92,1.17,0.78,0],["BUB3",1.18,1.46,0.80,1],["NF1",1.04,1.30,0.80,0],
+    ["CYP24A1",1.31,1.53,0.86,0],["CLDN16",1.93,2.00,0.97,0],["SLF2",1.25,1.24,1.01,1],
+    ["PTCH1",1.01,1.00,1.01,0],["TRIP13",0.11,0.09,1.20,1],["HRAS",0.59,0.49,1.20,0],
+    ["MAD1L1",2.12,1.70,1.25,1],["CASR",2.69,1.58,1.70,0]];
+  const W=1060,M=104,IW=W-M-150,rh=21,top=42;
+  const LO=Math.log10(0.1),HI=Math.log10(2.2),x=v=>M+(Math.log10(v)-LO)/(HI-LO)*IW;
+  let g='';
+  [0.1,0.25,0.5,1,2].forEach(t=>{
+    g+='<line x1="'+x(t).toFixed(1)+'" y1="'+(top-10)+'" x2="'+x(t).toFixed(1)+'" y2="'+(top+D.length*rh)+
+       '" stroke="var(--rule)" stroke-dasharray="'+(t===1?"0":"2 3")+'" stroke-width="'+(t===1?1.5:1)+'"/>'+
+       '<text x="'+x(t).toFixed(1)+'" y="'+(top-18)+'" font-size="10" fill="var(--ink-3)" text-anchor="middle">'+t+'×</text>';
+  });
+  g+='<text class="lbl" x="'+x(1).toFixed(1)+'" y="'+(top+D.length*rh+18)+'" font-size="10.5" fill="var(--ink-2)" text-anchor="middle">parity with flanking sequence</text>'+
+     '<text class="lbl" x="'+(M+IW+16)+'" y="'+(top-18)+'" font-size="9.5" letter-spacing=".6" fill="var(--ink-3)">RATIO</text>'+
+     '<text class="lbl" x="'+(M+IW+64)+'" y="'+(top-18)+'" font-size="9.5" letter-spacing=".6" fill="var(--ink-3)">GENE / FLANK</text>';
+  D.forEach((d,i)=>{
+    const y=top+i*rh+rh/2, hot=d[3]<0.2, col=hot?"var(--struck)":"var(--ink-2)";
+    g+='<line x1="'+x(1).toFixed(1)+'" y1="'+y+'" x2="'+x(d[3]).toFixed(1)+'" y2="'+y+'" stroke="'+col+'" stroke-width="'+(hot?2:1.2)+'" opacity="'+(hot?1:.5)+'"/>';
+    g+=d[4]?'<circle cx="'+x(d[3]).toFixed(1)+'" cy="'+y+'" r="'+(hot?5:4)+'" fill="'+col+'"/>'
+           :'<circle cx="'+x(d[3]).toFixed(1)+'" cy="'+y+'" r="4" fill="var(--surface)" stroke="'+col+'" stroke-width="1.5"/>';
+    g+='<text class="lbl" x="'+(M-14)+'" y="'+(y+4)+'" font-size="11.5" font-weight="'+(hot?600:400)+'" fill="'+(hot?"var(--struck)":"var(--ink)")+'" text-anchor="end">'+d[0]+'</text>';
+    g+='<text x="'+(M+IW+16)+'" y="'+(y+4)+'" font-size="11" fill="'+(hot?"var(--struck)":"var(--ink-3)")+'">'+d[3].toFixed(2)+'×</text>';
+    g+='<text x="'+(M+IW+64)+'" y="'+(y+4)+'" font-size="10" fill="var(--ink-3)">'+d[1].toFixed(2)+' / '+d[2].toFixed(2)+'</text>';
+  });
+  $("callability").innerHTML=svg(W,top+D.length*rh+34,g,'aria-label="Call density relative to flanking sequence for all 20 panel genes"')+
+    '<div class="legend" style="margin-top:12px"><b><span class="sw" style="background:var(--ink-2)"></span>primary panel</b>'+
+    '<b><span class="sw absent"></span>secondary panel</b>'+
+    '<b><span class="sw struck"></span>most depleted — negatives here are weakest</b></div>';
+})();
+
+/* =========================================================== 10 · PHENOTYPE */
+(function(){
+  /* Only cells the report actually establishes are filled. Everything else is
+     drawn empty — "not established here", never "absent". */
+  const Y="y",X="x",O="",Q="q";
+  const R=[
+    ["HP:0002859","Rhabdomyosarcoma",Y,Y,O,X,"embryonal RMS reported in the original BUB1B discovery cohort; MVA3 presents with Wilms tumour instead"],
+    ["HP:0001518","Very low birth weight / IUGR",Y,Y,Y,O,"prenatal-onset growth restriction is a core feature of both MVA1 and MVA2"],
+    ["HP:0004322","Short stature",Y,Y,Y,O,"growth restriction; core MVA1 feature"],
+    ["HP:0001508","Failure to thrive",Y,Y,O,O,"core MVA1 feature"],
+    ["HP:0003202","Skeletal muscle atrophy",Y,O,O,O,"not established against any subtype spectrum in this report"],
+    ["HP:0001622","Premature birth",Y,O,O,O,"not established against any subtype spectrum in this report"],
+    ["HP:0000121","Nephrocalcinosis",Y,X,X,X,"outside the MVA1 synopsis, and present since birth — which raises rather than lowers the prior on a monogenic renal cause"],
+    ["HP:0200067","Parental recurrent miscarriage",Y,Q,O,O,"outside the synopsis, but predicted by the recessive hypothesis: obligate carriers, one conception in four affected"],
+    ["—","Microcephaly",O,Y,O,O,"a CORE MVA1 feature with no HPO code in the supplied list. Absence of a code is a gap in the input, not a documented negative."]
+  ];
+  const W=1060,LC=330,CW=(W-LC-24)/4,rh=34,top=54;
+  let g='';
+  ["Proband","MVA1 · BUB1B","MVA2 · CEP57","MVA3 · TRIP13"].forEach((h,i)=>{
+    g+='<text class="lbl" x="'+(LC+i*CW+CW/2)+'" y="'+(top-14)+'" font-size="10.5" letter-spacing=".8" fill="'+
+       (i===1?"var(--accent)":"var(--ink-3)")+'" text-anchor="middle">'+esc(h.toUpperCase())+'</text>';
+  });
+  R.forEach((r,i)=>{
+    const y=top+i*rh, last=r[1]==="Microcephaly";
+    g+='<line x1="0" y1="'+y+'" x2="'+W+'" y2="'+y+'" stroke="'+(last?"var(--rule-strong)":"var(--rule)")+'"/>';
+    g+='<text class="lbl" x="0" y="'+(y+21)+'" font-size="12.5" font-weight="'+(last?600:400)+'" fill="'+(last?"var(--indet)":"var(--ink)")+'">'+esc(r[1])+'</text>';
+    g+='<text x="'+(LC-24)+'" y="'+(y+21)+'" font-size="10" fill="var(--ink-3)" text-anchor="end">'+esc(r[0])+'</text>';
+    for(let c=0;c<4;c++){
+      const v=r[2+c],cx=LC+c*CW+CW/2,cy=y+rh/2+2;
+      g+='<rect x="'+(LC+c*CW)+'" y="'+y+'" width="'+CW+'" height="'+rh+'" fill="'+(c===1?"var(--accent)":"transparent")+'" opacity="'+(c===1?".035":"0")+'"/>';
+      if(v===Y) g+='<circle cx="'+cx+'" cy="'+cy+'" r="6" fill="var(--applied)"><title>'+esc(r[6])+'</title></circle>';
+      else if(v===X) g+='<path d="M'+(cx-5)+' '+(cy-5)+'l10 10M'+(cx+5)+' '+(cy-5)+'l-10 10" stroke="var(--struck)" stroke-width="2" stroke-linecap="round"><title>'+esc(r[6])+'</title></path>';
+      else if(v===Q) g+='<circle cx="'+cx+'" cy="'+cy+'" r="6" fill="none" stroke="var(--indet)" stroke-width="2" stroke-dasharray="2.6 2.2"><title>'+esc(r[6])+'</title></circle>';
+      else g+='<circle cx="'+cx+'" cy="'+cy+'" r="5.5" fill="none" stroke="var(--rule-strong)" stroke-width="1" opacity=".55"><title>not established in this report</title></circle>';
+    }
+  });
+  const H=top+R.length*rh;
+  g+='<line x1="0" y1="'+H+'" x2="'+W+'" y2="'+H+'" stroke="var(--rule-strong)"/>';
+  $("pheno").innerHTML=svg(W,H+10,g,'aria-label="Phenotype concordance matrix across MVA subtypes"')+
+    '<div class="legend" style="margin-top:14px">'+
+    '<b><span class="sw applied" style="border-radius:50%"></span>concordant / present</b>'+
+    '<b><span class="sw struck" style="border-radius:50%"></span>outside the spectrum</b>'+
+    '<b><span class="sw" style="border-radius:50%;background:transparent;border:2px dashed var(--indet)"></span>predicted by the hypothesis, not scored</b>'+
+    '<b><span class="sw absent" style="border-radius:50%"></span>not established here — empty, not absent</b></div>';
+})();
+})();
+</script>
+
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const svg=(w,h,inner,extra)=>'<svg viewBox="0 0 '+w+' '+h+'" width="'+w+'" height="'+h+
+  '" role="img" '+(extra||'')+'>'+inner+'</svg>';
+
+/* =========================================================== 11 · DECISION TREE */
+(function(){
+  const W=1060;
+  const TESTS=[
+    {t:"1 · Peripheral-blood karyotype",s:"with SNP microarray alongside · tests the DIAGNOSIS",x:36,w:320,pri:true,
+     leaves:[
+      {l:"Aneuploidy found",sub:"MVA confirmed",e:"→ 0.98",k:"applied",
+       d:"<strong>A positive karyotype independently establishes MVA</strong> and lifts PP4 from the partial, non-specific phenotype match described in §10 to a discriminating one. The microarray run alongside it also interrogates the five permissive deletion windows from §2, so it addresses the leading alternative second-allele hypothesis at the same time."},
+      {l:"Normal karyotype",sub:"diagnosis undercut",e:"drops sharply",k:"struck",
+       d:"<strong>A negative substantially undercuts the diagnosis</strong> — and does so in a way no further variant-level evidence repairs. Every other open question in this analysis is downstream of a diagnosis this assay has never confirmed. One caveat in the other direction: MVA's aneuploidies are variegated across tissues, so a normal blood karyotype does not fully exclude it."}]},
+    {t:"2 · Parental Sanger sequencing",s:"both variants, both parents · tests the PHASE",x:372,w:320,pri:false,
+     leaves:[
+      {l:"One per parent",sub:"in trans",e:"→ 0.98",k:"applied",
+       d:"Phase established. Under the SVI scheme that lifts PM3 from 0.25 to 1.0 point — <strong>and variant 2 remains a VUS either way</strong>, at 4 points at best. What the test delivers is not a reclassification: it is confirmation that the two variants sit on opposite alleles, which closes out the alternative second-allele hypotheses and secures the compound-heterozygous genotype."},
+      {l:"Both from one parent",sub:"in cis",e:"refuted",k:"struck",
+       d:"<strong>The primary hypothesis is refuted.</strong> A CNV or structural-variant assay across BUB1B — MLPA, microarray, or read-depth calling on the BAM/CRAM — becomes the immediate next step, the deep-intronic candidate having already been largely excluded on the splice evidence in §8."}]},
+    {t:"3 · Long-read sequencing",s:"where parental samples cannot be obtained",x:708,w:316,pri:false,
+     leaves:[
+      {l:"Resolves phase directly",sub:"no parental samples needed",e:"fallback route",k:"indet",
+       d:"Resolves phase directly in the proband, spanning the 11 kb that defeats short-read fragments. This is the alternative where parental samples cannot be obtained — the same question as test 2, by an assay that does not need the parents."}]}
+  ];
+  const rootY=30,testY=92,leafY=176;
+  let g='';
+  g+='<rect x="'+(W/2-96)+'" y="'+rootY+'" width="192" height="42" rx="3" fill="var(--accent)" opacity=".1" stroke="var(--accent)"/>'+
+     '<text x="'+(W/2)+'" y="'+(rootY+19)+'" font-size="12" fill="var(--ink-2)" text-anchor="middle" class="lbl">current EPCR</text>'+
+     '<text x="'+(W/2)+'" y="'+(rootY+36)+'" font-size="17" font-weight="600" fill="var(--accent)" text-anchor="middle">0.95</text>';
+  TESTS.forEach((t,ti)=>{
+    const cx=t.x+t.w/2;
+    g+='<path d="M'+(W/2)+' '+(rootY+42)+'V'+(testY-16)+'H'+cx+'V'+testY+'" fill="none" stroke="var(--rule-strong)" stroke-width="1"/>';
+    g+='<rect x="'+t.x+'" y="'+testY+'" width="'+t.w+'" height="50" rx="3" fill="var(--surface)" stroke="'+
+       (t.pri?"var(--accent)":"var(--rule-strong)")+'" stroke-width="'+(t.pri?1.8:1)+'"/>'+
+       '<text class="lbl" x="'+cx+'" y="'+(testY+21)+'" font-size="12.5" font-weight="600" fill="'+(t.pri?"var(--accent)":"var(--ink)")+'" text-anchor="middle">'+esc(t.t)+'</text>'+
+       '<text class="lbl" x="'+cx+'" y="'+(testY+38)+'" font-size="10" fill="var(--ink-3)" text-anchor="middle">'+esc(t.s)+'</text>';
+    const lw=t.leaves.length>1?(t.w-14)/2:t.w;
+    t.leaves.forEach((lf,li)=>{
+      const lx=t.x+li*(lw+14),lcx=lx+lw/2;
+      const col=lf.k==="applied"?"var(--applied)":lf.k==="struck"?"var(--struck)":"var(--indet)";
+      g+='<path d="M'+cx+' '+(testY+50)+'V'+(leafY-14)+'H'+lcx+'V'+leafY+'" fill="none" stroke="'+col+'" stroke-width="1" opacity=".5"/>';
+      g+='<g class="leaf" data-t="'+ti+'" data-l="'+li+'" tabindex="0" role="button" aria-label="'+esc(lf.l)+'">'+
+         '<rect class="leaf-box" x="'+lx+'" y="'+leafY+'" width="'+lw+'" height="56" rx="3" fill="'+col+'" opacity=".08"/>'+
+         '<rect class="leaf-box" x="'+lx+'" y="'+leafY+'" width="'+lw+'" height="56" rx="3" fill="none" stroke="'+col+'" stroke-width="1"/>'+
+         '<text class="lbl" x="'+lcx+'" y="'+(leafY+17)+'" font-size="11.5" font-weight="500" fill="var(--ink)" text-anchor="middle">'+esc(lf.l)+'</text>'+
+         '<text class="lbl" x="'+lcx+'" y="'+(leafY+30)+'" font-size="9.5" fill="var(--ink-3)" text-anchor="middle">'+esc(lf.sub)+'</text>'+
+         '<text x="'+lcx+'" y="'+(leafY+48)+'" font-size="13" font-weight="600" fill="'+col+'" text-anchor="middle">'+esc(lf.e)+'</text></g>';
+    });
+  });
+  const DEF=$("treeCap").innerHTML;
+  $("tree").innerHTML=svg(W,leafY+70,g,'aria-label="Confirmatory test decision tree from EPCR 0.95"');
+  function pick(el){
+    const t=TESTS[+el.dataset.t],lf=t.leaves[+el.dataset.l];
+    $("tree").querySelectorAll(".leaf").forEach(n=>n.style.opacity=n===el?"1":".42");
+    $("treeCap").innerHTML='<strong>'+esc(t.t.replace(/^\d+ · /,""))+' — '+esc(lf.l)+'.</strong> '+lf.d;
+  }
+  $("tree").addEventListener("click",e=>{const l=e.target.closest(".leaf");if(l)pick(l);});
+  $("tree").addEventListener("keydown",e=>{
+    if(e.key!=="Enter"&&e.key!==" ")return;
+    const l=e.target.closest(".leaf"); if(l){e.preventDefault();pick(l);}
+  });
+})();
+
+/* =========================================================== SECTION RAIL */
+(function(){
+  const rail=$("rail"); if(!rail) return;
+  const secs=[...document.querySelectorAll("main section[id]")];
+  rail.innerHTML=secs.map(s=>{
+    const h=s.querySelector(".sec-h h2").textContent, n=s.querySelector(".sec-n").textContent;
+    return '<li><a href="#'+s.id+'"><span class="n">'+n+'</span><span>'+esc(h)+'</span></a></li>';
+  }).join("");
+  const links=[...rail.querySelectorAll("a")];
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(!e.isIntersecting) return;
+      const i=secs.indexOf(e.target);
+      links.forEach((a,j)=>a.classList.toggle("on",j===i));
+    });
+  },{rootMargin:"-15% 0px -70% 0px"});
+  secs.forEach(s=>io.observe(s));
+})();
+})();
+</script>

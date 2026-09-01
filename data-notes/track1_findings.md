@@ -402,3 +402,86 @@ two places. The hedge is now the claim in both.
 changes. PM3 removed from variant 2's evidence (4 points -> 2, VUS either way), one
 self-contradiction removed, one count corrected, one recommendation reordered to lead with the
 assay that defines the disease, and one reviewer finding rebutted with its primary source.
+
+---
+
+## Exhaustive numeric re-audit — 2026-09-01 (fifth pass)
+
+Triggered by a single defect found while building `viz/track1_explainer.html`: the PM1 section
+called the kinase domain "marginally *denser*" in missense than the rest of the protein, while its
+own table gives 1.12 vs 1.25 per residue — the opposite direction. That one error justified
+re-deriving everything.
+
+Method: every figure recomputed from primary artefacts (`data-notes/raw/` genome-wide VCF, both
+region-restricted VCFs, both annotated TSVs, `vep_raw_responses.jsonl`) and every external claim
+re-queried live. Roughly sixty independent figures reproduced exactly.
+
+### Corrected
+
+1. **PM1 density direction.** Domain 320/285 = 1.12 per residue; rest 953/765 = 1.25. The domain is
+   ~10% *less* dense, not denser. Both metrics agree (69.8% vs 73.3% of residues carry missense).
+   **The PM1 rejection stands** — 320 distinct variants is not "without benign variation" — but the
+   descriptive word was backwards.
+
+2. **CEP57 callability ratio 0.17 → 0.19.** True unrounded value 0.186. This contradicted the
+   report's own prose, "CEP57 yields 5.4x fewer calls than its own flanking sequence": 1/5.4 = 0.185.
+   Prose right, table wrong.
+
+3. **Ratio column recomputed from unrounded densities.** Methodology finding worth recording: *no
+   single rounding convention reproduces all 20 original ratios.* Computing gene/flank from the
+   rounded columns reproduces 16; computing gene-raw ÷ flank-rounded reproduces a different 16. The
+   column was evidently built with inconsistent intermediate rounding. Recomputed unrounded
+   throughout, five further cells move by one display step: TRIP13 1.26→1.20, BUB1 0.72→0.73,
+   BUB3 0.81→0.80, CLDN19 0.73→0.74, SLC34A1 0.79→0.78. All 20 gene densities and all 20 flanking
+   densities were themselves confirmed exact, so only the derived column was affected.
+
+4. **43-fold, not 45-fold.** AGXT 3.6184 / CEP57 0.0849 = 42.6. The 45 comes from dividing the
+   *rounded* display values (3.62/0.08 = 45.25).
+
+5. **Per-gene depth medians 17-51, not 17-49.** BUB1 is 51. TRIP13's median is 7 (three calls:
+   7, 7, 48), which is the stated exception.
+
+6. **BUB1B median depth 39, not 40.** The 14 padded-region PASS calls are
+   26,26,26,28,35,36,38,40,41,42,46,46,47,48 — median (38+40)/2 = 39. Range 26-48 confirmed.
+
+Also: the het-call span 40,168,264-40,221,421 is 53,157 bp but runs 284 bp past the gene end, so
+52,873 bp of it lies inside the 60,153 bp gene. Reworded.
+
+### Flagged as suspect, then proved CORRECT — do not "fix" this
+
+**The 227-indel / 365-SNV composition of the 592 unscored SpliceAI rows.** A naive
+`len(ref)!=1 or len(alt)!=1` test gives 173/419 and looks like a 54-row discrepancy. It is not: the
+TSV carries VEP's `-` allele notation, so a single-base insertion is `-`/`G` and a single-base
+deletion is `T`/`-`, both of which that test misreads as SNVs. Exactly 54 rows are affected.
+Counting `indel iff ref=="-" or alt=="-" or len(ref)!=1 or len(alt)!=1` gives **227 / 365**, the
+reported figures. The previous pass had already flagged this trap and was right. Now recorded in the
+report's own Verification table so the next auditor does not "correct" a correct number.
+
+### Re-verified clean against live primary sources
+
+- gnomAD v4: `15-40209701-T-G` exomes AC=115/AN=1,461,846, genomes AC=5/AN=152,174,
+  **faf95 popmax NFE = 8.395e-5** (→ the 8.40e-5 used for PM2); `15-40220612-T-G` exomes
+  AC=1/AN=1,461,878, faf95 undefined, absent from genomes; `15-40216470-A-G` "Variant not found".
+- ClinVar VCV000533901: Pathogenic/Likely pathogenic, "criteria provided, multiple submitters, no
+  conflicts", trait *Mosaic variegated aneuploidy syndrome 1*.
+- UniProt O60566: 1,050 aa; Protein kinase domain 766-1050.
+- Ensembl ENST00000287598: 23 exons, CDS 3,153, final junction 2,957, exon 17 start 40,209,635
+  (c.2210 at +66), exon 23 start 40,220,564 (c.3006 at +48), exon 21 acceptor 40,217,496.
+  **All five deletion windows contain exactly the exons claimed** (1-2, 3-5, 6-8, 9-16, 18-20).
+- Raw VEP JSON: exactly **22 BUB1B transcripts** carry SpliceAI annotation on all three variants
+  (Ensembl's 31 total includes transcripts the plugin did not annotate — the 22 is right);
+  p.Leu737Ter DS_AG 0.03 with the other three scores 0; deep-intronic 0.00 on all four; the 0.02 on
+  p.Asn1002Lys comes from exactly 2 *PAK6* transcripts (ENST00000441369, ENST00000453867).
+- VCF counts: 1,288/1,281/7 primary and 1,085/1,065/20 secondary; NF1 8 records with 7 `MQ40`;
+  CASR 5 with 4 `MQ40`; GQ=99 and every AD/DP as reported.
+
+### Operational finding outside the analysis
+
+The deletion-confirmation email differs between sources: the Official Rules give
+`RarediseaserealkidMVAhackathon2026@synapse.org`; the dataset card's own gated-access agreement — the
+text actually agreed to at download — gives `MVAHackathon2026@synapse.org`. `README.md` now cites
+both, and confirmation should be sent to both.
+
+**No variant, coordinate, ACMG classification, EPCR or candidate-set figure changed in this pass.**
+BUB1B (0.14x) and CEP57 (0.19x) remain the two most depleted genes, next DICER1 at 0.22x, so the
+callability argument and the CEP57 sensitivity caveat both stand unchanged.
