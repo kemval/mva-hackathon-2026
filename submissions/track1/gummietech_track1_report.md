@@ -1,7 +1,7 @@
 # Track 1 Methods Report — Variant Prediction
 
 **Team:** Gummietech
-**Proband:** WGS_EX2312012
+**Proband:** PROBAND01 (source VCF: `WGS_EX2312012_HGWCNDSX7.vcf.gz`)
 **Date:** 2026-09-01
 
 ## Summary
