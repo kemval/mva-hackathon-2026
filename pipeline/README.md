@@ -145,49 +145,55 @@ The 0.18 maximum is a common MAD1L1 intronic polymorphism (gnomAD AF 0.77); amon
 guard matters: blank means SpliceAI has no data for that position, which is not the same
 as a score of zero and must not be counted as a pass.
 
-## 6. Optional: alignment slice and coverage measurement
+## 6. What the dataset actually contains, and why no coverage track exists
 
-**Not part of the submitted analysis.** These two scripts exist because the report's single largest
-limitation — the input is a sites-only VCF, so absence of a call and absence of coverage are
-indistinguishable — is closable with the alignment file, and the alignment file does not need to be
-downloaded whole to close it.
+**Checked against the repository manifest on 2026-09-01, not against the hackathon site's
+description of it.** The two disagree, and the manifest wins.
 
-The full dataset is ~85 GB across 11 files (Hugging Face recommends 100–150 GB of working space).
-Most of that answers nothing here: FASTQ adds nothing over an alignment unless you intend to
-re-align. And `samtools` built with `libcurl` can slice a region straight out of a remote CRAM given
-its index — tens of MB rather than 15–30 GB.
+The site says raw sequencing data is available "optionally in BAM/CRAM". It is not. The dataset is
+**13 files totalling 79 GB**, and 78.9 GB of that — 99.7% — is raw FASTQ:
 
-Authenticate yourself first (neither script handles credentials):
-
-```bash
-pip install -U huggingface_hub
-hf auth login
-```
+| files | size | status |
+|---|---|---|
+| `WGS_EX2312012_HGWCNDSX7.vcf.gz` + `.tbi` | 0.29 GB | already held; this analysis runs on it |
+| `Challenge_Clinical_Phenotype_1.docx`, `README.md` | < 0.1 GB | already held |
+| `*_S16_L00{1,2,3,4}_R{1,2}_001.fastq.gz` | **78.9 GB** | 8 files, 4 lanes, paired-end |
 
 ```bash
-# see what the dataset actually contains, with sizes
-./fetch_alignment_slice.sh --list
-
-# pull just the BUB1B, CEP57 and TRIP13 regions out of the remote alignment
-./fetch_alignment_slice.sh --file <NAME.cram>
-
-# measure callability, and test the five deletion windows against BUB1B's own baseline
-python3 coverage_analysis.py --bam ../data-notes/raw/<NAME>.slice.bam
+# reproduce the manifest (no auth needed for the file list)
+curl -s https://huggingface.co/api/datasets/SageBio/mva-hackathon-2026-data/tree/main \
+  | python3 -m json.tool | grep '"path"'
 ```
 
-`coverage_analysis.py` answers three questions the VCF cannot: what fraction of each gene is callable
-at usable depth (which turns "no rare damaging variant in CEP57" into a measured statement); whether
-any of the five permissive deletion windows shows the depth halving a hemizygous deletion produces —
-the leading alternative second allele; and the BUB1B depth profile in 1 kb bins, so the two
-homozygous-alternate calls inside the exon 9–16 window can be read against local coverage.
+**There is no BAM and no CRAM.** So the coverage track that would close this report's largest
+limitation — the sites-only VCF cannot distinguish absence of a call from absence of coverage —
+does not exist in the dataset and cannot be sliced out of it. Producing one means aligning the FASTQ
+yourself: ~79 GB of transfer, a GRCh38 index, and a full 30x WGS alignment.
 
-**What this cannot resolve**, so it is not oversold: phase. The two variants are ~11 kb apart, beyond
-short-read fragment span, and read-backed phasing on the same reads faces the identical physical
-limit. Nor can it address the MVA diagnosis itself, which needs a karyotype that is not in the
-dataset at all.
+**That is not attempted here, and on the machine this analysis was run on it is not feasible.** A
+human-genome BWA index needs ~6-7 GB of RAM (minimap2 ~11 GB, bwa-mem2 ~40 GB) against 8 GB
+installed, with 33 GB of free disk and no aligner present. Streaming the FASTQ to avoid storing it
+would still leave the alignment itself running for days on 8 cores.
 
-Slices land in `data-notes/raw/` — gitignored, and covered by the same 30-day deletion obligation as
-the rest of the data.
+The report therefore continues to state the callability limitation rather than measure it, and uses
+call-density-against-flanking-sequence as an explicitly labelled proxy — which is the honest
+position given what the dataset provides.
+
+### `coverage_analysis.py`
+
+Kept because it is correct and needs no download to be worth reading: it specifies exactly what would
+settle the question if an alignment ever existed. Given any BAM covering the panel it reports
+callable fraction per gene, tests each of the five permissive deletion windows against BUB1B's own
+diploid baseline (a hemizygous deletion halves depth), and prints the BUB1B depth profile in 1 kb
+bins.
+
+```bash
+python3 coverage_analysis.py --bam <alignment.bam>
+```
+
+**What it could never resolve**, so it is not oversold: phase. The two variants are ~11 kb apart,
+beyond short-read fragment span, and read-backed phasing faces the identical physical limit. Nor the
+MVA diagnosis, which needs a karyotype that is not in the dataset in any form.
 
 ## Notes on the gnomAD AF field
 

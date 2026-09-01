@@ -36,7 +36,7 @@ This is a textbook compound-heterozygous loss-of-function pattern in **BUB1B** �
 The two candidate variants are ~11kb apart (40209701 → 40220612). GATK/Sentieon's local read-based phasing (`PGT`/`PID` tags) found **no** phase-informative reads connecting either variant to anything nearby — meaning short-read local phasing already came up empty at the variant-calling stage. This is expected: standard Illumina paired-end fragments (typically ~300-500bp) physically cannot span an 11kb gap, so WhatsHap read-backed phasing on the BAM is **very unlikely to resolve phase for this specific pair either**, for the same physical reason — it isn't a tooling limitation, it's a fragment-length limitation inherent to short-read sequencing at this variant separation.
 
 **Options considered:**
-1. **Download a region-subsetted BAM/CRAM and run WhatsHap anyway** — technically possible, but per the physical-distance reasoning above, expected to also come back uninformative for this pair specifically. Also requires the user's own authenticated HF session (gated dataset) — not something I can do without their token, which I should not request or handle directly.
+1. **Download a region-subsetted BAM/CRAM and run WhatsHap anyway** — *[superseded 2026-09-01: **not** technically possible. The dataset contains no BAM or CRAM at all — see "Dataset scope" at the end of this file. The conclusion below was right for the wrong reason.]* per the physical-distance reasoning above, expected to also come back uninformative for this pair specifically. Also requires the user's own authenticated HF session (gated dataset) — not something I can do without their token, which I should not request or handle directly.
 2. **Statistical/population-based phasing** (e.g. Eagle2/Beagle against a haplotype reference panel) — possible but low-confidence for a variant this rare (may not be well-represented in reference panels), and adds real setup complexity/time for likely low information gain.
 3. **Report as "presumed compound heterozygous, phase not directly resolvable from proband-only short-read WGS at this variant separation"** — scientifically honest, standard practice in real clinical genetics when parental samples aren't available, and arguably a *stronger* rigor signal for the write-up than silently assuming trans configuration (which is what a from-memory "it's BUB1B" submission would implicitly do).
 
@@ -485,3 +485,33 @@ both, and confirmation should be sent to both.
 **No variant, coordinate, ACMG classification, EPCR or candidate-set figure changed in this pass.**
 BUB1B (0.14x) and CEP57 (0.19x) remain the two most depleted genes, next DICER1 at 0.22x, so the
 callability argument and the CEP57 sensitivity caveat both stand unchanged.
+
+### Dataset scope — settled against the manifest, 2026-09-01
+
+The hackathon site states raw sequencing data is available "optionally in BAM/CRAM"
+(`literature/00_hackathon_site_full_capture.md` line 153). **The dataset contains neither.** Queried
+directly — the file list needs no authentication:
+
+```bash
+curl -s https://huggingface.co/api/datasets/SageBio/mva-hackathon-2026-data/tree/main
+```
+
+13 files, 79.1 GB total, of which **78.9 GB (99.7%) is raw FASTQ** — 8 files, 4 lanes, paired-end
+(`*_S16_L00{1,2,3,4}_R{1,2}_001.fastq.gz`, 9.5–10.3 GB each). The remainder is the VCF (0.29 GB),
+its `.tbi`, the phenotype `.docx` and the README — **all four already held locally.** There is
+nothing left to download that this analysis can consume directly.
+
+Consequence for the report: the callability limitation cannot be closed by acquiring data. A
+coverage track would require aligning 30x WGS from FASTQ. Not feasible on this machine — a
+human-genome BWA index needs ~6–7 GB RAM (minimap2 ~11 GB, bwa-mem2 ~40 GB) against 8 GB installed,
+33 GB free disk, 8 cores, and no aligner or reference present. Streaming the FASTQ would solve the
+disk problem but not the RAM or the multi-day runtime.
+
+The call-density-against-flanks proxy therefore stands as the correct treatment, and it is already
+labelled a proxy in the report.
+
+An earlier version of this pass shipped `pipeline/fetch_alignment_slice.sh`, written to slice a
+region out of a remote CRAM over HTTPS. Its premise was the site's BAM/CRAM claim, which the manifest
+disproves; the script has been removed rather than left as a plausible-looking dead end.
+`pipeline/coverage_analysis.py` is kept — it needs no download to be worth reading, since it
+specifies precisely what would settle the question.

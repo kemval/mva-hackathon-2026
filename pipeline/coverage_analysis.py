@@ -23,11 +23,19 @@ Three questions, in the order the report needs them answered:
      the exon 9-16 window -- formally consistent with hemizygosity -- can be
      read against their local coverage rather than against the genome.
 
-Usage:
-    python3 coverage_analysis.py --bam data-notes/raw/<name>.slice.bam
-    python3 coverage_analysis.py --bam <bam> --min-depth 10 --out coverage.tsv
+NOTE ON INPUT. The hackathon dataset contains NO BAM or CRAM -- 78.9 of its
+79 GB is raw FASTQ (verified against the repository manifest, not the site's
+description of it, which claims otherwise). No alignment can therefore be
+downloaded or sliced; producing one means aligning the FASTQ yourself. This
+script is kept because it specifies exactly what would settle the callability
+question if such an alignment ever existed, and it runs unchanged against any
+BAM covering the panel.
 
-Requires samtools. See pipeline/README.md for the retrieval step.
+Usage:
+    python3 coverage_analysis.py --bam <alignment.bam>
+    python3 coverage_analysis.py --bam <alignment.bam> --min-depth 10 --out coverage.tsv
+
+Requires samtools. See pipeline/README.md section 6 for what the dataset holds.
 """
 import argparse
 import shutil
@@ -84,7 +92,7 @@ def summarise(d, lo, hi, min_depth):
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--bam", required=True, help="alignment slice from fetch_alignment_slice.sh")
+    ap.add_argument("--bam", required=True, help="any indexed BAM/CRAM covering the panel regions")
     ap.add_argument("--min-depth", type=int, default=10,
                     help="depth at or above which a base counts as callable (default: 10)")
     ap.add_argument("--min-mapq", type=int, default=20,
