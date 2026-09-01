@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 """Annotate all PASS variants in a region-restricted VCF via Ensembl VEP REST,
-extracting consequence, canonical HGVS, max gnomAD population AF, and any
-ClinVar clinical significance. Writes a flat TSV for downstream filtering by
-pipeline/filter_candidates.py.
+extracting consequence, canonical HGVS, max gnomAD population AF, max SpliceAI
+delta score, and any ClinVar clinical significance. Writes a flat TSV for
+downstream filtering by pipeline/filter_candidates.py.
+
+SpliceAI comes from VEP's own plugin (`&SpliceAI=1`), which is why no separate
+splice-prediction service is needed -- the Broad's standalone SpliceAI Lookup API
+was unreachable across three attempts, but Ensembl serves the same scores.
 
 Usage:
     python3 vep_annotate.py --vcf PANEL.vcf.gz --out-tsv OUT.tsv --out-raw OUT.jsonl
@@ -20,7 +24,7 @@ BATCH_SIZE = 150
 VEP_URL = (
     "https://rest.ensembl.org/vep/human/region"
     "?content-type=application/json&canonical=1&hgvs=1&check_existing=1"
-    "&af_gnomade=1&af_gnomadg=1&domains=1"
+    "&af_gnomade=1&af_gnomadg=1&domains=1&SpliceAI=1"
 )
 
 
@@ -83,6 +87,36 @@ def max_gnomad_af(colocated):
                         best = max(best, float(v))
                     except (TypeError, ValueError):
                         pass
+    return best
+
+
+def max_spliceai_ds(tx_consequences):
+    """Max SpliceAI delta score across transcripts, or None if SpliceAI has no data.
+
+    VEP's SpliceAI plugin attaches a per-transcript `spliceai` dict with four delta
+    scores in 0-1 -- DS_AG/DS_AL (acceptor gain/loss), DS_DG/DS_DL (donor gain/loss)
+    -- plus DP_* positional offsets, which are ignored here. SpliceAI's own
+    high-recall threshold is 0.2; 0.5 is the recommended cutoff.
+
+    Returns None rather than 0.0 when no transcript carries a `spliceai` key. The
+    precomputed set does not reach every position: across the two panels 592 of
+    2346 rows come back empty (227 indels and 365 SNVs, predominantly intronic,
+    downstream and upstream positions). "Not scored" is a different claim from
+    "scored zero", and collapsing the two would repeat the class of error the
+    gnomAD AF field was already caught making (see max_gnomad_af above).
+    """
+    best = None
+    for tx in tx_consequences or []:
+        sa = tx.get("spliceai")
+        if not sa:
+            continue
+        for k in ("DS_AG", "DS_AL", "DS_DG", "DS_DL"):
+            if k in sa:
+                try:
+                    v = float(sa[k])
+                except (TypeError, ValueError):
+                    continue
+                best = v if best is None else max(best, v)
     return best
 
 
@@ -181,6 +215,7 @@ def main():
                 top_consequence = consequences_sorted[0] if consequences_sorted else r.get("most_severe_consequence", "")
 
                 gnomad_af = max_gnomad_af(r.get("colocated_variants"))
+                spliceai_ds = max_spliceai_ds(r.get("transcript_consequences"))
                 clinvar = clin_sig(r.get("colocated_variants"))
                 rsids = ";".join(
                     cv.get("id", "") for cv in (r.get("colocated_variants") or []) if cv.get("id", "").startswith("rs")
@@ -197,6 +232,7 @@ def main():
                     "hgvsc": canon.get("hgvsc", ""),
                     "hgvsp": canon.get("hgvsp", ""),
                     "gnomad_max_af": f"{gnomad_af:.6f}",
+                    "spliceai_max_ds": "" if spliceai_ds is None else f"{spliceai_ds:.2f}",
                     "clinvar_sig": clinvar,
                     "rsids": rsids,
                     "genotype": gt,
@@ -207,7 +243,8 @@ def main():
 
     with open(args.out_tsv, "w") as out:
         cols = ["chrom","pos","ref","alt","gene","consequence","impact","hgvsc","hgvsp",
-                "gnomad_max_af","clinvar_sig","rsids","genotype","allele_depth","genotype_qual"]
+                "gnomad_max_af","spliceai_max_ds","clinvar_sig","rsids","genotype",
+                "allele_depth","genotype_qual"]
         out.write("\t".join(cols) + "\n")
         for row in rows_out:
             out.write("\t".join(str(row.get(c, "")) for c in cols) + "\n")

@@ -33,9 +33,9 @@ Full analysis: `data-notes/track1_findings.md`. Final submission materials: `sub
 5. Full trust-audit verification pass against primary sources, plus a final proofread that re-confirmed every figure a second time.
 6. Code-level audit checking the pipeline against what the report claims it does. This found one real defect — the rarity filter had silently excluded gnomAD exome frequencies — proved it harmless by replaying the corrected filter offline against the saved raw API responses (identical candidate set: primary 2/2, secondary 0/0), corrected the code, and recorded both the defect and the check in the report's Verification table. The same pass closed the repo's reproducibility gaps (the filtering step had no code; the two annotation scripts were duplicates with hardcoded paths; the `bcftools` step was undocumented) and tightened two ACMG evidence codes (PS4 dropped as improperly applied, PM2 downgraded to PM2_Supporting per ClinGen SVI) without changing the classification.
 7. GitHub repository created (public at hackathon close, per the rules) and submission files named per the required convention.
+8. SpliceAI splice-impact assessment, via Ensembl VEP's own `&SpliceAI=1` plugin after the Broad's standalone Lookup API proved unreachable across three attempts. Both panels were re-annotated from scratch, adding a `spliceai_max_ds` column (blank, not 0.00, where SpliceAI has no data). The deep-intronic secondary candidate scores 0.00 on all four delta scores across all 22 BUB1B transcripts, so its EPCR was lowered 0.30 → 0.10. A panel-wide screen of all 2,346 PASS variants found none reaching the 0.2 high-recall threshold.
 
 **Outstanding (does not block submission):**
-- SpliceAI assessment of the secondary deep-intronic finding — attempted twice on separate occasions; the SpliceAI Lookup API was unreachable both times (confirmed external service outage, not a local network restriction). This is the lowest-priority row in the submission and does not affect the primary finding.
 - Actual upload via the hackathon's "Submit – Track 1" tab, which requires the account holder's own Hugging Face session.
 
 ## Next actions

@@ -71,7 +71,7 @@ Ran the same pipeline (region-restrict → VEP annotate → rare+damaging filter
 - [x] GitHub repository created (private; public at hackathon close), patient genomic data excluded per the Data Transfer Agreement
 - [x] Code-level audit of the pipeline against the report's claims (2026-08-31, see below) — one real defect found in the AF filter, proven harmless, corrected
 - [x] Pipeline consolidated into one CLI-parameterised annotation script + a filter script; full command sequence documented in `pipeline/README.md`
-- [ ] SpliceAI on secondary intronic finding — attempted twice, service unreachable both times (see below); not blocking, low-priority secondary row
+- [x] SpliceAI on secondary intronic finding — **resolved 2026-08-31** via Ensembl VEP's own SpliceAI plugin after three failed attempts against the Broad's standalone Lookup API (see "SpliceAI resolved" section at the end of this file). The two "unreachable" entries below are kept as written for the audit trail.
 - [ ] Actual upload via the hackathon's "Submit – Track 1" tab — requires the account holder's own Hugging Face session
 
 ## Trust audit — verification against primary sources (2026-08-31)
@@ -154,3 +154,90 @@ Re-audited Track 1 after the first remediation pass, deliberately targeting the 
 
 **Net effect on the submission:** no variant, coordinate, or CSV row changes. The overall classification stays Likely Pathogenic (compound heterozygous). What changes is that two overclaims are removed and one unsupported inference is replaced with a verified one.
 
+## SpliceAI resolved via the VEP plugin (2026-08-31, third pass)
+
+Supersedes the two "SpliceAI unreachable" entries above, which are left unedited as an
+audit trail of what was tried and when.
+
+**What was wrong with the earlier conclusion.** Both previous attempts hit the Broad's
+standalone SpliceAI Lookup API (`spliceailookup-api.broadinstitute.org`) and both timed
+out, and the analysis concluded the question was unanswerable. It was not. Ensembl VEP
+serves SpliceAI through its own plugin, behind a single `&SpliceAI=1` query parameter on
+the REST endpoint **this pipeline was already calling for every variant**. A third attempt
+against the Broad API also failed; the plugin route worked first try. The failure was one
+of not asking the tool already in hand, not of external availability.
+
+**What was done.** `pipeline/vep_annotate.py` gained `&SpliceAI=1` and a `max_spliceai_ds()`
+function; both panels were re-annotated from scratch (which also regenerated them with the
+already-corrected `max_gnomad_af`, so the exome-frequency defect is no longer a replay
+argument). The new `spliceai_max_ds` column is the max of DS_AG/DS_AL/DS_DG/DS_DL across
+transcripts, and is **blank rather than 0.00** where SpliceAI has no data — 592 of 2,346
+rows (227 indels, 365 SNVs, predominantly intronic/downstream/upstream). Blank is never
+counted as zero: `filter_candidates.py` does not read the column, and the screen guards on
+`$11!=""`.
+
+**Results.**
+
+- Deep-intronic secondary candidate `15:40216470 A>G`: **0.00 on all four delta scores,
+  across all 22 BUB1B transcripts.** The pseudoexon/cryptic-splice hypothesis is not
+  supported. EPCR lowered 0.30 → 0.10 in the submission CSV.
+- p.Leu737Ter: 0.03 (acceptor gain) on all 22 BUB1B transcripts — no cryptic-splice rescue
+  of the premature stop, so PVS1 rests on NMD as claimed.
+- p.Asn1002Lys: 0.00 on all 22 BUB1B transcripts. The 0.02 recorded in `spliceai_max_ds`
+  comes from two overlapping *PAK6* transcripts, not from BUB1B.
+- Panel-wide screen of all 2,346 PASS variants: **none** reaches the 0.2 high-recall
+  threshold. Primary panel 1,007/1,281 scored (78.6%), max 0.18; secondary 747/1,065
+  (70.1%), max 0.13. The 0.18 is a common MAD1L1 intronic polymorphism at gnomAD AF 0.771.
+  Among the 14 rare (AF<0.001) scored variants the max is 0.03.
+
+**Net effect on the submission:** the primary finding, its coordinates, and its EPCR are
+unchanged (still 2 candidates primary / 0 secondary). The secondary row's EPCR drops to
+0.10 on a negative result that was obtained rather than assumed, and a disclosed blind spot
+(splice-altering variants hiding below the MODIFIER filter) is now closed and negative
+rather than merely disclosed.
+
+## Third audit pass (2026-08-31) — auditing the SpliceAI re-annotation
+
+An independent correctness-and-consistency audit of the five files the SpliceAI work
+touched. Code, arithmetic, and reproducibility came back clean: `max_spliceai_ds()` does
+what all three documents say, every figure re-derived from the TSVs matched exactly, and
+all four commands in `pipeline/README.md` reproduce their stated output. Fixed:
+
+1. **The report's "Submitted predictions" section still said the secondary row was at
+   EPCR 0.30** — the one sentence whose job is to describe the submitted CSV, contradicting
+   both the CSV (0.10) and two other passages in the report. Corrected.
+2. **"Every PASS variant now carries a SpliceAI score"** — false, and contradicted twelve
+   lines later by the report's own coverage figure. Reworded to the real number (1,754 of
+   2,346).
+3. **The 0.02 on p.Asn1002Lys was described as coming from "two non-canonical transcripts"**
+   — they are *PAK6* transcripts, a different gene. The true result (0.00 on all 22 BUB1B
+   transcripts) is cleaner than what was claimed; the text now says so.
+4. **"The deep-intronic variant reported below"** — it is reported above; the section
+   reorder inverted the reference.
+5. **"Mostly indels and upstream positions"** for the 592 blanks — only just true (52%),
+   and silently omitting the two next-largest categories. Replaced with the actual
+   composition, in the report, `pipeline/README.md`, and the `max_spliceai_ds` docstring.
+6. **Three clinical claims introduced in the rewrite were asserted from general knowledge
+   with no traceable source** — nephrocalcinosis of prematurity/VLBW, ifosfamide/platinum
+   nephrotoxicity, and the embryonic-lethality premise behind the recurrent-miscarriage
+   reasoning. All three are very likely correct, but in a report that cites a source for
+   every comparable claim, an uncited one reads as verified when it is not. They are now
+   explicitly marked as unsourced background, and the miscarriage argument is stated as the
+   conditional it actually is. Note this partly reverses this log's earlier position (line
+   55) that the miscarriage history was "not something this analysis can or should claim to
+   explain" — the report now offers a framing, hedged, and says it carries no PP4 weight.
+   **If anything here gets sourced before submission, these are the three to source.**
+7. **SpliceAI's 0.2/0.5/0.8 thresholds** were attributed only to "SpliceAI's own
+   thresholds" while the comparable REVEL thresholds cite Pejaver et al. 2022. Now
+   attributed to Jaganathan et al. 2019 and the tool's documentation — **added from general
+   knowledge during this pass, so worth a confirming glance.**
+8. Cosmetic: a docstring cross-reference pointing "below" at a function defined above; a
+   Verification-table source cell still describing the offline replay after the live
+   re-annotation superseded it; "across all nine panel genes" for 10 variants that span
+   five of the nine.
+
+Also brought two files outside the SpliceAI diff back into line: the root `README.md` still
+listed SpliceAI as outstanding and unreachable, and this log's own checkbox was unticked.
+
+**Net effect on the submission:** one real correction to a submitted-artefact description
+(the EPCR 0.30/0.10 mismatch). No variant, coordinate, CSV value, or classification changes.

@@ -16,8 +16,8 @@ import csv
 import sys
 
 COLS = ["chrom", "pos", "ref", "alt", "gene", "consequence", "impact",
-        "hgvsc", "hgvsp", "gnomad_max_af", "clinvar_sig", "rsids",
-        "genotype", "allele_depth", "genotype_qual"]
+        "hgvsc", "hgvsp", "gnomad_max_af", "spliceai_max_ds", "clinvar_sig",
+        "rsids", "genotype", "allele_depth", "genotype_qual"]
 
 
 def main():

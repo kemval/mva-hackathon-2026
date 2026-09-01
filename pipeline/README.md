@@ -59,8 +59,19 @@ Yield: 1288 records / 1281 PASS (primary panel), 1065 PASS (secondary panel).
 ## 2. Annotate via Ensembl VEP REST
 
 Canonical transcript, HGVS nomenclature, max gnomAD subpopulation AF (genomes and
-exomes), ClinVar significance, and protein domains. Batches of 150 with rate-limit
-spacing. Raw JSON responses are written alongside the TSV as an audit trail.
+exomes), **max SpliceAI delta score**, ClinVar significance, and protein domains.
+Batches of 150 with rate-limit spacing. Raw JSON responses are written alongside the
+TSV as an audit trail.
+
+SpliceAI comes from VEP's own plugin (`&SpliceAI=1` in `VEP_URL`), which is worth
+knowing: the Broad's standalone SpliceAI Lookup API was unreachable across three
+separate attempts, and Ensembl serves the same scores through the endpoint this
+pipeline already calls. The `spliceai_max_ds` column is the max of the four delta
+scores (DS_AG, DS_AL, DS_DG, DS_DL) across transcripts. It is **blank, not 0.00,
+where SpliceAI has no data** for the position — the precomputed set does not reach
+every position (227 indels and 365 SNVs across the two panels come back empty,
+predominantly intronic, downstream and upstream), and "not scored" is a different
+claim from "scored zero".
 
 ```bash
 python3 vep_annotate.py \
@@ -85,19 +96,60 @@ Expected output: **2 candidates** from the primary panel (both BUB1B —
 `15:40209701 T>G` p.Leu737Ter and `15:40220612 T>G` p.Asn1002Lys) and **0** from
 the secondary panel. These two rows are the primary finding in the submission.
 
-The deep-intronic secondary finding (`15:40216470 A>G`) is MODIFIER impact and so
-does not pass this filter by design; it was surfaced separately when reviewing rare
-variants across the BUB1B locus, and is reported as a lower-confidence secondary row.
+## 4. Surface the deep-intronic secondary row
 
-## Note on the gnomAD AF field (audit, 2026-08-31)
+The deep-intronic secondary finding (`15:40216470 A>G`) is MODIFIER impact, so it does
+not pass the step-3 filter by design — that filter exists to discard intronic variants.
+It is recovered by re-running the same script at MODIFIER impact and restricting to the
+gene carrying the primary finding:
 
-The version of `max_gnomad_af()` that generated the committed annotation TSVs
-matched `k.startswith("gnomadg") or k == "af"`, which excluded every gnomAD *exome*
-frequency (those keys are `gnomade`, `gnomade_nfe`, …) while including the 1000
-Genomes global `af` key. The error was permissive — it could only let a variant
-through the rarity filter, never remove one — so no candidate could have been
-missed. This was verified rather than assumed: the corrected computation was
-replayed offline against the saved raw VEP responses and produces an **identical**
-candidate set for both panels (primary 2/2, secondary 0/0; p.Leu737Ter's max AF
-rises from 7.35e-5 to 9.982e-5, still far below the 0.001 threshold). `vep_annotate.py`
-now computes the field correctly; the published results are unchanged by the fix.
+```bash
+python3 filter_candidates.py \
+  --tsv ../data-notes/annotated/vep_panel_annotated.tsv \
+  --impacts MODIFIER | awk -F'\t' 'NR==1 || $5=="BUB1B"'
+```
+
+Expected output: **1 row**, `15:40216470 A>G` (`c.2679-1026A>G`, gnomAD AF 0.000000,
+`spliceai_max_ds` 0.00).
+The rarity filter leaves 10 MODIFIER variants across the nine-gene panel (spread over
+MAD1L1, BUB1, SLF2, BUB1B and BUB3), of which exactly one is in BUB1B — so this is a
+narrow, stated query, not a hunt through intronic space until something interesting
+appears.
+
+Every row in the submitted CSV therefore traces to a command in this file: CSV row 1
+(the compound-heterozygous pair, both variants) from step 3, CSV row 2 (the secondary
+finding) from step 4.
+
+## 5. Panel-wide splice screen
+
+Because deep-intronic and pseudoexon variants are MODIFIER impact and so never reach the
+step-3 candidate list, the whole annotated set is screened separately for splice impact:
+
+```bash
+for t in vep_panel_annotated vep_secondary_annotated; do
+  awk -F'\t' 'NR>1 && $11!="" && $11+0>=0.2' ../data-notes/annotated/$t.tsv
+done
+```
+
+Expected output: **nothing**. No variant in either panel reaches SpliceAI's 0.2
+high-recall threshold. For the record, as run on 2026-08-31:
+
+| Panel | PASS variants | SpliceAI-scored | Max delta | ≥ 0.2 |
+|---|---|---|---|---|
+| Primary (9 genes) | 1281 | 1007 (78.6%) | 0.18 | 0 |
+| Secondary (11 genes) | 1065 | 747 (70.1%) | 0.13 | 0 |
+
+The 0.18 maximum is a common MAD1L1 intronic polymorphism (gnomAD AF 0.77); among the
+14 rare (AF<0.001) scored variants across both panels the maximum is 0.03. The `$11!=""`
+guard matters: blank means SpliceAI has no data for that position, which is not the same
+as a score of zero and must not be counted as a pass.
+
+## Note on the gnomAD AF field
+
+The `max_gnomad_af()` version that produced the *original* annotation run excluded
+gnomAD *exome* frequencies. The error was permissive rather than exclusionary, and
+replaying the corrected computation offline against the saved raw VEP responses gave an
+identical candidate set for both panels. The point is now moot in any case: the SpliceAI
+re-annotation regenerated both TSVs from scratch with the corrected function, and the
+candidate set is still identical (primary 2, secondary 0). Full detail is in the
+`max_gnomad_af` docstring and in the submission report's Verification table.
