@@ -17,7 +17,7 @@ Generated: 2026-08-31, from independent analysis of the proband's own VCF + HPO 
 | 15:40209701 | T>G | stop_gained | HIGH | c.2210T>G, p.Leu737Ter | 0.000073 (rs759242053) | **likely_pathogenic;pathogenic** | 0/1 |
 | 15:40220612 | T>G | missense_variant | MODERATE | c.3006T>G, p.Asn1002Lys | 0.000000 (absent from gnomAD) | none on record | 0/1 |
 
-**These are the initial VEP-proxy figures from the first pipeline pass, kept here unedited for an honest audit trail.** They were superseded by direct gnomAD API re-verification during the trust audit (see below): p.Leu737Ter is genome AF 3.29e-5 (5/152,174) / exome AF 7.87e-5 (115/1,461,846) — close to VEP's 0.000073 but not identical, likely a different population-subset breakdown; p.Asn1002Lys is **not** absent — it's a gnomAD exome singleton (AC=1/1,461,878, AF≈6.84e-7), the error the trust audit caught. Use the corrected figures in `submissions/track1/DRAFT_methods_report_v1.md`, not this table, for anything downstream.
+**These are the initial VEP-proxy figures from the first pipeline pass, kept here unedited for an honest audit trail.** They were superseded by direct gnomAD API re-verification during the trust audit (see below): p.Leu737Ter is genome AF 3.29e-5 (5/152,174) / exome AF 7.87e-5 (115/1,461,846) — close to VEP's 0.000073 but not identical, likely a different population-subset breakdown; p.Asn1002Lys is **not** absent — it's a gnomAD exome singleton (AC=1/1,461,878, AF≈6.84e-7), the error the trust audit caught. Use the corrected figures in `submissions/track1/gummietech_track1_report.md`, not this table, for anything downstream.
 
 A third, lower-priority candidate in the same gene: 15:40216470 A>G, deep intronic (c.2679-1026A>G, 1026bp from nearest splice site), gnomAD AF 0.000000 per VEP, MODIFIER impact — not flagged as splice-altering by VEP's basic consequence call; would need SpliceAI to properly assess. Sits physically between the two exonic candidates. **Independently re-verified 2026-08-31** (final proofread pass): unlike p.Asn1002Lys, this one's absence checks out — a direct gnomAD v4 GraphQL query (bypassing VEP entirely) for `15-40216470-A-G` returns "Variant not found," confirming genuine absence rather than an under-indexed VEP proxy gap.
 
@@ -63,7 +63,7 @@ Ran the same pipeline (region-restrict → VEP annotate → rare+damaging filter
 - [x] Rare + damaging filter across 9-gene MVA panel → 2 BUB1B candidates
 - [x] Secondary 11-gene phenotype-driven panel → clean, no candidates
 - [x] Phasing limitation identified and honestly documented
-- [x] ACMG evidence-code write-up (done, see `submissions/track1/DRAFT_methods_report_v1.md`)
+- [x] ACMG evidence-code write-up (done, see `submissions/track1/gummietech_track1_report.md`)
 - [x] Draft Track 1 CSV + methods report (done, v1)
 - [x] Trust audit / verification pass against primary sources (2026-08-31, see below)
 - [x] Formal AlphaMissense/REVEL/CADD/SIFT/PolyPhen2 scoring for PP3 (2026-08-31, see below)

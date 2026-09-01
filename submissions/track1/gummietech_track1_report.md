@@ -1,5 +1,6 @@
-# Track 1 Methods Report — Variant Prediction (DRAFT v1)
+# Track 1 Methods Report — Variant Prediction
 
+**Team:** Gummietech
 **Proband:** WGS_EX2312012
 **Date:** 2026-08-31
 
@@ -87,4 +88,4 @@ Anthropic API, Claude (Sonnet 5), commercial terms, no training on customer cont
 Annotation/filtering scripts (`pipeline/`) and gene-panel coordinate lookups (`data-notes/regions/`) are in the project repository. The scripts currently use hardcoded local paths (`/Users/.../mva-hackathon-2026/data-notes/...`) rather than relative paths or CLI arguments — a real reproducibility gap worth naming rather than glossing over; a re-runner would need to edit the `VCF`/`OUT_TSV`/`OUT_RAW` constants at the top of each script for their own environment before running. Per the hackathon's Data Transfer Agreement ("I will not release or otherwise grant data access to anyone"), the raw VCF, phenotype document, and full-panel genotype-level annotation output are intentionally **not** committed to version control — see `data-notes/README.md` for the exclusion policy. Reproducing this analysis requires obtaining independent authorized access to the dataset and re-running the scripts against a freshly downloaded VCF.
 
 ---
-*This is a DRAFT (v1). Final proofread pass completed 2026-08-31: every gnomAD/ClinVar/UniProt/genotype figure in this report was independently re-verified against its live primary-source API and matches exactly (see Verification table). Formal PP3 in-silico scoring is done. Only remaining items before actual submission: (1) SpliceAI on the secondary intronic finding — attempted, service unreachable, not blocking; (2) rename this file and the predictions CSV to the required `<team-name>_track1_report.md` / `<team-name>_<model-name>.csv` convention once a team/display name is chosen — not yet done, no name has been picked.*
+*Final proofread pass completed 2026-08-31: every gnomAD/ClinVar/UniProt/genotype figure in this report was independently re-verified against its live primary-source API and matches exactly (see Verification table). Formal PP3 in-silico scoring is done. Filenames follow the required `<team-name>_track1_report.md` / `<team-name>_<model-name>.csv` convention (team: Gummietech). Only remaining item before actual submission: SpliceAI on the secondary intronic finding — attempted, service unreachable, not blocking.*
