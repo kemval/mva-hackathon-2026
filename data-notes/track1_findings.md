@@ -241,3 +241,164 @@ listed SpliceAI as outstanding and unreachable, and this log's own checkbox was 
 
 **Net effect on the submission:** one real correction to a submitted-artefact description
 (the EPCR 0.30/0.10 mismatch). No variant, coordinate, CSV value, or classification changes.
+
+## Fourth audit pass (2026-09-01) — final pre-submission audit
+
+A full independent re-verification of the Track 1 submission, deliberately run against
+primary artefacts (the VCF, the annotated TSVs, the raw VEP JSON, and live public APIs)
+rather than against the conclusions of the previous three passes.
+
+**Everything re-derived came back clean.** Specifically re-computed from source and matched
+exactly: the 2,346 PASS-variant total (1,281 + 1,065, confirmed against `bcftools view -f
+PASS` on both region-restricted VCFs); the SpliceAI coverage split (1,754 scored / 592
+blank, and the 227-indel / 365-SNV composition of the blanks — which is correct only
+because the TSV uses VEP's `-` allele notation for indels, a detail an audit that tests
+`len(ref)!=1` alone will get wrong); the 0.18 / 0.13 panel maxima and the 14 rare scored
+variants with max 0.03; and zero variants at or above the 0.2 threshold. All four
+`pipeline/README.md` commands were executed verbatim and reproduced their stated output,
+including the 10 MODIFIER variants spread over exactly five genes with exactly one in
+BUB1B.
+
+Per-transcript SpliceAI claims were re-derived from `vep_raw_responses.jsonl`: p.Leu737Ter
+0.03 (DS_AG) on all 22 BUB1B transcripts, p.Asn1002Lys 0.00 on all 22 BUB1B transcripts
+with the 0.02 coming from exactly two PAK6 transcripts, and the deep-intronic candidate
+0.00 on all four delta scores on all 22 BUB1B transcripts. All three exactly as reported.
+
+External claims were re-queried live and all matched to the digit: **ClinVar** still returns
+`VCV000533901.9` (the cited version is current), "Pathogenic/Likely pathogenic", review
+status "criteria provided, multiple submitters, no conflicts", trait "Mosaic variegated
+aneuploidy syndrome 1", on `NM_001211.6(BUB1B):c.2210T>G (p.Leu737Ter)`; **gnomAD v4**
+returns genomes AC=5/AN=152,174 (3.286e-5) and exomes AC=115/AN=1,461,846 (7.867e-5) for
+p.Leu737Ter, exomes AC=1/AN=1,461,878 (6.841e-7) for p.Asn1002Lys, and "Variant not found"
+for the deep-intronic candidate; **UniProt O60566** returns length 1050 with the protein
+kinase domain at 766-1050. VEP's own `codons`/`cds_start` fields independently corroborate
+the HGVS: tTa/tGa at CDS 2210 (Leu737Ter) and aaT/aaG at CDS 3006 (Asn1002Lys).
+
+Two loose ends left open by the third pass are now closed:
+
+1. **The SpliceAI 0.2/0.5/0.8 threshold attribution** (flagged then as "added from general
+   knowledge, worth a confirming glance") is confirmed correct. Illumina's own SpliceAI
+   README states verbatim that the paper provides "a detailed characterization ... for 0.2
+   (high recall), 0.5 (recommended), and 0.8 (high precision) cutoffs."
+2. **The phasing claim was tested rather than assumed.** `PGT`/`PID` are declared in the
+   VCF header and two records in the padded BUB1B region do carry them, so the caller does
+   emit physical phasing when it can; neither primary candidate does. The report's claim is
+   therefore accurate and, if anything, understated.
+
+**One real correction, and it is a scientific overclaim rather than an arithmetic error.**
+The PP4 section argued that the proband's rhabdomyosarcoma "actively discriminates" toward
+BUB1B because "malignancy has not been reported" in CEP57-related MVA2. That premise is
+contradicted by a source captured in this project's own `literature/`: Aziz et al., *JCI*
+2018 (`02_jci_cep57_tumor_suppression.md`) establishes Cep57 as a haploinsufficient tumour
+suppressor, with heterozygous mice at 65% vs 24% tumour incidence and an explicit
+recommendation of intensified cancer surveillance for human carriers. Absence of reported
+malignancy across ~11 small published families is weak evidence of absence, and leaning on
+it while the contradicting paper sits in a repository that goes public at hackathon close
+would be selective reading a judging panel could fairly probe.
+
+The fix does not weaken the conclusion, because the phenotype argument was never the
+load-bearing one: **CEP57 and TRIP13 are excluded at the variant level.** The proband
+carries seven variants across those two genes (four CEP57, three TRIP13), every one
+intronic MODIFIER and common (gnomAD AF 0.017-0.998); not one is rare or damaging. That
+exclusion is decisive and independent of any phenotype reasoning, and the report had not
+been stating it. The PP4 section now leads with it, withdraws the claim that
+rhabdomyosarcoma rules out CEP57, keeps the (valid) positive concordance with MVA1 and the
+contrast with MVA3's Wilms-tumour profile, and cites the JCI paper against itself. The
+Verification table row was updated to match.
+
+**Noted and deliberately not changed:** the padded BED files are written as `start-2000` /
+`end+2000` from 1-based Ensembl coordinates, but `bcftools -R` reads `.bed` as 0-based
+half-open, so the left-hand pad is effectively 1,999 bp rather than 2,000. The asymmetry is
+one base at the outer edge of an arbitrary 2 kb pad, affects no reported variant, and
+re-running the whole pipeline to correct it would buy nothing.
+
+**Net effect on the submission:** no variant, coordinate, CSV value, EPCR, ACMG code, or
+classification changes. One overclaim removed from the report's phenotype reasoning and
+replaced with the stronger variant-level argument that was already true but unstated.
+
+---
+
+## Expert-panel remediation pass — 2026-09-01
+
+Blind panel review, revision 2, scored 75.0/100 (up from 66.5). It confirmed the three
+prior defects were genuinely fixed and raised five new items. Four were accepted; one was
+checked against its primary source and declined. **No pipeline code changed in this pass**,
+and no variant, coordinate, candidate set or EPCR moved.
+
+### Declined: the PM2 max-credible-AF formula
+
+The panel asserted the recessive Whiffin/Ware formula puts the allelic-contribution term
+inside the square root — `sqrt(P x G x A / f)` rather than the report's `A x sqrt(P x G / f)` —
+and that the report's PM2 conclusion was therefore inverted.
+
+Checked against the framework's own manuscript source
+(`ImperialCardioGenetics/frequencyFilter`, `manuscript/manuscript.Rmd`), which derives:
+
+    Prevalence = (max individual allele freq x 1/A)^2 x 1/G x penetrance
+      => max credible AF = sqrt(P) x A x sqrt(G) x 1/sqrt(f)
+
+The allelic term is **outside** the root. The report was right. Two further points recorded
+so this does not have to be re-derived if challenged again:
+
+- The panel's justification — Whiffin's worked case of one fully-penetrant variant causing
+  every case of a 1-in-10,000 recessive disease giving 1% — **cannot discriminate the two
+  placements**, because at A = 1 they coincide: `1 x sqrt(1e-4) = sqrt(1e-4) = 1%`.
+- The panel's own "correct" value for P=1e-6/A=0.10 (2.24e-4) is numerically identical to the
+  report's P=1e-5 row, i.e. its formula silently multiplies the prevalence by ten.
+
+The valid half of the finding was the sourcing complaint: G = 0.5 and A = 0.10 were presented
+as inputs while only prevalence was flagged unsourced. All three are now flagged, the flip
+condition is restated over all three (`A x sqrt(P x G) < 8.40e-5`), and the derivation is given
+in the report rather than the formula asserted. PM2_Supporting stands, still contingent on the
+underascertainment judgement, still not load-bearing.
+
+### Accepted: PM3 under the SVI point scheme — and dropped entirely
+
+The panel said SVI scores a confirmed-trans proband at 1 point "not 2", which conflates SVI's
+PM3 points with Tavtigian's ACMG points — different currencies. Pulled the actual tables from
+*SVI Recommendation for* in trans *Criterion (PM3)* v1.0:
+
+    Table 1 — points per in trans proband   Confirmed in trans   Phase unknown
+      Pathogenic or Likely pathogenic              1.0           0.5 (P) / 0.25 (LP)
+      Homozygous occurrence (max 1.0)              0.5           N/A
+      Uncertain significance (max 0.5)             0.25          0.0
+
+    Table 2 — PM3_Supporting 0.5 | PM3 1.0 | PM3_Strong 2.0 | PM3_VeryStrong 4.0
+
+Phase here is **unknown** and this report classifies variant 1 as Likely Pathogenic on its own
+evidence: **0.25 points, below the 0.5 floor for even PM3_Supporting.** So PM3 is not applied
+at all — a more conservative correction than the panel asked for. Variant 2 falls from 4 points
+to **2**, still VUS; the ceiling on confirmed trans at ClinVar's Pathogenic tier is 4, also VUS.
+The conclusion hardens rather than moves. The principle is now stated: SVI throughout, not SVI
+where it lowers a code and 2015 where it would not.
+
+### Accepted: three others
+
+- **Phase paragraph self-contradiction.** It still argued the primary hypothesis was "supported
+  by its rarity, its kinase-domain location, and the concordant in-silico evidence" — two of
+  three grounds being exactly what the PM1 and PP3 sections withdraw. A previous pass fixed the
+  summary line and missed the paragraph carrying the argument. Now rests on rarity (AC=1), the
+  recessive requirement that something disrupt the second copy, and the truncating-plus-missense
+  architecture, with the two withdrawn grounds named as deliberately excluded.
+- **Karyotype.** The report identified mosaic aneuploidy on karyotype as the discriminating
+  feature it does not have, then recommended only parental Sanger. Karyotype + SNP microarray is
+  now the **first** recommended test, with both outcomes stated: positive lifts PP4 from partial
+  to discriminating, negative undercuts the diagnosis in a way no variant-level evidence repairs.
+  The microarray also interrogates the five permissive deletion windows.
+- **NF1 non-PASS miscount.** Report said seven records in NF1, six `MQ40`. Re-derived:
+  `bcftools view -e 'FILTER="PASS"'` gives **8** in NF1 (17:31,092,883-31,384,116), **7** with
+  `MQ40`. The undercount came from counting the 31,346,081-31,348,138 cluster rather than the
+  gene (missing a `LowQual` record at 31,331,905), and from missing that 31,346,455 is filtered
+  `LowQual;MQ40;QD2` rather than `MQ40` alone. CASR (5 records, 4 `MQ40`) and the totals
+  (7 primary / 20 secondary) were already correct.
+
+### Also tightened
+
+The allelic-architecture claim was stated as a bolded universal ("no published biallelic MVA1
+patient has two truncating alleles") and then hedged to four families in the next sentence, in
+two places. The hedge is now the claim in both.
+
+**Net effect on the submission:** no variant, coordinate, CSV value, EPCR or classification
+changes. PM3 removed from variant 2's evidence (4 points -> 2, VUS either way), one
+self-contradiction removed, one count corrected, one recommendation reordered to lead with the
+assay that defines the disease, and one reviewer finding rebutted with its primary source.
