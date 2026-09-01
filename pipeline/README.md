@@ -15,6 +15,10 @@ Hugging Face's gated-access flow.
 - Python 3 (standard library only — no third-party packages)
 - The proband VCF and its `.tbi` index in `data-notes/raw/`
 
+All commands below are written to be run **from this `pipeline/` directory** (hence the
+`../data-notes/...` paths). Run them from the repository root instead and the paths
+become `data-notes/...` with the scripts as `pipeline/vep_annotate.py`.
+
 ## 0. Gene panel coordinates
 
 Gene body coordinates were resolved via the Ensembl REST `lookup/symbol` endpoint
