@@ -25,6 +25,8 @@ data-notes/*.cram.crai
 # `/graphify graphify-out --update`; not source material.
 graphify-out/
 
-# OS/editor cruft
+# OS/editor/interpreter cruft
 .DS_Store
 *.swp
+__pycache__/
+*.pyc

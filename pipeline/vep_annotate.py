@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
-"""Annotate all PASS variants in the MVA gene panel VCF via Ensembl VEP REST,
+"""Annotate all PASS variants in a region-restricted VCF via Ensembl VEP REST,
 extracting consequence, canonical HGVS, max gnomAD population AF, and any
-ClinVar clinical significance. Writes a flat TSV for downstream filtering.
+ClinVar clinical significance. Writes a flat TSV for downstream filtering by
+pipeline/filter_candidates.py.
 
-Usage: python3 vep_annotate_panel.py
-Reads:  data-notes/secondary_panel_variants.vcf.gz
-Writes: data-notes/annotated/vep_secondary_annotated.tsv
-        data-notes/annotated/vep_secondary_raw_responses.jsonl (raw API responses, for audit)
+Usage:
+    python3 vep_annotate.py --vcf PANEL.vcf.gz --out-tsv OUT.tsv --out-raw OUT.jsonl
+
+See pipeline/README.md for the full command sequence used to produce the
+Track 1 results, including the upstream bcftools region-restriction step.
 """
+import argparse
 import json
 import subprocess
 import time
 import urllib.request
 
-VCF = "/Users/kiki/mva-hackathon-2026/data-notes/secondary_panel_variants.vcf.gz"
-OUT_TSV = "/Users/kiki/mva-hackathon-2026/data-notes/annotated/vep_secondary_annotated.tsv"
-OUT_RAW = "/Users/kiki/mva-hackathon-2026/data-notes/annotated/vep_secondary_raw_responses.jsonl"
 BATCH_SIZE = 150
 VEP_URL = (
     "https://rest.ensembl.org/vep/human/region"
@@ -24,12 +24,12 @@ VEP_URL = (
 )
 
 
-def get_pass_variants():
+def get_pass_variants(vcf):
     """Return list of (chrom, pos, ref, alt, gt, ad, gq) tuples for PASS records."""
-    cmd = [
-        "bcftools", "view", "-f", "PASS", VCF,
-    ]
-    p1 = subprocess.run(cmd, capture_output=True, text=True, check=True)
+    p1 = subprocess.run(
+        ["bcftools", "view", "-f", "PASS", vcf],
+        capture_output=True, text=True, check=True,
+    )
     query_cmd = [
         "bcftools", "query", "-f",
         "%CHROM\t%POS\t%REF\t%ALT\t[%GT]\t[%AD]\t[%GQ]\n",
@@ -57,12 +57,28 @@ def vep_batch(lines):
 
 
 def max_gnomad_af(colocated):
+    """Max AF across all gnomAD genome (gnomadg*) and exome (gnomade*) subpopulations.
+
+    NOTE (audit 2026-08-31): the as-run version of this function matched
+    `k.startswith("gnomadg") or k == "af"`. That silently excluded every gnomAD
+    *exome* frequency (the keys are `gnomade`, `gnomade_nfe`, ... and
+    "gnomade".startswith("gnomadg") is False), while the bare `af` key it did
+    include is the 1000 Genomes global AF, not gnomAD at all. The error was
+    permissive rather than exclusionary -- it could only let a variant through
+    the AF filter, never remove one -- so no candidate could have been missed.
+    That was verified rather than assumed: the corrected computation below was
+    replayed offline against the saved raw VEP responses
+    (data-notes/annotated/vep_*raw_responses.jsonl) and yields an identical
+    candidate set for both panels (primary 2/2, secondary 0/0; p.Leu737Ter's max
+    AF rises 7.35e-5 -> 9.982e-5, still far below the 0.001 threshold). The
+    published results therefore stand unmodified against this corrected script.
+    """
     best = 0.0
     for cv in colocated or []:
         freqs = cv.get("frequencies", {})
         for allele_freqs in freqs.values():
             for k, v in allele_freqs.items():
-                if k.startswith("gnomadg") or k == "af":
+                if k.startswith("gnomadg") or k.startswith("gnomade"):
                     try:
                         best = max(best, float(v))
                     except (TypeError, ValueError):
@@ -106,15 +122,41 @@ def severity_rank(term):
     return len(order)
 
 
+def lookup_genotype(gt_lookup, chrom, pos, ref, alt):
+    """Recover the source genotype for a VEP result row.
+
+    Exact (chrom, pos, ref, alt) match first: VEP reports indels in its own
+    normalised form (e.g. VCF "AT>A" comes back as "T>-" at pos+1), so allele
+    strings do not always round-trip. Only when the exact key misses do we fall
+    back to position, and then only if exactly one source record sits there --
+    an ambiguous position (multi-allelic site) yields no genotype rather than a
+    guess. This is why some rows in the annotated TSVs have empty genotype
+    columns; every variant actually reported in the submission matched exactly.
+    """
+    exact = gt_lookup.get((chrom, pos, ref, alt))
+    if exact:
+        return exact
+    at_pos = [v for k, v in gt_lookup.items() if k[0] == chrom and k[1] == pos]
+    return at_pos[0] if len(at_pos) == 1 else ("", "", "")
+
+
 def main():
-    variants = get_pass_variants()
-    print(f"Loaded {len(variants)} PASS variants from panel VCF")
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--vcf", required=True, help="region-restricted, indexed VCF(.gz)")
+    ap.add_argument("--out-tsv", required=True, help="flat annotated TSV to write")
+    ap.add_argument("--out-raw", required=True,
+                    help="raw VEP JSON responses, one per line (audit trail)")
+    args = ap.parse_args()
+
+    variants = get_pass_variants(args.vcf)
+    print(f"Loaded {len(variants)} PASS variants from {args.vcf}")
 
     lines = [to_vep_region_line(c, p, r, a) for c, p, r, a, *_ in variants]
     gt_lookup = {(c, p, r, a): (gt, ad, gq) for c, p, r, a, gt, ad, gq in variants}
 
     rows_out = []
-    with open(OUT_RAW, "w") as rawf:
+    with open(args.out_raw, "w") as rawf:
         for i in range(0, len(lines), BATCH_SIZE):
             batch = lines[i : i + BATCH_SIZE]
             print(f"  VEP batch {i//BATCH_SIZE + 1}/{(len(lines)-1)//BATCH_SIZE + 1} ({len(batch)} variants)...")
@@ -131,13 +173,7 @@ def main():
                 allele_string = r.get("allele_string", "")
                 ref = allele_string.split("/")[0] if "/" in allele_string else ""
                 alt = allele_string.split("/")[-1] if "/" in allele_string else ""
-                key = None
-                # match back to original ref/alt via input line (positions may shift for indels in VEP norm)
-                for k in gt_lookup:
-                    if k[0] == chrom and k[1] == pos:
-                        key = k
-                        break
-                gt, ad, gq = gt_lookup.get(key, ("", "", ""))
+                gt, ad, gq = lookup_genotype(gt_lookup, chrom, pos, ref, alt)
 
                 canon = pick_canonical(r.get("transcript_consequences"))
                 consequences = canon.get("consequence_terms", [])
@@ -169,14 +205,14 @@ def main():
                 })
             time.sleep(0.5)
 
-    with open(OUT_TSV, "w") as out:
+    with open(args.out_tsv, "w") as out:
         cols = ["chrom","pos","ref","alt","gene","consequence","impact","hgvsc","hgvsp",
                 "gnomad_max_af","clinvar_sig","rsids","genotype","allele_depth","genotype_qual"]
         out.write("\t".join(cols) + "\n")
         for row in rows_out:
             out.write("\t".join(str(row.get(c, "")) for c in cols) + "\n")
 
-    print(f"Wrote {len(rows_out)} annotated rows to {OUT_TSV}")
+    print(f"Wrote {len(rows_out)} annotated rows to {args.out_tsv}")
 
 
 if __name__ == "__main__":

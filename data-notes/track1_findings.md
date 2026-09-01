@@ -69,7 +69,9 @@ Ran the same pipeline (region-restrict → VEP annotate → rare+damaging filter
 - [x] Formal AlphaMissense/REVEL/CADD/SIFT/PolyPhen2 scoring for PP3 (2026-08-31, see below)
 - [x] Final proofread: every gnomAD/ClinVar/UniProt/genotype figure independently re-verified a second time against live primary sources
 - [x] GitHub repository created (private; public at hackathon close), patient genomic data excluded per the Data Transfer Agreement
-- [ ] SpliceAI on secondary intronic finding — attempted, service unreachable (see below); not blocking, low-priority secondary row
+- [x] Code-level audit of the pipeline against the report's claims (2026-08-31, see below) — one real defect found in the AF filter, proven harmless, corrected
+- [x] Pipeline consolidated into one CLI-parameterised annotation script + a filter script; full command sequence documented in `pipeline/README.md`
+- [ ] SpliceAI on secondary intronic finding — attempted twice, service unreachable both times (see below); not blocking, low-priority secondary row
 - [ ] Actual upload via the hackathon's "Submit – Track 1" tab — requires the account holder's own Hugging Face session
 
 ## Trust audit — verification against primary sources (2026-08-31)
@@ -79,7 +81,7 @@ Prompted by the user asking whether this analysis is actually grounded in trustw
 1. **Error found**: the draft claimed p.Asn1002Lys is "absent from gnomAD." **Wrong** — direct gnomAD API query shows it's a singleton (AC=1 of 1,461,878 exome alleles, AF≈6.84e-7). VEP's REST proxy simply hadn't indexed this ultra-rare variant (its `colocated_variants` field was empty for this position) — a real gap in Ensembl's bundled gnomAD annotation, not a script bug. **Fixed** in the CSV and methods report — now correctly states "gnomAD singleton" rather than "absent."
 2. **Evidence undersold**: direct ClinVar query (via NCBI eutils) shows the stop_gained variant's classification is stronger than originally reported — VCV000533901.9, "criteria provided, multiple submitters, no conflicts" (2-star), specifically for "Mosaic variegated aneuploidy syndrome 1" (OMIM 257300). **Fixed** — now cited with full accession/review-status detail.
 3. **Evidence undersold**: direct UniProt query (O60566) confirms the kinase domain spans residues 766-1050 (protein is 1050 aa total). This means: (a) the stop_gained at 737 removes the *entire* kinase domain (confirmed, not "likely"), and (b) p.Asn1002Lys falls *directly inside* the kinase domain, not just "near" it. **Fixed** — PM1 evidence code now cited with confirmed domain overlap.
-4. **Log error found and fixed**: `literature/_fetch_log.md` incorrectly stated Baker et al. 2011 had no available PMC copy. It does — PMC3468323 — now fetched in full, see `literature/04b_baker2011_senescence_clearance_FULLTEXT.md`.
+4. **Log error found and fixed**: `literature/_fetch_log.md` incorrectly stated Baker et al. 2011 had no available PMC copy. It does — PMC3468323 — now fetched in full, see `literature/04b_baker2011_senescence_clearance_fulltext.md`.
 5. **Open item, not yet resolved**: `notes/01_spindle_assembly_checkpoint_biology.md` claims BubR1 has a "KEN-box motif." UniProt's O60566 feature table only lists a D-box (224-232), no KEN-box. Checked the Kops 2012 "unusual pseudokinase" paper abstract directly — see below.
 6. **Baker 2011 and Sinclair 2014 core claims re-verified** directly against their actual PubMed abstracts (not WebSearch's paraphrase) — both confirmed accurate, no corrections needed to the strategic Track 2 hypotheses built on them.
 
@@ -105,3 +107,33 @@ Direct query against MyVariant.info's dbNSFP aggregation (`chr15:g.40220612T>G`,
 Attempted a direct query against the SpliceAI Lookup API (`spliceailookup-api.broadinstitute.org`) for `chr15-40216470-A-G` (GRCh38). **Result: connection timeout** — repeated attempts (~75s each) failed at the TCP handshake stage, while the same machine reached `gnomad.broadinstitute.org`, the SpliceAI Lookup *frontend* (`spliceailookup.broadinstitute.org`, HTTP 200), and general internet hosts without issue. This points to the SpliceAI backend API specifically being unreachable/down at time of attempt, not a network-level block on this environment. Not re-attempted further to avoid burning time on a transient external outage.
 
 **Status**: genuinely not resolved, reported honestly as such rather than silently skipped or faked. This is the lowest-priority of the three findings (a secondary/tertiary row, VEP's basic consequence call already doesn't flag it as splice-altering, gnomAD-absent) — retry later (transient outages on public bioinformatics APIs are common) if time allows before final submission; not a blocker.
+
+## Code-level audit of the pipeline (2026-08-31)
+
+The earlier trust audit checked the *claims* against primary databases. This pass checked the *code* against the claims — i.e. does the pipeline actually do what the methods report says it does.
+
+**Defect found: the rarity filter never included gnomAD exomes.** `max_gnomad_af()` accumulated only keys matching `k.startswith("gnomadg")` or `k == "af"`. In the VEP REST response the exome keys are `gnomade`, `gnomade_nfe`, … — and `"gnomade".startswith("gnomadg")` is `False`, so every gnomAD exome frequency was silently dropped, even though the request URL asks for them (`af_gnomade=1`). Worse for the field's name: the bare `af` key it *did* include is the **1000 Genomes** global AF, not gnomAD at all. So the column labelled `gnomad_max_af` was gnomAD-genomes subpopulation maxima mixed with a 1000G figure.
+
+**Why the result still stands — verified, not assumed.** The error is permissive, not exclusionary: excluding a frequency source can only let a variant *through* the AF<0.001 filter, never remove one. So no candidate could have been missed. Rather than reason it out and move on, the corrected computation was replayed offline against the saved raw VEP responses (`vep_raw_responses.jsonl`, `vep_secondary_raw_responses.jsonl` — no live API re-run needed, the audit trail was already on disk):
+
+| Panel | Records | As-run filter | Exome-inclusive filter | Added | Dropped |
+|---|---|---|---|---|---|
+| Primary (9-gene) | 1281 | 2 candidates | 2 candidates | 0 | 0 |
+| Secondary (11-gene) | 1065 | 0 candidates | 0 candidates | 0 | 0 |
+
+p.Leu737Ter's max AF rises from 7.35e-5 to 9.982e-5 (a gnomAD exome subpopulation) — still an order of magnitude below the 0.001 threshold. p.Asn1002Lys stays 0.0 in VEP, which is the under-indexing gap the earlier trust audit already caught and corrected via direct gnomAD query.
+
+**Fixed**: `pipeline/vep_annotate.py` now matches both `gnomadg*` and `gnomade*` and drops the 1000G `af` key. The defect and the offline check are both recorded in the submission's Verification table rather than quietly patched — a reviewer reading the repo would otherwise find the discrepancy themselves.
+
+**Reproducibility gaps closed in the same pass:**
+- The filtering step (AF<0.001 + MODERATE/HIGH) had **no code at all** — the candidate list came from inspection. Now `pipeline/filter_candidates.py`, which reproduces the submitted candidate list exactly from the annotated TSVs (2 rows primary, 0 secondary). The hackathon rules require "all scripts/configs needed to reproduce results."
+- The two annotation scripts were byte-identical except for three path constants (and the secondary's docstring still said "MVA gene panel" / `Usage: python3 vep_annotate_panel.py`). Merged into one `vep_annotate.py` taking `--vcf`/`--out-tsv`/`--out-raw`, which also removes the hardcoded `/Users/kiki/...` paths the report previously had to apologise for.
+- The `bcftools view -R` region-restriction step was described in the methods but recorded nowhere. Now in `pipeline/README.md` with the actual commands for both panels.
+- Latent bug fixed while in there: the genotype lookup matched on `(chrom, pos)` only, ignoring ref/alt, so a multi-allelic site could have attached the wrong genotype to a row. Now matches the full key with a single-record positional fallback for VEP-normalised indels. Never affected a reported variant — all three matched exactly — and the genotypes in the submission were independently confirmed by direct `bcftools` query anyway.
+
+**ACMG evidence codes tightened** (classification unchanged — PVS1 carries the weight):
+- **PS4 dropped.** It was cited for the ClinVar classification, but PS4 is the case-control prevalence code and no case-control data was generated here. The code that formally covers a reputable-source classification is PP5 — which ClinGen's SVI working group has recommended against since 2018 as double-counting. The ClinVar concordance is now reported as corroboration, explicitly not scored.
+- **PM2 → PM2_Supporting** on both variants, following the ClinGen SVI recommendation adopted by most VCEP specifications rather than the 2015 guidelines' default Moderate.
+- **PVS1 strengthened**: added the NMD assessment (stop at codon 737 of 1050, well upstream of the final exon-exon junction → NMD-predicted), which is the first branch of the ClinGen PVS1 decision tree and was conspicuous by its absence.
+
+**SpliceAI retried** for `chr15-40216470-A-G`: still a hard timeout (HTTP 000 after 45s). Now documented as a persistent outage across two independent attempts rather than a single transient failure.
