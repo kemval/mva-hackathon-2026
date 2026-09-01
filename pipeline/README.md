@@ -109,7 +109,8 @@ python3 filter_candidates.py \
   --impacts MODIFIER | awk -F'\t' 'NR==1 || $5=="BUB1B"'
 ```
 
-Expected output: **1 row**, `15:40216470 A>G` (`c.2679-1026A>G`, gnomAD AF 0.000000,
+Expected output: **1 row**, `15:40216470 A>G` (`c.2679-1026A>G`, `gnomad_max_af` blank —
+VEP carried no gnomAD frequency, and a direct gnomAD v4 query returns "Variant not found" —
 `spliceai_max_ds` 0.00).
 The rarity filter leaves 10 MODIFIER variants across the nine-gene panel (spread over
 MAD1L1, BUB1, SLF2, BUB1B and BUB3), of which exactly one is in BUB1B — so this is a
@@ -144,12 +145,37 @@ The 0.18 maximum is a common MAD1L1 intronic polymorphism (gnomAD AF 0.77); amon
 guard matters: blank means SpliceAI has no data for that position, which is not the same
 as a score of zero and must not be counted as a pass.
 
-## Note on the gnomAD AF field
+## Notes on the gnomAD AF field
 
-The `max_gnomad_af()` version that produced the *original* annotation run excluded
-gnomAD *exome* frequencies. The error was permissive rather than exclusionary, and
-replaying the corrected computation offline against the saved raw VEP responses gave an
-identical candidate set for both panels. The point is now moot in any case: the SpliceAI
-re-annotation regenerated both TSVs from scratch with the corrected function, and the
-candidate set is still identical (primary 2, secondary 0). Full detail is in the
-`max_gnomad_af` docstring and in the submission report's Verification table.
+Two distinct defects were found in this field, at different times. Both were permissive
+rather than exclusionary — each could only admit a variant to the candidate list, never
+remove one — and neither changed the result.
+
+**1. Missing exome frequencies (found and fixed first).** The `max_gnomad_af()` version
+that produced the *original* annotation run excluded gnomAD *exome* frequencies. Replaying
+the corrected computation offline against the saved raw VEP responses gave an identical
+candidate set for both panels, and the point is moot in any case: the SpliceAI
+re-annotation regenerated both TSVs from scratch with the corrected function.
+
+**2. Blank conflated with zero (found later, in the review pass).** `max_gnomad_af()`
+returned `0.0` both when gnomAD recorded an allele at frequency zero and when VEP attached
+no gnomAD frequency at all — the same blank-vs-zero conflation this pipeline documents
+avoiding for SpliceAI, sitting undisclosed in the AF column. It returns `None` now and the
+column is **blank where the frequency is unknown**, matching `spliceai_max_ds`. Exactly two
+rows change, both in BUB1B and both variants this submission reports:
+`15:40220612` (p.Asn1002Lys, true AF 6.84e-7) and `15:40216470` (absent from gnomAD),
+each previously written as `0.000000`.
+
+`filter_candidates.py` now handles blank explicitly. **Blank is kept, not dropped**, and a
+note is written to stderr prompting direct verification. The reasoning: absence from a
+population database is evidence *for* rarity in a rare-disease search, so dropping such
+rows would be exclusionary and could discard a true ultra-rare causal allele — which is
+not hypothetical, since p.Asn1002Lys is one of the two affected rows. This is deliberately
+the opposite call from the *unparseable*-AF branch, which drops: a blank means the source
+had nothing to say, whereas an unparseable value means the field is corrupt and the row
+cannot be trusted at all.
+
+The candidate set is unchanged by both fixes (primary 2, secondary 0), verified by
+replaying the shipped corrected function against
+`data-notes/annotated/vep_*raw_responses.jsonl`. Full detail is in the `max_gnomad_af`
+docstring and the submission report's Verification table.

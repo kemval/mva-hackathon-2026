@@ -63,6 +63,18 @@ def vep_batch(lines):
 def max_gnomad_af(colocated):
     """Max AF across all gnomAD genome (gnomadg*) and exome (gnomade*) subpopulations.
 
+    Returns None when VEP attached no gnomAD frequency at all for the position,
+    rather than 0.0. The two are different claims -- "gnomAD has no record of
+    this allele" is not "gnomAD records this allele at frequency zero" -- and
+    this is the same blank-vs-zero distinction `max_spliceai_ds` already makes
+    below. It is not hypothetical here: VEP returned no gnomAD frequency for
+    15:40220612 (p.Asn1002Lys), which the earlier version wrote out as
+    `0.000000`, while the variant is in fact a gnomAD exome singleton at
+    AF 6.84e-7 (AC=1/1,461,878, direct API query). The old value was wrong in a
+    permissive direction and the true value is still far below any rarity
+    threshold used here, so no candidate was affected either way -- but the
+    column now says "unknown" where it means unknown.
+
     NOTE (audit 2026-08-31): the as-run version of this function matched
     `k.startswith("gnomadg") or k == "af"`. That silently excluded every gnomAD
     *exome* frequency (the keys are `gnomade`, `gnomade_nfe`, ... and
@@ -77,16 +89,17 @@ def max_gnomad_af(colocated):
     AF rises 7.35e-5 -> 9.982e-5, still far below the 0.001 threshold). The
     published results therefore stand unmodified against this corrected script.
     """
-    best = 0.0
+    best = None
     for cv in colocated or []:
         freqs = cv.get("frequencies", {})
         for allele_freqs in freqs.values():
             for k, v in allele_freqs.items():
                 if k.startswith("gnomadg") or k.startswith("gnomade"):
                     try:
-                        best = max(best, float(v))
+                        f = float(v)
                     except (TypeError, ValueError):
-                        pass
+                        continue
+                    best = f if best is None else max(best, f)
     return best
 
 
@@ -231,7 +244,7 @@ def main():
                     "impact": canon.get("impact", ""),
                     "hgvsc": canon.get("hgvsc", ""),
                     "hgvsp": canon.get("hgvsp", ""),
-                    "gnomad_max_af": f"{gnomad_af:.6f}",
+                    "gnomad_max_af": "" if gnomad_af is None else f"{gnomad_af:.6f}",
                     "spliceai_max_ds": "" if spliceai_ds is None else f"{spliceai_ds:.2f}",
                     "clinvar_sig": clinvar,
                     "rsids": rsids,

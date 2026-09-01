@@ -40,8 +40,25 @@ def main():
     for row in rows:
         if row.get("impact", "").upper() not in impacts:
             continue
+        raw_af = (row.get("gnomad_max_af") or "").strip()
+        if raw_af == "":
+            # Blank means gnomAD carried no record of this allele -- NOT that it
+            # was observed at frequency zero (see max_gnomad_af in
+            # vep_annotate.py). For a rare-disease search, absence from a
+            # population database is evidence *for* rarity, so a blank is kept
+            # and flagged rather than dropped: dropping it would be exclusionary
+            # and could discard a true ultra-rare causal allele. This is the
+            # opposite call from the unparseable branch below, deliberately -- a
+            # blank means the source had nothing to say, whereas an unparseable
+            # value means the field is corrupt and the row cannot be trusted.
+            kept.append(row)
+            print(f"  note: {row.get('chrom')}:{row.get('pos')} "
+                  f"{row.get('ref')}>{row.get('alt')} ({row.get('gene') or '?'}) "
+                  f"kept with no gnomAD frequency -- verify directly against gnomAD",
+                  file=sys.stderr)
+            continue
         try:
-            af = float(row.get("gnomad_max_af") or 0.0)
+            af = float(raw_af)
         except ValueError:
             # An unparseable AF is treated as unknown, not as rare: skip rather
             # than risk promoting a common variant into the candidate list.
