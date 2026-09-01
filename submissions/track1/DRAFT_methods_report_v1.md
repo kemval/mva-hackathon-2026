@@ -19,7 +19,7 @@ Independent analysis of the proband's own whole-genome VCF and HPO-coded clinica
 6. **Phenotype cross-check**: proband's HPO terms compared against each gene's known phenotype spectrum (see Discussion).
 7. **Secondary panel**: TP53, DICER1, NF1, PTCH1, HRAS (rhabdomyosarcoma-predisposition syndromes, per Schneider et al., *Translational Andrology and Urology*, PMC7658107, which names TP53/NF1/DICER1/PTCH1-SUFU as the major RMS-predisposition genes and HRAS/Costello syndrome as a related consideration) and CASR, CLDN16, CLDN19, AGXT, SLC34A1, CYP24A1 (nephrocalcinosis-associated genes, per two pediatric nephrocalcinosis genetics reviews — *Clinical Kidney Journal* 15(4):812 and *Pediatric Nephrology*, PMC12852217 — a literature-grounded but deliberately non-exhaustive subset of the ~30-gene commercial panels these reviews describe), run through the identical pipeline, to investigate two HPO features (nephrocalcinosis, parental recurrent miscarriage) not on the standard BUB1B/MVA symptom list.
 
-Full pipeline scripts: `pipeline/vep_annotate_panel.py`. Raw annotated tables: `data-notes/annotated/`.
+Full pipeline scripts: `pipeline/vep_annotate_panel.py` (primary panel) and `pipeline/vep_annotate_secondary.py` (secondary panel), both in the repository. Raw annotated tables (`data-notes/annotated/`) exist locally but are **not** committed to version control — see Reproducibility below.
 
 ## Primary finding: BUB1B compound-heterozygous candidate
 
@@ -51,7 +51,7 @@ The proband's HPO-coded features — rhabdomyosarcoma (HP:0002859), short statur
 
 ## Secondary finding
 
-chr15:40216470 A>G (c.2679-1026A>G), deep intronic, absent from gnomAD, physically located between the two primary candidates within BUB1B. VEP's canonical-transcript consequence call does not flag this as splice-altering. A direct SpliceAI query was attempted (SpliceAI Lookup API) but the service was unreachable (connection timeout at time of attempt, while other bioinformatics APIs and the same service's own frontend responded normally — an external outage, not a methodology gap) — reported honestly as not-yet-resolved rather than skipped silently. Reported as a secondary/lower-confidence row per the submission format; does not affect automated scoring either way.
+chr15:40216470 A>G (c.2679-1026A>G), deep intronic, absent from gnomAD (independently re-confirmed via direct gnomAD v4 GraphQL query, not just VEP's proxy — the query returns "Variant not found," genuinely absent, not an under-indexing artifact like the p.Asn1002Lys correction above), physically located between the two primary candidates within BUB1B. VEP's canonical-transcript consequence call does not flag this as splice-altering. A direct SpliceAI query was attempted (SpliceAI Lookup API) but the service was unreachable (connection timeout at time of attempt, while other bioinformatics APIs and the same service's own frontend responded normally — an external outage, not a methodology gap) — reported honestly as not-yet-resolved rather than skipped silently. Reported as a secondary/lower-confidence row per the submission format; does not affect automated scoring either way.
 
 ## Unresolved / not addressed by this analysis
 
@@ -75,6 +75,8 @@ The initial candidate list was generated via Ensembl VEP's REST API, which proxi
 | Canonical transcript choice | Ensembl (`is_canonical` flag) cross-checked against ClinVar's independently-chosen RefSeq transcript (NM_001211.6) | Both sources converge on the same HGVS nomenclature (c.2210T>G, p.Leu737Ter) — internal consistency confirms the transcript choice is correct |
 | p.Asn1002Lys in-silico deleteriousness (PP3) | dbNSFP via MyVariant.info (AlphaMissense, REVEL, CADD, SIFT, PolyPhen-2) | 5/6 predictors damaging; REVEL specifically ambiguous (0.472) — reported as weak, not strong, PP3 |
 | Secondary intronic finding splice impact | SpliceAI Lookup API | Unreachable (service timeout) — genuinely unresolved, not fabricated or omitted |
+| Secondary intronic finding gnomAD absence | gnomAD v4 GraphQL API (direct, bypassing VEP) | Confirmed genuinely absent ("Variant not found") — re-checked specifically because VEP's proxy was already caught wrong once on a different variant in this pair |
+| All three variants' genotype quality/read depth | Direct `bcftools view` on the region-restricted VCF | GQ=99 for all three; AD/DP exactly as reported (p.Leu737Ter 21,25/46x; p.Asn1002Lys 15,13/28x) |
 
 ## AI-assistant usage disclosure
 
@@ -82,7 +84,7 @@ Anthropic API, Claude (Sonnet 5), commercial terms, no training on customer cont
 
 ## Reproducibility
 
-Annotation/filtering scripts (`pipeline/`) and gene-panel coordinate lookups (`data-notes/regions/`) are in the project repository and fully scripted. Per the hackathon's Data Transfer Agreement ("I will not release or otherwise grant data access to anyone"), the raw VCF, phenotype document, and full-panel genotype-level annotation output are intentionally **not** committed to version control — see `data-notes/README.md` for the exclusion policy. Reproducing this analysis requires obtaining independent authorized access to the dataset and re-running the scripts against a freshly downloaded VCF.
+Annotation/filtering scripts (`pipeline/`) and gene-panel coordinate lookups (`data-notes/regions/`) are in the project repository. The scripts currently use hardcoded local paths (`/Users/.../mva-hackathon-2026/data-notes/...`) rather than relative paths or CLI arguments — a real reproducibility gap worth naming rather than glossing over; a re-runner would need to edit the `VCF`/`OUT_TSV`/`OUT_RAW` constants at the top of each script for their own environment before running. Per the hackathon's Data Transfer Agreement ("I will not release or otherwise grant data access to anyone"), the raw VCF, phenotype document, and full-panel genotype-level annotation output are intentionally **not** committed to version control — see `data-notes/README.md` for the exclusion policy. Reproducing this analysis requires obtaining independent authorized access to the dataset and re-running the scripts against a freshly downloaded VCF.
 
 ---
-*This is a DRAFT (v1) — pending: SpliceAI check on the deep-intronic secondary finding (attempted 2026-08-31, service unreachable — retry if time allows, not blocking), and final proofread before submission. Formal PP3 in-silico missense scoring is now done (see above).*
+*This is a DRAFT (v1). Final proofread pass completed 2026-08-31: every gnomAD/ClinVar/UniProt/genotype figure in this report was independently re-verified against its live primary-source API and matches exactly (see Verification table). Formal PP3 in-silico scoring is done. Only remaining items before actual submission: (1) SpliceAI on the secondary intronic finding — attempted, service unreachable, not blocking; (2) rename this file and the predictions CSV to the required `<team-name>_track1_report.md` / `<team-name>_<model-name>.csv` convention once a team/display name is chosen — not yet done, no name has been picked.*
