@@ -58,16 +58,19 @@ Ran the same pipeline (region-restrict → VEP annotate → rare+damaging filter
 - **RMS-predisposition side (TP53, DICER1, NF1, PTCH1)**: confirmed as the standard RMS-predisposition gene set by Schneider et al., "Germline predisposition to genitourinary rhabdomyosarcoma," *Translational Andrology and Urology* (PMC7658107) — TP53 (Li-Fraumeni), NF1, DICER1, and PTCH1/SUFU (Gorlin) are explicitly named as the major RMS-associated predisposition genes. HRAS (Costello syndrome) is named alongside them as a broader RMS-predisposition consideration in the same literature, supporting its inclusion too.
 - **Nephrocalcinosis side (CASR, CLDN16, CLDN19, AGXT, SLC34A1, CYP24A1)**: confirmed against "Genetic evaluation of paediatric nephrocalcinosis: phenotype-driven genetic panels reveal a rare diagnosis," *Clinical Kidney Journal* (academic.oup.com/ckj/article/15/4/812/6468760) and "Genetic causes of nephrolithiasis and nephrocalcinosis in a pediatric population," *Pediatric Nephrology* (Springer, PMC12852217) — all six genes appear in real pediatric nephrocalcinosis genetic-testing panels cited in both papers (CLDN16/CLDN19 for FHHNC, AGXT for primary hyperoxaluria type 1, CYP24A1 for infantile hypercalcemia, CASR, SLC34A1). The panel is a reasonable, literature-grounded subset of the ~30-gene commercial panels these reviews describe — not exhaustive (the full panels include ~20+ additional genes: ATP6V0A4, ATP6V1B1, CLCNKB, HNF4A, HOGA1, SLC12A1, SLC9A3R1, VDR, and others), and that non-exhaustiveness should stay explicit in the write-up rather than implying full coverage.
 
-## Status: Track 1 analysis substantively complete
+## Status: Track 1 analysis complete, submission ready (2026-08-31)
 - [x] Independent variant discovery from proband's own VCF + phenotype (not copied from leaderboard)
 - [x] Rare + damaging filter across 9-gene MVA panel → 2 BUB1B candidates
-- [x] Secondary 11-gene phenotype-driven panel → clean, no candidates
+- [x] Secondary 11-gene phenotype-driven panel → clean, no candidates; panel grounded in cited differential-diagnosis literature
 - [x] Phasing limitation identified and honestly documented
-- [x] ACMG evidence-code write-up (done, see `submissions/track1/gummietech_track1_report.md`)
-- [x] Draft Track 1 CSV + methods report (done, v1)
+- [x] ACMG evidence-code write-up (see `submissions/track1/gummietech_track1_report.md`)
+- [x] Final Track 1 CSV + methods report, named per hackathon convention (`gummietech_vep-acmg-compound-het.csv`, `gummietech_track1_report.md`)
 - [x] Trust audit / verification pass against primary sources (2026-08-31, see below)
 - [x] Formal AlphaMissense/REVEL/CADD/SIFT/PolyPhen2 scoring for PP3 (2026-08-31, see below)
+- [x] Final proofread: every gnomAD/ClinVar/UniProt/genotype figure independently re-verified a second time against live primary sources
+- [x] GitHub repository created (private; public at hackathon close), patient genomic data excluded per the Data Transfer Agreement
 - [ ] SpliceAI on secondary intronic finding — attempted, service unreachable (see below); not blocking, low-priority secondary row
+- [ ] Actual upload via the hackathon's "Submit – Track 1" tab — requires the account holder's own Hugging Face session
 
 ## Trust audit — verification against primary sources (2026-08-31)
 

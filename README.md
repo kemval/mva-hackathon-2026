@@ -1,36 +1,44 @@
 # MVA Hackathon 2026 — Project Workspace
 
+**Team:** Gummietech
 Working directory for "Rare Disease, Real Kid: The MVA Hackathon 2026" (SageBio / Hugging Face / MVA Society / BEACON, prizes from AWS + Anthropic). Submissions close **Oct 24, 2026 23:59 UTC**.
 
 Full strategy plan: `~/.claude/plans/id-like-to-participate-golden-haven.md`
 
 ## Folder structure
 
-- `literature/` — full text of open-access papers, guideline docs, and official reference material (site captures, journal articles, tool docs). Start with `00_hackathon_site_full_capture.md` (the complete live-site capture: Overview, FAQ, Official Rules, both Submit tabs, leaderboard snapshot) and `_fetch_log.md` (status of every fetched source) once populated.
-- `notes/` — original synthesis docs covering material from copyrighted textbooks (can't be bulk-copied) — mitosis/spindle-checkpoint biology, ACMG variant classification workflow, VCF/BAM/HPO pipeline mechanics, drug repurposing methodology. These are scaffolding/orientation, not a replacement for the actual primary literature in `literature/` or the textbooks themselves.
-- `data-notes/` — working notes on the actual case once data access is granted (HPO terms, variant candidates, phasing results, ACMG evidence per candidate).
-- `pipeline/` — scripts (annotation, filtering, Exomiser runs, phasing, drug-target queries).
-- `submissions/` — drafts of both tracks' CSVs, reports, and the pitch video script.
-
-## Key strategic takeaway (don't lose this)
-
-Track 1's automated leaderboard is already saturated (~30+ entries at a perfect 100/1.000 score, most explicitly reference BUB1B). Raw Track 1 score will not differentiate this submission. The two real levers are: (1) Track 1's judged methods write-up (scientific rigor / depth of understanding — requires independently re-deriving the answer from the actual VCF+HPO data, not copying the crowd), and (2) the Track 2 drug-repurposing report, which is 100% panel-judged and where the majority of effort should go.
+- `literature/` — full text of open-access papers, guideline documents, and official reference material (site captures, journal articles, tool documentation). Start with `00_hackathon_site_full_capture.md` (the complete live-site capture: Overview, FAQ, Official Rules, both Submit tabs, leaderboard snapshot) and `_fetch_log.md` (fetch status and provenance of every source).
+- `notes/` — original synthesis documents covering material from copyrighted textbooks (not bulk-reproduced) — mitosis/spindle-checkpoint biology, ACMG variant classification workflow, VCF/BAM/HPO pipeline mechanics, drug repurposing methodology. Orientation material; the primary literature in `literature/` is the citation-grade source.
+- `data-notes/` — working analysis notes on the case (gene-panel coordinates, variant candidates, ACMG evidence, phasing analysis). Raw and derived patient genomic data are excluded from version control per the dataset's Data Transfer Agreement — see `data-notes/README.md`.
+- `pipeline/` — annotation and filtering scripts (VEP REST API annotation for the primary and secondary gene panels).
+- `submissions/` — Track 1 and Track 2 submission materials (predictions CSV, methods report, pitch video script).
+- `graphify-out/` — knowledge graph built from `literature/` + `notes/` (gitignored, regenerable via `/graphify --update`).
 
 ## Knowledge graph
 
-Built — `graphify-out/` (graph.html, GRAPH_REPORT.md, graph.json). 243 nodes / 282 edges / 12 communities. Query it with `graphify query "<question>"` or `graphify path "<a>" "<b>"` instead of re-reading raw files. Re-run `/graphify /Users/kiki/mva-hackathon-2026 --update` after adding/editing files in `literature/` or `notes/` (cheap — only re-extracts changed files).
+Built from `literature/` + `notes/`: 285 nodes / 359 edges / 15 communities as of the last update (2026-08-31). Query with `graphify query "<question>"` or `graphify path "<a>" "<b>"` instead of re-reading raw files. Re-run `/graphify /Users/kiki/mva-hackathon-2026 --update` after adding or editing files in `literature/` or `notes/`.
 
-## Track 1 status (2026-08-31) — analysis substantively complete, draft submission ready
+## Track 1 status (2026-08-31) — analysis complete, submission-ready
 
-Independent pipeline (region-restrict → VEP annotate → ACMG filter) run against the real proband VCF + HPO phenotype. Result: a compound-heterozygous BUB1B candidate (p.Leu737Ter, ClinVar pathogenic + novel p.Asn1002Lys missense), independently derived — not copied from the leaderboard. Full findings in `data-notes/track1_findings.md`; draft submission in `submissions/track1/` (CSV + methods report, both marked DRAFT v1).
+An independently derived pipeline (region-restriction via `bcftools` → annotation via Ensembl VEP REST → ACMG/AMP-lite filtering) was run against the proband's own VCF and HPO-coded clinical phenotype — not inferred from the public leaderboard. Result: a compound-heterozygous candidate in **BUB1B** — a ClinVar-classified pathogenic nonsense variant (p.Leu737Ter) paired with a rare missense variant (p.Asn1002Lys) inside the kinase domain — plus a lower-confidence deep-intronic secondary finding.
 
-**Still pending before actual submission:**
-1. SpliceAI check on the secondary deep-intronic finding (chr15:40216470).
-2. Formal PM3/PP3 in-silico scoring (AlphaMissense/REVEL/CADD) on the missense candidate.
-3. UniProt/Pfam domain boundary confirmation for residue 1002.
-4. Set up the GitHub repo (required for submission — can stay private during the hackathon).
-5. Final proofread, then actually upload via the "Submit - Track 1" tab on the hackathon Space.
+Every population-frequency, clinical-classification, protein-domain, and in-silico-predictor claim underlying the ACMG evidence was independently re-verified directly against its primary source (gnomAD, ClinVar, UniProt, dbNSFP) rather than taken from an intermediate annotation tool; this process caught and corrected two factual errors along the way (documented in the report's Verification section and `data-notes/track1_findings.md`).
+
+Full analysis: `data-notes/track1_findings.md`. Final submission materials: `submissions/track1/gummietech_track1_report.md` and `submissions/track1/gummietech_vep-acmg-compound-het.csv`.
+
+**Completed:**
+1. Independent variant discovery, ACMG/AMP evidence classification, and phenotype correlation.
+2. Compound-heterozygosity presumed with an explicitly documented phasing limitation (variants ~11kb apart, beyond short-read phasing range — stated as a limitation, not silently assumed).
+3. Phenotype-driven 11-gene secondary panel search for two unexplained clinical features, grounded in cited differential-diagnosis literature; result is negative and reported as such.
+4. Formal in-silico missense scoring (AlphaMissense, REVEL, CADD, SIFT, PolyPhen-2) for the missense candidate, reporting a discordant result (REVEL) rather than omitting it.
+5. Full trust-audit verification pass against primary sources, plus a final proofread that re-confirmed every figure a second time.
+6. GitHub repository created (public at hackathon close, per the rules) and submission files named per the required convention.
+
+**Outstanding (does not block submission):**
+- SpliceAI assessment of the secondary deep-intronic finding — attempted; the SpliceAI Lookup API was unreachable at time of attempt (confirmed external service outage, not a local network restriction). This is the lowest-priority row in the submission and does not affect the primary finding.
+- Actual upload via the hackathon's "Submit – Track 1" tab, which requires the account holder's own Hugging Face session.
 
 ## Next actions
-1. Close out the Track 1 pending items above.
-2. Begin Weeks 3-4: mechanism deep-dive bridging this confirmed variant into the Track 2 drug-repurposing report (see plan).
+
+1. Submit Track 1 via the hackathon site (account-holder action).
+2. Begin the Track 2 mechanism deep-dive: build the causal chain from the confirmed BUB1B variant through spindle-checkpoint dysfunction to the proband's HPO-coded phenotype, then into the drug-repurposing hypotheses (senolytics vs. NAD+/NMN supplementation) already grounded in `literature/`.
