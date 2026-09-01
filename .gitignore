@@ -1,0 +1,30 @@
+# Raw and derived patient genomic/clinical data — NEVER committed.
+# Per the hackathon's Data Transfer Agreement: "I will not release or otherwise
+# grant data access to anyone and I will establish appropriate safeguards to
+# prevent unauthorized data use." A private GitHub repo is not an approved
+# safeguard for this data, and the raw dataset must be deleted (not archived
+# in git history) within 30 days of hackathon close. See data-notes/README.md.
+data-notes/raw/
+data-notes/annotated/
+data-notes/*.vcf.gz
+data-notes/*.vcf.gz.tbi
+data-notes/*.vcf
+data-notes/*.bam
+data-notes/*.bam.bai
+data-notes/*.cram
+data-notes/*.cram.crai
+*.vcf.gz
+*.vcf.gz.tbi
+*.vcf
+*.bam
+*.bam.bai
+*.cram
+*.cram.crai
+
+# graphify build artifacts — regeneratable from literature/ + notes/ via
+# `/graphify graphify-out --update`; not source material.
+graphify-out/
+
+# OS/editor cruft
+.DS_Store
+*.swp

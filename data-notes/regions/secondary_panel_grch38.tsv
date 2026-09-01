@@ -1,0 +1,12 @@
+gene	chrom	start	end	strand	rationale
+TP53	17	7661779	7687546	-	Li-Fraumeni syndrome, rhabdomyosarcoma predisposition
+DICER1	14	95086228	95158010	-	DICER1 syndrome, rhabdomyosarcoma predisposition
+NF1	17	31094883	31382116	+	Neurofibromatosis type 1, embryonal RMS predisposition
+PTCH1	9	95442980	95517057	-	Gorlin syndrome, RMS predisposition
+HRAS	11	532242	537343	-	Costello syndrome, RMS predisposition
+CASR	3	122183665	122291629	+	Hypercalciuria/nephrocalcinosis (ADH type 1)
+CLDN16	3	190322522	190412460	+	Familial hypomagnesemia with nephrocalcinosis (FHHNC)
+CLDN19	1	42733093	42740286	-	FHHNC with ocular involvement
+AGXT	2	240868543	240881531	+	Primary hyperoxaluria type 1, nephrocalcinosis
+SLC34A1	5	177379235	177398848	+	Renal Fanconi/nephrocalcinosis, hypophosphatemic rickets
+CYP24A1	20	54153446	54173986	-	Idiopathic infantile hypercalcemia, nephrocalcinosis

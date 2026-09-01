@@ -1,0 +1,10 @@
+gene	chrom	start	end	strand	source
+BUB1B	15	40160984	40221137	+	Ensembl REST lookup/symbol, GRCh38, captured 2026-08-31
+CEP57	11	95789965	95837070	+	Ensembl REST lookup/symbol, GRCh38, captured 2026-08-31
+TRIP13	5	892849	919357	+	Ensembl REST lookup/symbol, GRCh38, captured 2026-08-31
+CENATAC	11	118998051	119015811	+	Ensembl REST lookup/symbol, GRCh38, captured 2026-08-31
+SLF2	10	100912963	100965134	+	Ensembl REST lookup/symbol, GRCh38, captured 2026-08-31
+SMC5	9	70258270	70354874	+	Ensembl REST lookup/symbol, GRCh38, captured 2026-08-31
+MAD1L1	7	1815787	2233243	-	Ensembl REST lookup/symbol, GRCh38, captured 2026-08-31
+BUB1	2	110635468	110678098	-	Ensembl REST lookup/symbol, GRCh38, captured 2026-08-31
+BUB3	10	123154365	123313144	+	Ensembl REST lookup/symbol, GRCh38, captured 2026-08-31
