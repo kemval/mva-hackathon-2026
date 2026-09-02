@@ -1,0 +1,36 @@
+# Track 2 pathway node set - the search space for the drug-repurposing query.
+# Chosen from the mechanism characterisation in data-notes/track2_mechanism.md and
+# fixed before the search was run. Ensembl gene IDs resolved via Ensembl REST.
+#
+# tier: why the node is in the search space.
+#   defect     - the deficient protein itself
+#   sac        - the checkpoint the defect disables
+#   abundance  - machinery controlling BubR1 protein level (the therapeutic target)
+#   sensing    - micronucleus/cytosolic-DNA sensing downstream of missegregation
+#   senescence - the senescent-cell fate and its survival dependencies
+#   sasp       - the secretory output of senescent cells
+symbol	ensembl_id	tier	rationale
+BUB1B	ENSG00000156970	defect	the deficient protein; searched first to establish the negative
+BUB1	ENSG00000169679	sac	core SAC kinase, BUB1B paralogue
+BUB3	ENSG00000154473	sac	MCC component
+MAD1L1	ENSG00000002822	sac	MVA-associated SAC gene
+MAD2L1	ENSG00000164109	sac	MCC component; MAD2L1BP/MAD2L1B implicated in MVA
+TTK	ENSG00000112742	sac	MPS1, apical SAC kinase - included to test whether SAC-directed drugs exist at all
+CDC20	ENSG00000117399	sac	APC/C activator inhibited by the MCC
+SIRT2	ENSG00000068903	abundance	deacetylates BubR1 K668, blocking its proteasomal targeting
+NAMPT	ENSG00000105835	abundance	rate-limiting enzyme of the NAD+ salvage pathway
+NMNAT1	ENSG00000173614	abundance	NAD+ biosynthesis
+CD38	ENSG00000004468	abundance	principal NAD+-consuming ectoenzyme; inhibition raises NAD+
+PARP1	ENSG00000143799	abundance	major NAD+ consumer under DNA damage
+HSP90AA1	ENSG00000080824	abundance	chaperone required to fold mutant BubR1 - searched to identify CONTRAINDICATIONS
+CGAS	ENSG00000164430	sensing	cytosolic DNA sensor for ruptured micronuclei
+STING1	ENSG00000184584	sensing	downstream of cGAS
+CDKN2A	ENSG00000147889	senescence	p16INK4a, the senescence marker cleared in the BubR1 mouse
+CDKN1A	ENSG00000124762	senescence	p21CIP1
+TP53	ENSG00000141510	senescence	senescence/apoptosis fate decision
+BCL2	ENSG00000171791	senescence	senescent-cell anti-apoptotic pathway - the senolytic target class
+BCL2L1	ENSG00000171552	senescence	BCL-xL, same class
+JAK1	ENSG00000162434	sasp	SASP signalling; the senomorphic target
+JAK2	ENSG00000096968	sasp	SASP signalling
+IL6	ENSG00000136244	sasp	core SASP cytokine
+MTOR	ENSG00000198793	sasp	SASP translational control

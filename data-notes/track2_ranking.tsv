@@ -1,0 +1,14 @@
+rank	candidate	tier	regulatory	total	A	B	C	D	E	gate	status
+1	nicotinamide riboside	abundance	supplement	13	4	5	2	-1	3		ranked
+2	nicotinamide mononucleotide	abundance	supplement	11	5	2	2	-1	3		ranked
+3	dasatinib quercetin	senolytic	approved_drug	10	3	4	4	-3	2		ranked
+4	metformin	senomorphic	approved_drug	10	2	2	4	-1	3		ranked
+5	fisetin	senolytic	supplement	9	3	2	2	-1	3		ranked
+6	ruxolitinib	senomorphic	approved_drug	7	3	2	3	-3	2		ranked
+7	sirolimus	senomorphic	approved_drug	6	2	2	3	-3	2		ranked
+8	baricitinib	senomorphic	approved_drug	6	3	1	3	-3	2		ranked
+9	daratumumab	abundance	approved_drug	4	4	1	3	-4	0		ranked
+10	navitoclax	senolytic	investigational	3	3	2	1	-3	0		ranked
+	tanespimycin	contraindicated	investigational							G1	EXCLUDED by gate G1
+	daporinad	contraindicated	investigational							G1	EXCLUDED by gate G1
+	olaparib	contraindicated	approved_drug							G1	EXCLUDED by gate G1

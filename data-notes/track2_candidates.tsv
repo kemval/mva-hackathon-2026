@@ -1,0 +1,22 @@
+# Track 2 candidate interventions.
+# Column 1 is BOTH the display name and the ClinicalTrials.gov intervention query.
+# Assembled from (a) the mechanism characterisation in data-notes/track2_mechanism.md
+# and (b) the pathway drug search in data-notes/track2_target_drugs.tsv.
+# Scored against the PRE-REGISTERED rubric in pipeline/track2_scoring_rubric.md.
+#
+# tier:        abundance | senolytic | senomorphic | contraindicated
+# regulatory:  approved_drug | supplement | investigational   (recorded, never scored)
+candidate	tier	regulatory	provenance
+nicotinamide riboside	abundance	supplement	NAD+ precursor; raises BubR1 via SIRT2/K668 (North 2014). Human RCT in Werner, paediatric exposure in A-T
+nicotinamide mononucleotide	abundance	supplement	the precursor actually used in North 2014; FDA restored supplement status Sept 2025
+daratumumab	abundance	approved_drug	anti-CD38; CD38 is the principal NAD+-consuming ectoenzyme, so blockade raises NAD+. Surfaced by the search as the ONLY approved drug acting on the abundance tier
+dasatinib quercetin	senolytic	approved_drug	the senolytic combination; dasatinib approved with a paediatric indication. Baker 2011 rescued muscle in the BubR1 mouse by clearing p16+ cells
+fisetin	senolytic	supplement	flavonoid senolytic in active trials; oral, low toxicity
+navitoclax	senolytic	investigational	BCL-2/BCL-xL inhibitor, surfaced by the search on both BCL2 and BCL2L1
+ruxolitinib	senomorphic	approved_drug	JAK1/2 inhibitor; SASP suppression and frailty rescue in aged mice (Xu 2015)
+baricitinib	senomorphic	approved_drug	JAK1/2 inhibitor with paediatric labelling
+sirolimus	senomorphic	approved_drug	mTOR inhibitor; SASP translational control. Paediatric use established in vascular anomalies and TSC
+metformin	senomorphic	approved_drug	geroprotective/senomorphic; paediatric approval from age 10 for type 2 diabetes
+tanespimycin	contraindicated	investigational	HSP90 inhibitor (17-AAG). GATE G1 and G2: depletes the residual mutant BubR1 (Suijkerbuijk 2010) AND is Tang 2011's aneuploidy-selective agent
+daporinad	contraindicated	investigational	NAMPT inhibitor. GATE G1: lowers NAD+, the opposite of the intended direction
+olaparib	contraindicated	approved_drug	PARP inhibitor; NAD+-sparing in principle, but genotoxic in a chromosomal-instability, cancer-predisposition syndrome
