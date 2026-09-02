@@ -57,6 +57,13 @@ folded. Drugs that block HSP90 — a real class in cancer trials — would be ex
 top result of the best-known paper on "drugs for aneuploidy", so it is exactly what a
 quick search would suggest.
 
+**Read those last two paragraphs together — they overlap, and the overlap is the trap.**
+Some HSP90 inhibitors *are* senolytics, and one of them has the best animal evidence of any
+senolytic in a premature-ageing model. So "a senolytic was our best-scoring option" must
+never be read as "any senolytic is safe here." Each drug in that class has to be checked
+individually against what it actually targets, and the HSP90-blocking ones are ruled out
+for this child despite being senolytics.
+
 We would also avoid drugs designed to kill cells with the wrong number of chromosomes. In
 MVA those cells are spread throughout the body — that is the condition, not a tumour.
 

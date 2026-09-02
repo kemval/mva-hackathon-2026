@@ -38,7 +38,11 @@ That reframing does four things a keyword-driven search cannot:
 4. **It generates contraindications no pathway search would surface** — including that
    **HSP90 inhibitors are predicted to make this child worse**, because the mutant BubR1
    is an HSP90 client. One such agent is simultaneously the top hit of the best-known
-   "drugs for aneuploidy" paper.
+   "drugs for aneuploidy" paper. An adversarial review pass found that the same
+   contraindication is reachable by a *second, less obvious route*: **HSP90 inhibitors are
+   also a recognised senolytic class**, which means "senolytic" cannot be used as a
+   class-level safety label in this child and the gate must be applied agent by agent
+   (§3.3, §3.4).
 
 **Ranked answer.** Against a scoring rubric pre-registered before any query was run, the
 highest-scoring candidate overall is **nicotinamide riboside** (13/17) — which is a
@@ -413,7 +417,19 @@ data outweigh a one-step-closer rodent mechanism.
    used genetic SIRT2 overexpression. The bridge from "NMN raises BubR1 in wild-type mice"
    to "NMN would help this child" is an inference, not a result.
 2. **Muscle is where NAD⁺ supplementation has consistently failed in humans** — and muscle
-   is this child's most drug-approachable phenotype (§1.7).
+   is this child's most drug-approachable phenotype (§1.7). This is not one awkward trial
+   but a consistent pattern across independent RCTs, assembled by deliberately searching
+   for null results (`literature/30_...`): Stocks et al. 2022 found **"no NRPT
+   supplementation effect"** on muscle regeneration or stem-cell recruitment after
+   experimental injury; Elhassan et al. 2019 raised the muscle NAD⁺ metabolome
+   **"without altering mitochondrial bioenergetics"**; and Shoji et al. 2025 found
+   sarcopenia indicators unchanged in Werner syndrome. Target engagement is settled —
+   oral NR demonstrably reaches muscle — and functional benefit is not.
+   **The one endpoint that does move consistently is inflammatory**: Elhassan reports
+   depressed circulating cytokines. So the defensible rationale for NR in this child runs
+   through the SASP arm of the fork, **not** through reversing muscle atrophy — which is
+   also the arm least likely to be confused with reversing a developmentally fixed deficit
+   (Limitation 8).
 3. **Raising NAD⁺ in a cancer-predisposition syndrome carries a theoretical oncologic
    concern**, since proliferating tumour cells also depend on NAD⁺. This is the −1 on
    axis D and it is not resolved by any data we found.
@@ -444,6 +460,48 @@ match to `HP:0003202`. But that was a **genetic transgene (INK-ATTAC), not these
 D+Q has never been tested in a BubR1 model. Baker 2011 also explicitly did **not** rescue
 cardiac phenotypes or extend survival.
 
+**A within-class gate that must travel with any senolytic recommendation.** Ranking a
+senolytic top among approved medications creates a hazard the tier label hides:
+**HSP90 inhibitors are themselves a senolytic class.** Fuhrmann-Stroissnigg et al. 2017
+identified them as such — seven chemotypes active, benchmarked in the same assay as
+dasatinib + quercetin and navitoclax, with 17-DMAG extending healthspan in `Ercc1−/∆`
+progeroid mice. That paper's senior authors (Tchkonia, Kirkland, Niedernhofer, Robbins)
+are the same investigators behind the D+Q programme, Justice 2019 and Hickson 2019, so
+this is not a rival result that can be set aside.
+
+The consequence is specific. Anyone extending this report's logic — *"a senolytic scored
+highest, and this child is progeroid-like, so choose the senolytic with the best in vivo
+progeroid data"* — would arrive at **17-DMAG, which gate G1 forbids** (§3.4). The
+contraindication is reachable through the senolytic door as well as the aneuploidy door,
+and only the second is obvious. **"Senolytic" is therefore not a safe class label here.**
+Any agent in this tier must be checked individually against its molecular target before
+use, and HSP90-directed senolytics are excluded.
+
+**A consistency correction to gate G1's wording** *(post-registration clarification,
+2026-09-02 — the rubric in `pipeline/track2_scoring_rubric.md` is deliberately left as
+committed, so the pre-registration remains verifiable from commit order; this is an
+amendment recorded here, not a silent edit).* As written, G1 excludes agents "predicted to
+lower BubR1 abundance" **on mechanism alone**. Applied uniformly, that wording also flags
+**quercetin**: Aalinkeel et al. 2008 found quercetin makes HSP90 the single
+most-down-regulated protein in the PC-3 proteome (−1.75-fold, p < 0.001), destabilising the
+HSP90 clients Raf-1 and cdk4, with siRNA knockdown phenocopying the effect.
+
+We do **not** reject dasatinib + quercetin on this basis, and the reasoning is stated so it
+can be checked rather than trusted. The effect is demonstrated at **~50 µM in vitro**, one
+to two orders of magnitude above the free plasma concentrations achievable from oral
+quercetin including the 1000–1250 mg/day used in senolytic trials; the mechanism is
+reduced *expression* rather than active-site inhibition; quercetin is a promiscuous
+flavonoid, so one most-changed spot in one cancer cell line is a lead, not an established
+pharmacology; and the apoptotic effect spared normal epithelium. **G1 should therefore read
+"…at concentrations achievable in vivo."** With that qualifier, 17-AAG remains excluded
+(100 nM, target-directed) and quercetin does not.
+
+What survives the potency argument is narrow and is recorded rather than dismissed: this
+child's checkpoint function sits near a threshold of **~6–13%** of normal BubR1, so a
+proportionally small decrement matters more here than in a healthy adult, and **no one has
+measured BubR1 under quercetin at any concentration.** That is a cheap experiment and it is
+added to §5.2 as an arm of the assay already recommended.
+
 **Case-specific safety (axis D = −3):**
 - **Growth.** Tyrosine kinase inhibitors are documented to impair growth in children
   treated for CML. This child is already growth-restricted (`HP:0004322`). This is the
@@ -469,6 +527,23 @@ The inversion is worth stating plainly: **17-AAG is the lead compound of Tang et
 2011, the best-known "aneuploidy-selective" paper** — the single most likely hit for
 anyone searching "drugs for aneuploidy." On this case's own mechanism it is among the most
 clearly contraindicated agents available. Pathway proximity is not therapeutic rationale.
+
+Tang's full text sharpens *why*, in a sentence available only in the body: 17-AAG inhibited
+all four trisomic lines at 100 nM, and the authors read this as evidence that **"aneuploid
+cells rely on protein quality control pathways for their survival."** That is the same
+chaperone dependency, approached from the other side — so in this child HSP90 inhibition is
+a **double hit on one axis**: it depletes the mutant BubR1 directly, and it strikes the
+quality-control capacity that constitutionally aneuploid cells depend on.
+
+**The same gate excludes HSP90-inhibitor *senolytics* — a route the tier structure hides.**
+Fuhrmann-Stroissnigg et al. 2017 established HSP90 inhibitors as a senolytic class
+(17-DMAG, ganetespib, NVP-AUY922, BIIB021, PU-H71, NVP-BEB800, AT13387), with 17-DMAG
+improving healthspan in progeroid mice — **the strongest in vivo progeroid data among the
+senolytics screened there.** So the best-evidenced senolytic for a progeroid-like child is
+precisely the one this case forbids. G1 is therefore a **within-class** gate on the
+senolytic tier as well as a cross-tier one (§3.3), and no senolytic may be selected by
+class label alone. Note the categories: 17-AAG and 17-DMAG are **investigational**, not
+approved medications.
 
 **Aneuploidy-selective cytotoxics (AICAR, chloroquine, 17-AAG) — gate G2.** The concept
 was built for tumours, where aneuploid cells are the disease and euploid cells are the
@@ -621,13 +696,18 @@ decides so much.
 | Senescence markers (p16, SA-β-gal) | Whether the senescence arm is engaged | Kirsch-Volders & Fenech: "no biomarker or biomarker combination characteristic for all types of senescent cells" — a panel of imperfect proxies |
 | SASP cytokine panel | Whether inflammation is measurable | Same caveat |
 | Blood NAD⁺ / NADH | Whether there is a deficit to correct | Bohr: assessing individual NAD⁺ status is "challenging" and not standardised |
+| **BubR1 western ± NR, ± quercetin, ± an HSP90 inhibitor** | Whether the lead candidate raises BubR1, whether quercetin lowers it at achievable exposures, and whether the G1 prediction is real | **These are three extra arms on the plate already required by §5.1** — same cells, same assay, marginal cost only. Concentrations must be matched to achievable human plasma levels, *not* to the mouse intraperitoneal exposure in North 2014 |
 
 ### 5.3 What would falsify each candidate
 
 - **NAD⁺ precursors** — BubR1 absent on western; or NAD⁺ normal at baseline with no rise
   on supplementation; or BubR1 unchanged despite a documented NAD⁺ rise.
 - **Senolytics** — no senescent-cell burden detectable; or muscle phenotype unchanged
-  after clearance in a model carrying this genotype.
+  after clearance in a model carrying this genotype. **Separately disqualifying, per agent:**
+  any senolytic whose mechanism runs through HSP90 (§3.3, §3.4).
+- **Dasatinib + quercetin specifically** — a non-flat BubR1 dose-response to quercetin
+  across achievable plasma concentrations would demote it; a flat one would clear the
+  question raised in §3.3.
 - **Senomorphics** — no measurable SASP/inflammatory signature to suppress.
 
 **The ordering principle is measure before treating**, and no recommendation in this
@@ -675,8 +755,11 @@ Stated as a list because burying them in prose would defeat the purpose.
 2. **No NAD⁺ precursor has ever been given to a BubR1-deficient animal**, let alone a
    person with MVA. The lead candidate's central inference is untested.
 3. **Muscle is the wrong tissue for the lead candidate's track record.** Human NAD⁺
-   trials have consistently failed on musculoskeletal endpoints, and muscle is this
-   child's most drug-approachable phenotype.
+   trials have consistently failed on musculoskeletal endpoints — three independent RCT
+   nulls on the endpoint class that matters most (§3.2) — and muscle is this child's most
+   drug-approachable phenotype. The nulls disconfirm the *generic* muscle claim; they do
+   not test the genotype-specific BubR1-abundance hypothesis, which remains untested in
+   humans altogether.
 4. **No MVA patient has received any agent in this report for this indication.** There is
    no clinical precedent, anywhere, for any of it.
 5. **n = 1.** Nothing here is generalisable to other MVA patients without their own
@@ -697,7 +780,15 @@ Stated as a list because burying them in prose would defeat the purpose.
     cover "approved adult drug with paediatric trial exposure but no paediatric
     indication." Baricitinib and daratumumab were both scored 3 under that reading, and a
     reader who scores them differently should recompute rather than accept ours.
-11. **Database coverage is a real limit.** Open Targets and DGIdb do not index dietary
+11. **A cited source's full text was never obtained, and a database cross-reference was
+    wrong.** Kirsch-Volders & Fenech 2023 is held here as **abstract only**: NCBI's own
+    `elink` maps its PMID to a PMC record that renders a *different* paper by overlapping
+    authors, and no correct open deposit exists. Both quotations this report draws from it
+    were re-verified verbatim against the primary PubMed record, so no claim is affected —
+    but nothing beyond that abstract may be attributed to it. A second instance of the same
+    NCBI linkage defect was found in the same pass. Both are recorded in
+    `literature/_fetch_log.md`, and a title-vs-identifier check now runs across the corpus.
+12. **Database coverage is a real limit.** Open Targets and DGIdb do not index dietary
     supplements as drugs, so the lead candidate could never have been *found* by the
     search — it came from the mechanism literature. A purely database-driven pipeline
     would have missed it entirely, which is itself a finding about this class of method.
@@ -793,10 +884,15 @@ corrected the following, each of which would have been an error in the submissio
 | 8 | **`csv.DictWriter` defaults to CRLF**, appending `\r` to the final column and silently breaking field comparisons in the output TSV | Fixed with explicit `lineterminator="\n"`; search re-run |
 | 9 | All 24 Ensembl gene IDs verified live against Ensembl REST | 24/24 correct |
 | 10 | All three observed PGx variants verified against ClinVar with SPDI coordinates matched to the VCF calls | 3/3 match to the digit |
+| 11 | Suijkerbuijk 2010 is cited in the Track 1 report for the claim that the kinase domain is "dispensable". The paper actually shows kinase-domain *missense mutants* fail **because they are unstable**, and argues the domain is structurally *important* | Track 2 cites catalytic dispensability to Kops et al. 2012 and structural importance to Suijkerbuijk 2010. Flagged for the Track 1 audit trail; it does not affect Track 1's PM1 rejection, which rests on gnomAD missense density |
 | 12 | **Audit pass, 2026-09-02: the trial table conflated total trials with the API's 100-record retrieval cap.** Paediatric counts for ruxolitinib, baricitinib, sirolimus, metformin and NR were floors over the retrieved 100, presented as totals | Table now separates total / retrieved / paediatric and marks complete retrievals. The load-bearing row (D+Q, 22 of 22) was already exhaustive, so the zero-paediatric claim is unaffected |
 | 13 | **Audit pass: "returns zero in both databases" over-reached.** Only BUB1B, BUB3, CDC20, MAD2L1 and NMNAT1 are zero in both. CDKN1A and CDKN2A have 30 and 29 DGIdb interaction records; SIRT2 has 12 | Corrected, with the DGIdb confidence caveat stated and the SIRT2 point sharpened — every SIRT2 compound found is an inhibitor or unranked claim, and no activator exists in the searched space |
 | 14 | All other report figures re-derived from the artefacts: OT action-type tally (129/142), all six tier counts (0/2/1/16/30/71), DGIdb approved directionality (62 inhibitory / 1 activating), the ranking totals and every axis score | Reproduce exactly |
-| 11 | Suijkerbuijk 2010 is cited in the Track 1 report for the claim that the kinase domain is "dispensable". The paper actually shows kinase-domain *missense mutants* fail **because they are unstable**, and argues the domain is structurally *important* | Track 2 cites catalytic dispensability to Kops et al. 2012 and structural importance to Suijkerbuijk 2010. Flagged for the Track 1 audit trail; it does not affect Track 1's PM1 rejection, which rests on gnomAD missense density |
+| 15 | **Adversarial review pass, 2026-09-02: HSP90 inhibitors are a recognised senolytic class** (Fuhrmann-Stroissnigg et al. 2017), from the same investigator group as the D+Q programme — so the report's top approved-medication *tier* contains its own hard contraindication, reachable without ever mentioning aneuploidy | Gate G1 restated as a **within-class** gate; §3.3 and §3.4 now exclude HSP90-directed senolytics explicitly and state that "senolytic" is not a safe class label here |
+| 16 | **Gate G1 was applied inconsistently.** As pre-registered it excludes on mechanism alone, which would also flag quercetin (Aalinkeel 2008: HSP90 is the most down-regulated protein in the proteome at 50 µM) | G1 amended **in the report, not in the committed rubric**, to "…at concentrations achievable in vivo," with the potency reasoning shown. D+Q is **not** rejected; the residual question becomes an assay arm in §5.2 |
+| 17 | **NCBI `elink` mis-maps PMID 37866738 to a PMC record containing a different paper** by overlapping authors; `literature/18_` had captured the wrong full text. A second, independent instance of the same defect was found by the check written in response to the first | Both quotations re-verified verbatim against the primary PubMed record — **no claim affected**. Source downgraded to abstract-only, misfetched text removed, and a title-vs-identifier check now runs corpus-wide (Limitation 11) |
+| 18 | **Rows 26 and 27 of the fetch log were wrongly closed as "abstract only."** Both were recoverable via the PMC HTML render route | Tang 2011 and Xu 2015 upgraded to full text. Both changed the report: Tang supplied the chaperone-dependency rationale now in §3.4, and Xu showed SASP suppression is ≤60% and **segmental** (IL-1α/IL-1β/IL-8 unchanged), so no senomorphic claim of "SASP suppression" is made |
+| 19 | **Corrigendum/retraction sweep across all 18 PMC-deposited sources** via PubMed `CommentsCorrections` | Exactly one hit — the Hickson 2019 erratum already handled. No retractions, no expressions of concern. Reported as an honest negative, with the caveat that the sweep detects only PubMed-indexed corrections and Hickson is itself proof that withdrawals can hide in supplements |
 
 **Reproducibility.** All scripts are in `pipeline/`, CLI-parameterised, standard library
 only, with the exact command sequence in `pipeline/README.md`. The pre-registration is
@@ -808,7 +904,8 @@ pharmacogenomic section requires independently authorised access to the hackatho
 ## Sources
 
 Primary literature captured in full in `literature/` (see `_fetch_log.md` for provenance
-and for the two sources that remain abstract-only):
+and for every source that remains abstract-only — the count changed in the 2026-09-02 pass,
+which recovered two full texts and downgraded one):
 
 Suijkerbuijk et al. 2010, *Cancer Res* 70:4891 (PMID 20516114) · North/Sinclair et al.
 2014, *EMBO J* 33:1438 (PMID 24825348) · Wijshake et al. 2012, *PLoS Genet* 8:e1003138
@@ -822,6 +919,19 @@ Suijkerbuijk et al. 2010, *Cancer Res* 70:4891 (PMID 20516114) · North/Sinclair
 2011, *Cell* 144:499 (PMID 21315436) · Xu et al. 2015, *PNAS* 112:E6301 (PMID 26578790) ·
 Bohr 2025, *Aging Cell* 25:e70319 (PMID 41436848) · Kops et al. 2012, *Dev Cell*
 (PMID 22698286) · Hanks et al. 2004, *Nat Genet* 36:1159 (PMID 15475955).
+
+Added by the adversarial review pass, 2026-09-02 — Fuhrmann-Stroissnigg et al. 2017,
+*Nat Commun* 8:422 (PMID 28871086) · Aalinkeel et al. 2008, *Prostate* 68:1773
+(PMID 18726985) · Stocks et al. 2022, *JCI Insight* 7:e156925 (PMID 35998039) ·
+Elhassan et al. 2019, *Cell Rep* 28:1717 (PMID 31412242) · Dollerup et al. 2018,
+*Am J Clin Nutr* 108:343 (PMID 29992272) · Remie et al. 2020, *Am J Clin Nutr* 112:413
+(PMID 32320006) · McDermott et al. 2024, *Nat Commun* 15:5046 (PMID 38871717).
+
+The adjudication of every conflict between these sources is recorded in
+`literature/_contradiction_matrix.md`; each assertion in this report is graded
+Established / Predicted / Untested inference in `literature/_claims_register.md`; and what
+the literature **cannot** answer, with the cheapest experiment for each, is in
+`literature/_open_questions.md`.
 
 Databases queried live: Open Targets Platform (GraphQL v4), DGIdb v5, ClinicalTrials.gov
 API v2, openFDA drug labels, Ensembl REST, NCBI eutils/PMC, ClinVar, gnomAD v4, UniProt,

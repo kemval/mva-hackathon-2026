@@ -51,3 +51,72 @@ Captured: 2026-08-31. Status of every source attempted for the `literature/` fol
 6. **Rows 26 and 27 remain abstract-only.** Retry both via the PMC HTML render route
    before the Track 2 report is finalised, in case body text is recoverable.
 7. **New source added 2026-08-31, not in original list**: Kops et al. 2012, *Dev Cell*, "The vertebrate mitotic checkpoint protein BUBR1 is an unusual pseudokinase" (PMID 22698286) — abstract verified directly, confirms BubR1's N-terminal KEN-box (resolving an open question flagged in `notes/01`). Full text not yet fetched.
+
+
+---
+
+# Pass 3 — Adversarial review pass, 2026-09-02
+
+Purpose: find where the literature **disagrees with itself** and adjudicate, rather than
+summarise. Deliverables: `_contradiction_matrix.md`, `_claims_register.md`,
+`_open_questions.md`.
+
+## Successes
+
+| Target | Route | Result |
+|---|---|---|
+| Tang 2011 (PMC3532042) | PMC HTML render | ✅ 61,704 chars — full text recovered after two API routes had failed |
+| Xu 2015 (PMC4655580) | PMC HTML render | ✅ 78,403 chars — same |
+| Fuhrmann-Stroissnigg 2017 (PMC5583353) | PMC HTML render | ✅ 86,808 chars |
+| Aalinkeel 2008 (PMC2826114) | PMC HTML render | ✅ 80,475 chars |
+| Shahid 2026 (PMC13212844) | PMC HTML render | ✅ 79,666 chars |
+| Corrigendum sweep, 18 PMC sources | eutils efetch, `CommentsCorrections` | ✅ Ran clean — exactly one hit (Hickson 2019 → PMID 31982828). No retractions, no expressions of concern |
+| Title-vs-identifier verification, all PMC-sourced files | elink PMC→PubMed + esummary | ✅ 2 genuine mismatches found (both corrected), 6 benign flags |
+| Disconfirming-evidence searches | PubMed esearch | ✅ 5 NAD⁺ RCTs incl. 3 muscle nulls |
+| Author-order verification, 4 papers | esummary | ✅ All correct as cited |
+
+## Failures and gaps — recorded as prominently as the successes
+
+| Target | Route attempted | Outcome |
+|---|---|---|
+| **Kirsch-Volders & Fenech 2023 full text** | NCBI elink → PMC13019530 | ❌ **Returned the wrong paper.** No correct deposit exists. Remains abstract-only. Elsevier; needs institutional access |
+| **Kıyga 2020 (Mol Biol Rep) primary study** | elink PMID 32638319 → PMC13212844 | ❌ **Returned the wrong paper** (the 2026 review that cites it). Not fetched; file `29_` marks it unread and cites the review as a review |
+| **Five NAD⁺ RCT full texts** | Not attempted this pass | ❌ Abstracts only. Deliberate scope limit, recorded as a gap in `30_` |
+| NCBI `idconv` v1.0 endpoint | `pmc/utils/idconv/v1.0/` | ❌ Returned non-JSON; appears deprecated. Worked around with `elink` — which is itself unreliable (see below) |
+| Nature Reviews Genetics 2024 MVA review | Not re-attempted this pass | ❌ Still outstanding from pass 1 |
+| Cell Reports p21/BubR1 paper | Not re-attempted this pass | ❌ Still outstanding from pass 1 |
+| Pushpakom 2019 | Not re-attempted this pass | ❌ Still outstanding from pass 1 |
+
+## Scope this pass did NOT cover — stated so coverage is not overclaimed
+
+This pass was **depth-first on contradictions**, not breadth-first on acquisition. It did
+**not** run: EU CTR, ISRCTN, WHO ICTRP, jRCT, ChiCTR; openFDA/EMA/Health Canada/PMDA
+brand-name label searches; OMIM, DECIPHER, Orphanet, GeneReviews; ClinVar submitter-level
+detail beyond the RYR1 variant already adjudicated; non-English (Japanese/Chinese) MVA
+cohort literature; systematic cited-by and reference-list traversal; or patient-organisation
+newsletters, conference abstracts and theses. ClinicalTrials.gov v2 with structured
+`minimumAge`/`stdAges` fields, ClinGen VCEP/SVI decisions and the PharmCAT/CPIC layer were
+covered in **earlier** passes and are recorded in `data-notes/`. **Non-English MVA cohort
+literature remains the largest untouched acquisition gap in this repository** and is the
+single most likely place for an unfound MVA case series.
+
+## Three reusable methodological findings
+
+1. **The PMC HTML render route is the reliable fallback and should be tried before
+   declaring a source abstract-only.** It has now rescued full text in **five of five**
+   attempts where the BioC and efetch routes returned abstract-only (Sinclair 2014 in pass
+   2; Tang 2011, Xu 2015 and two new sources in pass 3). The earlier "abstract only"
+   verdicts on rows 26 and 27 were a route problem, not an availability problem.
+
+2. **NCBI's PMID↔PMCID links can be wrong, and the forward and reverse mappings can
+   disagree.** Two independent collisions were found this pass, both involving recent
+   high-numbered deposits (PMC130–132 million) with overlapping authors or topics. In both
+   cases the fetched text was internally coherent and by plausible authors, so **reading
+   carefully would never have caught it.** The only defence is mechanical: resolve the
+   cited identifier back to its title and compare. That check is now written, has been run
+   corpus-wide, and should be re-run whenever a source is added.
+
+3. **A clean corrigendum sweep is necessary but not sufficient.** The sweep detects only
+   corrections indexed by PubMed — and the Hickson 2019 case is itself the proof that a
+   substantive withdrawal can live in a supplementary appendix invisible to that index.
+   A negative sweep bounds the risk; it does not eliminate it.
