@@ -99,3 +99,28 @@ Where a row's grade and tier disagree with how a claim reads elsewhere, the row 
 | G2 | That source's **full text was never obtained**; a misfetched body has been removed | **Established** | NCBI identifier collision — matrix C7 |
 | G3 | The corpus contains **exactly one** indexed erratum (Hickson 2019) and no retractions | **Established (with caveat)** | Sweep of 18 PMC sources; detects only PubMed-indexed corrections |
 | G4 | Title-vs-identifier verification has been run across all PMC-sourced files | **Established** | 2 genuine mismatches, both corrected |
+
+## H. Structure of p.Asn1002Lys (Task 1, 2026-09-02)
+
+All rows are **in silico on a predicted model**. Source: `data-notes/structural_analysis_n1002k.md`,
+reproducible via `pipeline/structural_analysis.py`.
+
+| # | Claim | Grade | Tier | Note |
+|---|---|---|---|---|
+| H1 | Residue 1002 of BubR1 is **Asn**, inside the pseudokinase domain (766–1050) | **Established** | UniProt O60566 | Sequence-level fact |
+| H2 | AlphaFold pLDDT at residue 1002 is **91.1**; local window 91.5 | **Established** | In silico | Confident *here*, unlike the protein overall (63.6) |
+| H3 | **No experimental structure covers residue 1002** | **Established** | PDBe observed residues | Matrix **C12**. UniProt's "1-1050" is entity length, not modelled range |
+| H4 | Asn1002 makes **three side-chain H-bonds** to backbone atoms of Trp978 and Val998 | **Predicted** | In silico | 2.83 / 2.83 / 2.95 Å |
+| H5 | Asn→Lys loses a bidentate buried polar contact **and** introduces a buried positive charge into an aromatic pocket | **Predicted** | In silico | Lys has no acceptor, so the OD1 bond is lost outright |
+| H6 | The position is highly constrained in mammals | **Established** | dbNSFP | phyloP 4.87 / 5.12, phastCons 1.0 / 1.0, GERP++ 3.99. **Primate phyloP only 0.665** |
+| H7 | `p.Asn1004Ser` (gnomAD AF 6.0e-4, tolerated) is **surface-exposed** at RSA 53%, 5.5 Å away | **Established** | In silico | The one clean positive in the analysis |
+| **H8** | **`Q921` — tolerated in Suijkerbuijk's assay — is MORE buried than N1002 (RSA 1.1% vs 16.2%) and also makes buried side-chain H-bonds** | **Established** | In silico | **The decisive disconfirming result.** Same domain, 26.0 Å away. Position-based reasoning has a documented failure in this protein |
+| H9 | Burial, H-bonding, or 3D position predicts destabilisation in BubR1 | **REJECTED — do not assert** | In silico | Refuted by Q921H (buried, H-bonded, tolerated) and Y155C (RSA 0.9%, tolerated) |
+| H10 | Substitution class separates the destabilising from the tolerated alleles | **REJECTED — do not assert** | In silico | Gln→His is conservative and tolerated, but Arg→His (R814H) is conservative and destabilising |
+| H11 | The Suijkerbuijk destabilising alleles **cluster in 3D around N1002** | **REJECTED — do not assert** | In silico | They span 10–33 Å, and tolerated Q921H sits at 26.0 Å inside that band. The apparent separation is just the domain boundary |
+| H12 | N1002 is buried (RSA 16.2%) but **not unusually so** — 51st percentile for this domain | **Established** | In silico | Domain median 15.6%; 58% of residues below 20% |
+| H13 | The nearest destabilising allele is **L1012P at 12.3 Å** — one of the two whose abundance rescue restored checkpoint function | **Established** | In silico + Suijkerbuijk 2010 | True, but see H11: proximity carries no weight given Q921H at 26 Å |
+| H14 | A stability-specific **ΔΔG** was obtained | **FALSE — do not assert** | — | DDMut accepted the jobs; retrieval failed on every path. No local FoldX/Rosetta. Fetch log Pass 4, F1–F3 |
+| H15 | This analysis **demonstrates** that p.Asn1002Lys lowers BubR1 abundance | **FALSE — do not assert** | — | It supplies a testable mechanism. It does not raise the confidence that the mechanism applies to this variant |
+| H16 | This analysis **weakens** Limitation 1 | **FALSE — do not assert** | — | It supports **tightening** it: the report's own counterexample proves same-domain structural reasoning fails here |
+| H17 | This analysis generates ACMG **PS3** functional evidence | **FALSE — do not assert** | — | PS3 requires a functional assay. PP3 stays weak; variant 2 stays VUS |

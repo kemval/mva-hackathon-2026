@@ -269,6 +269,45 @@ correctly in the report; recorded here so the limit travels with the claim.
 
 ---
 
+## C12 — A PDB cross-reference's declared chain range vs. the residues actually modelled
+
+**CHANGES PROVENANCE.**
+
+**Side A — UniProt O60566's PDB cross-references.** Two cryo-EM entries are listed against
+BubR1 with chains spanning the full protein: **5KHU** `Q=1-1050` and **6TLJ** `S=1-1050`.
+Read at face value, these say the pseudokinase domain — and residue 1002 specifically — has
+experimental structural coverage.
+
+**Side B — PDBe's observed-residue records for the same two entries.** 6TLJ chain S models
+**19-345**; 5KHU chain P models **26-479**. Neither reaches residue 766, let alone 1002. The
+declared range is the *entity* length taken from the deposited sequence, not the residues
+resolved in the map.
+
+**Relation: DISAGREE**, and only one side is a measurement.
+
+**Adjudication: the observed-residue record wins, decisively.** The cross-reference field is
+metadata about what the construct was; the coverage record is what the experiment resolved.
+Checked across all nine PDB entries mapped to O60566: the X-ray structures cover 57-220,
+647-720, 663-681 and 20-42, and **no experimental structure covers the BubR1 pseudokinase
+domain at all.**
+
+**Grounds.** Direct measurement supersedes declarative metadata; the two sources are not
+independent (the cross-reference is derived from the deposition, not from the map).
+
+**Effect.** The structural analysis in `data-notes/structural_analysis_n1002k.md` rests
+entirely on a **predicted** model (AlphaFold AF-O60566-F1 v6) and must say so wherever it is
+used. Had the cross-reference been trusted, the report would have claimed experimental
+structural support for its central mechanism that does not exist — an overclaim of exactly
+the kind this matrix exists to catch.
+
+**Pattern note.** This is the **third** identifier/metadata trap found in this repository,
+after the two PMID↔PMCID collisions in C7. All three share a signature: a database field that
+is internally coherent, plausible, and wrong, where careful reading of the content would
+never have caught it. The defence is mechanical verification against a second source, not
+attentiveness.
+
+---
+
 ## Summary of adjudications
 
 | # | Conflict | Winner / resolution | Effect |
@@ -284,3 +323,4 @@ correctly in the report; recorded here so the limit travels with the claim.
 | C9 | Tang selectivity | Full text supersedes abstract | Bounds rejection |
 | C10 | JAK/SASP suppression | Full text supersedes abstract | Bounds claim |
 | C11 | Baker tissue restriction | Upheld | Bounds hypothesis |
+| C12 | PDB declared chain range vs. observed residues | Observed record wins — **no experimental structure covers residue 1002** | **Provenance** |

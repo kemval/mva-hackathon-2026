@@ -120,3 +120,52 @@ single most likely place for an unfound MVA case series.
    corrections indexed by PubMed — and the Hickson 2019 case is itself the proof that a
    substantive withdrawal can live in a supplementary appendix invisible to that index.
    A negative sweep bounds the risk; it does not eliminate it.
+
+---
+
+# Pass 4 — gap closure, 2026-09-02
+
+Working from `pipeline/gap_closure_brief.md`. **Task 1 (structural analysis of
+p.Asn1002Lys) only** — Tasks 2–6 not attempted in this pass.
+
+## Successes
+
+| # | Target | Route | Result |
+|---|---|---|---|
+| 31 | UniProt **O60566** full entry | `rest.uniprot.org/uniprotkb/O60566.json` | ✅ Confirms residue 1002 = Asn, 1050 aa, and lists 9 PDB cross-references |
+| 32 | **AlphaFold** model for O60566 | `alphafold.ebi.ac.uk/api/prediction/O60566` → v6 pdbUrl | ✅ `AF-O60566-F1` **v6** (2025-08-01), 1050 residues, pLDDT 91.1 at residue 1002 |
+| 33 | PDBe observed-residue coverage for **6TLJ**, **5KHU** | `ebi.ac.uk/pdbe/api/pdb/entry/polymer_coverage/` | ✅ Both resolved — and both **contradict** the UniProt cross-reference (below) |
+| 34 | Conservation at chr15:g.40220612T>G | MyVariant.info dbNSFP | ✅ phyloP 4.87 / 5.12, phastCons 1.0 / 1.0, GERP++ 3.99, PROVEAN −3.89, VEST4 0.885 |
+
+## Failures and gaps — recorded as prominently as the successes
+
+| # | Target | Route | Outcome |
+|---|---|---|---|
+| F1 | **ΔΔG for N1002K** | DDMut `POST /ddmut/api/prediction_single` | ⚠️ **NOT OBTAINED.** Two jobs accepted (HTTP 200, ids `17883629491989634` full-length and `17883630984480202` domain-trimmed). Every retrieval path failed: `GET ?job_id=` → `Internal Server Error` on six polls across both jobs; `POST` with `job_id` → `Unknown arguments: job_id` when required fields were supplied, and demanded those fields when they were not. |
+| F2 | ΔΔG, alternative predictor | DynaMut2 `POST /dynamut2/api/prediction_single` | ⚠️ HTTP 400 to a bare probe; not pursued further after DDMut's retrieval proved broken |
+| F3 | ΔΔG, local | `foldx`, `rosetta_scripts` | ⚠️ Neither installed |
+| F4 | AlphaFold model, first attempt | `files/AF-O60566-F1-model_v4.pdb` | ⚠️ **HTTP 404** — the v4 filename many tools hard-code is dead. Resolved by querying the API for the live version (now v6). Worth knowing: a hard-coded AlphaFold URL is now a silent failure. |
+
+**Consequence:** the structural claim is reported as **inspection, not ΔΔG**, exactly as the
+brief pre-committed. See `data-notes/structural_analysis_n1002k.md`.
+
+## Scope this pass did NOT cover
+
+Tasks **2 (MVA cohort genotype–phenotype table)**, **3 (Japanese/Chinese PCS literature)**,
+**4 (preterm nephrocalcinosis)**, **5 (coverage re-costing)** and **6 (post-first-tumour
+surveillance)** of the brief are **untouched**. Everything recorded in Pass 3's
+"scope this pass did NOT cover" section also remains outstanding, including the
+non-English MVA cohort literature.
+
+## Two reusable findings
+
+4. **A PDB cross-reference's declared chain range is not the modelled range.** UniProt
+   lists 5KHU and 6TLJ with chains `1-1050` — that is the *entity* length. The observed
+   residues are 26–479 and 19–345. **Neither models residue 1002, and no experimental
+   structure of the BubR1 pseudokinase domain exists.** Trusting the cross-reference would
+   have produced a claim of experimental structural support that does not exist. This is the
+   same family of error as the two identifier collisions in Pass 3 — logged as **C12**.
+
+5. **AlphaFold model versions move, and the old URL 404s rather than redirecting.** Always
+   resolve `api/prediction/<accession>` for the live version instead of constructing a
+   filename. `pipeline/structural_analysis.py` does this.
