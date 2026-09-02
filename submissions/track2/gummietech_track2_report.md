@@ -271,8 +271,18 @@ Unique drugs and clinical candidates per node, Open Targets:
 | abundance machinery | CD38, HSP90AA1, NAMPT, NMNAT1, PARP1, SIRT2 | 30 |
 | SASP | IL6, JAK1, JAK2, MTOR | 71 |
 
-**BUB1B returns zero in both databases independently.** So do BUB3, CDC20, MAD1L1,
-MAD2L1, NMNAT1, CGAS, CDKN2A, CDKN1A and — importantly — **SIRT2**.
+**BUB1B returns zero in both databases independently** — as do BUB3, CDC20, MAD2L1 and
+NMNAT1. Six further genes return zero in Open Targets but *not* in DGIdb (BUB1 6, MAD1L1
+2, CGAS 3, SIRT2 12, CDKN2A 29, CDKN1A 30 interaction records), and the distinction is
+worth keeping: DGIdb aggregates interaction *claims* of mixed confidence, and states
+plainly that its records are "not presented in ranked order of potential or predicted
+efficacy".
+
+**SIRT2 deserves a line of its own.** Every SIRT2 compound in either database is an
+inhibitor or an unranked low-confidence claim; **there is no SIRT2 activator anywhere in
+the searched space.** That is precisely why the abundance mechanism has to be reached
+through substrate supply — an NAD⁺ precursor — rather than through a drug against the
+enzyme itself.
 
 The abundance tier's 30 is misleading and worth unpacking, because 23 of those drugs are
 in the two genes this report *excludes*: HSP90AA1 (10, gated) and PARP1 (13, gated).
@@ -309,20 +319,28 @@ ClinicalTrials.gov API v2, with paediatric eligibility taken from each trial's o
 eligibility module (`minimumAge`, `stdAges`) rather than from free text, because "children
 were included" is easy to assert and hard to check.
 
-| Candidate | Trials | Paediatric-eligible |
-|---|---|---|
-| ruxolitinib | 485 | 24 |
-| baricitinib | 194 | 16 |
-| sirolimus | 2377 | 13 |
-| metformin | 3112 | 11 |
-| **nicotinamide riboside** | 123 | **8** (minimum ages down to **1 year**; several in ataxia telangiectasia) |
-| navitoclax | 45 | 6 |
-| fisetin | 36 | 2 |
-| nicotinamide mononucleotide | 32 | 1 |
-| **dasatinib + quercetin** | 22 | **0** |
+The API returns at most 100 records per query, so where a candidate has more than 100
+trials the paediatric figure is a **floor over the first 100 retrieved**, not a total.
+Rows marked ✓ were retrieved completely and their counts are exhaustive.
 
-**Not one of the 22 dasatinib+quercetin trials has enrolled anyone under 18.** The lowest
-minimum age across the entire senolytic trial landscape is 18; most are 50 or 60 and
+| Candidate | Trials (total) | Retrieved | Paediatric-eligible |
+|---|---|---|---|
+| metformin | 3112 | 100 | ≥11 |
+| sirolimus | 2377 | 100 | ≥13 |
+| ruxolitinib | 485 | 100 | ≥24 |
+| baricitinib | 194 | 100 | ≥16 |
+| **nicotinamide riboside** | 123 | 100 | **≥8** (minimum ages down to **1 year**; several in ataxia telangiectasia) |
+| navitoclax | 45 | 45 ✓ | 6 |
+| fisetin | 36 | 36 ✓ | 2 |
+| nicotinamide mononucleotide | 32 | 32 ✓ | 1 |
+| **dasatinib + quercetin** | 22 | 22 ✓ | **0** |
+
+The load-bearing row is the complete one: **all 22** dasatinib+quercetin trials were
+retrieved, so the zero is exhaustive rather than a sampling artefact.
+
+**Not one of the 22 dasatinib+quercetin trials has enrolled anyone under 18** — and since
+all 22 were retrieved, that is a complete count, not a floor. The lowest minimum age
+across the entire senolytic trial landscape is 18; most are 50 or 60 and
 above. This matters because dasatinib *itself* is FDA-approved from age 1 — so the
 tempting sentence "dasatinib is approved in children" is true of the drug and false of the
 regimen. The paediatric safety data are for continuous oncologic dosing, not intermittent
@@ -775,6 +793,9 @@ corrected the following, each of which would have been an error in the submissio
 | 8 | **`csv.DictWriter` defaults to CRLF**, appending `\r` to the final column and silently breaking field comparisons in the output TSV | Fixed with explicit `lineterminator="\n"`; search re-run |
 | 9 | All 24 Ensembl gene IDs verified live against Ensembl REST | 24/24 correct |
 | 10 | All three observed PGx variants verified against ClinVar with SPDI coordinates matched to the VCF calls | 3/3 match to the digit |
+| 12 | **Audit pass, 2026-09-02: the trial table conflated total trials with the API's 100-record retrieval cap.** Paediatric counts for ruxolitinib, baricitinib, sirolimus, metformin and NR were floors over the retrieved 100, presented as totals | Table now separates total / retrieved / paediatric and marks complete retrievals. The load-bearing row (D+Q, 22 of 22) was already exhaustive, so the zero-paediatric claim is unaffected |
+| 13 | **Audit pass: "returns zero in both databases" over-reached.** Only BUB1B, BUB3, CDC20, MAD2L1 and NMNAT1 are zero in both. CDKN1A and CDKN2A have 30 and 29 DGIdb interaction records; SIRT2 has 12 | Corrected, with the DGIdb confidence caveat stated and the SIRT2 point sharpened — every SIRT2 compound found is an inhibitor or unranked claim, and no activator exists in the searched space |
+| 14 | All other report figures re-derived from the artefacts: OT action-type tally (129/142), all six tier counts (0/2/1/16/30/71), DGIdb approved directionality (62 inhibitory / 1 activating), the ranking totals and every axis score | Reproduce exactly |
 | 11 | Suijkerbuijk 2010 is cited in the Track 1 report for the claim that the kinase domain is "dispensable". The paper actually shows kinase-domain *missense mutants* fail **because they are unstable**, and argues the domain is structurally *important* | Track 2 cites catalytic dispensability to Kops et al. 2012 and structural importance to Suijkerbuijk 2010. Flagged for the Track 1 audit trail; it does not affect Track 1's PM1 rejection, which rests on gnomAD missense density |
 
 **Reproducibility.** All scripts are in `pipeline/`, CLI-parameterised, standard library

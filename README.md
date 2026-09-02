@@ -10,7 +10,7 @@ Working directory for "Rare Disease, Real Kid: The MVA Hackathon 2026" (SageBio 
 - `notes/` — original synthesis documents covering material from copyrighted textbooks (not bulk-reproduced) — mitosis/spindle-checkpoint biology, ACMG variant classification workflow, VCF/BAM/HPO pipeline mechanics, drug repurposing methodology. Orientation material; the primary literature in `literature/` is the citation-grade source.
 - `data-notes/` — working analysis notes on the case (gene-panel coordinates, variant candidates, ACMG evidence, phasing analysis). Raw and derived patient genomic data are excluded from version control per the dataset's Data Transfer Agreement — see `data-notes/README.md`.
 - `pipeline/` — annotation and filtering scripts, plus `pipeline/README.md` recording the exact end-to-end command sequence (Ensembl REST coordinate lookup → padded BED → `bcftools` region restriction → VEP REST annotation → rare/damaging filter). Both scripts are CLI-parameterised; running them against the annotation output reproduces the submitted candidate list exactly.
-- `submissions/` — Track 1 and Track 2 submission materials (predictions CSV, methods report).
+- `submissions/` — Track 1 and Track 2 submission materials (predictions CSV, methods reports, pitch script, clinician one-pager).
 - `graphify-out/` — knowledge graph built from `literature/` + `notes/` (gitignored, regenerable via `/graphify --update`).
 
 ## Knowledge graph
@@ -45,10 +45,62 @@ Full analysis: `data-notes/track1_findings.md`. Final submission materials: `sub
 **Outstanding (does not block submission):**
 - Actual upload via the hackathon's "Submit – Track 1" tab, which requires the account holder's own Hugging Face session.
 
+## Track 2 status (2026-09-02) — analysis complete, report drafted
+
+A mechanism characterisation, a pre-registered drug search, a patient-specific
+pharmacogenomic screen, and a ranked candidate list with an explicit rejected tier.
+
+**The central finding is a correction to the obvious reading of the genotype.** The
+intuitive move — "the mitotic checkpoint kinase is broken, so target the checkpoint" — is
+wrong, and it sends the drug search the wrong way. Suijkerbuijk et al. 2010 studied MVA
+patient cells carrying exactly this architecture (a truncating allele paired with a
+kinase-domain missense allele) and showed the defect is **insufficient BubR1 protein**,
+not defective enzymology — and that **forcing abundance back up fully restores checkpoint
+function**, with a threshold between ~6% and ~13% of normal. The therapeutic target is
+protein quantity. That reframing explains why BUB1B has zero drugs, selects a different
+candidate class from the crowd answer, survives Track 1's unresolved phase (cis or trans,
+the shared consequence is low abundance), and generates contraindications no pathway
+search would surface.
+
+**The search's structural finding.** Across 24 pathway genes and two independent
+databases, drug availability rises monotonically with distance from the defect (0 at
+BUB1B, 71 at the SASP tier), and **129 of 142 action-typed Open Targets entries are
+inhibitors** — ~95% inhibitory against a disease of deficiency. The only approved drug
+annotated as activating anything is an antiemetic against TP53, a spurious annotation.
+That mismatch generalises to loss-of-function rare disease broadly.
+
+**Ranked answer.** Highest overall: **nicotinamide riboside** (13/17) — a dietary
+supplement, not an approved medicine, and the report does not blur that. Highest approved
+medication: **dasatinib + quercetin** (10/17), where none of 22 trials ever enrolled a
+child. Three agents excluded by hard gates fixed before the search, including HSP90
+inhibitors — predicted to destroy the residual BubR1 this child depends on, and
+simultaneously the lead compound of the best-known "drugs for aneuploidy" paper.
+
+**What is actually recommended first is not a drug** but a western blot for BubR1, which
+forks the whole hypothesis and would additionally generate PS3-grade functional evidence
+on Track 1's unresolved VUS.
+
+**Patient-specific layer.** A CPIC-guided PharmCAT screen of the proband's own genome.
+Its headline is an honest negative: only 22 of 1,226 positions carry a call, and **16 of
+23 genes change call** when absent positions are assumed reference — an assumption
+PharmCAT's own CLI labels "DANGEROUS!". It also caught a false alarm worth catching:
+PharmCAT reports RYR1 rs35364374 as "Uncertain Susceptibility" to malignant hyperthermia,
+while ClinGen's expert panel classifies that exact variant **Benign**.
+
+Materials: `submissions/track2/gummietech_track2_report.md` (report),
+`pitch_script.md` (3-minute video script, 394 spoken words, timed), and
+`clinician_onepager.md` (plain-language summary). Working notes in
+`data-notes/track2_mechanism.md`; scripts and commands in `pipeline/README.md`.
+
+**Outstanding (account-holder actions):** record and upload the pitch video; submit via
+the "Submit – Track 2" tab.
+
 ## Next actions
 
 1. Submit Track 1 via the hackathon site (account-holder action).
-2. Begin the Track 2 mechanism deep-dive: build the causal chain from the confirmed BUB1B variant through spindle-checkpoint dysfunction to the proband's HPO-coded phenotype, then into the drug-repurposing hypotheses (senolytics vs. NAD+/NMN supplementation) already grounded in `literature/`.
+2. Record the 3-minute Track 2 pitch video from `submissions/track2/pitch_script.md` and
+   submit Track 2 (one team member submits on the team's behalf; the panel reviews only
+   the latest of up to 3 entries).
 
 ## Standing obligations
 
