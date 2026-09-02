@@ -30,3 +30,7 @@ graphify-out/
 *.swp
 __pycache__/
 *.pyc
+
+# PharmCAT pharmacogenomic working files - derived patient genotype data,
+# excluded for the same DTA reason as data-notes/raw and data-notes/annotated.
+data-notes/pgx/

@@ -229,3 +229,115 @@ The candidate set is unchanged by both fixes (primary 2, secondary 0), verified 
 replaying the shipped corrected function against
 `data-notes/annotated/vep_*raw_responses.jsonl`. Full detail is in the `max_gnomad_af`
 docstring and the submission report's Verification table.
+
+---
+
+# Pipeline — Track 2
+
+Four scripts. Two query public drug/trial databases, one applies the pre-registered
+scoring rubric, and one runs a CPIC-guided pharmacogenomic screen against the proband's
+own genome. As with Track 1, everything is CLI-parameterised and no patient data is
+committed.
+
+## Prerequisites (Track 2)
+
+- Python 3, standard library only (the drug-search and scoring scripts)
+- For the PGx screen only: `bcftools`, `bgzip`, `tabix`, `samtools`, Java 17+,
+  the PharmCAT v3.4.0 pipeline bundle, and a GRCh38 FASTA (bgzip-compressed,
+  faidx-indexed, chr-prefixed contigs)
+
+## 7. Pre-register the scoring rubric — before anything else
+
+`track2_scoring_rubric.md` was written and committed **before any query was run**
+(commit `20eda20`). The commit order is the guarantee that the rubric was not
+reverse-engineered around a favoured candidate, and it is checkable:
+
+```bash
+git log --oneline --follow pipeline/track2_scoring_rubric.md
+git log --oneline --diff-filter=A -- data-notes/track2_target_drugs.tsv
+```
+
+## 8. Search the pathway node set for drugs
+
+Queries Open Targets (GraphQL v4) and DGIdb (GraphQL) for every node in the table, and
+records each target's tractability assessment alongside its drug count.
+
+```bash
+python3 track2_target_search.py \
+  --nodes ../data-notes/regions/track2_pathway_nodes.tsv \
+  --out ../data-notes/track2_target_drugs.tsv \
+  --raw-log ../data-notes/track2_search_raw.jsonl
+```
+
+Yield: 1,716 gene-drug rows across 24 genes. Open Targets returns **zero** drugs for
+BUB1B, BUB1, BUB3, MAD1L1, MAD2L1, CDC20, SIRT2, NMNAT1, CGAS, CDKN2A and CDKN1A.
+
+Note the script raises rather than returning empty on a schema error: Open Targets
+renamed `knownDrugs` to `drugAndClinicalCandidates`, and a script that swallowed that
+error would silently report no drugs for every gene.
+
+## 9. Retrieve trial evidence, with paediatric eligibility
+
+```bash
+python3 track2_trial_evidence.py \
+  --candidates ../data-notes/track2_candidates.tsv \
+  --out ../data-notes/track2_trials.tsv
+```
+
+Paediatric eligibility is read from each trial's structured eligibility module
+(`minimumAge`, `stdAges`), never from free text. Yield: 888 trial rows. Zero of the 22
+dasatinib+quercetin trials enrol anyone under 18.
+
+## 10. Apply the rubric
+
+Judgement lives in `../data-notes/track2_scores.tsv`, where every axis score carries a
+written justification. This script does only the mechanical part — gates, sum, declared
+tie-break, two rankings.
+
+```bash
+python3 track2_score_candidates.py \
+  --scores ../data-notes/track2_scores.tsv \
+  --candidates ../data-notes/track2_candidates.tsv \
+  --out ../data-notes/track2_ranking.tsv
+```
+
+Highest overall: nicotinamide riboside (13), a supplement. Highest approved medication:
+dasatinib + quercetin (10). Three candidates excluded by hard gate.
+
+## 11. Pharmacogenomic screen (requires the patient VCF)
+
+Runs PharmCAT twice — strict, and with `--missing-to-ref` — and compares. The comparison
+is the deliverable, not either run alone.
+
+```bash
+./track2_pgx_screen.sh \
+  /path/to/pharmcat-pipeline-3.4.0 \
+  /path/to/GRCh38.chr.fa.bgz \
+  ../data-notes/raw/WGS_EX2312012_HGWCNDSX7.vcf.gz \
+  ../data-notes/pgx
+```
+
+Outputs go to `data-notes/pgx/`, which is **gitignored** — these are derived patient
+genotype data, excluded for the same DTA reason as `data-notes/raw/`.
+
+Result on this proband: only 22 of 1,226 PharmCAT positions carry a variant call, and
+**16 of 23 genes change their call** between the two assumptions. Every "Normal
+Metabolizer" call for TPMT, NUDT15, UGT1A1, CYP2C9 and SLCO1B1 exists only under the
+assumption PharmCAT's own CLI labels "DANGEROUS!".
+
+The reference FASTA must be bgzip-compressed with chr-prefixed contigs. Ensembl ships
+plain gzip, so it needs recompressing:
+
+```bash
+zcat < Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz \
+  | sed 's/^>\([0-9XYMT]*\) />chr\1 /' | bgzip -@ 4 -c > GRCh38.chr.fa.bgz
+samtools faidx GRCh38.chr.fa.bgz
+```
+
+The comparison step can also be run standalone against existing PharmCAT output:
+
+```bash
+python3 track2_pgx_compare.py \
+  --strict   ../data-notes/pgx/strict/proband_strict.phenotype.json \
+  --missing-to-ref ../data-notes/pgx/missing_to_ref/proband_mtr.phenotype.json
+```
