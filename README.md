@@ -88,8 +88,9 @@ PharmCAT reports RYR1 rs35364374 as "Uncertain Susceptibility" to malignant hype
 while ClinGen's expert panel classifies that exact variant **Benign**.
 
 Materials: `submissions/track2/gummietech_track2_report.md` (report),
-`pitch_script.md` (3-minute video script, 394 spoken words, timed), and
-`clinician_onepager.md` (plain-language summary). Working notes in
+`pitch_script.md` (3-minute video script, 394 spoken words, timed),
+`clinician_onepager.md` (plain-language summary), and
+`viz/track2_explainer.html` (visual explainer, companion to the Track 1 atlas). Working notes in
 `data-notes/track2_mechanism.md`; scripts and commands in `pipeline/README.md`.
 
 **Outstanding (account-holder actions):** record and upload the pitch video; submit via

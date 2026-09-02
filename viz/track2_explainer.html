@@ -1,0 +1,677 @@
+<meta charset="utf-8">
+<title>BubR1: A Dosage Problem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+
+/* ============================================================
+   BUB1B Evidence Atlas
+   Palette: cool lab paper + ink. Colour is reserved entirely for
+   evidence status. Unmeasured is rendered EMPTY (hatch / outline),
+   never as a zero — the same blank-vs-zero invariant the pipeline
+   itself enforces on the SpliceAI and gnomAD-AF columns.
+   ============================================================ */
+:root{
+  --ground:#F7F8FA; --surface:#FFFFFF; --sunken:#EFF2F6;
+  --rule:#D8DDE4; --rule-strong:#B8C1CC;
+  --ink:#16202B; --ink-2:#5A6672; --ink-3:#8794A1;
+  --accent:#1D4E89; --accent-soft:#E3EBF4;
+  --applied:#2C6E49;  --applied-soft:#E2EFE7;
+  --struck:#8C2F39;   --struck-soft:#F5E4E5;
+  --indet:#A6761D;    --indet-soft:#F7EEDC;
+  --exon:#2E3E4E; --utr:#9AA7B4;
+  --shadow:0 1px 2px rgba(22,32,43,.06),0 8px 24px -12px rgba(22,32,43,.14);
+  --maxw:1180px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0F141A; --surface:#161C24; --sunken:#1C242E;
+    --rule:#2A3540; --rule-strong:#3C4A58;
+    --ink:#E4E9EF; --ink-2:#93A1AF; --ink-3:#6B7887;
+    --accent:#7FB0DE; --accent-soft:#1B2C3E;
+    --applied:#63BC8B; --applied-soft:#16281F;
+    --struck:#E0808B;  --struck-soft:#2C1A1D;
+    --indet:#DDAE4E;   --indet-soft:#2A2113;
+    --exon:#B9C6D3; --utr:#5D6B7A;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F141A; --surface:#161C24; --sunken:#1C242E;
+  --rule:#2A3540; --rule-strong:#3C4A58;
+  --ink:#E4E9EF; --ink-2:#93A1AF; --ink-3:#6B7887;
+  --accent:#7FB0DE; --accent-soft:#1B2C3E;
+  --applied:#63BC8B; --applied-soft:#16281F;
+  --struck:#E0808B;  --struck-soft:#2C1A1D;
+  --indet:#DDAE4E;   --indet-soft:#2A2113;
+  --exon:#B9C6D3; --utr:#5D6B7A;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:15px; line-height:1.6; margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:Spectral,Georgia,"Times New Roman",serif;font-weight:600;text-wrap:balance;margin:0;letter-spacing:-.01em}
+p{margin:0}
+code,.mono,.num{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+
+/* ---------- shell ---------- */
+.shell{max-width:var(--maxw);margin:0 auto;padding:0 24px 96px}
+.lede{max-width:66ch}
+/* Section rail. Narrow viewports get a sticky horizontal track strip;
+   from 960px up it becomes the lateral rail. It is never hidden. */
+.rail{position:sticky;top:0;z-index:20;background:var(--ground);
+      display:flex;align-items:baseline;gap:14px;
+      margin:0 -24px 8px;padding:9px 24px;border-bottom:1px solid var(--rule)}
+.rail ol{list-style:none;margin:0;padding:0;display:flex;gap:2px;
+         overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.rail ol::-webkit-scrollbar{display:none}
+.rail a{display:flex;gap:7px;align-items:baseline;white-space:nowrap;
+        padding:5px 10px;text-decoration:none;color:var(--ink-2);font-size:12.5px;line-height:1.35;
+        border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.rail a:hover{color:var(--ink)}
+.rail a.on{color:var(--ink);border-bottom-color:var(--accent);font-weight:500}
+.rail .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.rail a.on .n{color:var(--accent)}
+.rail-h{flex:none;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+@media(min-width:960px){
+  .shell{display:grid;grid-template-columns:172px minmax(0,1fr);gap:48px;padding-right:32px}
+  .shell > header,.shell > footer{grid-column:1/-1}
+  .rail{display:block;align-self:start;max-height:100vh;overflow-y:auto;
+        padding:32px 0 32px;margin:0 -24px 0 0;
+        border-bottom:0;border-right:1px solid var(--rule)}
+  .rail ol{padding:0 20px 0 0;flex-direction:column;gap:1px;overflow-x:visible}
+  .rail a{display:grid;grid-template-columns:22px 1fr;gap:8px;white-space:normal;
+          padding:5px 8px 5px 10px;
+          border-bottom:0;border-left:2px solid transparent}
+  .rail a.on{border-left-color:var(--accent)}
+  .rail-h{padding:0 0 10px 12px;border-bottom:1px solid var(--rule);margin-bottom:12px}
+}
+
+/* ---------- specimen header ---------- */
+header{padding:40px 0 0}
+.brow{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;
+      font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);
+      border-bottom:1px solid var(--rule);padding-bottom:10px}
+.brow .sep{color:var(--rule-strong)}
+h1{font-size:clamp(34px,5.2vw,54px);line-height:1.05;margin:26px 0 0;letter-spacing:-.025em}
+h1 em{font-style:italic;color:var(--accent)}
+.sub{margin-top:16px;font-size:17px;line-height:1.6;color:var(--ink-2);max-width:62ch;font-family:Spectral,Georgia,serif}
+.sub strong{color:var(--ink);font-weight:500}
+
+.specimen{margin-top:32px;border:1px solid var(--rule);background:var(--surface);border-radius:3px;
+          box-shadow:var(--shadow);overflow:hidden}
+.specimen-h{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+            padding:9px 16px;background:var(--sunken);border-bottom:1px solid var(--rule);
+            font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.spec-cell{padding:14px 16px;border-right:1px solid var(--rule);border-top:1px solid var(--rule)}
+.spec-cell:first-child{border-top:none}
+@media(min-width:640px){.spec-cell{border-top:none}}
+.spec-cell:last-child{border-right:none}
+.spec-k{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+.spec-v{font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:500;font-variant-numeric:tabular-nums;line-height:1.45}
+.spec-v small{display:block;font-size:11.5px;font-weight:400;color:var(--ink-2);letter-spacing:0;margin-top:3px;font-family:"IBM Plex Sans",sans-serif}
+
+/* ---------- sections ---------- */
+section{padding-top:72px;scroll-margin-top:20px}
+.sec-h{display:flex;gap:14px;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:9px;margin-bottom:20px}
+.sec-n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);font-variant-numeric:tabular-nums;
+       padding-top:4px;letter-spacing:.06em}
+.sec-h h2{font-size:clamp(21px,2.4vw,27px);line-height:1.2;flex:1}
+.sec-h .tag{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap;padding-top:6px}
+.say{max-width:66ch;color:var(--ink-2);margin-bottom:20px}
+.say strong{color:var(--ink);font-weight:600}
+.say em{font-style:italic}
+
+/* ---------- figure frame ---------- */
+figure{margin:0 0 20px;border:1px solid var(--rule);background:var(--surface);border-radius:3px;overflow:hidden;box-shadow:var(--shadow)}
+.fig-h{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;
+       padding:9px 16px;border-bottom:1px solid var(--rule);background:var(--sunken);
+       font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.fig-body{padding:20px 16px}
+.fig-scroll{overflow-x:auto;overflow-y:hidden}
+figcaption{padding:12px 16px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-2);background:var(--sunken)}
+figcaption strong{color:var(--ink);font-weight:600}
+svg{display:block;max-width:100%;height:auto}
+svg text{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+svg .lbl{font-family:"IBM Plex Sans",sans-serif}
+
+/* ---------- legend / chips ---------- */
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:11.5px;color:var(--ink-2);align-items:center}
+.legend b{display:inline-flex;align-items:center;gap:6px;font-weight:400}
+.sw{width:11px;height:11px;border-radius:2px;flex:none;border:1px solid transparent}
+.sw.applied{background:var(--applied)} .sw.struck{background:var(--struck)}
+.sw.indet{background:var(--indet)} .sw.exon{background:var(--exon)}
+.sw.absent{background:transparent;border-color:var(--rule-strong)}
+.sw.accent{background:var(--accent)}
+
+.stat{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;
+      padding:2px 7px;border-radius:2px;white-space:nowrap;display:inline-block}
+.stat.applied{background:var(--applied-soft);color:var(--applied)}
+.stat.struck{background:var(--struck-soft);color:var(--struck)}
+.stat.indet{background:var(--indet-soft);color:var(--indet)}
+.stat.absent{background:transparent;color:var(--ink-3);border:1px dashed var(--rule-strong)}
+
+/* ---------- detail disclosure ---------- */
+details{border-top:1px solid var(--rule);margin-top:-20px;margin-bottom:20px}
+details > summary{cursor:pointer;list-style:none;padding:11px 0;font-size:11.5px;letter-spacing:.06em;
+                  text-transform:uppercase;color:var(--ink-3);display:flex;align-items:center;gap:8px;user-select:none}
+details > summary::-webkit-details-marker{display:none}
+details > summary::before{content:"+";font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--accent);width:11px}
+details[open] > summary::before{content:"\2212"}
+details > summary:hover{color:var(--ink)}
+.detail-body{padding:0 0 20px;max-width:70ch;color:var(--ink-2);font-size:14px;display:flex;flex-direction:column;gap:12px}
+.detail-body strong{color:var(--ink);font-weight:600}
+
+/* ---------- data table ---------- */
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:7px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:500;white-space:nowrap}
+td.n,th.n{text-align:right;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tr.hi td{background:var(--accent-soft)}
+.tw{overflow-x:auto}
+
+/* ---------- callout ---------- */
+.callout{border-left:2px solid var(--accent);background:var(--sunken);padding:13px 16px;
+         font-size:13.5px;color:var(--ink-2);margin-bottom:20px;max-width:70ch;border-radius:0 3px 3px 0}
+.callout.warn{border-left-color:var(--struck)}
+.callout strong{color:var(--ink);font-weight:600}
+.callout .h{display:block;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+
+footer{margin-top:88px;padding-top:20px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--ink-3);max-width:76ch;display:flex;flex-direction:column;gap:10px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ---------- interactive controls ---------- */
+button.seg{font:500 11.5px/1 "IBM Plex Sans",sans-serif;letter-spacing:.02em;color:var(--ink-2);
+  background:var(--surface);border:1px solid var(--rule);padding:5px 10px;border-radius:2px;cursor:pointer;
+  margin-left:5px;transition:color .15s,border-color .15s,background .15s;text-transform:none}
+button.seg:hover{color:var(--ink);border-color:var(--rule-strong)}
+button.seg.on{color:var(--surface);background:var(--accent);border-color:var(--accent)}
+.pm2-grid{display:grid;gap:28px;align-items:start}
+@media(min-width:820px){.pm2-grid{grid-template-columns:290px minmax(0,1fr)}}
+.pm2-ctl{display:flex;flex-direction:column;gap:17px}
+.ctl{display:flex;flex-direction:column;gap:6px}
+.ctl-t{display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+  font-size:11.5px;color:var(--ink-2);line-height:1.3}
+.ctl-t em{font-style:normal;font-family:"IBM Plex Mono",monospace;color:var(--accent);font-weight:600}
+.ctl-t output{font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:22px;background:transparent;cursor:pointer;margin:0}
+input[type=range]::-webkit-slider-runnable-track{height:3px;background:var(--rule-strong);border-radius:2px}
+input[type=range]::-moz-range-track{height:3px;background:var(--rule-strong);border-radius:2px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;
+  background:var(--accent);border:2px solid var(--surface);margin-top:-6px;box-shadow:0 0 0 1px var(--accent)}
+input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:var(--accent);
+  border:2px solid var(--surface);box-shadow:0 0 0 1px var(--accent)}
+.presets{display:flex;flex-wrap:wrap;gap:5px;padding-top:14px;border-top:1px solid var(--rule)}
+.presets button.seg{margin-left:0;font-family:"IBM Plex Mono",monospace;font-size:10.5px}
+.pre-h{width:100%;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px}
+.pm2-read{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-top:14px;
+  padding-top:14px;border-top:1px solid var(--rule)}
+.pm2-note{font-size:12.5px;color:var(--ink-2)}
+.pm2-note b{color:var(--ink);font-weight:600}
+.leaf{cursor:pointer}
+.leaf:hover .leaf-box{stroke-width:2}
+
+/* ---------- Track 2 additions ---------- */
+.grad{display:grid;gap:5px;margin:4px 0 0}
+.grad-row{display:grid;grid-template-columns:118px 1fr 44px;gap:12px;align-items:center}
+.grad-row .lbl{font-size:12px;color:var(--ink-2);text-align:right;line-height:1.25}
+.grad-bar{height:22px;background:var(--sunken);border:1px solid var(--rule);border-radius:2px;position:relative;overflow:hidden}
+.grad-bar i{position:absolute;inset:0 auto 0 0;background:var(--accent-soft);border-right:2px solid var(--accent);display:block}
+/* A measured zero is drawn EMPTY with a struck end-stop, never as a filled bar.
+   Track 1's explainer reserves hatching for UNMEASURED; a zero here is measured,
+   so it must not borrow that texture, and must not read as a large value. */
+.grad-row.zero .grad-bar{border-color:var(--struck);border-left-width:3px}
+.grad-row.zero .grad-bar i{width:0!important;background:none;border-right:0}
+.grad-row.zero .grad-bar::after{content:"measured zero";position:absolute;left:9px;top:50%;
+  transform:translateY(-50%);font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.07em;text-transform:uppercase;color:var(--struck)}
+.grad-row .num{font-size:13px;font-weight:600;text-align:right}
+.grad-row.zero .num{color:var(--struck)}
+
+.split{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:720px){.split{grid-template-columns:1fr 1fr}}
+.card{border:1px solid var(--rule);background:var(--surface);border-radius:3px;padding:14px 16px}
+.card.bad{border-color:var(--struck);background:var(--struck-soft)}
+.card.good{border-color:var(--applied);background:var(--applied-soft)}
+.card h4{font-size:14px;margin:0 0 6px}
+.card p{font-size:13.5px;color:var(--ink-2)}
+
+.bigstat{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:2px 0 8px}
+.bigstat b{font-family:"IBM Plex Mono",monospace;font-size:38px;line-height:1;letter-spacing:-.02em}
+.bigstat .of{font-size:14px;color:var(--ink-3)}
+
+.rank{width:100%;border-collapse:collapse;font-size:13px}
+.rank th{text-align:left;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);
+         padding:0 8px 7px;border-bottom:1px solid var(--rule);font-weight:500}
+.rank td{padding:7px 8px;border-bottom:1px solid var(--rule);vertical-align:middle}
+.rank tr:last-child td{border-bottom:0}
+.rank .nm{font-weight:500}
+.rank .tot{font-family:"IBM Plex Mono",monospace;font-weight:600;text-align:right}
+.rank .ax{font-family:"IBM Plex Mono",monospace;color:var(--ink-3);font-size:12px;white-space:nowrap}
+.pill{display:inline-block;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;
+      padding:2px 7px;border-radius:9px;border:1px solid var(--rule-strong);color:var(--ink-2)}
+.pill.appr{border-color:var(--applied);color:var(--applied);background:var(--applied-soft)}
+.pill.supp{border-color:var(--indet);color:var(--indet);background:var(--indet-soft)}
+.pill.inv{border-color:var(--rule-strong);color:var(--ink-3)}
+.rank tr.gated td{opacity:.72}
+.rank .gate{color:var(--struck);font-size:11.5px}
+
+.fork{display:grid;gap:10px;margin-top:10px}
+@media(min-width:720px){.fork{grid-template-columns:1fr 1fr}}
+.fork .arm{border:1px solid var(--rule);border-radius:3px;padding:13px 15px;background:var(--surface)}
+.fork .arm.live{border-color:var(--applied)}
+.fork .arm.dead{border-color:var(--struck)}
+.fork .arm h4{font-size:13px;margin:0 0 5px}
+.fork .arm .res{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;
+                text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:6px}
+.fork .arm p{font-size:13px;color:var(--ink-2)}
+
+.flip{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.flip-row{display:grid;grid-template-columns:96px 1fr 1fr;gap:0;border-top:1px solid var(--rule);font-size:13px}
+.flip-row:first-child{border-top:0}
+.flip-row > div{padding:7px 12px;border-left:1px solid var(--rule)}
+.flip-row > div:first-child{border-left:0;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-2)}
+.flip-row.h > div{background:var(--sunken);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+.flip .un{color:var(--ink-3)}
+.flip .art{color:var(--indet)}
+</style>
+
+<div class="shell">
+
+<header>
+  <div class="brow">
+    <span>MVA Hackathon 2026</span><span class="sep">/</span>
+    <span>Track 2 &middot; Drug Repurposing</span><span class="sep">/</span>
+    <span>Team Gummietech</span><span class="sep">/</span>
+    <span>2026-09-02</span>
+  </div>
+  <h1>It is not a broken kinase.<br>It is <em>not enough protein</em>.</h1>
+  <p class="sub">The intuitive reading of this child&rsquo;s genotype sends the drug
+  search the wrong way. Correcting it changes which drugs are worth proposing, explains
+  why the obvious search returns nothing, survives the one question Track&nbsp;1 could not
+  answer, and identifies a drug class that would make him <strong>worse</strong>.</p>
+
+  <div class="specimen">
+    <div class="specimen-h"><span>The genotype</span><span>BUB1B &middot; chr15</span></div>
+    <div class="spec-grid">
+      <div class="spec-cell"><div class="spec-k">Allele 1</div>
+        <div class="spec-v mono">p.Leu737Ter</div>
+        <div class="say">Nonsense, 747&nbsp;nt upstream of the final junction &rarr; NMD &rarr; <strong>no protein</strong></div></div>
+      <div class="spec-cell"><div class="spec-k">Allele 2</div>
+        <div class="spec-v mono">p.Asn1002Lys</div>
+        <div class="say">Missense inside the pseudokinase domain (766&ndash;1050) &rarr; probably <strong>unstable protein</strong></div></div>
+      <div class="spec-cell"><div class="spec-k">Consequence</div>
+        <div class="spec-v">Low BubR1 abundance</div>
+        <div class="say">The same in <em>cis</em> or <em>trans</em> &mdash; so the hypothesis does not depend on phase</div></div>
+      <div class="spec-cell"><div class="spec-k">Therapeutic target</div>
+        <div class="spec-v">Protein quantity</div>
+        <div class="say">Not checkpoint activity, and not the gene</div></div>
+    </div>
+  </div>
+</header>
+
+<nav class="rail" aria-label="Sections">
+  <div class="rail-h">Sections</div>
+  <ol>
+    <li><a href="#s1" class="on"><span class="n">01</span><span>The correction</span></a></li>
+    <li><a href="#s2"><span class="n">02</span><span>Rescue, and a threshold</span></a></li>
+    <li><a href="#s3"><span class="n">03</span><span>Distance from the defect</span></a></li>
+    <li><a href="#s4"><span class="n">04</span><span>A pharmacopeia of inhibitors</span></a></li>
+    <li><a href="#s5"><span class="n">05</span><span>The inversion</span></a></li>
+    <li><a href="#s6"><span class="n">06</span><span>The ranking</span></a></li>
+    <li><a href="#s7"><span class="n">07</span><span>Measure before treating</span></a></li>
+    <li><a href="#s8"><span class="n">08</span><span>An honest negative</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+<section id="s1">
+  <div class="sec-h"><span class="sec-n">01</span><h2>The correction that reorganises everything</h2><span class="tag">Suijkerbuijk 2010</span></div>
+  <p class="lede">MVA is caused by loss of a mitotic checkpoint protein, so the natural
+  move is to look for a drug that repairs or bypasses the checkpoint. That move is wrong,
+  and it is wrong in a specific, published way.</p>
+
+  <div class="split" style="margin-top:16px">
+    <div class="card bad">
+      <h4>&times; The intuitive reading</h4>
+      <p>&ldquo;A checkpoint kinase is broken. Find something that restores checkpoint
+      signalling, or that kills the aneuploid cells it lets through.&rdquo;</p>
+      <p style="margin-top:8px">Leads directly to SAC-targeted agents and to
+      aneuploidy-selective cytotoxics. Both are dead ends here &mdash; and one is actively
+      harmful (&sect;05).</p>
+    </div>
+    <div class="card good">
+      <h4>&check; What patient cells actually show</h4>
+      <p>Cell lines from MVA patients with <em>this same architecture</em> &mdash; a
+      truncating allele paired with a kinase-domain missense allele &mdash; have
+      <strong>2&ndash;6&times; less BubR1 protein</strong>. The truncated allele makes
+      none; the missense allele makes protein that is degraded too fast.</p>
+      <p style="margin-top:8px">The paper&rsquo;s own conclusion: chromosomal instability
+      in these patients &ldquo;is a result of low BUBR1 protein abundance.&rdquo;</p>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:16px">
+    <p>The residual protein is <strong>competent, just insufficient</strong> &mdash; it
+    still localises correctly to kinetochores. This is a dosage problem in a working
+    machine, not a broken machine.</p>
+  </div>
+</section>
+
+<section id="s2">
+  <div class="sec-h"><span class="sec-n">02</span><h2>Two results carry the whole argument</h2><span class="tag">Why abundance is the target</span></div>
+
+  <div class="split">
+    <div class="card">
+      <h4>Restoring abundance restores function</h4>
+      <p>Forced overexpression of two kinase-domain missense mutants, back to wild-type
+      levels, <strong>fully restored</strong> the mitotic checkpoint response.</p>
+      <p style="margin-top:8px">One of those two, <span class="mono">L1012P</span>, sits
+      <strong>ten residues</strong> from this child&rsquo;s
+      <span class="mono">p.Asn1002Lys</span>.</p>
+      <p style="margin-top:8px" class="say">&ldquo;These mutations do not impose
+      significant constraints on BUBR1 function other than affecting overall BUBR1 protein
+      abundance.&rdquo;</p>
+    </div>
+    <div class="card">
+      <h4>And there is a threshold</h4>
+      <p>Titrating BubR1 down with an inducible shRNA:</p>
+      <div class="grad" style="margin-top:10px">
+        <div class="grad-row"><span class="lbl">~6% of normal</span>
+          <span class="grad-bar"><i style="width:6%"></i></span><span class="num" style="color:var(--struck)">bad</span></div>
+        <div class="grad-row"><span class="lbl">~13% of normal</span>
+          <span class="grad-bar"><i style="width:13%;background:var(--applied-soft);border-right-color:var(--applied)"></i></span><span class="num" style="color:var(--applied)">fine</span></div>
+      </div>
+      <p style="margin-top:10px">At 6%, most cells missegregate chromosomes. At 13%,
+      segregation is &ldquo;virtually&rdquo; unaffected. <strong>A few percentage points of
+      protein separate failing from functioning.</strong></p>
+    </div>
+  </div>
+
+  <div class="callout warn" style="margin-top:16px">
+    <p><strong>Stated as the inference it is.</strong>
+    <span class="mono">p.Asn1002Lys</span> itself was never tested. The prediction rests on
+    domain membership &mdash; and <span class="mono">Q921H</span>, inside the same domain,
+    behaves exactly like wild-type. Position does not guarantee instability. This is why
+    &sect;07 leads with an assay rather than a prescription.</p>
+  </div>
+</section>
+
+<section id="s3">
+  <div class="sec-h"><span class="sec-n">03</span><h2>Drug availability rises with distance from the defect</h2><span class="tag">24 genes &middot; 2 databases</span></div>
+  <p class="lede">Unique drugs and clinical candidates per pathway tier, Open Targets.
+  The gene we need to fix has none; the genes we can drug are consequences.</p>
+
+  <div class="grad" style="margin-top:18px">
+    <div class="grad-row zero"><span class="lbl"><strong>the defect</strong><br>BUB1B</span>
+      <span class="grad-bar"><i></i></span><span class="num">0</span></div>
+    <div class="grad-row"><span class="lbl">checkpoint<br>6 genes</span>
+      <span class="grad-bar"><i style="width:2.8%"></i></span><span class="num">2</span></div>
+    <div class="grad-row"><span class="lbl">micronucleus<br>sensing</span>
+      <span class="grad-bar"><i style="width:1.4%"></i></span><span class="num">1</span></div>
+    <div class="grad-row"><span class="lbl">senescence<br>5 genes</span>
+      <span class="grad-bar"><i style="width:22.5%"></i></span><span class="num">16</span></div>
+    <div class="grad-row"><span class="lbl">abundance<br>6 genes</span>
+      <span class="grad-bar"><i style="width:42.3%"></i></span><span class="num">30</span></div>
+    <div class="grad-row"><span class="lbl">SASP<br>4 genes</span>
+      <span class="grad-bar"><i style="width:100%"></i></span><span class="num">71</span></div>
+  </div>
+
+  <p style="margin-top:16px">Five genes return <strong>zero in both databases</strong>:
+  <span class="mono">BUB1B</span>, <span class="mono">BUB3</span>,
+  <span class="mono">CDC20</span>, <span class="mono">MAD2L1</span>,
+  <span class="mono">NMNAT1</span>.</p>
+
+  <div class="callout" style="margin-top:14px">
+    <p>The abundance tier&rsquo;s 30 is misleading: <strong>23 of them sit in the two
+    genes this analysis excludes</strong> (HSP90AA1 and PARP1). Subtract those and four
+    usable drugs remain &mdash; all anti-CD38 antibodies &mdash; plus three NAMPT
+    inhibitors that push NAD&#8314; the wrong way.</p>
+    <p style="margin-top:8px"><strong>And there is no SIRT2 activator anywhere in the
+    searched space.</strong> Every SIRT2 compound in either database is an inhibitor or an
+    unranked low-confidence claim. That is exactly why the abundance mechanism has to be
+    reached through <em>substrate supply</em> &mdash; an NAD&#8314; precursor &mdash;
+    rather than through a drug against the enzyme.</p>
+  </div>
+</section>
+
+<section id="s4">
+  <div class="sec-h"><span class="sec-n">04</span><h2>The pharmacopeia is built of inhibitors. This disease is a deficiency.</h2><span class="tag">The structural mismatch</span></div>
+
+  <div class="bigstat"><b>129</b><span class="of">of 142 action-typed Open Targets entries are</span>
+    <span class="pill" style="border-color:var(--struck);color:var(--struck)">INHIBITOR</span></div>
+
+  <p class="lede">Counting antisense inhibitors, RNAi inhibitors and antagonists brings it
+  to <strong>95% inhibitory</strong>. Across all 24 genes there is exactly one
+  <span class="mono">ACTIVATOR</span> and one <span class="mono">STABILISER</span>.</p>
+
+  <p style="margin-top:12px">DGIdb agrees independently: among approved-drug interactions
+  across these genes, <strong>62 are inhibitory and 1 is activating</strong> &mdash; and
+  that one is <em>granisetron against TP53</em>, an antiemetic. It is a spurious
+  annotation of exactly the kind DGIdb&rsquo;s own disclaimer warns about.</p>
+
+  <div class="callout" style="margin-top:16px">
+    <p><strong>This generalises well past this child.</strong> Drug development produces
+    inhibitors, because binding and blocking a protein is chemically tractable and most
+    common diseases involve too much of something. Loss-of-function rare disease is the
+    mirror image &mdash; and most rare disease is loss of function. The practical corollary:
+    ask <em>&ldquo;what raises this protein?&rdquo;</em> rather than <em>&ldquo;what binds
+    it?&rdquo;</em>, and expect the best answer to be a metabolite or a substrate, because
+    those are among the few things that push a system <em>up</em>.</p>
+  </div>
+</section>
+
+<section id="s5">
+  <div class="sec-h"><span class="sec-n">05</span><h2>The inversion: the top search hit is the most contraindicated agent</h2><span class="tag">Gate G1</span></div>
+
+  <div class="split">
+    <div class="card">
+      <h4>What a keyword search surfaces first</h4>
+      <p>Search &ldquo;drugs for aneuploidy&rdquo; and the best-known paper is Tang et&nbsp;al.
+      2011, which identifies <strong>17-AAG</strong> among three aneuploidy-selective
+      compounds.</p>
+    </div>
+    <div class="card bad">
+      <h4>Why it would harm this child</h4>
+      <p>17-AAG is an <strong>HSP90 inhibitor</strong>. The mutant BubR1 in MVA patients is
+      an HSP90 <em>client</em>: geldanamycin severely reduced mutant but not wild-type
+      BubR1, and with cycloheximide it &ldquo;removed virtually all mutant BUBR1
+      protein.&rdquo;</p>
+      <p style="margin-top:8px">Blocking HSP90 here is predicted to <strong>destroy the
+      residual protein the child depends on</strong> &mdash; driving the primary defect in
+      the wrong direction.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:16px">It fails a second gate as well: its mechanism is
+  <em>selective killing of aneuploid cells</em>. That concept was built for tumours, where
+  aneuploid cells are the disease. In mosaic variegated aneuploidy those cells
+  <strong>are the patient</strong>, distributed across tissues by definition of the
+  syndrome.</p>
+
+  <div class="callout warn" style="margin-top:14px">
+    <p>The exclusion gates were written and committed <strong>before</strong> the search
+    ran, which is the only reason this was caught rather than rationalised afterwards.
+    <strong>Pathway proximity is not a therapeutic rationale.</strong></p>
+  </div>
+</section>
+
+<section id="s6">
+  <div class="sec-h"><span class="sec-n">06</span><h2>The ranking, with regulatory status never folded into the score</h2><span class="tag">Pre-registered rubric</span></div>
+  <p class="lede">Scored on five axes fixed before any query ran: <span class="mono">A</span>
+  mechanistic directness, <span class="mono">B</span> evidence tier, <span class="mono">C</span>
+  paediatric data, <span class="mono">D</span> case-specific safety (subtractive),
+  <span class="mono">E</span> feasibility. Approval status is <em>recorded, not scored</em>
+  &mdash; otherwise an approved drug with a weak mechanism outranks a better-evidenced one.</p>
+
+  <div class="fig-scroll" style="margin-top:16px">
+  <table class="rank">
+    <thead><tr><th>#</th><th>Candidate</th><th>Status</th><th style="text-align:right">Total</th><th>A / B / C / D / E</th><th>Tier</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td class="nm">nicotinamide riboside</td><td><span class="pill supp">supplement</span></td><td class="tot">13</td><td class="ax">4 / 5 / 2 / &minus;1 / 3</td><td>abundance</td></tr>
+      <tr><td>2</td><td class="nm">nicotinamide mononucleotide</td><td><span class="pill supp">supplement</span></td><td class="tot">11</td><td class="ax">5 / 2 / 2 / &minus;1 / 3</td><td>abundance</td></tr>
+      <tr><td>3</td><td class="nm">dasatinib + quercetin</td><td><span class="pill appr">approved</span></td><td class="tot">10</td><td class="ax">3 / 4 / 4 / &minus;3 / 2</td><td>senolytic</td></tr>
+      <tr><td>4</td><td class="nm">metformin</td><td><span class="pill appr">approved</span></td><td class="tot">10</td><td class="ax">2 / 2 / 4 / &minus;1 / 3</td><td>senomorphic</td></tr>
+      <tr><td>5</td><td class="nm">fisetin</td><td><span class="pill supp">supplement</span></td><td class="tot">9</td><td class="ax">3 / 2 / 2 / &minus;1 / 3</td><td>senolytic</td></tr>
+      <tr><td>6</td><td class="nm">ruxolitinib</td><td><span class="pill appr">approved</span></td><td class="tot">7</td><td class="ax">3 / 2 / 3 / &minus;3 / 2</td><td>senomorphic</td></tr>
+      <tr><td>7</td><td class="nm">sirolimus</td><td><span class="pill appr">approved</span></td><td class="tot">6</td><td class="ax">2 / 2 / 3 / &minus;3 / 2</td><td>senomorphic</td></tr>
+      <tr><td>8</td><td class="nm">baricitinib</td><td><span class="pill appr">approved</span></td><td class="tot">6</td><td class="ax">3 / 1 / 3 / &minus;3 / 2</td><td>senomorphic</td></tr>
+      <tr><td>9</td><td class="nm">daratumumab</td><td><span class="pill appr">approved</span></td><td class="tot">4</td><td class="ax">4 / 1 / 3 / &minus;4 / 0</td><td>abundance</td></tr>
+      <tr><td>10</td><td class="nm">navitoclax</td><td><span class="pill inv">investigational</span></td><td class="tot">3</td><td class="ax">3 / 2 / 1 / &minus;3 / 0</td><td>senolytic</td></tr>
+      <tr class="gated"><td>&mdash;</td><td class="nm">tanespimycin (17-AAG)</td><td><span class="pill inv">investigational</span></td><td class="tot gate">gated</td><td class="ax gate">G1 + G2</td><td>depletes residual BubR1</td></tr>
+      <tr class="gated"><td>&mdash;</td><td class="nm">daporinad</td><td><span class="pill inv">investigational</span></td><td class="tot gate">gated</td><td class="ax gate">G1</td><td>lowers NAD&#8314;</td></tr>
+      <tr class="gated"><td>&mdash;</td><td class="nm">olaparib</td><td><span class="pill appr">approved</span></td><td class="tot gate">gated</td><td class="ax gate">G1</td><td>genotoxic in a CIN syndrome</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="split" style="margin-top:16px">
+    <div class="card">
+      <h4>Highest overall &mdash; and it is not a medicine</h4>
+      <p><strong>Nicotinamide riboside</strong> is a dietary supplement. It leads because
+      it is the only candidate acting on the <em>defect</em> rather than its consequences,
+      and it carries a randomised placebo-controlled trial in a monogenic progeroid
+      disease plus paediatric exposure down to age&nbsp;1.</p>
+    </div>
+    <div class="card">
+      <h4>Highest approved medicine</h4>
+      <p><strong>Dasatinib + quercetin</strong>. Dasatinib is licensed from age&nbsp;1 &mdash;
+      but <strong>none of 22 trials of the senolytic regimen ever enrolled a child</strong>,
+      and TKIs are documented to impair growth in an already growth-restricted child.</p>
+    </div>
+  </div>
+
+  <div class="callout warn" style="margin-top:14px">
+    <p><strong>Scores are structured arguments, not measurements.</strong> Two candidates
+    one point apart are not meaningfully distinguishable. Metformin reaches 10 almost
+    entirely on safety and familiarity (C&nbsp;4, E&nbsp;3) with the weakest mechanism in
+    the top half &mdash; it is the <em>safest</em> option here, not the most
+    <em>targeted</em>.</p>
+  </div>
+</section>
+
+<section id="s7">
+  <div class="sec-h"><span class="sec-n">07</span><h2>The first recommendation is not a drug</h2><span class="tag">Measure before treating</span></div>
+  <p class="lede">A western blot for BubR1 in patient PBMCs or fibroblasts, against
+  matched controls. It is cheap, standard, and it forks the entire report.</p>
+
+  <div class="fork">
+    <div class="arm live">
+      <span class="res">If reduced but present</span>
+      <h4>The hypothesis is live</h4>
+      <p>This is the hypomorphic state the models represent. The 6%&ndash;13% threshold
+      means a modest gain in abundance could cross a real functional line, and the
+      abundance tier is worth pursuing.</p>
+    </div>
+    <div class="arm dead">
+      <span class="res">If absent</span>
+      <h4>The top tier is futile</h4>
+      <p>There is nothing to stabilise. Ranks 1, 2 and 9 fall away entirely and the list
+      should be re-read from the senolytic tier down. Better to learn this from a blot
+      than from a child.</p>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:16px">
+    <p><strong>The same assay answers a Track&nbsp;1 question.</strong> A demonstrated
+    abundance defect attributable to <span class="mono">p.Asn1002Lys</span> is functional
+    evidence &mdash; the substance of ACMG <strong>PS3</strong> &mdash; for a variant
+    currently classified VUS. One inexpensive experiment tests the therapy and may resolve
+    the classification.</p>
+  </div>
+
+  <p style="margin-top:14px">Supporting assays, cheapest first: a <strong>cytokinesis-block
+  micronucleus assay</strong> (measures the actual missegregation rate rather than a
+  proxy); a <strong>karyotype</strong> on non-malignant metaphases, which is both
+  Track&nbsp;1&rsquo;s first recommended test and the diagnostic the AACR guideline lists
+  for MVA; then senescence markers, a SASP panel, and blood NAD&#8314;.</p>
+</section>
+
+<section id="s8">
+  <div class="sec-h"><span class="sec-n">08</span><h2>The pharmacogenomic layer, and why its result is a negative</h2><span class="tag">PharmCAT &middot; CPIC</span></div>
+
+  <div class="bigstat"><b>22</b><span class="of">of 1,226 PharmCAT positions carry a variant call in this VCF</span></div>
+
+  <p class="lede">This is a variants-only VCF with no reference blocks, so a position
+  absent from the file is <strong>uncalled</strong>, not homozygous reference &mdash; the
+  same invariant Track&nbsp;1 enforced on coverage. PharmCAT offers a flag to assume
+  otherwise, and labels it <span class="mono">DANGEROUS!</span> in its own CLI. We ran it
+  both ways.</p>
+
+  <div class="bigstat" style="margin-top:18px"><b>16</b><span class="of">of 23 genes change their call between the two assumptions</span></div>
+
+  <div class="flip" style="margin-top:10px">
+    <div class="flip-row h"><div>gene</div><div>strict</div><div>assuming absent = reference</div></div>
+    <div class="flip-row"><div>TPMT</div><div class="un">Unknown / Unknown</div><div class="art">*1/*1 &rarr; &ldquo;Normal Metaboliser&rdquo;</div></div>
+    <div class="flip-row"><div>NUDT15</div><div class="un">Unknown / Unknown</div><div class="art">*1/*1 &rarr; &ldquo;Normal Metaboliser&rdquo;</div></div>
+    <div class="flip-row"><div>UGT1A1</div><div class="un">Unknown / Unknown</div><div class="art">*1/*1 &rarr; &ldquo;Normal Metaboliser&rdquo;</div></div>
+    <div class="flip-row"><div>CYP2C9</div><div class="un">Unknown / Unknown</div><div class="art">*1/*1 &rarr; &ldquo;Normal Metaboliser&rdquo;</div></div>
+    <div class="flip-row"><div>SLCO1B1</div><div class="un">Unknown / Unknown</div><div class="art">*1/*1 &rarr; &ldquo;Normal Function&rdquo;</div></div>
+    <div class="flip-row"><div>G6PD</div><div class="un">Unknown</div><div class="art">B/B &rarr; &ldquo;Normal&rdquo;</div></div>
+  </div>
+
+  <div class="callout warn" style="margin-top:16px">
+    <p><strong>Every one of those reassuring calls is an artefact of the assumption, not a
+    measurement.</strong> A pipeline that ran the flag and printed the table would hand a
+    clinician a clean pharmacogenomic clearance for thiopurines, irinotecan and
+    fluoropyrimidines that this data cannot support. Irinotecan is used in relapsed
+    rhabdomyosarcoma; UGT1A1 status here is <em>unresolved</em>.</p>
+  </div>
+
+  <div class="callout" style="margin-top:14px">
+    <p><strong>And one false alarm worth catching.</strong> PharmCAT reports
+    <span class="mono">RYR1 rs35364374</span> with the CPIC phenotype &ldquo;Uncertain
+    Susceptibility&rdquo; to <strong>malignant hyperthermia</strong> &mdash; alarming for a
+    child facing repeated procedures under anaesthesia. Checked against the primary source,
+    <strong>ClinGen&rsquo;s expert panel classifies that exact variant Benign</strong>
+    (VCV000093279, 3-star). A pharmacogenomic phenotype label is not a variant
+    classification, and must be checked against one.</p>
+  </div>
+</section>
+
+</main>
+
+<footer style="grid-column:1/-1;margin-top:56px;padding-top:20px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--ink-3)">
+  <p style="max-width:70ch">Companion to
+  <span class="mono">submissions/track2/gummietech_track2_report.md</span>. Every figure on
+  this page is re-derived from committed artefacts in
+  <span class="mono">data-notes/</span> and traceable to a named primary source; the
+  report&rsquo;s verification table records what the audit changed.</p>
+  <p style="max-width:70ch;margin-top:10px"><strong>These are hypotheses for follow-up,
+  not evidence that a medicine works.</strong> Nothing here is medical advice. No MVA
+  patient has received any of these agents for this indication. No patient-identifying
+  detail is published, and no contact has been made with the family or their clinicians.</p>
+</footer>
+
+</div>
+
+<script>
+// Section rail: mark the section currently in view.
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.rail a'));
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (a) { a.classList.remove('on'); });
+      var a = map[e.target.id];
+      if (a) a.classList.add('on');
+    });
+  }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+  document.querySelectorAll('main section[id]').forEach(function (s) { obs.observe(s); });
+})();
+</script>
