@@ -125,8 +125,8 @@ single most likely place for an unfound MVA case series.
 
 # Pass 4 — gap closure, 2026-09-02
 
-Working from `pipeline/gap_closure_brief.md`. **Task 1 (structural analysis of
-p.Asn1002Lys) only** — Tasks 2–6 not attempted in this pass.
+Working from `pipeline/gap_closure_brief.md`. **Tasks 1 and 4 only** — Tasks 2, 3, 5 and 6
+not attempted in this pass.
 
 ## Successes
 
@@ -149,11 +149,45 @@ p.Asn1002Lys) only** — Tasks 2–6 not attempted in this pass.
 **Consequence:** the structural claim is reported as **inspection, not ΔΔG**, exactly as the
 brief pre-committed. See `data-notes/structural_analysis_n1002k.md`.
 
+## Task 4 — preterm nephrocalcinosis
+
+| # | Target | Route | Result |
+|---|---|---|---|
+| 35 | PubMed, 5 queries: preterm NC incidence/timing; furosemide; serial ultrasound onset; congenital/antenatal NC; BUB1B+renal | eutils esearch/esummary | ✅ All 5 returned. The BUB1B+renal query is **90% wrong-product matches** — renal-cell-carcinoma drug-discovery papers using BUB1B as a tumour marker. Failure mode 4, exactly as the original brief predicted |
+| 36 | Kim 2023, gestational-age stratification | Europe PMC `fullTextXML` | ✅ **Full text** (PMC10485931). The decisive source — monogenic OR 10.02 in full-term |
+| 37 | Gilbert 2022, VLBW incidence/natural course | Europe PMC `fullTextXML` | ✅ **Full text** (PMC9587072) |
+| 38 | Santos 2018, furosemide systematic review | Europe PMC `fullTextXML` | ✅ **Full text** (PMC6240934) — the deliberately-sought disconfirming source |
+| 39 | Narendra 2001, prospective preterm NC | efetch abstract | ⚠️ **Abstract only** — Europe PMC returned **HTTP 404** for PMC1721318 (scanned-era deposit). The study-design sentence needed is in the abstract and is quoted as such |
+| 40 | Bonnett 1991, serial ultrasound incidence | efetch abstract | ⚠️ **Abstract only** |
+| 41 | Kajii 1998, MVA renal phenotype | efetch abstract | ⚠️ **Abstract only.** Renal cysts + Wilms tumour, **no nephrocalcinosis** — one case report, not the Task 2 cohort search |
+
+### ⚠️ A route this repository relied on has closed
+
+| # | Target | Route | Outcome |
+|---|---|---|---|
+| F5 | Full text for PMC10485931, PMC1721318, PMC9587072 | **PMC HTML render** | ❌ **BLOCKED.** All three returned HTTP 200 with a ~21 KB **Google reCAPTCHA interstitial** ("Checking your browser before accessing pmc.ncbi.nlm.nih.gov"), extracting to 167 characters. **No attempt was made to bypass or complete the CAPTCHA.** |
+| F6 | Same three, via BioC | `pmcoa.cgi/BioC_json` | ❌ Non-JSON response for all three |
+
+**The "PMC HTML render route is 5-for-5" finding recorded in Pass 3 is now stale.** As of
+2026-09-02 that route is behind a bot check. **The working replacement is the Europe PMC REST
+API** — `https://www.ebi.ac.uk/europepmc/webservices/rest/<PMCID>/fullTextXML` — which is
+openly served, returned full text for 3 of 4 attempts here, and was named in the original
+brief. Use it first. Note its one failure mode seen here: older scanned-era deposits return
+HTTP 404 rather than partial content.
+
+### Incidental Task 3 hit
+
+PMID **30512160** — *Zhonghua Yi Xue Yi Chuan Xue Za Zhi* (Chinese Journal of Medical
+Genetics) 2018, "[Clinical features and genetic analysis of a child with mosaic variegated
+aneuploidy syndrome]" — a **Chinese-language MVA case report**, surfaced incidentally by an
+English-language query. Not fetched. Recorded because Task 3 is otherwise untouched, and
+because it is direct evidence that the non-English cohort literature is real and reachable.
+
 ## Scope this pass did NOT cover
 
 Tasks **2 (MVA cohort genotype–phenotype table)**, **3 (Japanese/Chinese PCS literature)**,
-**4 (preterm nephrocalcinosis)**, **5 (coverage re-costing)** and **6 (post-first-tumour
-surveillance)** of the brief are **untouched**. Everything recorded in Pass 3's
+**5 (coverage re-costing)** and **6 (post-first-tumour surveillance)** of the brief are
+**untouched**. Everything recorded in Pass 3's
 "scope this pass did NOT cover" section also remains outstanding, including the
 non-English MVA cohort literature.
 

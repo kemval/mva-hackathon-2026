@@ -3,7 +3,7 @@
 Findings from `pipeline/gap_closure_brief.md` imply the edits below. **None has been
 applied.** The submission text moves only after review, per the brief's deferred-edit rule.
 
-Status: **Task 1 complete. Tasks 2–6 not started.**
+Status: **Tasks 1 and 4 complete. Tasks 2, 3, 5, 6 not started.**
 
 ---
 
@@ -103,6 +103,100 @@ three API shapes.
 
 ---
 
-## From Tasks 2–6
+## From Task 4 — the nephrocalcinosis
+
+Full finding: `literature/31_preterm_nephrocalcinosis.md`. Claims register **section I**.
+Contradiction matrix **C13** (the adjudication) and **C14** (furosemide).
+
+**These edits are to the Track 1 report, and they reverse a reversal.** Track 1 currently
+argues that congenital onset *raises* the prior for a second monogenic renal cause. The
+gestational-age-stratified evidence runs the other way: the monogenic yield is ~10× higher in
+**full-term** children, and the recommendation to pursue monogenic causes is explicitly for
+"full-term patients **without** known clinical risk factors." This proband is preterm, with
+them.
+
+**Read the adjudication before applying any of this.** The correction is that Track 1's
+*inference* was backwards — **not** that the nephrocalcinosis is proven acquired. The imaging
+date does not exist in any available file and recontact is prohibited, so that stays open
+(**Q8**).
+
+### Edit 6 — Track 1 report, the paragraph beginning "Congenital-onset nephrocalcinosis moves the prior in the opposite direction"
+
+**File:** `submissions/track1/gummietech_track1_report.md`
+
+**Current:**
+> Congenital-onset nephrocalcinosis moves the prior in the opposite direction: it *raises*,
+> not lowers, the probability of a monogenic renal or metabolic cause, since prenatal calcium
+> deposition points toward an intrinsic tubular, metabolic or mineral-handling defect rather
+> than an acquired insult.
+
+**Proposed:**
+> **That correction went one step too far, and the step is identifiable.** Withdrawing the
+> claim that the acquired mechanisms were "each sufficient on its own" was right. Concluding
+> that the genetic prior therefore *rises* does not follow, and the paediatric evidence runs
+> the other way. In a stratified series of 464 children with nephrocalcinosis (Kim et al.
+> 2023, `literature/31_...`), the monogenic yield was **~10-fold higher in full-term
+> children** (OR 10.02, 95% CI 2.464–40.786, p = 0.001), and the authors recommend pursuing
+> monogenic causes "especially in full-term patients **without known clinical risk factors**."
+> This proband is preterm (HP:0001622) **with** known clinical risk factors, which is the
+> profile associated with the *lower* yield.
+>
+> The premise is also weaker than this report treated it. *"Present since birth"* is one cell
+> in a 2,750-character phenotype summary table written for a hackathon, not a clinical record,
+> and it carries **no imaging date**. Preterm infants are not scanned at birth in any protocol
+> in this literature: first scan at 1 month (Narendra 2001), diagnosis at 35 weeks corrected
+> GA (Gilbert 2022), mean age at first diagnosis 385 days (Kim 2023). A summary clause is more
+> likely to compress "identified in the neonatal period" than to date an observation to day 0.
+>
+> **What this report can honestly say is that it does not know.** If the finding truly were
+> antenatal, the acquired mechanisms could not explain it and the monogenic prior would rise.
+> The datum that would settle it is the date of the first renal ultrasound, which is not in
+> any available file and which this analysis may not request.
+
+**Why:** claims register I3, I4, I5, I6; matrix C13.
+
+### Edit 7 — Track 1 report, the "materially weaker negative" sentence
+
+**Current:** the 6-gene renal subset is "a **materially weaker negative** than this report
+previously presented it as."
+
+**Proposed:** keep the substance, drop the causal attribution to congenital onset. The panel
+**is** 6 genes against ~30-gene commercial panels and that alone makes it non-exhaustive — the
+honest reason, and one that does not depend on the timing question. Reframe the ~30-gene
+recommendation as *reasonable but lower-yield in a preterm child with risk factors*, rather
+than as correcting an error.
+
+**Why:** I11 — the recommendation itself is not withdrawn.
+
+### Edit 8 — Track 1 report, the withdrawn acquired mechanisms
+
+Where loop diuretics are named, add that the association is **contested**: an adjusted OR of
+1.26 (95% CI 1.02–1.57) in one VLBW case-control against a 32-study systematic review finding
+"no evidence that furosemide exposure increases the risk," self-graded low strength. Furosemide
+may be named as *a* plausible contributor, never as *the* mechanism — the original text was
+overconfident in that direction too.
+
+**Why:** I7; matrix C14.
+
+### Edit 9 — Track 1 report, optional footnote on MVA renal phenotype
+
+Kajii 1998's MVA/PCS patient had **renal cysts and Wilms tumour**, not nephrocalcinosis. This
+is one case report and **not** the exhaustive cohort search Task 2 specifies, so it must be
+cited as weak and non-exclusive, or left out until Task 2 runs.
+
+**Why:** I9.
+
+### No edit required
+
+- **Track 1's factual statements** that NICU nephrocalcinosis develops over weeks and that the
+  rhabdomyosarcoma came years later. Both correct; both survive.
+- **The CASR MQ40 gap and the callability limit.** Untouched by this task.
+- **The biochemistry recommendation** (serum/urine calcium, phosphate, magnesium, oxalate, PTH,
+  1,25-vitamin D). Stands on its own merits regardless of how C13 resolves.
+- **Anything in the Track 2 submission.** Task 4 touches Track 1 only.
+
+---
+
+## From Tasks 2, 3, 5, 6
 
 Not started.

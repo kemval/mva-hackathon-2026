@@ -124,3 +124,22 @@ reproducible via `pipeline/structural_analysis.py`.
 | H15 | This analysis **demonstrates** that p.Asn1002Lys lowers BubR1 abundance | **FALSE — do not assert** | — | It supplies a testable mechanism. It does not raise the confidence that the mechanism applies to this variant |
 | H16 | This analysis **weakens** Limitation 1 | **FALSE — do not assert** | — | It supports **tightening** it: the report's own counterexample proves same-domain structural reasoning fails here |
 | H17 | This analysis generates ACMG **PS3** functional evidence | **FALSE — do not assert** | — | PS3 requires a functional assay. PP3 stays weak; variant 2 stays VUS |
+
+## I. Nephrocalcinosis (Task 4, 2026-09-02)
+
+Source throughout: `literature/31_preterm_nephrocalcinosis.md`; adjudication in matrix
+**C13**/**C14**.
+
+| # | Claim | Grade | Tier | Note |
+|---|---|---|---|---|
+| I1 | Nephrocalcinosis is common in very preterm infants — 16–27% across cohorts | **Established** | Observational human | 16% (n=101, <32 wk), 17.1% (n=525 VLBW), 26.6% (n=79, <32 wk) |
+| I2 | In preterm infants it is **not diagnosed at birth** under any protocol in this literature | **Established** | Observational human | First scan at 1 month; diagnosis at 35 wk corrected GA; mean age at first diagnosis 385 days |
+| I3 | The monogenic yield is **~10× higher in full-term** children with NC | **Established (with confounding caveat)** | Observational human | OR 10.02 [2.464–40.786], p=0.001. Only 56/464 were tested, and testing was not randomised |
+| I4 | Prematurity **raises** the prior for a monogenic renal cause in this child | **REFUTED — do not assert** | — | The stratified data runs the other way. Matrix **C13**. This is Track 1's current position |
+| I5 | "Present since birth" in the phenotype document is a dated imaging observation | **Untested inference — do not assert** | — | 2,750-character summary table, no imaging date, not a clinical record |
+| I6 | The acquired explanation is **established** for this child | **Untested inference — do not assert** | — | The correction to Track 1 is that its *inference* was backwards, **not** that the finding is proven acquired |
+| I7 | Furosemide causes preterm nephrocalcinosis | **Contested** | Observational human | OR 1.26 [1.02;1.57] vs. a 32-study review finding no evidence, low strength. Matrix **C14** |
+| I8 | Preterm NC usually resolves | **Established** | Observational human | 61% resolve at 12–18 months; spontaneous resolution 68.4% preterm vs 48.9% full-term (p=0.003) |
+| I9 | Nephrocalcinosis is a documented feature of published BUB1B-MVA | **Not established — and not excluded** | Case report | Kajii 1998's patient had renal **cysts and Wilms tumour**, not nephrocalcinosis. One case report is not the Task 2 cohort search |
+| I10 | Track 1's factual statements about NICU and chemotherapy timing were wrong | **FALSE — do not assert** | — | Those are correct and survive. Only the direction-of-inference fails |
+| I11 | The ~30-gene panel recommendation should be dropped | **FALSE — do not assert** | — | Still reasonable; it should be reframed as lower-yield, not as correcting an error |

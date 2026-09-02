@@ -164,3 +164,25 @@ repository may quote past the verified abstract — a constraint now enforced in
 **Q1, Q2, Q3 and Q4 are four arms of a single fibroblast experiment.** That is the
 single most cost-effective piece of new evidence available in this case, and it is
 obtainable with a western blot.
+
+---
+
+## Q8 — When was this child's first renal ultrasound, and what did it show? **[decision value: high for Track 1, zero for Track 2]**
+
+**Why it matters.** The entire Track 1 nephrocalcinosis argument turns on whether *"present
+since birth"* is a dated imaging observation or a summary-table compression. In preterm
+infants the literature scans first at 1 month, diagnoses at 35 weeks corrected GA, and reports
+a mean age at first diagnosis of 385 days (`literature/31_...`). A single date would settle
+which of the two readings is right.
+
+**Why the literature cannot answer it.** It is a fact about one child, not about a
+population. No published source can supply it.
+
+**Cheapest experiment.** One line in the radiology record: the date and finding of the first
+renal ultrasound. **This analysis cannot obtain it — recontact with the family or clinical
+team is prohibited** — so it is recorded here as a genuinely open question, not a task.
+
+**What to do without it.** State both readings and their consequences, and do not let either
+carry a conclusion. Note that the *direction-of-inference* error identified in matrix C13 is
+independent of this question and stands regardless of how it resolves.
+

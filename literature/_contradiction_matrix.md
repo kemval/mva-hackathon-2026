@@ -308,6 +308,85 @@ attentiveness.
 
 ---
 
+## C13 — Does congenital-onset nephrocalcinosis raise or lower the monogenic prior *in this child*?
+
+**CHANGES A CONCLUSION IN THE TRACK 1 REPORT.**
+
+**Side A — the Track 1 report as it currently stands.** It withdrew two acquired
+explanations and concluded: *"Congenital-onset nephrocalcinosis moves the prior in the
+opposite direction: it **raises**, not lowers, the probability of a monogenic renal or
+metabolic cause."* On that basis it downgraded its own negative 6-gene renal panel to a
+"materially weaker negative" and called for the full ~30-gene panel.
+
+**Side B — the gestational-age-stratified paediatric evidence.** Kim et al. 2023
+(`literature/31_...`, 464 children) finds the monogenic yield is **~10-fold higher in
+full-term children** (OR 10.02, 95% CI 2.464–40.786, p = 0.001) and concludes that monogenic
+causes should be pursued *"especially in full-term patients **without known clinical risk
+factors**."* This proband is **preterm** (HP:0001622) **with** known clinical risk factors.
+
+**Relation: DISAGREE**, on the direction of the inference.
+
+**Adjudication: Side B. The Track 1 report over-corrected, and the error is diagnosable.**
+It conflated two different claims — *"the acquired mechanisms I named do not fit the stated
+timing"* (defensible) with *"therefore the genetic prior rises"* (not supported). The second
+does not follow from the first, and the population evidence runs the other way: this child's
+single strongest epidemiological feature for this finding, prematurity, is the feature that
+**lowers** the monogenic yield.
+
+**A second, independent problem with the premise.** The reversal rests on the clause *"present
+since birth"* in `Challenge_Clinical_Phenotype_1.docx` — a **2,750-character hackathon summary
+table**, not a clinical record, containing **no imaging date**. Preterm infants are not
+scanned at birth under any protocol in this literature: Narendra 2001 scanned first **at 1
+month**; Gilbert 2022 diagnosed at **35 weeks corrected GA**; Kim 2023 reports a mean age at
+first diagnosis of **385 days**. "Present since birth" in a compressed summary row is far more
+likely to mean "identified in the neonatal period / present as long as anyone has looked" than
+a day-0 imaging observation. Track 1 treated a summary clause as a dated measurement.
+
+**Grounds.** Direction-of-inference is settled by stratified population data, not by
+mechanism-plausibility argument. The premise is settled by what the source document is and
+what it does not contain.
+
+**What does NOT change.** Track 1's *factual* statements are correct and survive: NICU
+nephrocalcinosis does develop over weeks of care, and the rhabdomyosarcoma chemotherapy came
+years later. Withdrawing the confident claim that acquired mechanisms were "each sufficient on
+its own" was right. The 6-gene panel **is** a non-exhaustive subset of ~30-gene panels and
+saying so is right. The CASR MQ40 gap and the callability limit stand untouched.
+
+**Residual uncertainty — stated, not resolved.** The imaging date does not exist in any
+available file and **recontact is prohibited**, so outcome (c) of the brief is partly live:
+if the finding genuinely were antenatal, the acquired mechanisms could not explain it. What
+the evidence establishes is that the premise is unreliable and the inference drawn from it is
+backwards — **not** that the nephrocalcinosis is definitely acquired.
+
+**Effect.** Track 1's nephrocalcinosis paragraph needs rewriting; the ~30-gene panel
+recommendation should be reframed as reasonable-but-lower-yield rather than as correcting an
+error; and the biochemistry recommendation stands on its own merits. Recorded in
+`submissions/track2/_pending_edits.md`, not applied.
+
+---
+
+## C14 — Is furosemide a cause of preterm nephrocalcinosis?
+
+**BOUNDS A MECHANISM; changes no recommendation.**
+
+**Side A.** Gilbert et al. 2022, VLBW case-control: furosemide is an **independent risk
+factor**, adjusted OR 1.26 (95% CI 1.02–1.57).
+
+**Side B.** Santos et al. 2018, systematic review of 32 studies: *"We found no evidence that
+furosemide exposure increases the risk of SNHL or NC/NL in premature infants… the strength of
+evidence for both outcomes to be low."*
+
+**Relation: DISAGREE.**
+
+**Adjudication: neither side wins, and that is the finding.** Side B covers more studies but
+grades its own evidence low and identifies uncontrolled confounding as the common defect;
+Side A is a single centre but adjusts. Both are observational. **Consequence: furosemide may
+be named as *a* plausible contributor, never as *the* mechanism** — which is close to how
+Track 1's now-withdrawn text used it, and is a reason that text was overconfident in its
+original form as well as in its withdrawal.
+
+---
+
 ## Summary of adjudications
 
 | # | Conflict | Winner / resolution | Effect |
@@ -324,3 +403,5 @@ attentiveness.
 | C10 | JAK/SASP suppression | Full text supersedes abstract | Bounds claim |
 | C11 | Baker tissue restriction | Upheld | Bounds hypothesis |
 | C12 | PDB declared chain range vs. observed residues | Observed record wins — **no experimental structure covers residue 1002** | **Provenance** |
+| C13 | Congenital NC raises vs. lowers the monogenic prior | Stratified data wins — prematurity **lowers** it; Track 1 over-corrected | **Conclusion (Track 1)** |
+| C14 | Furosemide as a cause of preterm NC | Neither side decisive; evidence low both ways | Bounds mechanism |
