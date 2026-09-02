@@ -144,19 +144,26 @@ Source throughout: `literature/31_preterm_nephrocalcinosis.md`; adjudication in 
 | I10 | Track 1's factual statements about NICU and chemotherapy timing were wrong | **FALSE — do not assert** | — | Those are correct and survive. Only the direction-of-inference fails |
 | I11 | The ~30-gene panel recommendation should be dropped | **FALSE — do not assert** | — | Still reasonable; it should be reframed as lower-yield, not as correcting an error |
 
-## J. Surveillance after a first tumour (Task 6, 2026-09-02)
+## J. Surveillance after a first tumour (Task 6, 2026-09-02; **revised same day** after obtaining the primary source)
 
-Source: `literature/32_surveillance_after_first_tumour.md`; matrix **C15**, **C16**.
+Source: `literature/32_surveillance_after_first_tumour.md`, now read against **Hol et al. 2021**
+(*Eur J Cancer* 153:51–63, CC-BY) rather than Nakano's summary of it. Matrix **C15**, **C16**.
 
 | # | Claim | Grade | Tier | Note |
 |---|---|---|---|---|
-| J1 | The MVA recommendation is renal ultrasound q3 months, birth→7 years, plus clinical assessment and radiation avoidance | **Established** | Expert-consensus guideline | Nakano 2024, endorsing SIOP-E |
-| J2 | The guideline states what surveillance should become **after a first malignancy** | **FALSE — it is silent** | — | The silence is Task 6's principal finding |
-| J3 | The guideline names an **imaging modality for rhabdomyosarcoma** risk in MVA | **FALSE — clinical assessment only** | — | No WBMRI for MVA, though the same paper recommends it for other syndromes |
-| J4 | A rationale is given for stopping renal ultrasound at age 7, or guidance beyond it | **FALSE — neither is given** | — | |
-| J5 | Radiation sensitivity is documented **in MVA patients** | **Not established** | — | No study found. Matrix **C16**. Nakano's basis is "**many** of these disorders", naming A-T and NBS — not MVA |
-| J6 | Radiation avoidance in this child is nonetheless reasonable | **Established (as precaution)** | Guideline + general radiation-protection principle | "no amount of radiation should be considered absolutely safe" |
-| J7 | The SIOP-E primary recommendation has been read | **FALSE — do not imply** | — | *Eur J Cancer*, closed access, no PMC deposit. Cited second-hand via Nakano. Matrix **C15** |
-| J8 | LFS practice (6-monthly exam + abdominal US, annual WBMRI and brain MRI; avoid genotoxic therapy in carriers) is a **precedent for the shape** of non-ionising surveillance | **Established — about LFS** | Guideline, different syndrome | **Must not be transplanted to MVA.** Dominant single-gene syndrome, large evidence base; MVA has <50 described patients |
-| J9 | COG LTFU v6.0 added surveillance recommendations for genetic cancer predisposition, and covers survivors ≥2 years post-therapy | **Established** | Guideline review | Whether it names MVA is **unknown — not retrieved** |
-| J10 | No MVA-specific RMS surveillance recommendation exists | **Consistent with the search, not proven** | — | One English-language PubMed pass; Task 3 untouched |
+| J1 | The MVA recommendation is renal ultrasound q3 months, birth→7th birthday, plus clinical assessment and radiation avoidance | **Established** | Expert-consensus guideline | Hol 2021 primary; Nakano 2024 endorsing |
+| J2 | The guideline states what surveillance should become **after a first malignancy** | **FALSE — it is silent** | — | Task 6's principal finding, and see J12 |
+| J3 | The guideline names an **imaging modality for rhabdomyosarcoma** risk in MVA | **FALSE — clinical review only** | — | No WBMRI for MVA, though the same AACR paper recommends it for other syndromes |
+| **J4** | **No rationale is given for stopping at age 7** | **FALSE — do not assert. Corrected 2026-09-02** | — | A rationale **is** given. An earlier version of this register asserted otherwise, having read only the summary |
+| **J5** | **For MVA the age-7 cutoff is *borrowed***, not MVA-derived | **Established** | Guideline | By 7, 90% of sporadic / 94% BWS / >95% *WT1* WTs are diagnosed. "**For other CPS, the number of reported patients with WT was too small to determine this percentage.**" MVA is an "other CPS" |
+| **J6** | **Wilms tumour is reported in ~50% of patients with *BUB1B* variants** | **Established (as the guideline's estimate)** | Guideline, from small early series | New to this project — Nakano gives no figure. Traces to Jacquemont 2002 and Hanks 2004; no denominator stated; ascertainment bias runs toward overestimation |
+| **J7** | Surveillance is recommended for all patients with **cytogenetically confirmed** MVA | **Established** | Guideline | Anchored to karyotype — independently corroborates Track 1's lead recommendation |
+| **J8** | Ultrasound is a **compromise modality** chosen to spare radiation | **FALSE — do not assert** | — | "ultrasonography is believed to be **equally effective** for initial WT detection." Modality choice and radiation avoidance are independent |
+| J9 | The 3-month interval is justified by tumour growth rate | **Established** | Guideline | Shortest reported WT doubling time **11 days**; ≥4 months "risks higher tumour stage at diagnosis" |
+| J10 | Radiation sensitivity is documented **in MVA patients** | **Not established** | — | No study found. Matrix **C16**. Nakano's basis is "**many** of these disorders", naming A-T and NBS — not MVA |
+| J11 | Radiation avoidance in this child is nonetheless reasonable | **Established (as precaution)** | Guideline + general radiation-protection principle | "no amount of radiation should be considered absolutely safe" |
+| **J12** | The guideline's silence on non-renal surveillance is an **oversight** | **FALSE — it is an explicit scope exclusion** | — | "cancer surveillance for other tumour types is warranted in some of these conditions (**but outside the scope of this guideline**)" |
+| J13 | A prior tumour is considered by the guideline | **Established, but only for a prior *renal* tumour** | Guideline | Previously a reason to *prolong* surveillance in *WT1* syndromes; superseded by harmonising all CPS to age 7. A prior rhabdomyosarcoma appears nowhere |
+| **J14** | The SIOP-E primary recommendation has been read | **TRUE as of 2026-09-02 — corrected** | Guideline, version of record | An earlier entry said the paper was closed access and unobtainable. It is **CC-BY open access**. Matrix **C15** |
+| J15 | LFS practice is a **precedent for the shape** of non-ionising surveillance | **Established — about LFS** | Guideline, different syndrome | **Must not be transplanted to MVA** |
+| J16 | COG LTFU v6.0 covers MVA | **Unknown — not retrieved** | — | survivorshipguidelines.org did not resolve from this environment (connection failure, not a paywall). Q9 |

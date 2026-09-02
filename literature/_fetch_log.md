@@ -197,10 +197,26 @@ because it is direct evidence that the non-English cohort literature is real and
 
 | # | Target | Route | Outcome |
 |---|---|---|---|
-| F7 | **Hol et al. 2021 — the SIOP-E primary recommendation** (PMID 34134020, *Eur J Cancer*) | Europe PMC `search?query=EXT_ID:` | ❌ **UNOBTAINABLE.** `pmcid: None`, `isOpenAccess: N`, `inPMC: N` — Elsevier, closed, no open deposit. **The surveillance protocol this project recommends is cited second-hand through Nakano's summary and cannot be verified against its primary text.** |
+| F7 | **Hol et al. 2021 — the SIOP-E primary recommendation** (PMID 34134020, *Eur J Cancer*) | Europe PMC `search?query=EXT_ID:` | ⚠️ **MISREAD, then RESOLVED — see row 47.** Europe PMC returns `pmcid: None`, `isOpenAccess: N`, `inPMC: N`, which was wrongly read as "closed access, unobtainable". Those fields describe **deposit in Europe PMC**, not licence. |
 | F8 | Same paper, via NCBI elink | `elink` pubmed→pmc | ❌ **FALSE LINK — fourth identifier trap.** Returned PMC13164404, which is *"Genetic and Epigenetic Drivers of Wilms Tumor Predisposition in Russian Pediatric Patients," Int J Mol Sci* **2026**. Same topic, so it would have read as corroboration. Caught by the mechanical title check before anything was quoted. Matrix **C15** |
 | F9 | **MVA-specific radiosensitivity evidence** | PubMed targeted query | ⚠️ **NONE EXISTS (in English, on PubMed).** 5 hits, all wrong-product: radiation-induced PCS in carcinoma cells, BUB1B in breast-cancer HR repair, a mouse *Apc* QTL study, phototherapy on fibroblasts, visceral obesity. The guideline's advice rests on a **class** statement — "**many** of these genomic instability disorders" — that names A-T and NBS but **not MVA**. Matrix **C16** |
-| F10 | COG LTFU v6.0 guideline content | not attempted | ⚠️ Separate document at survivorshipguidelines.org. Whether it names MVA or BUB1B is **unknown**. Named as an actionable gap (Q9) |
+| F10 | COG LTFU v6.0 guideline content | `survivorshipguidelines.org`, 3 URL variants | ⚠️ **UNREACHABLE from this environment** — `http=000`, connection failure on every variant, i.e. a network/DNS limit rather than a paywall. Whether it names MVA or BUB1B is still **unknown**. Actionable gap (Q9) |
+
+### Recovery — the primary source obtained after all
+
+| # | Target | Route | Result |
+|---|---|---|---|
+| 47 | **Hol et al. 2021, full text** | OpenAlex `api.openalex.org/works/doi:10.1016/j.ejca.2021.05.014` → repository deposits | ✅ **OBTAINED — version of record.** OpenAlex reports `is_oa: true`, `oa_status: hybrid`, licence **CC-BY**, with five OA locations. Semantic Scholar concurs |
+| 48 | Publisher PDF | `ejcancer.com/article/S0959804921003221/pdf` | ❌ HTTP 403 (Cloudflare) |
+| 49 | **Cambridge Apollo deposit** | `repository.cam.ac.uk/bitstreams/…/download` | ✅ 8.5 MB PDF — **image-only** (Skia/PDF browser render, no font resources, 12 chars extractable). Page images extracted and read individually; headers confirm *Eur J Cancer* 153 (2021) 51–63, the published version |
+| 50 | **Utrecht DSpace deposit** | `dspace.library.uu.nl/bitstreams/…/download` | ✅ 14 pages **with** a text layer (68,146 chars), used to locate content by page. Character-spacing artefact makes it poor for quoting but excellent for indexing |
+
+**What the primary changed.** Three Task 6 conclusions were corrected: the paper is not closed
+access; the age-7 cutoff **does** have a stated rationale (and for MVA it is *borrowed* from
+syndromes with larger case counts); and the guideline's omission of non-renal surveillance is an
+**explicit scope exclusion**, not an oversight. It also supplied a figure absent from every
+secondary source in this repository — **Wilms tumour in ~50% of patients with *BUB1B* variants**
+— and the reference trail Task 2 needs.
 
 ## Scope this pass did NOT cover
 
@@ -230,4 +246,15 @@ non-English MVA cohort literature.
    title check has caught all four.** Treat Europe PMC's `search?query=EXT_ID:<pmid>` record as
    authoritative for open-access status, since it reports `pmcid`, `isOpenAccess` and `inPMC`
    directly and does not fabricate links.
+
+7. **Absence from PMC is not absence from the literature, and `isOpenAccess` does not mean what
+   it says.** Europe PMC's `isOpenAccess` field describes deposit **in Europe PMC**, not the
+   article's licence. Hol 2021 returns `N` on all three PMC fields and is nonetheless **CC-BY
+   open access**, with copies at the publisher and in three institutional repositories. Reading
+   that field as "closed" cost this project a wrong conclusion in Task 6, published in three
+   files before it was caught. **Before recording any source as unobtainable: query OpenAlex
+   (`api.openalex.org/works/doi:<DOI>`) or Semantic Scholar for OA locations, then try the
+   institutional repositories.** Note that repository deposits are often browser-rendered
+   image-only PDFs with no text layer — those pages can still be extracted as images and read
+   one by one, and a second repository may hold a text-layer copy useful for indexing.
 

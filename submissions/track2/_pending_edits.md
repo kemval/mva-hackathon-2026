@@ -199,88 +199,121 @@ cited as weak and non-exclusive, or left out until Task 2 runs.
 
 ## From Task 6 — surveillance after a first tumour
 
-Full finding: `literature/32_surveillance_after_first_tumour.md`. Claims register **section J**.
-Matrix **C15** (identifier trap) and **C16** (radiation tier).
+Full finding: `literature/32_surveillance_after_first_tumour.md`, **rewritten 2026-09-02 after
+obtaining the primary source** (Hol et al. 2021, *Eur J Cancer* 153:51–63, CC-BY). Claims
+register **section J**. Matrix **C15**, **C16**.
 
-**These edits add honesty to a section that is currently the report's strongest**, and they
-touch the artefact a family is most likely to read. Nothing here recommends deviating from the
-guideline.
+**Net effect: the surveillance section gets stronger, not weaker.** Reading the primary supplied
+a risk figure the report does not have, corrected two things an earlier draft of this file got
+wrong, and left the core Task 6 finding standing on firmer ground.
 
-### Edit 10 — Track 2 report, surveillance section: state what the protocol does not cover
+### Edit 10 — Track 2 report, surveillance section: add the risk figure and its provenance
 
-**Proposed addition** after the AACR/SIOP-E recommendation is given:
-> **One limit of this protocol has to travel with it.** It is a *Wilms* surveillance
-> programme — renal ultrasound, birth to age 7 — and this child has already had a
-> rhabdomyosarcoma. Read end to end, the MVA recommendation does not say what surveillance
-> should become after a first malignancy; it names no imaging modality for the
-> rhabdomyosarcoma risk it identifies, only "regular clinical assessment"; it recommends no
-> whole-body MRI for MVA, though the same paper recommends WBMRI for other syndromes it
-> covers; and it gives no rationale for stopping renal ultrasound at 7 or guidance beyond it.
-> The guideline's own explanation is candid — with so few described patients, "the rarity of
-> the syndrome hampers establishment of an accurate risk assessment." **The protocol was
-> written for a situation earlier than the one this family is in.** That is a gap in the
-> evidence base, not a reason to depart from the protocol.
+**Proposed addition:**
+> The primary recommendation quantifies the risk that justifies this protocol, and the figure is
+> striking: **Wilms tumour has been reported in approximately 50% of patients with *BUB1B*
+> variants** (Hol et al. 2021), against ~20% for *TRIP13* and none reported for *CEP57*. That is
+> the highest Wilms risk in the guideline's "other syndromes" section. Two caveats travel with
+> it: the estimate rests on small early case series (Jacquemont 2002, Hanks 2004), no
+> denominator is given, and in a literature where patients are published because they developed
+> tumours, ascertainment bias runs toward overestimation. The guideline's own framing is
+> "because of the limited number of reported patients." Note also that the recommendation is
+> anchored to **cytogenetically confirmed** MVA — which independently corroborates this
+> project's decision to lead with karyotype as the confirmatory test.
 
-**Why:** J2, J3, J4.
+**Why:** J6, J7. This is new quantitative content; Nakano's summary gives no figure.
 
-### Edit 11 — Track 2 report: correct the tier of the radiation-avoidance claim
+### Edit 11 — Track 2 report: state what the protocol does not cover, and that the exclusion is deliberate
 
-**Proposed addition** where radiation avoidance is stated:
-> The recommendation to avoid radiation is **precautionary rather than MVA-specific**. A
-> targeted search found no study of radiosensitivity in MVA, BUB1B-deficient or PCS-syndrome
-> patients. The guideline's supporting sentence is a class statement — "**many** of these
-> genomic instability disorders also present with exquisite sensitivity" — and where that
-> paper documents hypersensitivity it names the syndrome, listing ataxia-telangiectasia and
-> Nijmegen breakage syndrome but not MVA. The advice remains sound on first principles, and on
-> the general position that no low-dose radiation threshold is agreed. It should not be
-> presented as an MVA finding.
+**Proposed addition:**
+> **One limit has to travel with this protocol.** It is a *Wilms* surveillance programme, and
+> this child has already had a rhabdomyosarcoma. The guideline does not address what
+> surveillance becomes after a first malignancy; where it considers a prior tumour at all, it is
+> a prior *renal* tumour, formerly a reason to prolong surveillance in *WT1*-related syndromes
+> and since superseded by harmonising every syndrome to the 7th birthday. And the omission of
+> non-renal surveillance is **explicit, not accidental** — the guideline states that "cancer
+> surveillance for other tumour types is warranted in some of these conditions (but outside the
+> scope of this guideline)." Nakano 2024 then adds only "regular clinical assessment including
+> review of systems," with no modality, interval or endpoint. For this child the position across
+> both sources is a well-specified renal protocol and, for everything else, clinical review with
+> no protocol attached. **That is a documented gap in the evidence base, not a reason to depart
+> from the protocol.**
 
-**Why:** J5, J6; matrix C16. This is the same class-generalisation move the report criticises
-elsewhere, appearing inside a recommendation the report endorses — consistency requires
-flagging it.
+**Why:** J2, J3, J12, J13.
 
-### Edit 12 — Track 2 report, Sources: disclose that the primary recommendation was not read
+### Edit 12 — Track 2 report: the age-7 endpoint is borrowed for MVA
 
-The SIOP-E recommendation (Hol et al. 2021, *Eur J Cancer*, PMID 34134020) is **closed access
-with no PMC deposit** and was **not obtained**. Everything the report says about it comes from
-Nakano's summary. Mark it explicitly as cited second-hand.
+**Proposed addition:**
+> The 7th-birthday endpoint has a stated rationale — by age 7, 90% of sporadic Wilms tumours,
+> 94% in Beckwith-Wiedemann and >95% in *WT1*-related syndromes have been diagnosed. But the
+> guideline is explicit that "**for other CPS, the number of reported patients with WT was too
+> small to determine this percentage**," and MVA is an "other CPS". **The endpoint applied to
+> this child is therefore a harmonised convention borrowed from syndromes with larger case
+> counts, not an MVA-derived figure.** The guideline is transparent about this; the report should
+> be too.
 
-**Why:** J7; matrix C15.
+**Why:** J4, J5. **Note:** an earlier draft of this file claimed no rationale was given. That was
+wrong and came from reading only the summary. Do not carry that claim into the report.
 
-### Edit 13 — clinician one-pager, surveillance section
+### Edit 13 — Track 2 report: correct the tier of the radiation-avoidance claim, and decouple it from modality
 
-**Current** lists the AACR recommendations as a clean bulleted protocol.
+**Proposed addition:**
+> The recommendation to avoid radiation is **precautionary rather than MVA-specific**: a targeted
+> search found no study of radiosensitivity in MVA, *BUB1B*-deficient or PCS-syndrome patients,
+> and the guideline's supporting sentence is a class statement — "**many** of these genomic
+> instability disorders also present with exquisite sensitivity" — which names
+> ataxia-telangiectasia and Nijmegen breakage syndrome but not MVA. It remains sound as
+> precaution and on the general position that no low-dose threshold is agreed. **Separately, do
+> not present ultrasound as a compromise forced by radiosensitivity:** the guideline judges
+> ultrasonography "equally effective for initial WT detection" compared with CT or MRI. The
+> modality choice and the radiation-avoidance advice are independent.
 
-**Proposed addition** below the bullets:
-> **Worth knowing about this list:** it was written as a *kidney-tumour* screening programme
-> for young children with MVA, and it stops at age 7. Because this child has already had a
-> rhabdomyosarcoma, the situation is one the published guidance does not directly address —
-> it does not say whether screening should change after a first tumour, and it recommends no
-> specific scan for rhabdomyosarcoma beyond regular clinical review. This is a genuine gap in
-> what has been studied, not a reason to do less. It is a reasonable thing to raise with the
-> treating team.
+**Why:** J8, J10, J11; matrix C16. The class-generalisation flag is the same move the report
+criticises elsewhere, appearing inside a recommendation it endorses.
 
-**Why:** J2, J3. This is the artefact a family or clinician acts on, and the current text
-implies a completeness the guideline does not have.
+### Edit 14 — Track 2 report, Sources: cite the primary directly
 
-### Edit 14 — Track 2 report, Part 11 verification table
+Replace the second-hand citation. The recommendation now has a primary source that was read:
+**Hol JA, Jewell R, Chowdhury T, Duncan C, Nakata K, Oue T, et al., *Eur J Cancer*
+2021;153:51–63, PMID 34134020, CC-BY.** Nakano 2024 remains cited as the AACR endorsement.
 
-Add rows: (23) MVA section of Nakano 2024 re-read end to end — **silent on post-first-tumour
-surveillance**; (24) MVA-specific radiosensitivity search returned **five records, all
-wrong-product** — the recommendation is class-level; (25) SIOP-E primary source **unobtainable**
-(closed access, no PMC deposit) and NCBI elink returns a **false PMCID** for it (C15).
+**Why:** J14; matrix C15.
+
+### Edit 15 — clinician one-pager, surveillance section
+
+**Proposed addition** below the existing bullets:
+> **Two things worth knowing about this list.** The reason it exists is a real risk: in children
+> with MVA caused by *BUB1B* changes, kidney tumours have been reported in around half of
+> published patients — though that figure comes from a small number of early reports and is
+> likely an overestimate. And it was written as a *kidney-tumour* screening programme for young
+> children. Because this child has already had a rhabdomyosarcoma, the situation is one the
+> published guidance does not directly cover: it does not say whether screening should change
+> after a first tumour, and it deliberately leaves screening for non-kidney tumours outside its
+> scope. That is a gap in what has been studied, not a reason to do less — and it is a
+> reasonable thing to raise with the treating team.
+
+**Why:** J2, J6, J12. This is the artefact a family or clinician acts on.
+
+### Edit 16 — Track 2 report, Part 11 verification table
+
+Add rows: (23) **Hol 2021 primary obtained and read** as the version of record via OpenAlex →
+Cambridge/Utrecht repository deposits, after Europe PMC's `isOpenAccess: N` was misread as
+"closed"; (24) MVA section of Hol 2021 and Nakano 2024 both read end to end — **silent on
+post-first-tumour surveillance**, with the non-renal exclusion explicit in the primary;
+(25) MVA-specific radiosensitivity search returned **five records, all wrong-product**;
+(26) NCBI elink returns a **false PMCID** for Hol 2021 (C15) — fourth identifier trap.
 
 ### Do not do
 
-- **Do not import the Li-Fraumeni protocol.** LFS is cited only as a precedent for the *shape*
-  of non-ionising surveillance in a radiation-avoidant patient — 6-monthly exam and abdominal
-  ultrasound, annual WBMRI and brain MRI. LFS is a dominant single-gene syndrome with a large
-  evidence base; MVA has under 50 described patients. Transplanting it would be exactly the
-  error this repository documents elsewhere. (J8)
+- **Do not import the Li-Fraumeni protocol.** Cited only as precedent for the *shape* of
+  non-ionising surveillance. LFS is a dominant single-gene syndrome with a large evidence base;
+  MVA has under 50 described patients. (J15)
 - **Do not recommend deviating from the AACR/SIOP-E protocol.** It remains the best available
   guidance and the report should continue to lead with it.
-- **Do not claim COG LTFU v6.0 covers MVA.** It added genetic-predisposition sections and
-  covers survivors ≥2 years post-therapy, but whether it names MVA was not retrieved. (J9, Q9)
+- **Do not claim COG LTFU v6.0 covers MVA.** Not retrieved — survivorshipguidelines.org did not
+  resolve from this environment. (J16, Q9)
+- **Do not state the ~50% figure without its caveats.** Small series, no denominator,
+  ascertainment bias. (J6)
 
 ---
 

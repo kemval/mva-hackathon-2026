@@ -201,11 +201,17 @@ claim J2). With under 50 described patients and a guideline that says its own ra
 establishment of an accurate risk assessment," there is no cohort from which a post-first-tumour
 protocol could be derived.
 
-**Cheapest experiment — and it is not an experiment.** Two tractable steps, neither requiring
-patient contact: (i) retrieve **COG LTFU v6.0** from survivorshipguidelines.org and check
-whether its new genetic-predisposition sections name MVA or BUB1B (claim J9); (ii) obtain
-**Hol et al. 2021** through institutional access and check whether the primary SIOP-E text
-addresses post-first-tumour surveillance where Nakano's summary does not (claim J7). Beyond
+**Partly answered 2026-09-02.** Step (ii) is **done**: Hol et al. 2021 was obtained in full
+(CC-BY, version of record) and **does not** address post-first-tumour surveillance. It goes
+further — it places non-renal surveillance **outside its scope explicitly**, and where it
+considers a prior tumour at all, it is a prior *renal* tumour in *WT1*-related syndromes. So the
+silence is deliberate, not an omission, and cannot be resolved by reading the primary more
+carefully.
+
+**What remains.** (i) Retrieve **COG LTFU v6.0** from survivorshipguidelines.org and check
+whether its new genetic-predisposition sections name MVA or BUB1B (claim J16) — the site did not
+resolve from this environment, a network limit rather than a paywall, so this is a live and
+cheap task elsewhere. (ii) Read Hol 2021's **Supplemental Table 5**, not retrieved here. Beyond
 those, this needs a registry — which is precisely what the SIOP-E authors call for.
 
 **What to say meanwhile.** That the protocol on offer was written for a different situation
