@@ -167,3 +167,21 @@ Source: `literature/32_surveillance_after_first_tumour.md`, now read against **H
 | **J14** | The SIOP-E primary recommendation has been read | **TRUE as of 2026-09-02 — corrected** | Guideline, version of record | An earlier entry said the paper was closed access and unobtainable. It is **CC-BY open access**. Matrix **C15** |
 | J15 | LFS practice is a **precedent for the shape** of non-ionising surveillance | **Established — about LFS** | Guideline, different syndrome | **Must not be transplanted to MVA** |
 | J16 | COG LTFU v6.0 covers MVA | **Unknown — not retrieved** | — | survivorshipguidelines.org did not resolve from this environment (connection failure, not a paywall). Q9 |
+
+## K. MVA genotype–phenotype (Task 2, **PARTIAL**, 2026-09-02)
+
+Source: `literature/33_bubr1_allelic_effects_genotype_phenotype.md`; matrix **C17**.
+**The per-patient cohort table specified by the brief is NOT built.**
+
+| # | Claim | Grade | Tier | Note |
+|---|---|---|---|---|
+| K1 | MVA patients carry **truncating + missense**; biallelic missense is not the typical architecture | **Established** | Human patient cells | Suijkerbuijk 2010 |
+| K2 | A mouse built with that architecture (`BubR1^X753/L1002P`) is **embryonic lethal** — none of 39 embryos at E13.5 | **Established** | Mouse, BubR1 background | Sieben 2020, *JCI* |
+| K3 | The human patient with the analogous genotype (`X753/L1012P`) **lived** | **Established** | Human case report | The species discordance is the finding |
+| K4 | The viable mouse models used across this project (**BubR1^H/H**) model a genotype **no MVA patient has** | **Established** | Mouse | Matrix **C17**. Reported by the model-builders (van Deursen, Baker) |
+| K5 | A rescue in a BubR1 mouse licenses a human expectation | **REJECTED — do not assert** | — | The animal does not carry the human disease genotype. Lowers the weight of the NAD⁺/SIRT2 and senolytic mouse tiers |
+| K6 | Mouse lethality predicts human lethality here | **FALSE — do not assert** | — | Mouse is *more* severe at the equivalent genotype |
+| K7 | Mouse `BubR1^L1002P` is the same residue as this proband's `p.Asn1002Lys` | **FALSE — a numbering trap** | — | Mouse L1002P = **human L1012P**. Different residue, different species, same number |
+| K8 | Wilms tumour occurs in ~50% of *BUB1B* MVA patients, ~20% *TRIP13*, none reported for *CEP57* | **Established (guideline estimate)** | Expert-consensus guideline | Hol 2021; small early series, no denominator — see J6 |
+| K9 | Truncating+missense differs from biallelic missense in tumour spectrum, age at first tumour or survival **in humans** | **NOT ESTABLISHED — the table was not built** | — | Task 2's actual question. Corpus assembled and cited in `33_...`; tabulation outstanding |
+| K10 | Nephrocalcinosis is a recognised MVA feature | **Not established — weak accumulating negative** | Case report + review | Kajii 1998 reports renal *cysts* and Wilms; the Frattini 2025 review has **zero** renal mentions. Two sources, not a systematic search. Feeds Task 4 (**I9**) |

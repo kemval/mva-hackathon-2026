@@ -464,6 +464,50 @@ chromosomal breakage studies were that field's core method.
 
 ---
 
+## C17 — The BubR1 mouse models underwriting this project model a genotype no MVA patient has
+
+**BOUNDS THE ENTIRE MOUSE EVIDENCE TIER.**
+
+**Side A — how mouse BubR1 evidence is used across this project.** Baker 2011
+(`literature/04b_...`), North 2014 (`16_...`) and the senescence/NAD⁺ arms all rest on
+**BubR1^H/H** mice — a hypomorphic pair producing low wild-type protein — read as a model of
+MVA.
+
+**Side B — Sieben et al. 2020 (*J Clin Invest*, `literature/33_...`), from the same
+laboratory.** MVA patients carry **truncating + missense** (Suijkerbuijk 2010: *"In patients
+with biallelic mutations, a missense mutation pairs with a truncating mutation"*). When that
+architecture was built in mouse — `BubR1^X753/L1002P`, modelling a real published patient —
+**it was embryonic lethal**: 39 embryos genotyped at E13.5, none recovered; viable only at
+E3.5. The paper's own heading: *"Mice modeling MVA patient BUBR1^X753/L1012P die during early
+embryogenesis."* The viable `BubR1^H/L1002P` model was reached only *"following our
+unsuccessful attempt to model the BUBR1^X753/L1012P MVA patient in mice."*
+
+**Relation: SUPERSET / DISAGREE.** The mouse literature does not model the human genotype; it
+models a substitute reachable in mouse.
+
+**Adjudication: Side B, and it is not contestable — it is the model-builders' own report.**
+Senior authors **van Deursen** and **Baker** are the same investigators behind Baker 2011.
+As with C1 (the HSP90-senolytic inversion, same-group provenance), this cannot be set aside as
+a rival finding.
+
+**Grounds.** Direct experimental result in the exact system; primary rather than incidental;
+reported by the group with every incentive to report otherwise.
+
+**Effect — and note the direction, which is easy to get backwards.** Mouse is **more severe**
+than human at the equivalent genotype: the human patient with `X753/L1012P` lived; the mouse
+dies before E13.5. So (i) mouse lethality does **not** predict human lethality, and (ii) more
+importantly for this project, **a rescue in a BubR1 mouse does not license a human
+expectation**, because the animal is not carrying the human disease genotype. Every mouse-tier
+claim in the report should carry this limit. It does not withdraw any candidate — it lowers
+the weight of the mouse evidence supporting them, NAD⁺/SIRT2 included.
+
+**Related numbering hazard.** Mouse `BubR1^L1002P` is the ortholog of **human L1012P**; this
+proband's variant is **human N1002K**. Different residues, different species, same number, and
+Task 1 established the two human residues sit 12.3 Å apart — so the confusion is easy and
+consequential. Recorded in `literature/33_...`.
+
+---
+
 ## Summary of adjudications
 
 | # | Conflict | Winner / resolution | Effect |
@@ -484,3 +528,4 @@ chromosomal breakage studies were that field's core method.
 | C14 | Furosemide as a cause of preterm NC | Neither side decisive; evidence low both ways | Bounds mechanism |
 | C15 | elink PMCID for Hol 2021 vs. no deposit | PMCID is a **false link** — but the paper is **CC-BY open access**; an earlier "unobtainable" call is withdrawn | **Provenance** |
 | C16 | "Avoid radiation" in MVA vs. absence of MVA data | Recommendation stands; **tier is class generalisation** | Bounds claim |
+| C17 | BubR1^H/H mouse models vs. the human truncating+missense genotype | Sieben 2020 wins — patient genotype is **embryonic lethal in mouse** | **Bounds the whole mouse tier** |
