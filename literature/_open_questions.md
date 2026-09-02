@@ -186,3 +186,29 @@ team is prohibited** — so it is recorded here as a genuinely open question, no
 carry a conclusion. Note that the *direction-of-inference* error identified in matrix C13 is
 independent of this question and stands regardless of how it resolves.
 
+---
+
+## Q9 — Does cancer surveillance in MVA change after a first malignancy? **[decision value: high — and it is the question a family will actually ask]**
+
+**Why it matters.** The protocol this project recommends is a *Wilms* protocol: renal
+ultrasound every 3 months, birth→7 years. This child has already had a rhabdomyosarcoma. A
+first tumour in a predisposition syndrome plausibly changes both the risk and the target — and
+prior cancer-directed therapy is itself a risk factor for subsequent neoplasms — but the
+guideline addresses none of this.
+
+**Why the literature cannot answer it.** The MVA recommendation is silent (`literature/32_...`,
+claim J2). With under 50 described patients and a guideline that says its own rarity "hampers
+establishment of an accurate risk assessment," there is no cohort from which a post-first-tumour
+protocol could be derived.
+
+**Cheapest experiment — and it is not an experiment.** Two tractable steps, neither requiring
+patient contact: (i) retrieve **COG LTFU v6.0** from survivorshipguidelines.org and check
+whether its new genetic-predisposition sections name MVA or BUB1B (claim J9); (ii) obtain
+**Hol et al. 2021** through institutional access and check whether the primary SIOP-E text
+addresses post-first-tumour surveillance where Nakano's summary does not (claim J7). Beyond
+those, this needs a registry — which is precisely what the SIOP-E authors call for.
+
+**What to say meanwhile.** That the protocol on offer was written for a different situation
+than the one this family is in. That is honest, useful, and is not a recommendation to deviate
+from it.
+

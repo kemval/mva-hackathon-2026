@@ -125,8 +125,8 @@ single most likely place for an unfound MVA case series.
 
 # Pass 4 — gap closure, 2026-09-02
 
-Working from `pipeline/gap_closure_brief.md`. **Tasks 1 and 4 only** — Tasks 2, 3, 5 and 6
-not attempted in this pass.
+Working from `pipeline/gap_closure_brief.md`. **Tasks 1, 4 and 6** — Tasks 2, 3 and 5 not
+attempted in this pass.
 
 ## Successes
 
@@ -183,11 +183,29 @@ aneuploidy syndrome]" — a **Chinese-language MVA case report**, surfaced incid
 English-language query. Not fetched. Recorded because Task 3 is otherwise untouched, and
 because it is direct evidence that the non-English cohort literature is real and reachable.
 
+## Task 6 — surveillance after a first tumour
+
+| # | Target | Route | Result |
+|---|---|---|---|
+| 42 | PubMed, 5 queries: SIOP-E Wilms surveillance; WBMRI in paediatric predisposition; AACR 2024 series; post-first-tumour/survivorship; **MVA/BUB1B radiosensitivity** | eutils esearch/esummary | ✅ All returned |
+| 43 | Frebourg 2020, LFS/hTP53rc guidelines | efetch abstract | ✅ The non-ionising-surveillance precedent, with the "avoid genotoxic therapy in carriers" statement |
+| 44 | Kratz 2017, LFS screening (Toronto protocol) | efetch abstract | ✅ Confirms AACR adoption of a modified Toronto protocol |
+| 45 | Bhatia 2025, COG LTFU v6.0 review | efetch abstract | ✅ v6.0 added genetic-predisposition surveillance sections; covers survivors ≥2 y post-therapy |
+| 46 | Nakano 2024 MVA section, re-read end to end | local file | ✅ **Silent on post-first-tumour surveillance.** No imaging modality for RMS; no WBMRI for MVA; no rationale for stopping renal US at 7 |
+
+### Failures and gaps
+
+| # | Target | Route | Outcome |
+|---|---|---|---|
+| F7 | **Hol et al. 2021 — the SIOP-E primary recommendation** (PMID 34134020, *Eur J Cancer*) | Europe PMC `search?query=EXT_ID:` | ❌ **UNOBTAINABLE.** `pmcid: None`, `isOpenAccess: N`, `inPMC: N` — Elsevier, closed, no open deposit. **The surveillance protocol this project recommends is cited second-hand through Nakano's summary and cannot be verified against its primary text.** |
+| F8 | Same paper, via NCBI elink | `elink` pubmed→pmc | ❌ **FALSE LINK — fourth identifier trap.** Returned PMC13164404, which is *"Genetic and Epigenetic Drivers of Wilms Tumor Predisposition in Russian Pediatric Patients," Int J Mol Sci* **2026**. Same topic, so it would have read as corroboration. Caught by the mechanical title check before anything was quoted. Matrix **C15** |
+| F9 | **MVA-specific radiosensitivity evidence** | PubMed targeted query | ⚠️ **NONE EXISTS (in English, on PubMed).** 5 hits, all wrong-product: radiation-induced PCS in carcinoma cells, BUB1B in breast-cancer HR repair, a mouse *Apc* QTL study, phototherapy on fibroblasts, visceral obesity. The guideline's advice rests on a **class** statement — "**many** of these genomic instability disorders" — that names A-T and NBS but **not MVA**. Matrix **C16** |
+| F10 | COG LTFU v6.0 guideline content | not attempted | ⚠️ Separate document at survivorshipguidelines.org. Whether it names MVA or BUB1B is **unknown**. Named as an actionable gap (Q9) |
+
 ## Scope this pass did NOT cover
 
-Tasks **2 (MVA cohort genotype–phenotype table)**, **3 (Japanese/Chinese PCS literature)**,
-**5 (coverage re-costing)** and **6 (post-first-tumour surveillance)** of the brief are
-**untouched**. Everything recorded in Pass 3's
+Tasks **2 (MVA cohort genotype–phenotype table)**, **3 (Japanese/Chinese PCS literature)** and
+**5 (coverage re-costing)** of the brief are **untouched**. Everything recorded in Pass 3's
 "scope this pass did NOT cover" section also remains outstanding, including the
 non-English MVA cohort literature.
 
@@ -203,3 +221,13 @@ non-English MVA cohort literature.
 5. **AlphaFold model versions move, and the old URL 404s rather than redirecting.** Always
    resolve `api/prediction/<accession>` for the live version instead of constructing a
    filename. `pipeline/structural_analysis.py` does this.
+
+6. **The identifier trap has now fired four times, and the wrong record is always plausible.**
+   Two PMID↔PMCID collisions (C7), one declared-vs-observed PDB chain range (C12), and now an
+   elink PMCID for a paper with **no PMC deposit at all** (C15) — which landed on a paper about
+   the very topic being researched. In every case the wrong content was coherent, on-topic, and
+   by credible authors. **Careful reading has never once caught one of these; the mechanical
+   title check has caught all four.** Treat Europe PMC's `search?query=EXT_ID:<pmid>` record as
+   authoritative for open-access status, since it reports `pmcid`, `isOpenAccess` and `inPMC`
+   directly and does not fabricate links.
+

@@ -387,6 +387,72 @@ original form as well as in its withdrawal.
 
 ---
 
+## C15 — NCBI elink returns a PMCID for a paper that has none
+
+**CHANGES PROVENANCE. Fourth identifier trap found in this repository.**
+
+**Side A.** NCBI `elink` (pubmed→pmc) returns **PMC13164404** for PMID **34134020** (Hol et
+al., SIOP-E Wilms surveillance recommendations, *Eur J Cancer* 2021).
+
+**Side B.** Europe PMC's authoritative record for PMID 34134020 returns `pmcid: None`,
+`isOpenAccess: N`, `inPMC: N`. Fetching PMC13164404 returns *"Genetic and Epigenetic Drivers
+of Wilms Tumor Predisposition in Russian Pediatric Patients: A Multicenter Study"*,
+*Int J Mol Sci* **2026** — a different paper, different year, different journal.
+
+**Relation: DISAGREE.**
+
+**Adjudication: Side B.** Hol 2021 is Elsevier and closed; it has no PMC deposit at all. The
+elink result is a **false positive**, not a stale or partial one.
+
+**Grounds.** Europe PMC's record is the deposit registry itself; elink is a derived index. And
+the fetched title is dispositive regardless of which index is authoritative.
+
+**Why this one was especially dangerous.** The collision landed on a paper *about Wilms tumour
+predisposition* — the exact topic being researched. Unlike a random mismatch, its content would
+have read as corroboration of the surveillance argument. This is now the pattern across all
+four traps (C7 ×2, C12, C15): **the wrong record is always plausible.** Mechanical
+title-verification is the only defence, and it worked again here.
+
+**Effect.** The SIOP-E primary recommendation is **unobtainable**; the project's surveillance
+protocol is cited second-hand through Nakano's summary and cannot be checked against its source.
+That limit must be stated in the report.
+
+---
+
+## C16 — "Radiation exposure should be avoided" in MVA: recommendation without syndrome-specific evidence
+
+**BOUNDS A CLAIM; the recommendation itself is unchanged.**
+
+**Side A — the guideline.** Nakano 2024's MVA section states flatly: *"Radiation exposure
+should be avoided."* The AACR study group endorses it.
+
+**Side B — the evidence base for MVA specifically.** A targeted search returned **no study of
+radiosensitivity in MVA, BUB1B-deficient, or PCS-syndrome patients** — five hits, all
+wrong-product. Nakano's supporting sentence is a **class** statement: *"**Many** of these
+genomic instability disorders also present with exquisite sensitivity…"* Where the paper
+documents hypersensitivity it names the syndrome — A-T, Nijmegen breakage syndrome. **MVA is
+not named.**
+
+**Relation: SUPERSET** — the class statement covers MVA without MVA-specific data behind it.
+
+**Adjudication: the recommendation stands; its evidence tier is corrected.** Avoiding
+ionising radiation in a child with constitutional chromosomal instability and a cancer
+predisposition is prudent on first principles, and the guideline's general point — that no
+low-dose threshold is agreed, so "no amount of radiation should be considered absolutely
+safe" — applies to any child. **What changes is what may be claimed:** this is precautionary
+class generalisation, not a documented MVA phenotype, and the report and one-pager must not
+imply otherwise.
+
+**Grounds.** A class generalisation applied to a member syndrome without member-level data is
+exactly the inferential move this repository flags elsewhere; consistency requires flagging it
+when it appears in a recommendation the project endorses.
+
+**Caveat on the negative.** One targeted English-language PubMed search. Task 3's untouched
+non-English literature could plausibly hold Japanese PCS-era radiosensitivity work, since
+chromosomal breakage studies were that field's core method.
+
+---
+
 ## Summary of adjudications
 
 | # | Conflict | Winner / resolution | Effect |
@@ -405,3 +471,5 @@ original form as well as in its withdrawal.
 | C12 | PDB declared chain range vs. observed residues | Observed record wins — **no experimental structure covers residue 1002** | **Provenance** |
 | C13 | Congenital NC raises vs. lowers the monogenic prior | Stratified data wins — prematurity **lowers** it; Track 1 over-corrected | **Conclusion (Track 1)** |
 | C14 | Furosemide as a cause of preterm NC | Neither side decisive; evidence low both ways | Bounds mechanism |
+| C15 | elink PMCID for Hol 2021 vs. no deposit | Europe PMC wins — **paper is closed access, PMCID is a false link** | **Provenance** |
+| C16 | "Avoid radiation" in MVA vs. absence of MVA data | Recommendation stands; **tier is class generalisation** | Bounds claim |
