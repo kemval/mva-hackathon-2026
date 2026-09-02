@@ -54,9 +54,36 @@ These carry forward unchanged from the original review brief. They are not styli
   on commit order being verifiable. Any rubric refinement goes into the report as a dated,
   explicitly-labelled post-registration clarification — never as a silent edit to the
   committed rubric.
-- **Fetch full text, not abstracts.** If full text fails, say so explicitly and record it
-  as a gap rather than reasoning from the abstract. The PMC HTML render route is currently
-  5-for-5 where the BioC API returned abstract-only — try it before declaring failure.
+- **Fetch full text, not abstracts** — and **exhaust the routes before recording a gap.**
+  One failed route is not a gap; it is one failed route. Work this ladder, and record which
+  rungs were tried:
+
+  1. **A different API for the same resource.** Europe PMC REST
+     (`ebi.ac.uk/europepmc/webservices/rest/<PMCID>/fullTextXML`) is currently the most
+     reliable. *The PMC HTML render route recorded in Pass 3 as "5-for-5" is now behind a
+     Google reCAPTCHA and no longer works.* BioC and efetch often return abstract-only.
+  2. **An OA-location service, to find where a legal copy actually lives.** OpenAlex
+     (`api.openalex.org/works/doi:<DOI>`) and Semantic Scholar report `is_oa`, `oa_status`,
+     licence, and every OA location. **Do this before believing any "closed access" signal.**
+     Europe PMC's `isOpenAccess: N` means "not open access **in Europe PMC**" — deposit
+     location, not licence. Misreading it cost this project a wrong Task 6 conclusion that
+     reached three files before it was caught.
+  3. **Institutional and funder repositories**, from the OA-location results. Note these are
+     often browser-rendered **image-only PDFs with no text layer** — extract the pages and
+     read them as images. A second repository may hold a text-layer copy, poor for quoting
+     but excellent for locating content by page.
+  4. **The publisher's own site**, and the primary source behind any summary you are relying
+     on — and, when a primary resists, the summaries and reviews that quote it.
+  5. **A different identifier for the same object**, verified by title.
+
+  Only after that, record the gap — with the exact barrier named, so it is auditable and
+  resumable by someone with different access.
+
+- **Work around access *routes*, never access *controls*.** Do not bypass or complete
+  CAPTCHAs, defeat paywalls, or misrepresent identity to obtain a file. A genuine wall is a
+  gap and gets recorded as one. This limit is not in tension with the ladder above: the Task 6
+  source that looked walled was never walled at all, and the CAPTCHA that was genuinely a wall
+  stayed one.
 - **Verify identifiers against titles.** Two NCBI identifier collisions have already been
   caught in this repository (a PMCID rendering a different paper by overlapping authors,
   and a PMCID belonging to a review that merely cited the intended primary study). Before
