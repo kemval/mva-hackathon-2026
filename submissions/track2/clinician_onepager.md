@@ -10,9 +10,11 @@ MVA. No one involved has contacted, or may contact, the family or their clinicia
 
 In this child's form of MVA, the problem is most likely **not enough BubR1 protein**,
 rather than a BubR1 protein that doesn't work. One gene copy is switched off entirely
-(the nonsense variant produces no protein). The other makes a protein that is probably
-unstable and gets broken down too fast — the published pattern for MVA variants sitting
-where this one sits. In patient cells with this same genotype pattern, **putting the
+(the nonsense variant produces no protein). The other makes a protein we think is
+unstable and broken down too fast. That is the published pattern for most MVA changes of
+this kind — but it has not been shown for this child's particular change, and one
+published change in the same part of the protein behaved completely normally, so this is
+a reasonable expectation rather than an established fact. In patient cells with this same genotype pattern, **putting the
 protein level back up restored normal chromosome segregation.** That is why we think
 "protein quantity" is the thing worth aiming at.
 
@@ -78,6 +80,17 @@ second.** For cancer risk, an international expert group (AACR, 2024) recommends
 - Regular clinical review for signs of rhabdomyosarcoma and other tumours
 - Watch for: an unexplained lump or swelling, blood in the urine, high blood pressure,
   pain or persistent discomfort
+
+**Two things worth knowing about this list.** The reason it exists is a real risk: in
+children with MVA caused by *BUB1B* changes, kidney tumours have been reported in around
+half of published patients — though that figure comes from a small number of early reports
+and is likely an overestimate, because children tend to get written up *because* they
+developed a tumour. And it was written as a *kidney-tumour* screening programme for young
+children. Because this child has already had a rhabdomyosarcoma, the situation is one the
+published guidance does not directly cover: it does not say whether screening should change
+after a first tumour, and it deliberately leaves screening for non-kidney tumours outside
+its scope. That is a gap in what has been studied, not a reason to do less — and it is a
+reasonable thing to raise with the treating team.
 
 ## One practical caution about genetic drug-dosing reports
 

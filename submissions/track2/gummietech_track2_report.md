@@ -132,6 +132,16 @@ domain and was "indistinguishable from wild-type LAP-BUBR1, both on protein leve
 functionality." Position does not guarantee destabilisation. Most kinase-domain
 substitutions in that series destabilised; one did not.
 
+Structural modelling sharpens rather than dissolves this counterexample
+(`data-notes/structural_analysis_n1002k.md`, AlphaFold `AF-O60566-F1`): **Q921 is *more*
+deeply buried than Asn1002 — RSA 1.1% against 16.2% — and is itself hydrogen-bonded**, so
+its tolerance cannot be explained away as a surface position. The distinction that
+survives is chemical rather than positional: Gln→His preserves both hydrogen-bond donor
+and acceptor capability, whereas Asn→Lys preserves neither and buries a positive charge in
+an aromatic pocket. That distinction is in turn weakened by `R814H`, a conservative
+Arg→His substitution that *was* destabilising. Position-based reasoning has a documented
+failure in this protein, and this report does not lean on it.
+
 So the mechanism for this child is **probable, not demonstrated** — which is exactly why
 §5 leads with an assay rather than a prescription. Track 1 classifies `p.Asn1002Lys` as a
 VUS and nothing here changes that.
@@ -413,9 +423,19 @@ data outweigh a one-step-closer rodent mechanism.
 
 **The three limits that must travel with any citation of this candidate:**
 
-1. **NMN was never given to a BubR1-deficient animal.** The rescue in `BubR1^H/H` mice
-   used genetic SIRT2 overexpression. The bridge from "NMN raises BubR1 in wild-type mice"
-   to "NMN would help this child" is an inference, not a result.
+1. **NMN was never given to a BubR1-deficient animal, and the animal in question does not
+   carry this disease's genotype.** The rescue in `BubR1^H/H` mice used genetic SIRT2
+   overexpression, so the bridge from "NMN raises BubR1 in wild-type mice" to "NMN would
+   help this child" is an inference, not a result. A second gap sits underneath it:
+   `BubR1^H/H` is a hypomorph **no MVA patient has**, and the mouse built with the human
+   architecture instead — `BubR1^X753/L1002P`, truncating plus kinase-domain missense — is
+   **embryonic lethal**, none of 39 embryos surviving to E13.5 (Sieben et al. 2020, *JCI*),
+   while the human carrying the analogous genotype lived. The species discordance is
+   itself the finding. Every mouse result cited anywhere in this report therefore comes
+   from a background that models the *direction* of the defect, not the genotype
+   (`literature/33_...`, claims K2–K6). One numbering trap is worth naming because it
+   invites exactly the wrong inference: mouse `L1002P` is **human L1012P**, not this
+   proband's residue 1002.
 2. **Muscle is where NAD⁺ supplementation has consistently failed in humans** — and muscle
    is this child's most drug-approachable phenotype (§1.7). This is not one awkward trial
    but a consistent pattern across independent RCTs, assembled by deliberately searching
@@ -687,6 +707,13 @@ currently classified VUS. One inexpensive experiment tests the therapeutic hypot
 may resolve the variant classification. Nothing else in this report costs so little and
 decides so much.
 
+**The structural analysis raises the value of this assay rather than substituting for
+it.** Modelling gave the mechanism a specific, falsifiable form — Asn1002 makes three
+side-chain hydrogen bonds cross-linking the Trp978 and Val998 backbone, and Asn→Lys loses
+the acceptor outright — but it also found that the report's own counterexample is
+structurally indistinguishable from the candidate (§1.3). No computational route can
+settle which way this residue behaves. A single abundance measurement can.
+
 ### 5.2 Supporting assays, cheapest first
 
 | Assay | What it establishes | Note |
@@ -721,26 +748,77 @@ Per §1.6, senescence and cancer predisposition are siblings off chromosomal ins
 not a chain. **No agent in this report should be expected to reduce this child's tumour
 risk**, and claiming otherwise would be the single easiest overreach available.
 
-The intervention with actual evidence behind this branch is surveillance. Nakano et al.
-2024 (*Clin Cancer Res*, 2nd AACR Childhood Cancer Predisposition Workshop) gives an
-MVA-specific protocol:
+The intervention with actual evidence behind this branch is surveillance. The primary
+recommendation is Hol et al. 2021 (*Eur J Cancer* 153:51–63, SIOP-Europe Host Genome
+Working Group / SIOP Renal Tumour Study Group), read here as the version of record rather
+than through a summary; Nakano et al. 2024 (*Clin Cancer Res*, 2nd AACR Childhood Cancer
+Predisposition Workshop) endorses it — "This AACR study group supports these
+recommendations". The MVA-specific protocol is:
 
 - **Renal ultrasound every 3 months from birth until age 7**, for all MVA conditions
-  including those of unknown genetic cause (SIOP-Europe Host Genome Working Group / SIOP
-  Renal Tumour Study Group; "This AACR study group supports these recommendations").
+  including those of unknown genetic cause. The 3-month interval is justified by tumour
+  growth rate — the shortest reported Wilms doubling time is 11 days, and an interval of
+  4 months or more "risks higher tumour stage at diagnosis".
 - **"Radiation exposure should be avoided."**
 - **Regular clinical assessment including review of systems** for signs of
   rhabdomyosarcoma and other malignancies.
 - Family-facing warning signs, named explicitly: "abnormal mass or swelling, hematuria,
   hypertension, pain, and discomfort."
 
-The same source confirms the genotype-specific risk profile Track 1 reasoned to
+**The risk that justifies this protocol is quantified in the primary, and the figure is
+striking.** Wilms tumour has been reported in **approximately 50% of patients with *BUB1B*
+variants** (Hol 2021), against ~20% for *TRIP13* and none reported for *CEP57* — the
+highest Wilms risk in the guideline's "other syndromes" section. Three caveats travel with
+it and must not be dropped: the estimate rests on small early case series (Jacquemont
+2002, Hanks 2004), no denominator is given, and in a literature where patients are
+published *because* they developed tumours, ascertainment bias runs toward overestimation.
+The guideline's own framing is "because of the limited number of reported patients." Note
+also that the recommendation is anchored to **cytogenetically confirmed** MVA — which
+independently corroborates this project's decision to lead with karyotype as the
+confirmatory test.
+
+**The age-7 endpoint is borrowed, not MVA-derived.** The guideline gives a rationale — by
+age 7, 90% of sporadic Wilms tumours, 94% in Beckwith-Wiedemann and >95% in *WT1*-related
+syndromes have been diagnosed — but is explicit that "for other CPS, the number of
+reported patients with WT was too small to determine this percentage," and MVA is an
+"other CPS". The endpoint applied to this child is therefore a harmonised convention
+carried over from syndromes with larger case counts. The guideline is transparent about
+that; this report should be too.
+
+**The radiation-avoidance advice is precautionary rather than MVA-specific, and it is
+independent of the modality choice.** A targeted search found **no study of
+radiosensitivity in MVA, *BUB1B*-deficient or PCS-syndrome patients**; the supporting
+sentence is a class statement — "**many** of these genomic instability disorders also
+present with exquisite sensitivity" — naming ataxia-telangiectasia and Nijmegen breakage
+syndrome, not MVA. It remains sound as precaution, and on the general position that no
+amount of radiation is considered absolutely safe. But a class generalisation applied to a
+specific syndrome is exactly the move this report flags elsewhere, so its tier is stated
+rather than inherited. **Separately, ultrasound is not a compromise forced by
+radiosensitivity:** the guideline judges ultrasonography "equally effective for initial WT
+detection" against CT or MRI. Modality and radiation advice are independent arguments.
+
+**One limit has to travel with this protocol.** It is a *Wilms* surveillance programme,
+and this child has already had a rhabdomyosarcoma. The guideline does not address what
+surveillance becomes after a first malignancy; where it considers a prior tumour at all,
+it is a prior *renal* tumour, formerly a reason to prolong surveillance in *WT1*-related
+syndromes and since superseded by harmonising every syndrome to the 7th birthday. And the
+omission of non-renal surveillance is **explicit, not accidental** — the guideline states
+that "cancer surveillance for other tumour types is warranted in some of these conditions
+(but outside the scope of this guideline)." Nakano 2024 then adds only "regular clinical
+assessment including review of systems," with no modality, interval or endpoint. For this
+child the position across both sources is a well-specified renal protocol and, for
+everything else, clinical review with no protocol attached. **That is a documented gap in
+the evidence base, not a reason to depart from the protocol** — and it is a reasonable
+thing for the treating team to know it is a gap.
+
+Nakano 2024 also confirms the genotype-specific risk profile Track 1 reasoned to
 independently: "A convincing increased cancer risk particularly during childhood has been
 described only for **MVA1 and MVA3**", with MVA1 tumours "predominantly Wilms tumor and
 rhabdomyosarcoma", plus MDS, AML and ALL.
 
 This is where real-world benefit for this family most plausibly lies, and it requires no
-new science — only that the protocol is known and followed.
+new science — only that the protocol is known, followed, and understood for what it does
+and does not cover.
 
 ---
 
@@ -748,12 +826,27 @@ new science — only that the protocol is known and followed.
 
 Stated as a list because burying them in prose would defeat the purpose.
 
-1. **`p.Asn1002Lys` is not proven to destabilise BubR1.** It was not among the mutants
-   Suijkerbuijk tested, and `Q921H` is a same-domain counterexample that behaves like
-   wild-type. The mechanism for *this child* is probable by analogy, not demonstrated.
-   Track 1 classifies the variant as a VUS and this report does not upgrade it.
+1. **`p.Asn1002Lys` is not proven to destabilise BubR1, and structural analysis makes the
+   analogy weaker rather than stronger.** It was not among the mutants Suijkerbuijk tested,
+   and `Q921H` is a same-domain counterexample that behaves like wild-type. Modelling both
+   residues on AlphaFold `AF-O60566-F1` (`data-notes/structural_analysis_n1002k.md`) shows
+   **Q921 is *more* buried than Asn1002 (RSA 1.1% vs 16.2%) and also makes buried
+   side-chain hydrogen bonds** — so every structural feature that would mark residue 1002
+   as critical is also present at a position where substitution demonstrably did nothing to
+   protein level. Position-based reasoning has a documented failure in this protein. What
+   the modelling does supply is a *specific and falsifiable* mechanism: Asn1002 makes three
+   side-chain hydrogen bonds cross-linking the Trp978 and Val998 backbone, and Asn→Lys
+   loses the acceptor outright while introducing a buried positive charge into an aromatic
+   pocket. That is a hypothesis to test, not evidence for the conclusion. The mechanism for
+   *this child* is probable by analogy, not demonstrated. Track 1 classifies the variant as
+   a VUS and this report does not upgrade it.
 2. **No NAD⁺ precursor has ever been given to a BubR1-deficient animal**, let alone a
-   person with MVA. The lead candidate's central inference is untested.
+   person with MVA. The lead candidate's central inference is untested. **And the mouse
+   models this report draws on do not carry the human MVA genotype** — `BubR1^H/H` is a
+   hypomorph no patient has, while the mouse built with the patient architecture is
+   embryonic lethal where the equivalent human lived (§3.2; `literature/33_...`). A rescue
+   in a BubR1 mouse does not license a human expectation here, and this report's mouse
+   tiers should be read at that reduced weight throughout.
 3. **Muscle is the wrong tissue for the lead candidate's track record.** Human NAD⁺
    trials have consistently failed on musculoskeletal endpoints — three independent RCT
    nulls on the endpoint class that matters most (§3.2) — and muscle is this child's most
@@ -893,6 +986,13 @@ corrected the following, each of which would have been an error in the submissio
 | 17 | **NCBI `elink` mis-maps PMID 37866738 to a PMC record containing a different paper** by overlapping authors; `literature/18_` had captured the wrong full text. A second, independent instance of the same defect was found by the check written in response to the first | Both quotations re-verified verbatim against the primary PubMed record — **no claim affected**. Source downgraded to abstract-only, misfetched text removed, and a title-vs-identifier check now runs corpus-wide (Limitation 11) |
 | 18 | **Rows 26 and 27 of the fetch log were wrongly closed as "abstract only."** Both were recoverable via the PMC HTML render route | Tang 2011 and Xu 2015 upgraded to full text. Both changed the report: Tang supplied the chaperone-dependency rationale now in §3.4, and Xu showed SASP suppression is ≤60% and **segmental** (IL-1α/IL-1β/IL-8 unchanged), so no senomorphic claim of "SASP suppression" is made |
 | 19 | **Corrigendum/retraction sweep across all 18 PMC-deposited sources** via PubMed `CommentsCorrections` | Exactly one hit — the Hickson 2019 erratum already handled. No retractions, no expressions of concern. Reported as an honest negative, with the caveat that the sweep detects only PubMed-indexed corrections and Hickson is itself proof that withdrawals can hide in supplements |
+| 20 | **AlphaFold-based structural characterisation** of N1002 and of the Suijkerbuijk comparator alleles, on `AF-O60566-F1` | Reported in full (`data-notes/structural_analysis_n1002k.md`). The result runs **against** the report's central claim and is stated that way: Q921 — the tolerated counterexample — is more buried and also H-bonded (§1.3, Limitation 1) |
+| 21 | **No experimental structure covers residue 1002.** UniProt's PDB cross-reference declaring "1-1050" for 5KHU/6TLJ is **entity length, not modelled range** | Structural work is reported as AlphaFold modelling only, with the pLDDT limit stated; no claim rests on an experimental structure at this residue (matrix C12) |
+| 22 | **ΔΔG attempted and not obtained** — the DDMut retrieval endpoint failed across three API shapes | Reported as structural *inspection*, never as a ΔΔG. A prediction not run is not a prediction held |
+| 23 | **Hol et al. 2021 primary obtained and read** as the version of record, via OpenAlex → Cambridge/Utrecht repository deposits | An earlier pass recorded this source as closed access. That was wrong: Europe PMC's `isOpenAccess: N` means "not open access *in Europe PMC*" — deposit location, not licence. The paper is CC-BY. Matrix **C15** |
+| 24 | MVA sections of Hol 2021 and Nakano 2024 read end to end for **post-first-tumour surveillance** | **Silent in both**, and the non-renal exclusion is explicit in the primary. Reported as a guideline gap, not filled by inference (§6, Q9) |
+| 25 | **MVA-specific radiosensitivity search** | Five records returned, **all wrong-product**. No study of radiosensitivity in MVA, *BUB1B*-deficient or PCS patients exists. The claim is re-tiered as a class generalisation (§6, matrix C16) |
+| 26 | **NCBI `elink` returns a false PMCID for Hol 2021** | Fourth identifier trap caught in this repository. Verified by title before any quotation, per the standing check (Limitation 11) |
 
 **Reproducibility.** All scripts are in `pipeline/`, CLI-parameterised, standard library
 only, with the exact command sequence in `pipeline/README.md`. The pre-registration is
@@ -909,7 +1009,11 @@ which recovered two full texts and downgraded one):
 
 Suijkerbuijk et al. 2010, *Cancer Res* 70:4891 (PMID 20516114) · North/Sinclair et al.
 2014, *EMBO J* 33:1438 (PMID 24825348) · Wijshake et al. 2012, *PLoS Genet* 8:e1003138
-(PMID 23300461) · Baker et al. 2011, *Nature* 479:232 · Kirsch-Volders & Fenech 2023,
+(PMID 23300461) · Baker et al. 2011, *Nature* 479:232 · Hol JA, Jewell R, Chowdhury T,
+Duncan C, Nakata K, Oue T, et al. 2021, *Eur J Cancer* 153:51–63 (PMID 34134020, CC-BY) —
+the SIOP-Europe surveillance recommendation, read as the primary; Nakano 2024 remains
+cited as the AACR endorsement · Sieben et al. 2020, *J Clin Invest* — the
+`BubR1^X753/L1002P` mouse · Kirsch-Volders & Fenech 2023,
 *Mutat Res Rev* 792:108474 (PMID 37866738) · Justice et al. 2019, *EBioMedicine* 40:554
 (PMID 30616998) · Hickson et al. 2019, *EBioMedicine* 47:446 **and its 2020 corrigendum**,
 *EBioMedicine* 52:102595 (PMIDs 31542391, 31982828) · Shoji et al. 2025, *Aging Cell*

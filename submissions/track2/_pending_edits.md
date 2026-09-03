@@ -1,9 +1,29 @@
 # Pending submission edits — written, not applied
 
-Findings from `pipeline/gap_closure_brief.md` imply the edits below. **None has been
-applied.** The submission text moves only after review, per the brief's deferred-edit rule.
+Findings from `pipeline/gap_closure_brief.md` imply the edits below.
 
 Status: **Tasks 1, 4 and 6 complete. Tasks 2, 3 and 5 not started.**
+
+**APPLIED 2026-09-02.** Edits 1–8 and 10–16 are now in the submission text, reviewed and
+applied together so the repository and the submission no longer disagree. Three departures
+from the list as written, each deliberate:
+
+- **Edit 9 (Kajii 1998 renal footnote) was NOT applied.** Its own rationale says it must
+  either be cited as weak and non-exclusive or left out until Task 2 runs. Task 2 has not
+  run, so it is left out. It stays live here.
+- **Three connective changes** were needed for the applied edits to be coherent rather
+  than merely inserted: the Track 1 sentence "**Both of those conclusions are withdrawn**"
+  became "**The first of those conclusions is withdrawn**" (Edit 6 reinstates the second);
+  the biochemistry recommendation was decoupled from the withdrawn "congenital onset raises
+  the prior" clause and now stands on its own indication; and the one-pager's "probably
+  unstable — the published pattern for MVA variants **sitting where this one sits**" was
+  rewritten, since that is precisely the positional argument Edit 1 withdraws. The
+  one-pager's own "No edit required" note anticipated this.
+- **Claims K4/K5 were propagated** beyond this list, into §3.2 limit 1 and Part 7
+  Limitation 2 of the Track 2 report. They post-date this file (commit `6e6f81d`) and bear
+  directly on the lead candidate's evidence tier: the mouse models cited throughout do not
+  carry the human MVA genotype. Leaving that in the registers and out of the submission
+  would have been the exact failure this file exists to prevent.
 
 ---
 
