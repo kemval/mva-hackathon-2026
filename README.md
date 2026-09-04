@@ -65,11 +65,18 @@ the shared consequence is low abundance), and generates contraindications no pat
 search would surface.
 
 **The search's structural finding.** Across 24 pathway genes and two independent
-databases, drug availability rises monotonically with distance from the defect (0 at
+databases, drug availability rises with distance from the defect (0 at
 BUB1B, 71 at the SASP tier), and **129 of 142 action-typed Open Targets entries are
 inhibitors** — ~95% inhibitory against a disease of deficiency. The only approved drug
 annotated as activating anything is an antiemetic against TP53, a spurious annotation.
-That mismatch generalises to loss-of-function rare disease broadly.
+**That generalisation was pre-registered as a falsifiable prediction, tested on three
+further diseases, and partly refuted by our own test** (`data-notes/scale/RESULTS.md`). The
+skew does not track loss-of-function: NPC1 measures 57.2% inhibitory and CFTR 52.9%. It
+tracks whether the causal gene sits in a pathway oncology has invested in inhibiting —
+BUB1B 97.7%, ATM 98.7%. The corrected rule is narrower and diagnostic: it says in advance
+which rare diseases face this problem, and BUB1B is in the worst category. The monotonicity
+claim did not survive a mechanical tier rule either, and is reported as an artefact of the
+original curation.
 
 **Ranked answer.** Highest overall: **nicotinamide riboside** (13/17) — a dietary
 supplement, not an approved medicine, and the report does not blur that. Highest approved

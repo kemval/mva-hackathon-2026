@@ -272,7 +272,14 @@ Both GraphQL schemas were verified live; Open Targets has renamed its drug colle
 rather than an empty result, so a naive script would silently report zero drugs for
 everything.
 
-### 2.2 Drug availability rises monotonically with distance from the defect
+### 2.2 Drug availability rises with distance from the defect — in this curated node set
+
+> **Superseded in scope by Part 8.** The monotonic pattern below is a real property of
+> *this* 24-gene curated pathway set. It does **not** survive when the tiers are rebuilt
+> mechanically from STRING network distance — it fails for BUB1B itself under that rule
+> (0 → 375 → 198). The pattern is an artefact of the curation, and Part 8 reports the
+> replication that shows it. What survives is the zero at the defect, which holds under
+> both constructions.
 
 Unique drugs and clinical candidates per node, Open Targets:
 
@@ -321,6 +328,13 @@ efficacy").
 > The mismatch between an inhibitor-shaped pharmacopeia and a deficiency-shaped disease is
 > not incidental to this case — it is why repurposing for loss-of-function rare disease is
 > hard, and it generalises far beyond BUB1B.
+
+> **Narrowed by Part 8, on our own pre-registered test.** The last clause is too strong and
+> is corrected there. The inhibitor skew does **not** hold for loss-of-function disease
+> generally — measured at 57.2% for NPC1 and 52.9% for CFTR. It holds where the causal gene
+> sits in a pathway oncology has invested in inhibiting: 97.7% for BUB1B, 98.7% for ATM.
+> The corrected claim is narrower, diagnostic, and still bad news for this child, whose gene
+> is in the worst category.
 
 It also explains why the honest answer to "which approved medication targets this
 mechanism?" is *none directly*, and why the highest-scoring candidate is a metabolic
@@ -890,32 +904,100 @@ Stated as a list because burying them in prose would defeat the purpose.
 
 ## Part 8 — Scalability
 
-The criterion asks whether the approach generalises. Three things here do.
+The criterion asks whether the approach generalises. An earlier version of this section
+*asserted* that it does. That assertion has since been pre-registered as a falsifiable
+prediction, tested on three further diseases, and **partly refuted by our own test.** What
+follows is the corrected version, because a generalisation that has survived an honest
+attempt to break it is worth more than one that was never tried.
 
 **1. The method is a parameterised pipeline, not a one-off.** `track2_target_search.py`
 takes any gene set; `track2_trial_evidence.py` takes any intervention list;
-`track2_score_candidates.py` applies any rubric. For a new disease the inputs are a node
-table and a scores table. Nothing is hardcoded to BUB1B.
+`track2_score_candidates.py` applies any rubric. `build_node_set.py` now builds the gene
+set itself, mechanically, from STRING network distance. For a new disease the only input is
+a gene symbol. Nothing is hardcoded to BUB1B — demonstrated, not claimed, by running the
+identical code path on NPC1, ATM and CFTR (`data-notes/scale/`, `pipeline/scale_measure.py`).
 
-**2. The generalisable insight is the loss-of-function/inhibitor mismatch.** ~95% of
-drugs around this pathway are inhibitors; the disease is a deficiency. That is not a fact
-about BUB1B — it is a fact about **every loss-of-function rare disease**, which is most of
-them. The practical corollaries transfer directly:
-- query the causal gene first and *expect zero*; treat that as information, not failure;
-- ask "what raises this protein?" rather than "what binds it?" — degradation control,
-  chaperone biology and substrate supply are where deficiency diseases are actionable;
-- **write the exclusion gates before the search**, because the highest-ranked pathway hit
-  can be the most harmful agent available (here, HSP90 inhibitors);
-- expect the best-mechanism answer to be a supplement or a metabolite, since those are
-  the few things that push a system *up*.
+### 2. What we predicted, and what actually happened
 
-**3. The patient-specific safety layer generalises to any sequenced patient.** Any child
+Pre-registered in `pipeline/scalability_prediction.md` at commit `98b9b04`, before any
+query ran. Tiers were assigned **mechanically** by STRING distance rather than curated,
+precisely because curation was the obvious attack on the original result.
+
+| Gene | Disease | drugs at the defect | Open Targets inhibitory | DGIdb inhibitory |
+|---|---|---|---|---|
+| **BUB1B** | MVA (this case) | **0** | **97.7%** (129/132) | 99.5% (215/216) |
+| **ATM** | Ataxia-telangiectasia | 84 | **98.7%** (154/156) | 94.2% (196/208) |
+| **NPC1** | Niemann-Pick C | 137 | **57.2%** (95/166) | 62.4% (217/348) |
+| **CFTR** | Cystic fibrosis | 46 | **52.9%** (101/191) | 50.6% (166/328) |
+
+**Two of our three predictions failed, and one of them was the important one.**
+
+- **The claim that the inhibitor skew is "a fact about every loss-of-function rare disease"
+  is withdrawn.** We predicted ≥80% inhibitory at NPC1 and measured 57.2%. The
+  pre-registration committed us, in writing and in advance, to withdrawing rather than
+  softening the claim if exactly this happened. It happened.
+- **The monotonic rise of drug availability with distance does not survive a mechanical tier
+  rule** — it fails for BUB1B itself (0 → 375 → 198), for ATM and for NPC1. That pattern was
+  an artefact of how the original 24-gene pathway set was curated, and we report it as one.
+- **The CFTR falsification test worked as designed.** At the causal gene only **20%** of
+  typed entries are inhibitory, against **31 ACTIVATING and 8 POSITIVE MODULATOR** — the
+  correctors and potentiators. The prediction broke where we said it should break.
+
+### 3. What survives is narrower, and more useful
+
+Two findings came through the replication intact. **BUB1B's zero at the defect is real and
+not a curation artefact** — it survives a tier rule with no human choice in it, in both
+databases. And **the inhibitor skew is real where it applies, and extreme**: 94–99% across
+two independent databases for BUB1B and ATM.
+
+What changes is the scope. The skew does not track loss-of-function. It tracks **whether
+the causal gene sits in a pathway oncology has invested in inhibiting**:
+
+| Neighbourhood | Genes | Inhibitory |
+|---|---|---|
+| Mitotic checkpoint / DNA-damage response — heavy oncology inhibitor investment | BUB1B, ATM | **94–99%** |
+| Lysosomal transport, ion channel — metabolic biology, where agonists are ordinary | NPC1, CFTR | **51–62%** |
+
+**The corrected rule is diagnostic rather than rhetorical: it tells you in advance which
+rare diseases have this problem.** A deficiency patient faces a pharmacopeia pointing the
+wrong way when the causal gene's pathway is an oncology target — because those programmes
+exist to kill dividing cells, and every tool they produce lowers activity. MVA and
+ataxia-telangiectasia are in that category. Niemann-Pick C and cystic fibrosis are not.
+
+**This sharpens the finding for this child rather than weakening it.** BUB1B sits in the
+worst category available: zero drugs at the defect, and 97.7% of everything nearby pointing
+in the direction that makes the disease worse.
+
+**The ATM result stands on its own.** All ten action-typed compounds at the causal gene are
+inhibitors — AZD0156, AZD1390, AZD7648, M3541, BAY-8400 — in a disease defined by ATM
+*deficiency*. That entire pharmacopeia exists to make cells ATM-deficient, which is what an
+oncologist wants and the precise opposite of what an ataxia-telangiectasia patient needs.
+The same trap this report identified for MVA is sitting, unremarked, in another rare disease.
+
+### 4. The transferable practice
+
+- Query the causal gene first and **expect zero** — treat it as information, not failure.
+- Ask "what raises this protein?" rather than "what binds it?"
+- **Write the exclusion gates before the search**, because the highest-ranked pathway hit
+  can be the most harmful agent available (here, HSP90 inhibitors).
+- **Check which neighbourhood you are in before assuming the pharmacopeia is against you** —
+  that is the correction this replication forced, and it is the difference between a slogan
+  and a usable rule.
+- **Pre-register, then publish the failures.** Two of three predictions here failed, and the
+  resulting claim is narrower, testable, and true.
+
+**5. The patient-specific safety layer generalises to any sequenced patient.** Any child
 with a rare disease who has had WGS already has the data for a CPIC-guided PGx analysis.
 The transferable lesson is the negative one: on a variants-only VCF, **absence is not
 reference**, and a pipeline that assumes otherwise produces a confident, clean, wrong
 table. We measured that: 16 of 23 genes flip.
 
----
+**Limits.** Four genes, chosen by argument rather than sampled — a structured probe with one
+adversarial case, not a population estimate, and no p-value is computed. The two-category
+split is the hypothesis this replication generates, not a result it establishes. Action-typed
+entries are a minority of retrieved rows; NPC1's 137 drug rows at the defect carry no action
+type at all, so its direction there is genuinely unknown rather than balanced. Full numbers,
+verdicts and limits in `data-notes/scale/RESULTS.md`.
 
 ## Part 9 — Data handling, ethics, and scope
 
