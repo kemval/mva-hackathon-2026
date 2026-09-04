@@ -373,4 +373,8 @@ post-first-tumour surveillance**, with the non-renal exclusion explicit in the p
 
 ## From Tasks 2, 3 and 5
 
-Not started.
+*(This heading is retained from the original queue. It said "Not started," which stopped
+being true on 2026-09-04 — see the CLOSED note at the top of this file. Tasks 2, 3 and 5
+produced `literature/34_mva_cohort_genotype_phenotype.md`, the search-string blind-spot
+measurement, and the withdrawal of the coverage overclaim respectively, and their edits are
+applied. The stale line is corrected rather than deleted, because this file is a record.)*

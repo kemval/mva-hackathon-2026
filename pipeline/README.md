@@ -196,13 +196,47 @@ explicitly labelled proxy.
 
 Kept because it is correct and needs no download to be worth reading: it specifies exactly what would
 settle the question if an alignment ever existed. Given any BAM covering the panel it reports
-callable fraction per gene, tests each of the five permissive deletion windows against BUB1B's own
+callable fraction per gene, tests each of the six permissive deletion windows against BUB1B's own
 diploid baseline (a hemizygous deletion halves depth), and prints the BUB1B depth profile in 1 kb
 bins.
 
 ```bash
 python3 coverage_analysis.py --bam <alignment.bam>
 ```
+
+### `deletion_windows.py`
+
+Derives the permissive multi-exon-deletion windows instead of asserting them. The report bounds a
+hemizygous BUB1B deletion to the intervals *between* the proband's heterozygous calls, since a het
+call is positive evidence of diploidy at that position. That list used to live in prose, with
+`coverage_analysis.py` carrying a hardcoded copy of it — so when the list was short by one window,
+neither artefact could catch it, and two audit passes that checked *the windows listed* against the
+Ensembl exon structure did not, because both took the list as given.
+
+This script reads the het calls from the region-restricted VCF, pulls the canonical transcript's
+exons from Ensembl, and emits every inter-het interval that fully contains a coding exon, with the
+summed CDS length and whether a whole-window deletion would be in-frame. The frame column is not
+decoration: the report lowers the prior on a deletion in trans on the grounds that it would produce
+a truncating/truncating genotype, and an in-frame deletion would not.
+
+```bash
+python3 deletion_windows.py --vcf ../data-notes/mva_panel_variants.vcf.gz
+```
+
+Output (2026-09-04) — six windows, three of them in-frame:
+
+```
+# BUB1B 15:40160984-40221137  het calls: 8 padded / 7 in gene body
+interval                 size_bp  complete_coding_exons  cds_nt  frame
+40,160,984-40,168,264      7,280  exons 1-2                 179  frameshift
+40,168,264-40,181,093     12,829  exons 3-5                 402  in-frame
+40,182,809-40,192,892     10,083  exons 6-8                 477  in-frame
+40,192,892-40,209,701     16,809  exons 9-16               1085  frameshift
+40,209,701-40,216,470      6,769  exons 18-20               394  frameshift
+40,216,470-40,220,612      4,142  exons 21-22               279  in-frame
+```
+
+`WINDOWS` in `coverage_analysis.py` is regenerated from this, not edited by hand.
 
 **What it could never resolve**, so it is not oversold: phase. The two variants are ~11 kb apart,
 beyond short-read fragment span, and read-backed phasing faces the identical physical limit. Nor the
@@ -404,7 +438,29 @@ explicitly. And STRING's preferred names lag HGNC (`GBA`, `SLC9A3R1`, `SLC9A3R2`
 script falls back to the Ensembl `xrefs` endpoint; without that fallback the drug search
 raises, which is the designed behaviour rather than silently reporting zero drugs.
 
-## 9. Methods description form
+## 9. Cross-file consistency check
+
+Run last, and re-run after editing any submission text:
+
+```bash
+python3 check_consistency.py
+```
+
+It enforces the two things the 2026-09-04 Track 2 audit found nothing was enforcing.
+**No withdrawn claim may be asserted** in any of the ten reader-facing files — it may appear
+only inside the paragraph that retracts it, and the report's Part 11 verification table and
+`submissions/track2/_pending_edits.md` are exempt, because quoting withdrawn text is their
+purpose. **And every hand-copied cross-file figure must equal its source**: the
+verification-row count quoted in the judges' note, the pitch script's spoken-word count
+quoted in the README, the commit count quoted in the methods form, the form's 500-word
+abstract limit, and `scale_measure.py --selfcheck`.
+
+The audit's own result is why this exists. Every *number* in the Track 2 report re-derived
+from the artefacts and none changed; six *prose* claims had drifted, three of them because a
+correction the report had made to itself never reached the files that quote it. Figures under
+a script were correct; figures copied by hand were not.
+
+## 10. Methods description form
 
 The organisers' `literature/methods_description_form.xlsx` is answered from a Markdown
 source of truth so the answers are diffable in the public repo:

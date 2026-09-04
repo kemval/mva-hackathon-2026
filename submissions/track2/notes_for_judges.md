@@ -42,12 +42,35 @@ A finding worth flagging on its own: **all ten action-typed compounds against AT
 inhibitors, in a disease of ATM deficiency.** The same trap we identified for MVA is
 sitting unremarked in ataxia-telangiectasia.
 
-**3. The verification table lists 32 findings that each changed the submission**, and
+**3. The verification table lists 42 findings that each changed the submission**, and
 several cut against its own thesis. The structural analysis commissioned to *support* the
 central claim weakened it and Limitation 1 was tightened as a result. The mouse models the
 lead candidate rests on turn out not to carry the human MVA genotype. A standing overclaim
 of our own about the coverage limitation was withdrawn. Five identifier/duplicate traps
 were caught, one of which would have double-counted a patient in the cohort table.
+
+**The last seven rows are a closing numeric audit of Track 2, and its result has a shape
+worth naming.** Every figure in the report was re-derived from the committed artefacts —
+the drug tallies, all six tier counts, every trial row, all ten ranking totals and fifty
+axis scores, the pharmacogenomic counts, and all sixteen scalability figures. **All
+reproduce; not one number changed.** Every defect the audit found was instead a *sentence*
+that had outrun its number, and three of the six were the same failure: a correction the
+report had already made to itself never reached the files that quote it. The withdrawn
+loss-of-function generalisation was still live in the methods-description form, the README
+and the visual explainer. A Track 1 inference that Track 1 had withdrawn was still standing
+in Track 2's phenotype table. And one claim — "the lowest minimum age across the entire
+senolytic trial landscape is 18" — was refuted by the table printed immediately above it,
+which records six paediatric-eligible navitoclax trials with minimum ages down to 1 year.
+
+That is a finding about this kind of work rather than about this repository. **Verification
+that runs on figures does not catch prose, and correction does not propagate on its own.**
+The figures here that are checked by a script — `129/142`, the pitch script's word counter —
+were all correct. The ones copied by hand between files were the ones that had gone stale.
+
+So the fix is not another hand-copied number. `pipeline/check_consistency.py` now fails
+loudly if any withdrawn claim is *asserted* in a reader-facing file, or if any cross-file
+figure stops matching the source it names. It is one command and it is the check we did not
+have.
 
 **On the two things we did not do.** Seven national literature databases (CiNii, J-STAGE,
 J-GLOBAL, KAKEN, CNKI, Wanfang, VIP) and the Japanese/Chinese native-script search terms

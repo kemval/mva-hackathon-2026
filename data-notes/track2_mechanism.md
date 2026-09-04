@@ -164,7 +164,7 @@ The proband's eight HPO terms, mapped to what an intervention could and could no
 | `HP:0001518` | SGA / IUGR | developmental | **No.** Prenatal |
 | `HP:0001622` | Premature birth (32 weeks) | perinatal | **No.** Historical |
 | `HP:0002859` | Rhabdomyosarcoma | cancer | **Surveillance, not a drug** |
-| `HP:0000121` | Nephrocalcinosis, *present since birth* | unexplained | **No** — and it is a *safety constraint*, not a target. Track 1 withdrew two proposed explanations; congenital onset raises rather than lowers the prior for a second monogenic cause |
+| `HP:0000121` | Nephrocalcinosis, *present since birth* | unexplained | **No** — and it is a *safety constraint*, not a target. Track 1 withdrew two proposed acquired explanations, then withdrew that correction's own inference too — onset is undated and the monogenic yield is ~10x higher in *full-term* children without risk factors, the opposite of this proband. Both readings live; neither concludes (matrix C13) |
 | `HP:0200067` | Parental recurrent miscarriage | family history | Not this child's pharmacology. Relevant to counselling |
 
 **The uncomfortable convergence, stated because it is the strongest objection to the

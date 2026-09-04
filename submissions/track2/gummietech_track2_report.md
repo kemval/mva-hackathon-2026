@@ -2,7 +2,7 @@
 
 **Team:** Gummietech
 **Proband:** PROBAND01 (source VCF: `WGS_EX2312012_HGWCNDSX7.vcf.gz`)
-**Date:** 2026-09-02
+**Date:** 2026-09-02, last audited 2026-09-04
 **Companion:** Track 1 methods report, `submissions/track1/gummietech_track1_report.md`
 
 ---
@@ -230,7 +230,7 @@ Two consequences this report holds to:
 | `HP:0001518` | SGA / IUGR | developmental | **No** — prenatal |
 | `HP:0001622` | Premature birth (32 weeks) | perinatal | **No** — historical |
 | `HP:0002859` | Rhabdomyosarcoma | cancer | **Surveillance, not a drug** |
-| `HP:0000121` | Nephrocalcinosis, *present since birth* | unexplained | **No** — and it is a *safety constraint*. Track 1 withdrew two proposed explanations; congenital onset raises the prior for a second monogenic cause |
+| `HP:0000121` | Nephrocalcinosis, *present since birth* | unexplained | **No** — and it is a *safety constraint*. Track 1 withdrew two proposed acquired explanations, then withdrew the correction's own inference as well: onset timing is undated in the source file and the paediatric evidence puts the *higher* monogenic yield in full-term children without risk factors, which is the opposite of this proband's profile. Both readings stay live and neither carries a conclusion (Track 1, matrix C13) |
 | `HP:0200067` | Parental recurrent miscarriage | family history | Counselling, not this child's pharmacology |
 
 **The strongest objection to our own lead candidate, stated here rather than buried.**
@@ -375,11 +375,23 @@ The load-bearing row is the complete one: **all 22** dasatinib+quercetin trials 
 retrieved, so the zero is exhaustive rather than a sampling artefact.
 
 **Not one of the 22 dasatinib+quercetin trials has enrolled anyone under 18** — and since
-all 22 were retrieved, that is a complete count, not a floor. The lowest minimum age
-across the entire senolytic trial landscape is 18; most are 50 or 60 and
-above. This matters because dasatinib *itself* is FDA-approved from age 1 — so the
-tempting sentence "dasatinib is approved in children" is true of the drug and false of the
-regimen. The paediatric safety data are for continuous oncologic dosing, not intermittent
+all 22 were retrieved, that is a complete count, not a floor. This matters because
+dasatinib *itself* is FDA-approved from age 1 — so the tempting sentence "dasatinib is
+approved in children" is true of the drug and false of the regimen.
+
+> **A wider version of that sentence was in this report and is withdrawn.** It read "the
+> lowest minimum age across the entire senolytic trial landscape is 18," and the table
+> directly above it refutes it: **navitoclax has six paediatric-eligible trials with
+> minimum ages down to 1 year**, and fisetin two. Inspected individually, all six navitoclax
+> trials are paediatric *leukaemia* protocols — navitoclax as a BCL-2/BCL-xL cytotoxic, at
+> continuous oncologic dosing — and fisetin's two are breast-cancer-survivor trials tagged
+> `CHILD` in `stdAges` with no `minimumAge` stated at all. So the defensible claim is
+> narrower and is the one that was already load-bearing: **no trial of any of these agents
+> as a senolytic, at intermittent senolytic dosing, has enrolled a child.** The retained
+> fields cannot separate indication from agent, so that narrower claim rests on reading the
+> twelve trial titles, not on a structured field, and is labelled accordingly. The general
+> claim was the same error as verification row 12 — a property of one exhaustively retrieved
+> row asserted across rows that were not checked. The paediatric safety data are for continuous oncologic dosing, not intermittent
 senolytic dosing, and this report does not let the two borrow credibility from each other.
 
 ---
@@ -558,9 +570,13 @@ added to §5.2 as an arm of the assay already recommended.
 Rejections are part of the deliverable, not omissions. Three candidates were excluded by
 hard gates fixed before the search:
 
-**HSP90 inhibitors (tanespimycin/17-AAG, ganetespib, luminespib, and eight others the
+**HSP90 inhibitors (tanespimycin/17-AAG, ganetespib, luminespib, and seven other names the
 search returned) — gate G1, and this is the finding we would most want a clinician to
-see.** Suijkerbuijk 2010 showed mutant BubR1 is an **HSP90 client**: geldanamycin severely
+see.** *(Ten unique drug names on HSP90AA1 in Open Targets, which is nine compounds once
+retaspimycin's free base and hydrochloride are merged, and eight once `CD24FC` — a CD24-Fc
+fusion protein annotated `INHIBITOR` against HSP90AA1 — is set aside as an annotation
+artefact rather than an HSP90 inhibitor. An earlier version of this sentence said "eight
+others," implying eleven.)* Suijkerbuijk 2010 showed mutant BubR1 is an **HSP90 client**: geldanamycin severely
 reduced mutant but not wild-type BubR1, and cycloheximide plus geldanamycin "removed
 virtually all mutant BUBR1 protein." Inhibiting HSP90 in this child is predicted to
 **destroy the residual BubR1 he depends on**.
@@ -633,9 +649,13 @@ the tool's GRCh38 expectation. Fully scripted in `pipeline/track2_pgx_screen.sh`
 
 ### 4.2 The result is mostly a negative, and the negative is the useful part
 
-**Only 22 of 1,226 PharmCAT positions carry a variant call in this VCF.** The other 1,204
-are simply absent — and this is a variants-only VCF with no reference blocks, so **absence
-is not evidence of a reference genotype**. It is the same invariant Track 1 enforced on
+**Only 22 of 1,226 PharmCAT positions carry an interpretable variant call in this VCF.**
+The other 1,204 are simply absent — and this is a variants-only VCF with no reference
+blocks, so **absence is not evidence of a reference genotype**. (Twenty-*three* positions
+carry a call; the 23rd is the undocumented RYR1 record at `chr19:38499696` that PharmCAT
+discarded, §4.3. The three numbers reconcile as 22 + 1,204 = 1,226 only because that one is
+excluded, and this report states which side of the ledger it falls on rather than letting
+the arithmetic imply it.) It is the same invariant Track 1 enforced on
 gnomAD frequencies, SpliceAI scores and call density, carried into a new domain.
 
 PharmCAT provides a `--missing-to-ref` flag for exactly this situation, and its own CLI
@@ -1067,6 +1087,13 @@ PharmCAT was run locally.
 Every external claim was re-queried against its primary source. This pass found and
 corrected the following, each of which would have been an error in the submission.
 
+**Rows 36–41 are the 2026-09-04 numeric audit of Track 2**, run as the counterpart to the
+Track 1 audit at commit `ea393d5`. Its result is worth stating up front because it is the
+useful part: **every number in this report reproduces from the committed artefacts, and
+every defect it found was a sentence or a downstream file that had drifted away from a
+number.** Three of the six are the same failure — a correction this report made to itself
+never reached the files that quote it.
+
 | # | Finding | Resolution |
 |---|---|---|
 | 1 | **North/Sinclair 2014 does not show what it is usually cited for.** NMN was given to *wild-type* mice; the `BubR1^H/H` rescue used SIRT2 transgenic overexpression | Report states the inference as an inference throughout (§1.4, §3.2, Limitation 2) |
@@ -1106,6 +1133,15 @@ corrected the following, each of which would have been an error in the submissio
 | 33 | **Self-audit of the 2026-09-04 pass found a methodology mismatch in our own replication.** `scale_measure.py` counted raw rows while §2.3's `129/142` counts unique `(gene, drug, action_type)` triples — and the two were printed side by side as if comparable, inflating every replication percentage by 1–15 points | Counting unit unified on the report's. `--selfcheck` now re-derives §2.3's own 129/142 and **fails loudly** before any other figure is emitted. All figures restated; **no verdict changed** — the corrected numbers *widen* the BUB1B/ATM vs NPC1/CFTR split (93–96% vs 38–55%) rather than narrowing it, and CFTR's falsification is sharper at 37.5% than the 52.9% first reported |
 | 34 | **§2.3 never defined what an "entry" was**, making its headline figure irreproducible without guessing the dedup rule — three attempts were needed to recover it, and it was briefly suspected of being wrong when it was correct all along | Denominator now defined in §2.3 with a one-line reproducer. The figure itself was **right**: 142 triples, 129 `INHIBITOR`, exactly one `ACTIVATOR` and one `STABILISER`, matching the prose at every dedup level |
 | 35 | **The self-audit also found an overclaim in the methods description** ("thirty-four sources captured in full text… each with an explicit LIMITS section and an evidence tier") and a transposed tier chart in the pitch deck (`abundance`/`senescence` swapped against §2.2) | Both corrected. Source counts restated against `ls literature/[0-9]*.md`; deck re-verified in-browser rather than by inspection |
+
+| 36 | **Track 2 numeric audit, 2026-09-04: every figure in this report re-derived from the committed artefacts.** OT action-type tally (142 triples / 129 `INHIBITOR` / 135 broad / one `ACTIVATOR` / one `STABILISER`), all six tier counts (0/2/1/16/30/71), the abundance-tier unpacking (HSP90AA1 10 + PARP1 13 = 23; remainder 4 anti-CD38 + 3 NAMPT), the five genes zero in both databases, the six zero-in-OT-only counts (BUB1B 6 / MAD1L1 2 / CGAS 3 / SIRT2 12 / CDKN2A 29 / CDKN1A 30), DGIdb approved directionality (62/1, granisetron–TP53), every trial row, all ten ranking totals and all fifty axis scores, the PGx 1,204 absent and 16-of-23 flip, and all sixteen Part 8 figures | **All reproduce exactly.** No figure changed. The defects this pass found are prose claims that outran the artefacts, and downstream files that never took a correction the report had already made — rows 37–40 |
+| 37 | **A claim in §2.4 was refuted by the table printed directly above it.** "The lowest minimum age across the entire senolytic trial landscape is 18" — while our own trial file records **six paediatric-eligible navitoclax trials with minimum ages down to 1 year** and two for fisetin | Withdrawn and replaced with the narrower claim the argument actually needed (no *senolytic-indication* trial of these agents has enrolled a child), with the twelve trials inspected individually and the basis of the narrower claim — trial titles, not a structured field — labelled. Same failure mode as row 12 |
+| 38 | **A withdrawn Track 1 inference survived in Track 2 §1.7 and in `data-notes/track2_mechanism.md`.** Both still read "congenital onset raises the prior for a second monogenic cause" — the exact clause Track 1 withdrew when the gestational-age-stratified evidence was read (matrix C13) | Both corrected to Track 1's current position: onset undated, monogenic yield ~10× higher in full-term children *without* risk factors, both readings live and neither concluding. The `_pending_edits` note "Task 4 touches Track 1 only" was wrong — Task 4 touched Track 2 as well, and nothing checked |
+| 39 | **The two withdrawn Part 8 claims were still live in three downstream artefacts** — `submissions/methods_description.md` (the *submitted* form) asserted monotonicity and presented the loss-of-function generalisation as the finding, describing the falsification test without reporting that it failed; `README.md` led with monotonicity; `viz/track2_explainer.html` carried both, in a section heading and in a callout, with no scalability section at all | All three corrected to the post-replication position. The report, deck, pitch script and judges' note were already right, which is why this went unnoticed: **the correction propagated to everything a reader sees first and stalled in the files a judge opens next** |
+| 40 | **Four stale counts, each in a file that quotes a number from another file.** Verification findings "32" and "twenty-six" against an actual 35; pitch script "394 spoken words" in the README against an actual 433; "32 commits" against 39 | All four corrected against their sources. The underlying fault is that these are hand-copied cross-file figures with no check; the ones that *are* checked by a script (129/142, the word counter in `pitch_script.md`) were all correct |
+| 41 | **`§4.2`'s "22 of 1,226" was right but unreconcilable from the artefacts.** Twenty-three PharmCAT positions carry a call; 22 are interpretable, and 22 + 1,204 absent = 1,226 only because the undocumented RYR1 record at `chr19:38499696` is excluded — which §4.3 describes but §4.2 did not credit | Wording changed to "interpretable variant call" with the reconciliation stated. Same class as row 34: a correct figure that could not be reproduced without guessing the rule |
+
+| 42 | **The root cause of rows 37–40 was that nothing checked prose.** Every figure under a script (`scale_measure.py --selfcheck`, the pitch script's own word counter) was correct; every figure copied by hand between files had gone stale, and every withdrawn claim that survived did so in a file no script read | `pipeline/check_consistency.py` now enforces both classes and **fails loudly**: no withdrawn claim may be *asserted* in any of ten reader-facing files (it may appear only inside the paragraph retracting it, and the verification table and `_pending_edits.md` are exempt by design), and each cross-file figure — verification-row count, pitch word count, commit count, the 500-word form limit, the 129/142 selfcheck — must equal the source it names |
 
 **Reproducibility.** All scripts are in `pipeline/`, CLI-parameterised, standard library
 only, with the exact command sequence in `pipeline/README.md`. The pre-registration is

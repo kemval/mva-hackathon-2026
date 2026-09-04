@@ -153,7 +153,7 @@ A call-density-against-flanking-sequence proxy is offered and explicitly labelle
 That limitation is *open, not unclosable* — a reduced-reference realignment would close it
 at named costs, and BUB1B carries zero segmental duplications, so the route is sound for
 this gene specifically. CNVs are not called at all; a multi-exon deletion remains possible
-in five named windows. Phase is unresolved. `p.Asn1002Lys` remains a VUS and this
+in six named windows, three of them in-frame. Phase is unresolved. `p.Asn1002Lys` remains a VUS and this
 submission does not upgrade it.
 
 ---
@@ -269,53 +269,56 @@ required direction of drug effect.
 
 ### Time or effort
 
-2026-08-31 to 2026-09-04, 32 commits. The mechanism characterisation and the verification
+2026-08-31 to 2026-09-04, 39 commits. The mechanism characterisation and the verification
 passes consumed substantially more effort than the drug search itself, which is the correct
 ratio for this problem: the search is cheap and the reframing is what makes it point
 anywhere useful.
 
 ### Method abstract (≤500 words)
 
-BUB1B has **zero** drugs in Open Targets and DGIdb independently, and so does every other
-spindle-assembly-checkpoint gene. Rather than treat that as failure, we treat it as
-information and ask what the shape of the surrounding pharmacopeia reveals.
+BUB1B has **zero** drugs in Open Targets and DGIdb independently, as does every other
+spindle-assembly-checkpoint gene. Rather than treat that as failure we treat it as
+information, and ask what the surrounding pharmacopeia's shape reveals.
 
-Across 24 pathway genes and two databases, **drug availability rises monotonically with
-distance from the defect** (0 at BUB1B, 71 at the SASP tier), and **129 of 142 action-typed
-Open Targets entries are inhibitors** — ~95% inhibitory against a disease of deficiency.
-That mismatch is the submission's generalisable finding: medicine is built out of
-inhibitors, and loss-of-function rare disease needs the opposite. We pre-registered a
-falsifiable version of that claim and tested it on three further genes, including one
-(CFTR) chosen because the prediction should *fail* there.
+Across 24 pathway genes and two databases, **129 of 142 action-typed Open Targets entries
+are inhibitors** — ~95% inhibitory against a disease of deficiency. We pre-registered a
+falsifiable version of that mismatch, with its withdrawal criterion, and tested it on three
+further genes including one (CFTR) chosen because it should *fail* there. **Two of three
+predictions failed and the generalisation is withdrawn.** The skew does not track
+loss-of-function (NPC1 **54.5%**, CFTR **37.5%**) but whether the causal gene sits in a
+pathway oncology has invested in inhibiting (BUB1B **95.8%**, ATM **93.4%**) — narrower, and
+diagnostic: it says in advance which rare diseases face this problem, and BUB1B is in the
+worst category. Our monotonic-rise-with-distance claim likewise failed under a mechanical
+STRING tier rule, for BUB1B itself (0 → 375 → 198), and is reported as an artefact of our
+own curation. What survives both tests is **the zero at the defect**.
 
 **Ranked answer, with regulatory status never blurred.** Highest overall: nicotinamide
 riboside (13/17) — a **dietary supplement, not an approved medicine**. Highest approved
 medication: dasatinib + quercetin (10/17), where **none of 22 trials ever enrolled a
-child**. Three agents are excluded by gates fixed before the search, including HSP90
-inhibitors — simultaneously the lead compound of the best-known "drugs for aneuploidy"
-paper and, here, predicted to destroy the residual protein the child depends on.
+child**. Gates fixed before the search exclude HSP90 inhibitors — simultaneously the lead
+compound of the best-known "drugs for aneuploidy" paper and, here, predicted to destroy the
+residual protein the child depends on.
 
-**What we actually recommend first is not a drug.** It is a western blot for BubR1, which
-forks the entire hypothesis and would additionally generate PS3-grade functional evidence
-on Track 1's unresolved VUS. Measure before treating.
+**What we recommend first is not a drug.** It is a western blot for BubR1, which forks the
+entire hypothesis and would additionally generate PS3-grade functional evidence on Track 1's
+unresolved VUS. Measure before treating.
 
 **A patient-specific layer.** A CPIC-guided PharmCAT screen of the proband's own genome,
-whose headline is an honest negative: only 22 of 1,226 positions carry a call, and **16 of
-23 genes change call** when absent positions are assumed reference — an assumption
-PharmCAT's own CLI labels "DANGEROUS!". It also caught a false alarm worth catching:
-PharmCAT reports RYR1 `rs35364374` as "Uncertain Susceptibility" to malignant hyperthermia,
-while ClinGen's expert panel classifies that exact variant **Benign**.
+whose headline is an honest negative: only 22 of 1,226 positions carry an interpretable
+call, and **16 of 23 genes change call** when absent positions are assumed reference — an
+assumption PharmCAT's own CLI labels "DANGEROUS!". It also caught a false alarm: PharmCAT
+reports RYR1 `rs35364374` as "Uncertain Susceptibility" to malignant hyperthermia; ClinGen's
+expert panel classifies that variant **Benign**.
 
 **Strengths.** Pre-registration verifiable from commit order. Two independent drug
-databases. Paediatric eligibility from structured fields. Mechanism-derived exclusion gates
-that catch a contraindication no pathway search surfaces. Twenty-six verification findings
-that each *changed* the submission, several against its own thesis.
+databases. Mechanism-derived gates catching a contraindication no pathway search surfaces.
+**Forty-two verification findings that each *changed* the submission**, several against its
+own thesis. A closing audit re-derived every figure above from the artefacts; all reproduce.
 
 **Limitations.** No NAD⁺ precursor has been given to a BubR1-deficient animal, let alone a
-person with MVA; the lead candidate's central inference is untested. The mouse models the
-report draws on **do not carry the human MVA genotype** — the mouse built with the patient
-architecture is embryonic lethal where the equivalent human lived. Human NAD⁺ trials have
-failed on musculoskeletal endpoints. `p.Asn1002Lys` is not proven to destabilise BubR1, and
-structural analysis made that analogy weaker rather than stronger. n = 1. Nothing here is
-medical advice, and no MVA patient has ever received any of these agents for this
-indication.
+person with MVA; the lead candidate's central inference is untested. The mouse models **do
+not carry the human MVA genotype** — the mouse built with the patient architecture is
+embryonic lethal where the equivalent human lived. Human NAD⁺ trials have failed on
+musculoskeletal endpoints. `p.Asn1002Lys` is not proven to destabilise BubR1, and structural
+analysis made that analogy weaker, not stronger. n = 1. No MVA patient has ever received any
+of these agents for this indication, and nothing here is medical advice.

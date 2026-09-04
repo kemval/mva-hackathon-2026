@@ -73,7 +73,8 @@ MVA those cells are spread throughout the body — that is the condition, not a 
 
 The chromosome problem leads to two separate consequences: worn-out cells, and raised
 cancer risk. **A medicine aimed at the first should not be expected to reduce the
-second.** For cancer risk, an international expert group (AACR, 2024) recommends for MVA:
+second.** For cancer risk, the international surveillance recommendation for MVA (Hol et al. 2021,
+SIOP-Europe, endorsed by the AACR childhood-cancer-predisposition workshop in 2024) is:
 
 - **Renal ultrasound every 3 months from birth to age 7**
 - **Avoid radiation exposure where possible**
@@ -83,7 +84,7 @@ second.** For cancer risk, an international expert group (AACR, 2024) recommends
 
 **Two things worth knowing about this list.** The reason it exists is a real risk: in
 children with MVA caused by *BUB1B* changes, kidney tumours have been reported in around
-half of published patients — though that figure comes from a small number of early reports
+half of published patients (Hol 2021) — though that figure comes from a small number of early reports
 and is likely an overestimate, because children tend to get written up *because* they
 developed a tumour. And it was written as a *kidney-tumour* screening programme for young
 children. Because this child has already had a rhabdomyosarcoma, the situation is one the
