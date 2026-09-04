@@ -116,7 +116,7 @@ as a competing causal hypothesis.
 The full pipeline runs in **under 10 minutes end to end** on a 2019-class laptop (8 GB RAM,
 8 cores), dominated by Ensembl VEP REST latency, not compute. Standard library Python only,
 no cluster, no paid compute. **The analysis time is the cost**: the work spans 2026-08-31
-to 2026-09-04 across 32 commits, the large majority of it verification and audit rather
+to 2026-09-04 across 40 commits, the large majority of it verification and audit rather
 than the initial pipeline, which was the smaller part of the effort.
 
 ### Method abstract (≤500 words)
@@ -269,7 +269,7 @@ required direction of drug effect.
 
 ### Time or effort
 
-2026-08-31 to 2026-09-04, 39 commits. The mechanism characterisation and the verification
+2026-08-31 to 2026-09-04, 40 commits. The mechanism characterisation and the verification
 passes consumed substantially more effort than the drug search itself, which is the correct
 ratio for this problem: the search is cheap and the reframing is what makes it point
 anywhere useful.

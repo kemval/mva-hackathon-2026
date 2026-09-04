@@ -123,11 +123,21 @@ def check_derived(root, fails):
         fails.append(f"README.md: pitch script is {spoken} spoken words; "
                      "the README quotes a different figure")
 
-    commits = subprocess.run(["git", "-C", str(root), "rev-list", "--count", "HEAD"],
-                             capture_output=True, text=True).stdout.strip()
-    if commits and f"{commits} commits" not in methods:
-        fails.append(f"methods_description.md: repository has {commits} commits; "
-                     "the form quotes a different figure")
+    # A file that records the repository's own commit count can only be correct
+    # up to the commit that writes it -- committing the fix increments the count
+    # it just fixed. So the figure is allowed to trail HEAD by one, and only by
+    # one; two means it was not updated in the commit that should have.
+    head = subprocess.run(["git", "-C", str(root), "rev-list", "--count", "HEAD"],
+                          capture_output=True, text=True).stdout.strip()
+    if head:
+        quoted = re.findall(r"(\d+) commits", methods)
+        if not quoted:
+            fails.append("methods_description.md: commit-count sentence not found")
+        for q in quoted:
+            if not 0 <= int(head) - int(q) <= 1:
+                fails.append(f"methods_description.md: form says {q} commits, "
+                             f"HEAD is at {head} (a lag of one is allowed, "
+                             "since committing the update increments it)")
 
     for i, m in enumerate(re.finditer(r"^### Method abstract.*?\n(.*?)(?=^### |^# |\Z)",
                                       methods, re.S | re.M), start=1):
