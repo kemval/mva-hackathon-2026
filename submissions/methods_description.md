@@ -205,10 +205,18 @@ child depends on**, because mutant BubR1 is an HSP90 client.
 
 ### Describe manual literature review and expert curation
 
-Thirty-four sources captured in full text in `literature/`, each with verbatim quotes, an
-explicit **LIMITS** section stating what the paper does *not* show, and an evidence tier
-(human RCT / human phase 1–2 / observational human / mouse in the BubR1 background / mouse
-elsewhere / cell line / in silico). Supporting registers: a **claims register** grading
+**31 source files** in `literature/` — 24 of them primary literature, the remainder site
+captures, tool documentation, clinical guidelines and a bibliography — each captured with
+verbatim quotes and its acquisition provenance logged. Most are full text; those obtainable
+only as abstracts are **labelled abstract-only** rather than presented as full text, and the
+fetch log records which.
+
+The **LIMITS** convention (an explicit section stating what a paper does *not* show) and the
+evidence tier (human RCT / human phase 1–2 / observational human / mouse in the BubR1
+background / mouse elsewhere / cell line / in silico) were introduced with the adversarial
+review pass and apply to the **10 files added under it**, not retroactively to the earlier
+corpus. Stated precisely because an earlier draft of this form claimed all of them carried
+it — which is not true, and is checkable in one command. Supporting registers: a **claims register** grading
 every assertion, a **contradiction matrix** adjudicating 19 conflicts with grounds, an
 **open-questions file** ranking what the literature cannot answer by decision value, and a
 **fetch log** recording every acquisition attempt including failures.

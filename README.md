@@ -84,9 +84,11 @@ inhibitors** — ~95% inhibitory against a disease of deficiency. The only appro
 annotated as activating anything is an antiemetic against TP53, a spurious annotation.
 **That generalisation was pre-registered as a falsifiable prediction, tested on three
 further diseases, and partly refuted by our own test** (`data-notes/scale/RESULTS.md`). The
-skew does not track loss-of-function: NPC1 measures 57.2% inhibitory and CFTR 52.9%. It
-tracks whether the causal gene sits in a pathway oncology has invested in inhibiting —
-BUB1B 97.7%, ATM 98.7%. The corrected rule is narrower and diagnostic: it says in advance
+skew does not track loss-of-function: NPC1 measures 54.5% strictly inhibitory and CFTR
+37.5%. It tracks whether the causal gene sits in a pathway oncology has invested in
+inhibiting — BUB1B 95.8%, ATM 93.4%. All figures use the same counting unit as the report's
+own 129/142 (unique gene-drug-action triples), which `scale_measure.py --selfcheck`
+re-derives before emitting anything else. The corrected rule is narrower and diagnostic: it says in advance
 which rare diseases face this problem, and BUB1B is in the worst category. The monotonicity
 claim did not survive a mechanical tier rule either, and is reported as an artefact of the
 original curation.
@@ -147,8 +149,9 @@ generalisation — that the loss-of-function/inhibitor mismatch holds for rare d
 broadly — was pre-registered as a falsifiable prediction, tested on NPC1, ATM and CFTR, and
 **partly refuted**. Two of three predictions failed. The claim is withdrawn and replaced
 with a narrower, diagnostic one: the skew tracks whether the causal gene sits in a pathway
-oncology has invested in inhibiting, not whether the disease is loss-of-function. BUB1B is
-in the worst category. Details in `data-notes/scale/RESULTS.md`.
+oncology has invested in inhibiting (BUB1B **95.8%**, ATM **93.4%** strict inhibitory), not
+whether the disease is loss-of-function (NPC1 **54.5%**, CFTR **37.5%**). BUB1B is in the
+worst category. Details in `data-notes/scale/RESULTS.md`.
 
 ## Submission checklist
 

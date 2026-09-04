@@ -109,8 +109,8 @@
       <div class="barrow"><span class="lab">BUB1B</span><div class="bar" style="width:1%;background:var(--warn)"></div><span class="val warn">0</span></div>
       <div class="barrow"><span class="lab">SAC</span><div class="bar" style="width:3%"></div><span class="val">2</span></div>
       <div class="barrow"><span class="lab">sensing</span><div class="bar" style="width:2%"></div><span class="val">1</span></div>
-      <div class="barrow"><span class="lab">abundance</span><div class="bar" style="width:23%"></div><span class="val">16</span></div>
-      <div class="barrow"><span class="lab">senescence</span><div class="bar" style="width:42%"></div><span class="val">30</span></div>
+      <div class="barrow"><span class="lab">senescence</span><div class="bar" style="width:23%"></div><span class="val">16</span></div>
+      <div class="barrow"><span class="lab">abundance</span><div class="bar" style="width:42%"></div><span class="val">30</span></div>
       <div class="barrow"><span class="lab">SASP</span><div class="bar" style="width:100%"></div><span class="val">71</span></div>
     </div>
     <div class="col">
@@ -125,15 +125,18 @@
   <div class="beat">Beat 3b · the generalisation, pre-registered and then broken</div>
   <h2>We predicted this holds for loss-of-function disease. It doesn't.</h2>
   <table>
-    <tr><th>gene</th><th>disease</th><th>drugs at defect</th><th>inhibitory</th><th>prediction</th></tr>
-    <tr><td class="mono accent">BUB1B</td><td>MVA &mdash; this case</td><td class="num warn">0</td><td class="num warn">97.7%</td><td class="good">held</td></tr>
-    <tr><td class="mono">ATM</td><td>Ataxia-telangiectasia</td><td class="num">84</td><td class="num warn">98.7%</td><td class="good">held</td></tr>
-    <tr><td class="mono">NPC1</td><td>Niemann-Pick C</td><td class="num">137</td><td class="num good">57.2%</td><td class="warn">FAILED</td></tr>
-    <tr><td class="mono">CFTR</td><td>Cystic fibrosis</td><td class="num">46</td><td class="num good">52.9%</td><td class="amber">broke, as designed</td></tr>
+    <tr><th>gene</th><th>disease</th><th>drugs at defect</th><th>inhibitory*</th><th>prediction</th></tr>
+    <tr><td class="mono accent">BUB1B</td><td>MVA &mdash; this case</td><td class="num warn">0</td><td class="num warn">95.8%</td><td class="good">held</td></tr>
+    <tr><td class="mono">ATM</td><td>Ataxia-telangiectasia</td><td class="num">84</td><td class="num warn">93.4%</td><td class="good">held</td></tr>
+    <tr><td class="mono">NPC1</td><td>Niemann-Pick C</td><td class="num">137</td><td class="num good">54.5%</td><td class="warn">FAILED</td></tr>
+    <tr><td class="mono">CFTR</td><td>Cystic fibrosis</td><td class="num">46</td><td class="num good">37.5%</td><td class="amber">broke, as designed</td></tr>
   </table>
   <p class="note">The skew doesn't track loss-of-function. It tracks whether oncology wants to
   inhibit the pathway. <span class="accent">The corrected rule is diagnostic &mdash; and this
-  child's gene is in the worst category.</span></p>
+  child's gene is in the worst category.</span><br>
+  <span class="dim">* strict <span class="mono">INHIBITOR</span>, counted as unique
+  gene&ndash;drug&ndash;action triples &mdash; the same unit as the 129/142 on the previous
+  slide.</span></p>
 </section>
 
 <section class="slide">

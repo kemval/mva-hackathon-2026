@@ -22,13 +22,21 @@ soften** if it failed at NPC1 — then ran the same pipeline on NPC1, ATM and CF
 assignment done mechanically by network distance rather than curated, because curation was
 the obvious attack on the original result.
 
-Two of three predictions failed. NPC1 measured 57.2% inhibitory against a predicted ≥80%.
-The monotonic rise with distance did not survive the mechanical rule and failed even for
-BUB1B itself. **The claim is withdrawn.** What replaces it is narrower and more useful: the
-skew tracks whether the causal gene sits in a pathway oncology has invested in inhibiting
-(BUB1B 97.7%, ATM 98.7%) rather than whether the disease is loss-of-function (NPC1 57.2%,
-CFTR 52.9%). That rule is diagnostic — it says in advance which rare diseases face this
-problem — and it makes this child's position worse, not better.
+Two of three predictions failed. NPC1 measured **54.5%** inhibitory against a predicted
+≥80%. The monotonic rise with distance did not survive the mechanical rule and failed even
+for BUB1B itself. **The claim is withdrawn.** What replaces it is narrower and more useful:
+the skew tracks whether the causal gene sits in a pathway oncology has invested in
+inhibiting (BUB1B **95.8%**, ATM **93.4%**) rather than whether the disease is
+loss-of-function (NPC1 **54.5%**, CFTR **37.5%**). That rule is diagnostic — it says in
+advance which rare diseases face this problem — and it makes this child's position worse,
+not better.
+
+A note on how those percentages are counted, because we got it wrong once. They use unique
+`(gene, drug, action_type)` triples — the same unit as the report's own `129/142`. Our first
+pass counted raw rows and printed the result beside the report's figure as though the two
+were comparable; they were not. `scale_measure.py --selfcheck` now re-derives the report's
+`129/142` and fails loudly before emitting any other number. Correcting it changed no
+verdict and **widened** the split.
 
 A finding worth flagging on its own: **all ten action-typed compounds against ATM are
 inhibitors, in a disease of ATM deficiency.** The same trap we identified for MVA is

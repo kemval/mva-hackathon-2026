@@ -313,8 +313,15 @@ plus three NAMPT inhibitors that push NAD⁺ in the wrong direction.
 ### 2.3 The structural finding: the pharmacopeia is built of inhibitors
 
 Across all 24 genes, of 142 action-typed Open Targets entries, **129 are `INHIBITOR`**.
-Adding antisense inhibitors, RNAi inhibitors and antagonists brings it to ~95% inhibitory.
-There is exactly **one `ACTIVATOR`** and **one `STABILISER`** in the entire set.
+Adding antisense inhibitors, RNAi inhibitors and antagonists brings it to 135, or ~95%
+inhibitory. There is exactly **one `ACTIVATOR`** and **one `STABILISER`** in the entire set.
+
+> **What an "entry" is**, because the figure is not reproducible without knowing: a unique
+> **`(gene, drug, action_type)` triple**. One drug acting on two genes counts twice; the
+> same drug–gene pair reported under two action types counts twice. Reproduce with
+> `python3 pipeline/scale_measure.py --selfcheck data-notes/track2_target_drugs.tsv`,
+> which asserts 142 and 129 and fails loudly otherwise. Every percentage in Part 8 uses
+> this same unit, so the two sections are directly comparable.
 
 DGIdb agrees independently: among its approved-drug interactions across these genes,
 **62 are `INHIBITORY` and 1 is `ACTIVATING`** — and that one is *granisetron against
@@ -330,11 +337,12 @@ efficacy").
 > hard, and it generalises far beyond BUB1B.
 
 > **Narrowed by Part 8, on our own pre-registered test.** The last clause is too strong and
-> is corrected there. The inhibitor skew does **not** hold for loss-of-function disease
-> generally — measured at 57.2% for NPC1 and 52.9% for CFTR. It holds where the causal gene
-> sits in a pathway oncology has invested in inhibiting: 97.7% for BUB1B, 98.7% for ATM.
-> The corrected claim is narrower, diagnostic, and still bad news for this child, whose gene
-> is in the worst category.
+> is corrected there. On the same counting unit as the 129/142 above, the inhibitor skew does
+> **not** hold for loss-of-function disease generally — strict inhibitory measures **54.5%
+> for NPC1** and **37.5% for CFTR**. It holds where the causal gene sits in a pathway
+> oncology has invested in inhibiting: **95.8% for BUB1B**, **93.4% for ATM**. The corrected
+> claim is narrower, diagnostic, and still bad news for this child, whose gene is in the
+> worst category.
 
 It also explains why the honest answer to "which approved medication targets this
 mechanism?" is *none directly*, and why the highest-scoring candidate is a metabolic
@@ -923,31 +931,43 @@ Pre-registered in `pipeline/scalability_prediction.md` at commit `98b9b04`, befo
 query ran. Tiers were assigned **mechanically** by STRING distance rather than curated,
 precisely because curation was the obvious attack on the original result.
 
+All percentages below use the **same counting unit as §2.3** — unique
+`(gene, drug, action_type)` triples, strict `INHIBITOR`. `scale_measure.py --selfcheck`
+re-derives §2.3's own 129/142 before emitting any of these, so the two sections compare
+like with like.
+
 | Gene | Disease | drugs at the defect | Open Targets inhibitory | DGIdb inhibitory |
 |---|---|---|---|---|
-| **BUB1B** | MVA (this case) | **0** | **97.7%** (129/132) | 99.5% (215/216) |
-| **ATM** | Ataxia-telangiectasia | 84 | **98.7%** (154/156) | 94.2% (196/208) |
-| **NPC1** | Niemann-Pick C | 137 | **57.2%** (95/166) | 62.4% (217/348) |
-| **CFTR** | Cystic fibrosis | 46 | **52.9%** (101/191) | 50.6% (166/328) |
+| **BUB1B** | MVA (this case) | **0**, both databases | **95.8%** (69/72) | 99.4% (180/181) |
+| **ATM** | Ataxia-telangiectasia | 84 | **93.4%** (71/76) | 93.4% (170/182) |
+| **NPC1** | Niemann-Pick C | 137 † | **54.5%** (66/121) | 60.7% (187/308) |
+| **CFTR** | Cystic fibrosis | 46 | **37.5%** (60/160) | 49.6% (133/268) |
+
+† NPC1's 137 are **DGIdb-only and none is action-typed**; many are raw ChEMBL binding-assay
+entries rather than drugs. P1 fails there on record count — the metric it was written
+against — but the *direction* at NPC1's own defect is genuinely unknown, not favourable, and
+nothing below rests on it.
 
 **Two of our three predictions failed, and one of them was the important one.**
 
 - **The claim that the inhibitor skew is "a fact about every loss-of-function rare disease"
-  is withdrawn.** We predicted ≥80% inhibitory at NPC1 and measured 57.2%. The
+  is withdrawn.** We predicted ≥80% inhibitory at NPC1 and measured **54.5%**. The
   pre-registration committed us, in writing and in advance, to withdrawing rather than
   softening the claim if exactly this happened. It happened.
 - **The monotonic rise of drug availability with distance does not survive a mechanical tier
   rule** — it fails for BUB1B itself (0 → 375 → 198), for ATM and for NPC1. That pattern was
   an artefact of how the original 24-gene pathway set was curated, and we report it as one.
-- **The CFTR falsification test worked as designed.** At the causal gene only **20%** of
-  typed entries are inhibitory, against **31 ACTIVATING and 8 POSITIVE MODULATOR** — the
-  correctors and potentiators. The prediction broke where we said it should break.
+- **The CFTR falsification test worked as designed.** At the causal gene only **18.4%** of
+  typed triples are strictly inhibitory (20.4% broad), against **26 `ACTIVATING`** and
+  **8 `POSITIVE MODULATOR`** — the correctors and potentiators. Across the whole CFTR
+  neighbourhood strict inhibitory is **37.5%**, the lowest of the four. The prediction broke
+  where we said it should break.
 
 ### 3. What survives is narrower, and more useful
 
 Two findings came through the replication intact. **BUB1B's zero at the defect is real and
 not a curation artefact** — it survives a tier rule with no human choice in it, in both
-databases. And **the inhibitor skew is real where it applies, and extreme**: 94–99% across
+databases. And **the inhibitor skew is real where it applies, and extreme**: 93–99% across
 two independent databases for BUB1B and ATM.
 
 What changes is the scope. The skew does not track loss-of-function. It tracks **whether
@@ -955,8 +975,8 @@ the causal gene sits in a pathway oncology has invested in inhibiting**:
 
 | Neighbourhood | Genes | Inhibitory |
 |---|---|---|
-| Mitotic checkpoint / DNA-damage response — heavy oncology inhibitor investment | BUB1B, ATM | **94–99%** |
-| Lysosomal transport, ion channel — metabolic biology, where agonists are ordinary | NPC1, CFTR | **51–62%** |
+| Mitotic checkpoint / DNA-damage response — heavy oncology inhibitor investment | BUB1B, ATM | **93–96%** |
+| Lysosomal transport, ion channel — metabolic biology, where agonists are ordinary | NPC1, CFTR | **38–55%** |
 
 **The corrected rule is diagnostic rather than rhetorical: it tells you in advance which
 rare diseases have this problem.** A deficiency patient faces a pharmacopeia pointing the
@@ -965,7 +985,7 @@ exist to kill dividing cells, and every tool they produce lowers activity. MVA a
 ataxia-telangiectasia are in that category. Niemann-Pick C and cystic fibrosis are not.
 
 **This sharpens the finding for this child rather than weakening it.** BUB1B sits in the
-worst category available: zero drugs at the defect, and 97.7% of everything nearby pointing
+worst category available: zero drugs at the defect, and 95.8% of everything nearby pointing
 in the direction that makes the disease worse.
 
 **The ATM result stands on its own.** All ten action-typed compounds at the causal gene are
@@ -1076,12 +1096,16 @@ corrected the following, each of which would have been an error in the submissio
 | 25 | **MVA-specific radiosensitivity search** | Five records returned, **all wrong-product**. No study of radiosensitivity in MVA, *BUB1B*-deficient or PCS patients exists. The claim is re-tiered as a class generalisation (§6, matrix C16) |
 | 26 | **NCBI `elink` returns a false PMCID for Hol 2021** | Fourth identifier trap caught in this repository. Verified by title before any quotation, per the standing check (Limitation 11) |
 
-| 27 | **Scalability replication, 2026-09-04: two of three pre-registered predictions FAILED.** The published claim that the inhibitor skew "is a fact about every loss-of-function rare disease" measured 57.2% at NPC1 against a predicted ≥80%; the monotonic rise with distance did not survive a mechanical STRING tier rule, failing even for BUB1B itself (0 → 375 → 198) | Generalisation **withdrawn**, per the pre-registration's own instruction to withdraw rather than soften. Part 8 rewritten around the corrected, narrower rule; §2.2 and §2.3 carry supersession notes (`data-notes/scale/RESULTS.md`) |
+| 27 | **Scalability replication, 2026-09-04: two of three pre-registered predictions FAILED.** The published claim that the inhibitor skew "is a fact about every loss-of-function rare disease" measured **54.5%** at NPC1 against a predicted ≥80%; the monotonic rise with distance did not survive a mechanical STRING tier rule, failing even for BUB1B itself (0 → 375 → 198) | Generalisation **withdrawn**, per the pre-registration's own instruction to withdraw rather than soften. Part 8 rewritten around the corrected, narrower rule; §2.2 and §2.3 carry supersession notes (`data-notes/scale/RESULTS.md`) |
 | 28 | **STRING's `interaction_partners` endpoint silently defaults to 10 partners per protein**, which would have capped tier 1 at 10 and broken the pre-registered 25-per-tier rule | Caught by noticing every tier 1 returned exactly 10. `limit` now set explicitly and all four node sets rebuilt |
 | 29 | **STRING preferred names lag HGNC** — `GBA`, `SLC9A3R1` and `SLC9A3R2` failed Ensembl symbol lookup, and the search correctly *raised* rather than reporting them as zero-drug targets | Synonym fallback via the Ensembl `xrefs` endpoint; node sets rebuilt with zero unresolved IDs |
 | 30 | **Fifth identifier trap: PMIDs 19373780 and 19856400 are one patient plus a comment on it**, not two patients, and carry near-identical titles | Caught by the standing title-verification check before either entered the cohort table. Counting both would have inflated the cohort and triple-counted three tumours |
 | 31 | **Task 5: a standing overclaim of this repository's own.** "The callability limitation cannot be closed by acquiring data" rested on whole-genome-index RAM against a route nobody would take | Withdrawn in four files. The binding objection is scientific — decoy-free realignment inflates MAPQ — and splits by locus: BUB1B has **zero** segdups in its padded region, CYP2D6 has **six** (`pipeline/realignment_feasibility.md`) |
 | 32 | **The pitch script had fallen out of sync with the report three times** — the withdrawn positional analogy, the NAD⁺ mechanism stated as fact, and the withdrawn generalisation | All three corrected; script re-verified at 433 spoken words against its 435 budget. The required organiser acknowledgement is now matched verbatim against the site capture by a check that fails loudly |
+
+| 33 | **Self-audit of the 2026-09-04 pass found a methodology mismatch in our own replication.** `scale_measure.py` counted raw rows while §2.3's `129/142` counts unique `(gene, drug, action_type)` triples — and the two were printed side by side as if comparable, inflating every replication percentage by 1–15 points | Counting unit unified on the report's. `--selfcheck` now re-derives §2.3's own 129/142 and **fails loudly** before any other figure is emitted. All figures restated; **no verdict changed** — the corrected numbers *widen* the BUB1B/ATM vs NPC1/CFTR split (93–96% vs 38–55%) rather than narrowing it, and CFTR's falsification is sharper at 37.5% than the 52.9% first reported |
+| 34 | **§2.3 never defined what an "entry" was**, making its headline figure irreproducible without guessing the dedup rule — three attempts were needed to recover it, and it was briefly suspected of being wrong when it was correct all along | Denominator now defined in §2.3 with a one-line reproducer. The figure itself was **right**: 142 triples, 129 `INHIBITOR`, exactly one `ACTIVATOR` and one `STABILISER`, matching the prose at every dedup level |
+| 35 | **The self-audit also found an overclaim in the methods description** ("thirty-four sources captured in full text… each with an explicit LIMITS section and an evidence tier") and a transposed tier chart in the pitch deck (`abundance`/`senescence` swapped against §2.2) | Both corrected. Source counts restated against `ls literature/[0-9]*.md`; deck re-verified in-browser rather than by inspection |
 
 **Reproducibility.** All scripts are in `pipeline/`, CLI-parameterised, standard library
 only, with the exact command sequence in `pipeline/README.md`. The pre-registration is
