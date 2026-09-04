@@ -218,3 +218,27 @@ those, this needs a registry — which is precisely what the SIOP-E authors call
 than the one this family is in. That is honest, useful, and is not a recommendation to deviate
 from it.
 
+
+## Q10 — Does MVA tumour surveillance need to cover non-renal sites, and past age 7? **[decision value: high — and it is the second question a family will actually ask]**
+
+**Why it is open.** The cited protocol is renal ultrasound, birth to age 7 (Nakano 2024 /
+SIOP-Europe). The published cohort shows the two reported MVA rhabdomyosarcomas arose in
+the **soft palate** (Limwongse 1999, age 7) and the **orbit** (Vempuluru 2026, age 12) —
+neither visible to renal ultrasound — and that the one patient with sequential primaries
+had her second at **12**, five years after the window closes. A third patient's first
+malignancy was at **34** (Rio Frio 2010).
+
+**What the literature says:** nothing. Q9 already established that both Nakano 2024 and
+Hol 2021 are silent on post-first-tumour surveillance. This question is the site-and-age
+counterpart, and the silence is the same.
+
+**Cheapest way to resolve it:** not a study. Ask the treating oncology team whether their
+survivorship plan for this child is derived from the MVA predisposition or from the
+rhabdomyosarcoma protocol, since those give different answers about what to image and for
+how long. **This is a question for the clinicians who have the child, and this repository
+must not answer it** — the cohort evidence is 15 published patients of mixed genotype and
+mixed diagnostic era.
+
+**What would change the answer:** a whole-body MRI protocol for MVA, on the Li-Fraumeni
+Toronto precedent already noted in `literature/32_surveillance_after_first_tumour.md`.
+None exists. Its absence, plus the radiation-avoidance constraint, is the actual finding.

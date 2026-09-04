@@ -1,0 +1,56 @@
+# Distance-tiered node set for ATM, built by pipeline/build_node_set.py
+# Rule pre-registered in pipeline/scalability_prediction.md: STRING v12,
+# Homo sapiens, combined score >= 700, 25 per tier by score.
+# Built 2026-09-04. Not curated.
+symbol	ensembl_id	tier	rationale
+ATM	ENSG00000149311	d0_defect	the deficient protein; searched first to establish the negative
+BRCA1	ENSG00000012048	d1_direct	STRING high-confidence partner of ATM
+CHEK2	ENSG00000183765	d1_direct	STRING high-confidence partner of ATM
+MDC1	ENSG00000137337	d1_direct	STRING high-confidence partner of ATM
+MSH6	ENSG00000116062	d1_direct	STRING high-confidence partner of ATM
+TP53	ENSG00000141510	d1_direct	STRING high-confidence partner of ATM
+MRE11	ENSG00000020922	d1_direct	STRING high-confidence partner of ATM
+MSH2	ENSG00000095002	d1_direct	STRING high-confidence partner of ATM
+NBN	ENSG00000104320	d1_direct	STRING high-confidence partner of ATM
+ATR	ENSG00000175054	d1_direct	STRING high-confidence partner of ATM
+TP53BP1	ENSG00000067369	d1_direct	STRING high-confidence partner of ATM
+H2AX	ENSG00000188486	d1_direct	STRING high-confidence partner of ATM
+CHEK1	ENSG00000149554	d1_direct	STRING high-confidence partner of ATM
+XRCC5	ENSG00000079246	d1_direct	STRING high-confidence partner of ATM
+ATRIP	ENSG00000164053	d1_direct	STRING high-confidence partner of ATM
+KAT5	ENSG00000172977	d1_direct	STRING high-confidence partner of ATM
+XRCC6	ENSG00000196419	d1_direct	STRING high-confidence partner of ATM
+MLH1	ENSG00000076242	d1_direct	STRING high-confidence partner of ATM
+BRCA2	ENSG00000139618	d1_direct	STRING high-confidence partner of ATM
+RAD51	ENSG00000051180	d1_direct	STRING high-confidence partner of ATM
+MDM2	ENSG00000135679	d1_direct	STRING high-confidence partner of ATM
+BLM	ENSG00000197299	d1_direct	STRING high-confidence partner of ATM
+RAD50	ENSG00000113522	d1_direct	STRING high-confidence partner of ATM
+IKBKG	ENSG00000269335	d1_direct	STRING high-confidence partner of ATM
+FANCD2	ENSG00000144554	d1_direct	STRING high-confidence partner of ATM
+ABL1	ENSG00000097007	d1_direct	STRING high-confidence partner of ATM
+EXO1	ENSG00000174371	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+PRKDC	ENSG00000253729	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+BARD1	ENSG00000138376	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+RBBP8	ENSG00000101773	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+TOPBP1	ENSG00000163781	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+BRIP1	ENSG00000136492	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+RPA1	ENSG00000132383	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+WRN	ENSG00000165392	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+PALB2	ENSG00000083093	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+RAD9A	ENSG00000172613	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+RAD52	ENSG00000002016	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+UIMC1	ENSG00000087206	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+PARP1	ENSG00000143799	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+FANCG	ENSG00000221829	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+FANCM	ENSG00000187790	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+LIG4	ENSG00000174405	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+ERCC1	ENSG00000012061	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+FANCI	ENSG00000140525	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+FANCA	ENSG00000187741	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+ERCC4	ENSG00000175595	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+XRCC4	ENSG00000152422	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+POLD1	ENSG00000062822	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+RNF8	ENSG00000112130	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+TERF2	ENSG00000132604	d2_pathway	STRING partner-of-partner, distance 2 from ATM
+RAD17	ENSG00000152942	d2_pathway	STRING partner-of-partner, distance 2 from ATM

@@ -1,0 +1,34 @@
+# Published MVA / PCS patient cohort — genotype, tumour spectrum, age at first tumour.
+# Task 2 of pipeline/gap_closure_brief.md. Built 2026-09-04.
+#
+# SCOPE: published patients only. Every row traces to a PMID. The hackathon proband is
+# NOT a row and must never be added: fewer than 50 MVA patients are described worldwide,
+# and that is the same number that makes re-identification possible.
+#
+# SOURCE GRADE: "abstract" = extracted from the PubMed abstract/title only; "fulltext" =
+# extracted from full text held in literature/. Rows graded "abstract" carry only what the
+# abstract states, and blank means "not stated in the abstract", never "absent in the patient".
+#
+# ARCHITECTURE: trunc=truncating (nonsense/frameshift/splice-null), mis=missense,
+# reg=non-coding regulatory (promoter/upstream element), intronic=deep-intronic splice-altering.
+# "reg" was not one of the three classes this task was specified to expect; it was added
+# because two independent pedigrees carry it.
+#
+# AGE_FIRST_TUMOUR is in years unless stated. "n/r" = no tumour reported at last follow-up,
+# which in an ascertainment-biased case series is NOT evidence of absence of risk.
+pmid	year	first_author	gene	architecture	variants	tumour	tumour_type	age_first_tumour	microcephaly	renal	notes	source_grade
+9916837	1999	Limwongse	unknown	unknown		Y	embryonal rhabdomyosarcoma (soft palate)	7	Y		11th reported MVA case; first MVA patient reported with cancer; predates BUB1B discovery	abstract
+10429359	1999	Kawame	unknown	unknown		Y	bilateral Wilms tumour	infant	Y	bilateral Wilms	Dandy-Walker malformation; both parents PCD-positive carriers	abstract
+11932988	2002	Jacquemont	unknown	unknown		Y	myelodysplasia progressing to ALL	3	Y		died soon after ALL; reports 3/14 (21%) of MVA cases malignant to that date	abstract
+16182441	2006	Hanks	BUB1B	biallelic		Y	embryonal rhabdomyosarcoma	n/r	n/r		E-RMS from an MVA case with biallelic BUB1B; CGH showed aneuploidies typical of sporadic E-RMS	abstract
+19373780	2009	Sari	unknown	unknown		Y	Wilms + AML + medulloblastoma	n/r	Y		AUTHORS ATTRIBUTE TO FANCONI ANAEMIA, not MVA — see LIMITS; PMID 19856400 is a comment on this case, NOT a second patient	abstract
+21190457	2010	Rio Frio	BUB1B	intronic/intronic	c.2386-11A>G homozygous	Y	ampullary adenocarcinoma, then colon + gastric adenocarcinomas	34	n/r		ADULT-ONSET. Creates a de novo splice site favoured over the authentic one	abstract
+23916859	2013	Akasaka	BUB1B	unknown		n/r		n/r	Y		refractory infantile spasms; Dandy-Walker malformation	abstract
+24259107	2014	Pinson	CEP57	trunc/trunc	c.915_925dup11 (p.Leu309ProfsX9)	N		n/r	N (head circumference conserved)		CEP57/MVA2. Authors propose absence of tumour + conserved head circumference as MVA2-distinguishing	abstract
+28553959	2017	Yost	TRIP13	trunc/trunc	biallelic LoF, 6 individuals	Y	Wilms tumour (6 of 6)	n/r	variable		ALL SIX developed Wilms. MVA features variably present. No detectable TRIP13 protein	abstract
+29673003	2018	Yamaguchi	BUB1B	reg/?	maternal promoter G>A + paternal allele	n/r		n/r	Y (-5.0 SD)		prenatal; PCS in 80% of fetal cells; both parents PCS carriers (9% and 11%)	abstract
+30512160	2018	He	BUB1B	trunc/mis	c.826delG (p.Asp276Metfs*21) + c.2441G>A (p.Arg814His)	n/r		n/r	Y	renal lesions	SAME ARCHITECTURE AS THE PROBAND. Girl 1y11m; chylothorax; renal lesions reported	abstract
+31053147	2019	Laberko	BUB1B	trunc/splice	c.498_505delAAACTTTA + c.1288+5G>A	n/r		n/r	Y		first reported HSCT in an MVA patient; boy aged 11	abstract
+31081598	2019	Ochiai	BUB1B	biallelic		Y	bilateral Wilms tumour	3.2 (38 months)	n/r	bilateral nephrectomy	severe dactinomycin toxicity prevented further chemo; peritoneal dialysis	abstract
+40555658	2025	Qu	BUB1B	trunc/reg	c.2363_2364del (p.S788Cfs*29) + ss804270619 G>A (upstream regulatory)	n/r		n/r	brain anomalies	fetal	TWO FETUSES, one pregnancy terminated. Chinese-language; invisible to an English-only full-text search. Father carried higher PCS proportion	abstract
+42595739	2026	Vempuluru	TRIP13 (MVA3)	null variant	likely pathogenic null	Y	Wilms tumour, THEN orbital embryonal rhabdomyosarcoma	3 (Wilms); 12 (E-RMS)	n/r	left radical nephrectomy	THE SEQUENTIAL-TUMOUR CASE. Second primary at 12 — five years after the birth-to-7y surveillance window closes	abstract

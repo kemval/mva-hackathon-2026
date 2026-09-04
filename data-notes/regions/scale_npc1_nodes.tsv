@@ -1,0 +1,49 @@
+# Distance-tiered node set for NPC1, built by pipeline/build_node_set.py
+# Rule pre-registered in pipeline/scalability_prediction.md: STRING v12,
+# Homo sapiens, combined score >= 700, 25 per tier by score.
+# Built 2026-09-04. Not curated.
+symbol	ensembl_id	tier	rationale
+NPC1	ENSG00000141458	d0_defect	the deficient protein; searched first to establish the negative
+OSBPL5	ENSG00000021762	d1_direct	STRING high-confidence partner of NPC1
+NPC2	ENSG00000119655	d1_direct	STRING high-confidence partner of NPC1
+GTPBP1	ENSG00000100226	d1_direct	STRING high-confidence partner of NPC1
+TMEM97	ENSG00000109084	d1_direct	STRING high-confidence partner of NPC1
+SLC38A9	ENSG00000177058	d1_direct	STRING high-confidence partner of NPC1
+GP2	ENSG00000169347	d1_direct	STRING high-confidence partner of NPC1
+SREBF2	ENSG00000198911	d1_direct	STRING high-confidence partner of NPC1
+STARD3	ENSG00000131748	d1_direct	STRING high-confidence partner of NPC1
+SREBF1	ENSG00000072310	d1_direct	STRING high-confidence partner of NPC1
+ABCA1	ENSG00000165029	d1_direct	STRING high-confidence partner of NPC1
+GRAMD1B	ENSG00000023171	d1_direct	STRING high-confidence partner of NPC1
+ABCG1	ENSG00000160179	d1_direct	STRING high-confidence partner of NPC1
+HMGCR	ENSG00000113161	d1_direct	STRING high-confidence partner of NPC1
+ETFA	ENSG00000140374	d1_direct	STRING high-confidence partner of NPC1
+STARD3NL	ENSG00000010270	d1_direct	STRING high-confidence partner of NPC1
+SMPD1	ENSG00000166311	d1_direct	STRING high-confidence partner of NPC1
+CHIT1	ENSG00000133063	d1_direct	STRING high-confidence partner of NPC1
+LAMP1	ENSG00000185896	d1_direct	STRING high-confidence partner of NPC1
+PPARG	ENSG00000132170	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+CD36	ENSG00000135218	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+INSIG1	ENSG00000186480	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+INSIG2	ENSG00000125629	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+HMGCS1	ENSG00000112972	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+NR1H3	ENSG00000025434	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+XPR1	ENSG00000143324	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+SCAP	ENSG00000114650	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+VAPA	ENSG00000101558	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+CYP7A1	ENSG00000167910	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+APOA1	ENSG00000118137	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+APOE	ENSG00000130203	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+GBA		d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+GP5	ENSG00000178732	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+UGCG	ENSG00000148154	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+NR1H2	ENSG00000131408	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+CYP51A1	ENSG00000001630	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+SQLE	ENSG00000104549	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+FDPS	ENSG00000160752	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+MBTPS2	ENSG00000012174	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+MTOR	ENSG00000198793	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+ELOVL6	ENSG00000170522	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+FDFT1	ENSG00000079459	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+STAR	ENSG00000147465	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+VAPB	ENSG00000124164	d2_pathway	STRING partner-of-partner, distance 2 from NPC1

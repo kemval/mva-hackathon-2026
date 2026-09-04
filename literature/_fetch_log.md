@@ -258,3 +258,93 @@ non-English MVA cohort literature.
    image-only PDFs with no text layer — those pages can still be extracted as images and read
    one by one, and a second repository may hold a text-layer copy useful for indexing.
 
+
+---
+
+# Pass 4 — Tasks 2 and 3 (2026-09-04)
+
+Japanese/Chinese-language MVA literature (Task 3) and the published-cohort harvest
+(Task 2). Failures are logged with the same prominence as hits, per standing practice.
+
+## Task 3 — the premise, tested rather than assumed
+
+The brief's key insight was that **"mosaic variegated aneuploidy" as a search string misses
+this literature structurally**, because Kajii, Matsuura and Ikeuchi described the same
+entity as **premature chromatid separation (PCS)**. That was stated as an insight. It is
+now a measurement:
+
+| Query | PubMed count (2026-09-04) |
+|---|---|
+| `"mosaic variegated aneuploidy"` | 135 |
+| `"premature chromatid separation"` | 62 |
+| overlap of the two sets | **21** |
+| **PCS-matching but invisible to the MVA string** | **41** |
+| MVA-matching but invisible to the PCS string | 114 |
+
+**Only 21 of 62 PCS records are reachable through the MVA string.** The premise holds, and
+searching one name alone loses two-thirds of the other literature. Two of the 41 are
+genuine patient reports with tumour data: PMID 19373780 (Wilms + AML + medulloblastoma)
+and PMID 27663603 (Wilms accompanied by PCS).
+
+## Task 3 — language-limited queries
+
+| # | Query | Date | Result |
+|---|---|---|---|
+| P4.1 | `premature chromatid separation AND jpn[la]` | 2026-09-04 | **0 records.** The Japanese-language PCS literature is not indexed in PubMed under this phrase at all |
+| P4.2 | `"mosaic variegated aneuploidy" AND jpn[la]` | 2026-09-04 | 1 record — PMID 11528703, *Ryoikibetsu Shokogun Shirizu* 2001, "[Mosaic variegated aneuploidy]" (review series) |
+| P4.3 | `premature chromatid separation AND chi[la]` | 2026-09-04 | 3 records — PMID 40555658 (MVA pedigree, **kept**), 31282340 (oocyte SUMO, off-topic), 15192830 (aneuploidy review, off-topic) |
+| P4.4 | `Kajii T[au] AND (chromatid OR aneuploidy OR mosaic)` | 2026-09-04 | 44 records; 37 not in the MVA set |
+| P4.5 | `Matsuura S[au] AND (chromatid OR aneuploidy)` | 2026-09-04 | 22 records |
+| P4.6 | `Ikeuchi T[au] AND (chromatid OR aneuploidy)` | 2026-09-04 | 27 records, back to 1967 |
+| P4.7 | `Izumi H[au] AND (aneuploidy OR chromatid)` | 2026-09-04 | 9 records |
+| P4.8 | `constitutional aneuploidy` | 2026-09-04 | 1,016 — too broad to triage at this scope; **not exhausted, recorded as such** |
+
+**Scope this pass did NOT cover, stated plainly:** CiNii Research, J-STAGE, J-GLOBAL,
+KAKEN, CNKI, Wanfang and VIP were **not queried**. Nor were the native-script terms
+早期染色体分離 and PCS症候群. The PubMed-side result above (`jpn[la]` = 0 for PCS) means
+PubMed cannot answer whether those national databases hold additional cases, and the
+honest position is that **this remains an open acquisition gap, now better characterised
+rather than closed.** What changed is that the *size* of the blind spot is measured (41
+records) instead of asserted.
+
+## Task 3 / Task 2 — full-text acquisition attempts, all blocked
+
+The OA ladder was worked in order for each. All six are recorded as genuine walls.
+
+| PMID | What it is | Rung 1: Europe PMC | Rung 2: OpenAlex | Rung 2b: Semantic Scholar | Outcome |
+|---|---|---|---|---|---|
+| 19856400 | Alter & Olson 2010, comment on the PCS/FA case | `inEPMC=N`, `inPMC=N`, no abstract | `is_oa=false`, `oa_status=closed`, **0 OA locations** | no record | **BLOCKED** |
+| 27663603 | Shimada 2017, Wilms + PCS | `inEPMC=N`, no abstract | `closed`, 0 OA locations | no record | **BLOCKED** |
+| 15098245 | Kajii & Asamoto 2004, prenatal PCS carrier | — | `closed`, 0 OA locations | — | **BLOCKED** |
+| 15098246 | Kajii & Ikeuchi 2004, PCS vs PCD nomenclature | — | `closed`, 0 OA locations | — | **BLOCKED** |
+| 11528703 | Japanese-language MVA review, 2001 | — | `closed`, 0 OA locations | — | **BLOCKED** |
+| 40555658 | Qu 2025, two MVA fetuses (Chinese) | not OA, but **structured abstract retrieved in full** | `closed`, 0 OA locations | — | **PARTIAL — abstract only, and it was enough** |
+
+No paywall was bypassed and no CAPTCHA was completed, per the standing constraint. Rung 3
+(institutional repositories) was not reachable for any of the six, because rung 2 returned
+**zero OA locations** for all of them — there was no deposit to chase. That is a different
+situation from Task 6's Hol 2021, where OpenAlex reported locations and the earlier
+"closed access" reading turned out to be wrong.
+
+**PMID 40555658 is the substantive Task 3 recovery.** Chinese-language, *Zhonghua Yi Xue
+Yi Chuan Xue Za Zhi*, DOI `10.3760/cma.j.cn511374-20240716-00393`. Two fetuses with
+compound heterozygous `BUB1B` `c.2363_2364del (p.S788Cfs*29)` plus an **upstream regulatory
+element** variant `ss804270619 G>A`. It is in `data-notes/mva_published_cohort.tsv` and its
+mechanistic significance is in `literature/34_mva_cohort_genotype_phenotype.md`.
+
+## Task 2 — the cohort harvest
+
+| Step | Detail |
+|---|---|
+| Query strings | 14 (phenotype names, the four causative genes, and nine author-name searches) |
+| Unique PMIDs returned | 582 |
+| Records fetched via `efetch` | 582 |
+| Mentioning MVA/PCS/PCD or gene-titled | 185 |
+| Triaged to patient-level candidates | 65 |
+| Entered in the cohort table | 15 |
+
+**Identifier trap #5 caught.** PMIDs 19373780 (Sari 2009) and 19856400 (Alter & Olson 2010)
+carry near-identical titles. They are **one patient plus a comment on that patient**, not
+two patients. Counting both would have inflated the cohort and triple-counted three
+tumours. Verified by title and author comparison before either was entered, per the
+standing check.

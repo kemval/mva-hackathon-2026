@@ -1,0 +1,56 @@
+# Distance-tiered node set for CFTR, built by pipeline/build_node_set.py
+# Rule pre-registered in pipeline/scalability_prediction.md: STRING v12,
+# Homo sapiens, combined score >= 700, 25 per tier by score.
+# Built 2026-09-04. Not curated.
+symbol	ensembl_id	tier	rationale
+CFTR	ENSG00000001626	d0_defect	the deficient protein; searched first to establish the negative
+SLC9A3R1		d1_direct	STRING high-confidence partner of CFTR
+GOPC	ENSG00000047932	d1_direct	STRING high-confidence partner of CFTR
+HSPA8	ENSG00000109971	d1_direct	STRING high-confidence partner of CFTR
+HSP90AA1	ENSG00000080824	d1_direct	STRING high-confidence partner of CFTR
+PRKACA	ENSG00000072062	d1_direct	STRING high-confidence partner of CFTR
+RNF5	ENSG00000204308	d1_direct	STRING high-confidence partner of CFTR
+PRKACG	ENSG00000165059	d1_direct	STRING high-confidence partner of CFTR
+PRKACB	ENSG00000142875	d1_direct	STRING high-confidence partner of CFTR
+SLC9A3R2		d1_direct	STRING high-confidence partner of CFTR
+STUB1	ENSG00000103266	d1_direct	STRING high-confidence partner of CFTR
+PDZK1	ENSG00000174827	d1_direct	STRING high-confidence partner of CFTR
+TJP1	ENSG00000104067	d1_direct	STRING high-confidence partner of CFTR
+HSP90AB1	ENSG00000096384	d1_direct	STRING high-confidence partner of CFTR
+FLNA	ENSG00000196924	d1_direct	STRING high-confidence partner of CFTR
+PRKAA1	ENSG00000132356	d1_direct	STRING high-confidence partner of CFTR
+YWHAB	ENSG00000166913	d1_direct	STRING high-confidence partner of CFTR
+PRKAB2	ENSG00000131791	d1_direct	STRING high-confidence partner of CFTR
+VCP	ENSG00000165280	d1_direct	STRING high-confidence partner of CFTR
+CANX	ENSG00000127022	d1_direct	STRING high-confidence partner of CFTR
+USP10	ENSG00000103194	d1_direct	STRING high-confidence partner of CFTR
+KCNJ1	ENSG00000151704	d1_direct	STRING high-confidence partner of CFTR
+HSPA4	ENSG00000170606	d1_direct	STRING high-confidence partner of CFTR
+PRKAG1	ENSG00000181929	d1_direct	STRING high-confidence partner of CFTR
+SLC26A6	ENSG00000225697	d1_direct	STRING high-confidence partner of CFTR
+DERL1	ENSG00000136986	d1_direct	STRING high-confidence partner of CFTR
+EZR	ENSG00000092820	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+DNAJB1	ENSG00000132002	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+TP53	ENSG00000141510	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+LIPE	ENSG00000079435	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+STIP1	ENSG00000168439	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+CALM3	ENSG00000160014	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+PRKAR2A	ENSG00000114302	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+MTOR	ENSG00000198793	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+SLC9A3	ENSG00000066230	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+TSC2	ENSG00000103197	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+FOXO3	ENSG00000118689	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+BAG3	ENSG00000151929	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+PRKAR2B	ENSG00000005249	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+AKAP1	ENSG00000121057	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+FKBP4	ENSG00000004478	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+PRKAR1A	ENSG00000108946	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+PRKAB1	ENSG00000111725	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+AKAP5	ENSG00000179841	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+BAG2	ENSG00000112208	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+CDC37	ENSG00000105401	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+PRKAR1B	ENSG00000188191	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+FKBP5	ENSG00000096060	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+NR3C1	ENSG00000113580	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+CREB1	ENSG00000118260	d2_pathway	STRING partner-of-partner, distance 2 from CFTR
+HSPB8	ENSG00000152137	d2_pathway	STRING partner-of-partner, distance 2 from CFTR

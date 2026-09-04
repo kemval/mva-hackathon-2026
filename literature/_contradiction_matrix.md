@@ -529,3 +529,49 @@ consequential. Recorded in `literature/33_...`.
 | C15 | elink PMCID for Hol 2021 vs. no deposit | PMCID is a **false link** — but the paper is **CC-BY open access**; an earlier "unobtainable" call is withdrawn | **Provenance** |
 | C16 | "Avoid radiation" in MVA vs. absence of MVA data | Recommendation stands; **tier is class generalisation** | Bounds claim |
 | C17 | BubR1^H/H mouse models vs. the human truncating+missense genotype | Sieben 2020 wins — patient genotype is **embryonic lethal in mouse** | **Bounds the whole mouse tier** |
+
+## C18 — "MVA" is one surveillance population vs. tumour risk is gene-dependent
+
+**The conflict.** Track 2 §6 and the Track 1 report both treat the Nakano 2024 /
+SIOP-Europe renal-ultrasound recommendation as applying to MVA as a single entity. The
+cohort assembled in Task 2 does not support that reading.
+
+- Yost 2017 (PMID 28553959): **all six** biallelic `TRIP13` patients developed Wilms tumour.
+- Pinson 2014 (PMID 24259107): proposes **absence of tumour development**, with conserved
+  head circumference, as a feature distinguishing `CEP57`-related MVA2 from `BUB1B`-related
+  MVA1.
+
+**Adjudication: the conflict is real and is NOT resolved here.** Grounds: both sources are
+small (n=6 and n=1-plus-review), both are ascertainment-biased in opposite directions —
+Yost's patients were found *by* sequencing children with Wilms tumour, which guarantees the
+6/6 — and neither was designed to estimate penetrance. What survives is the weaker but
+still useful statement that **a protocol derived from mixed "MVA" cohorts is being applied
+to genes whose tumour risks have not been shown to be equal.** Recorded as a caveat on the
+surveillance section, not as a recommendation to stratify.
+
+## C19 — the truncating/missense/missense-missense trichotomy is incomplete
+
+**The conflict.** `pipeline/gap_closure_brief.md` Task 2 specifies allelic architecture as
+one of three classes: truncating/truncating, truncating/missense, missense/missense. Two
+published pedigrees fit none of them.
+
+- Yamaguchi 2018 (PMID 29673003): maternal **promoter** `G>A` in `BUB1B`, paired with a
+  paternal allele.
+- Qu 2025 (PMID 40555658): `c.2363_2364del (p.S788Cfs*29)` paired with **upstream
+  regulatory element** variant `ss804270619 G>A`.
+
+A third architecture — **truncating + non-coding regulatory** — exists in at least two
+independent pedigrees.
+
+**Adjudication: the brief's schema was wrong and the table's schema is widened.** Grounds:
+two independent pedigrees, two different regulatory positions, both with parental
+segregation confirmed by Sanger. This is not a conflict to be split — the specification
+simply did not anticipate the class.
+
+**And it cuts in Track 2's favour, which is why it must be stated carefully rather than
+enthusiastically.** A regulatory variant can only change how much protein is made; it
+cannot change the enzymology of the protein that is made. Two independent human pedigrees
+reaching the MVA phenotype by a purely quantitative route is convergent support for the
+report's central claim that the therapeutic target is protein *quantity* — support
+independent of Suijkerbuijk's cell work. It remains **inference from allele class**, not a
+measurement of BubR1 abundance in those patients, and is tiered accordingly.
