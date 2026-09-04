@@ -15,7 +15,20 @@ Working directory for "Rare Disease, Real Kid: The MVA Hackathon 2026" (SageBio 
 
 ## Knowledge graph
 
-Built from `literature/` + `notes/`: 285 nodes / 359 edges / 15 communities as of the last update (2026-08-31). Query with `graphify query "<question>"` or `graphify path "<a>" "<b>"` instead of re-reading raw files. Re-run `/graphify /Users/kiki/mva-hackathon-2026 --update` after adding or editing files in `literature/` or `notes/`.
+Built from `literature/` + `notes/`: 285 nodes / 359 edges / 15 communities as of the last
+update (2026-08-31).
+
+> **Known stale as of 2026-09-04, and not refreshable on this machine.** An incremental
+> scan run on 2026-09-04 detected 12 code, 36 doc and 11 paper files changed plus 3 deleted
+> — but semantic extraction of the 47 changed doc/paper files needs an LLM backend, and
+> none is reachable here: no `ANTHROPIC_API_KEY`, `GEMINI_API_KEY`, `GOOGLE_API_KEY`,
+> `OPENAI_API_KEY`, `MOONSHOT_API_KEY` or `DEEPSEEK_API_KEY` is set, and `ollama` is not
+> installed. `--code-only` would index the code and **drop the literature nodes**, which are
+> the part worth having, so it was not used. The graph therefore does **not** yet include
+> `literature/31`–`34`, `data-notes/scale/`, the cohort table, or any of the 2026-09-02
+> onward work. Regenerate with `graphify /Users/kiki/mva-hackathon-2026 --update` on a
+> machine with a key set. **Nothing in the submission depends on the graph** — it is a
+> navigation aid over files that are all present and readable directly. Query with `graphify query "<question>"` or `graphify path "<a>" "<b>"` instead of re-reading raw files. Re-run `/graphify /Users/kiki/mva-hackathon-2026 --update` after adding or editing files in `literature/` or `notes/`.
 
 ## Track 1 status (2026-08-31) — analysis complete, submission-ready
 

@@ -354,3 +354,68 @@ python3 track2_pgx_compare.py \
   --strict   ../data-notes/pgx/strict/proband_strict.phenotype.json \
   --missing-to-ref ../data-notes/pgx/missing_to_ref/proband_mtr.phenotype.json
 ```
+
+---
+
+## 8. Scalability replication (Part 8)
+
+Tests the report's own generalisation on three further diseases. The prediction was
+committed **before** any query here ran (`scalability_prediction.md`, commit `98b9b04`);
+`track2_scoring_rubric.md` is untouched, since its pre-registration argument depends on it.
+
+Node sets are built **mechanically** from STRING network distance rather than curated,
+because curation is the obvious objection to a generalisation drawn from a hand-picked
+gene set. The same rule is re-applied to BUB1B so the original result is re-derived
+without its own curation.
+
+```bash
+# 1. build a distance-tiered node set for any causal gene
+#    d0 = the gene, d1 = STRING partners (score >= 700), d2 = partners of partners
+for g in NPC1 ATM CFTR BUB1B; do
+  lc=$(echo $g | tr 'A-Z' 'a-z')
+  python3 build_node_set.py --gene $g --out ../data-notes/regions/scale_${lc}_nodes.tsv
+done
+
+# 2. run the UNMODIFIED Track 2 search over each
+mkdir -p ../data-notes/scale
+for g in npc1 atm cftr bub1b; do
+  python3 track2_target_search.py \
+    --nodes   ../data-notes/regions/scale_${g}_nodes.tsv \
+    --out     ../data-notes/scale/${g}_target_drugs.tsv \
+    --raw-log ../data-notes/scale/${g}_search_raw.jsonl
+done
+
+# 3. measure the two pre-registered quantities
+for g in npc1 atm cftr bub1b; do
+  G=$(echo $g | tr 'a-z' 'A-Z')
+  python3 scale_measure.py --drugs ../data-notes/scale/${g}_target_drugs.tsv \
+    --nodes ../data-notes/regions/scale_${g}_nodes.tsv --gene "$G"
+done
+```
+
+Results and the verdict against each prediction: `../data-notes/scale/RESULTS.md`.
+**Two of three predictions failed**, and the report's generalisation was withdrawn rather
+than softened, per the pre-registration's own instruction.
+
+**Two traps worth knowing if you re-run this.** STRING's `interaction_partners` endpoint
+silently defaults to **10** partners per protein — left implicit it would have capped tier 1
+at 10 and broken the pre-registered 25-per-tier rule; `build_node_set.py` now sets `limit`
+explicitly. And STRING's preferred names lag HGNC (`GBA`, `SLC9A3R1`, `SLC9A3R2`), so the
+script falls back to the Ensembl `xrefs` endpoint; without that fallback the drug search
+raises, which is the designed behaviour rather than silently reporting zero drugs.
+
+## 9. Methods description form
+
+The organisers' `literature/methods_description_form.xlsx` is answered from a Markdown
+source of truth so the answers are diffable in the public repo:
+
+```bash
+python3 fill_methods_form.py \
+  --md       ../submissions/methods_description.md \
+  --template ../literature/methods_description_form.xlsx \
+  --out      ../submissions/methods_description_gummietech.xlsx
+```
+
+Answers map to form rows **positionally** (Track 1 rows 7–19, Track 2 rows 7–17) and the
+script **fails loudly** if the counts drift, rather than writing a partially-filled form —
+which is what an earlier fuzzy-matching version did, silently filling 8 of 24.
