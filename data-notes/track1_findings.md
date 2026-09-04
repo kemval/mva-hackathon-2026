@@ -501,14 +501,33 @@ curl -s https://huggingface.co/api/datasets/SageBio/mva-hackathon-2026-data/tree
 its `.tbi`, the phenotype `.docx` and the README — **all four already held locally.** There is
 nothing left to download that this analysis can consume directly.
 
-Consequence for the report: the callability limitation cannot be closed by acquiring data. A
-coverage track would require aligning 30x WGS from FASTQ. Not feasible on this machine — a
-human-genome BWA index needs ~6–7 GB RAM (minimap2 ~11 GB, bwa-mem2 ~40 GB) against 8 GB installed,
-33 GB free disk, 8 cores, and no aligner or reference present. Streaming the FASTQ would solve the
-disk problem but not the RAM or the multi-day runtime.
+Consequence for the report — **restated 2026-09-04, because the previous version of this paragraph
+was an overclaim.** It said the callability limitation "cannot be closed by acquiring data," and
+justified that on the RAM cost of a human-genome aligner index (~6–7 GB for BWA, ~11 GB minimap2,
+~40 GB bwa-mem2) against 8 GB installed. **That reasoning does not apply to the route anyone would
+actually take.** You do not need a whole-genome index to ask a question about a 9-gene panel: a
+reduced reference of the panel plus the PGx regions indexes in about 30 MB, and the RAM objection is
+not close to binding.
 
-The call-density-against-flanks proxy therefore stands as the correct treatment, and it is already
-labelled a proxy in the report.
+The re-costing is in `pipeline/realignment_feasibility.md`. The real costs are ~79 GB of transfer,
+mandatory streaming (free disk re-measured at **20 GB**, down from the 33 GB this file used to
+state), and a multi-day run on 8 cores — the aligner examines every read no matter how small the
+reference is. Those are machine limits, not impossibilities, and a cloud instance dissolves all
+three.
+
+What actually binds is a **scientific** objection the old paragraph never raised. A decoy-free
+targeted reference inflates MAPQ: a read originating from a paralogue elsewhere has nowhere else to
+map, so it lands on the only copy present, uniquely and confidently — manufacturing false coverage
+that is indistinguishable from real coverage. Queried live against the UCSC `genomicSuperDups`
+track, **BUB1B carries zero segmental duplications in its gene body (chr15:40,160,984–40,221,137) or
+its ±2 kb padded region**, with the nearest record 5.5 kb upstream and outside; **CYP2D6 carries
+six, including a 9.0 kb ↔ 10.5 kb pair at 97.0% identity.** So the route is sound for the BUB1B
+callability question and unsound for the pharmacogenomic one.
+
+The honest statement is therefore that the limitation is **feasible to close by a route this
+analysis did not run, at named costs and with one named failure mode** — not that it cannot be
+closed. It remains open. The call-density-against-flanks proxy stands as the correct treatment of an
+open limitation, and it is already labelled a proxy in the report.
 
 An earlier version of this pass shipped `pipeline/fetch_alignment_slice.sh`, written to slice a
 region out of a remote CRAM over HTTPS. Its premise was the site's BAM/CRAM claim, which the manifest

@@ -170,14 +170,27 @@ limitation — the sites-only VCF cannot distinguish absence of a call from abse
 does not exist in the dataset and cannot be sliced out of it. Producing one means aligning the FASTQ
 yourself: ~79 GB of transfer, a GRCh38 index, and a full 30x WGS alignment.
 
-**That is not attempted here, and on the machine this analysis was run on it is not feasible.** A
-human-genome BWA index needs ~6-7 GB of RAM (minimap2 ~11 GB, bwa-mem2 ~40 GB) against 8 GB
-installed, with 33 GB of free disk and no aligner present. Streaming the FASTQ to avoid storing it
-would still leave the alignment itself running for days on 8 cores.
+**That is not attempted here — but the reason previously given for not attempting it was wrong, and
+is corrected.** This README used to argue that the whole route was infeasible because a human-genome
+BWA index needs ~6-7 GB of RAM (minimap2 ~11 GB, bwa-mem2 ~40 GB) against 8 GB installed. **You do
+not need a whole-genome index.** A reduced reference containing only the panel and PGx regions has an
+index around 30 MB, and the RAM objection does not apply to it at all.
 
-The report therefore continues to state the callability limitation rather than measure it, and uses
-call-density-against-flanking-sequence as an explicitly labelled proxy — which is the honest
-position given what the dataset provides.
+The honest re-costing is in `realignment_feasibility.md`. In short: the real costs are ~79 GB of
+transfer, streaming (20 GB free disk, re-measured 2026-09-04, cannot hold the input), and a multi-day
+run on 8 cores — because the aligner must examine every read regardless of how small the reference
+is. All three dissolve on a larger machine. The binding objection is instead **scientific**: a
+decoy-free targeted reference inflates MAPQ, because a read from a paralogue elsewhere has nowhere
+else to map and lands confidently on the only copy present. Queried live against UCSC
+`genomicSuperDups`, **BUB1B has zero segmental duplications in its gene body or padded region**, so
+for the callability question the route is sound; **CYP2D6 has six, including a 97.0%-identity 9 kb
+pair**, so for the pharmacogenomic question it is not.
+
+So the limitation is **not closed, and is differently open** than this repository previously stated:
+feasible by a route this analysis did not run, at named costs and with one named failure mode that
+applies to the PGx half and not the BUB1B half. The report therefore continues to state the
+callability limitation rather than measure it, and uses call-density-against-flanking-sequence as an
+explicitly labelled proxy.
 
 ### `coverage_analysis.py`
 
