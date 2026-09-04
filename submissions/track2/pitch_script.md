@@ -76,7 +76,7 @@ the two failed predictions struck through.
 > isn't true of loss-of-function disease generally — it's true where oncology wants to
 > inhibit the pathway. This child's gene is in the worst category."
 
-## Beat 4 — What we would not give him (1:48–2:12)
+## Beat 4 — What we would not give this child (1:48–2:12)
 
 **Visuals:** a red-bordered card: "17-AAG — top hit for 'aneuploidy' — contraindicated
 here". Arrow showing HSP90 inhibition removing the residual protein.

@@ -301,7 +301,7 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
   <p class="sub">The intuitive reading of this child&rsquo;s genotype sends the drug
   search the wrong way. Correcting it changes which drugs are worth proposing, explains
   why the obvious search returns nothing, survives the one question Track&nbsp;1 could not
-  answer, and identifies a drug class that would make him <strong>worse</strong>.</p>
+  answer, and identifies a drug class that would make this child <strong>worse</strong>.</p>
 
   <div class="specimen">
     <div class="specimen-h"><span>The genotype</span><span>BUB1B &middot; chr15</span></div>
@@ -411,9 +411,14 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
 </section>
 
 <section id="s3">
-  <div class="sec-h"><span class="sec-n">03</span><h2>Drug availability rises with distance from the defect</h2><span class="tag">24 genes &middot; 2 databases</span></div>
+  <div class="sec-h"><span class="sec-n">03</span><h2>Zero drugs at the defect. The drugs are all on the consequences.</h2><span class="tag">24 genes &middot; 2 databases</span></div>
   <p class="lede">Unique drugs and clinical candidates per pathway tier, Open Targets.
   The gene we need to fix has none; the genes we can drug are consequences.</p>
+  <p class="lede" style="opacity:.75"><strong>Read the rise across tiers as a property of
+  this curated node set, not a law.</strong> We later rebuilt the tiers mechanically from
+  STRING network distance and the monotonic rise did not survive &mdash; it fails for BUB1B
+  itself (0 &rarr; 375 &rarr; 198). The pattern was an artefact of our own curation. What
+  survives both constructions is the zero at the defect.</p>
 
   <div class="grad" style="margin-top:18px">
     <div class="grad-row zero"><span class="lbl"><strong>the defect</strong><br>BUB1B</span>
@@ -464,13 +469,28 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
   annotation of exactly the kind DGIdb&rsquo;s own disclaimer warns about.</p>
 
   <div class="callout" style="margin-top:16px">
-    <p><strong>This generalises well past this child.</strong> Drug development produces
-    inhibitors, because binding and blocking a protein is chemically tractable and most
-    common diseases involve too much of something. Loss-of-function rare disease is the
-    mirror image &mdash; and most rare disease is loss of function. The practical corollary:
-    ask <em>&ldquo;what raises this protein?&rdquo;</em> rather than <em>&ldquo;what binds
-    it?&rdquo;</em>, and expect the best answer to be a metabolite or a substrate, because
-    those are among the few things that push a system <em>up</em>.</p>
+    <p><strong>We claimed this generalises to loss-of-function rare disease. We tested that,
+    and it is false.</strong> The claim was pre-registered as a falsifiable prediction
+    &mdash; with the commitment to withdraw rather than soften &mdash; and run on three
+    further genes. Strict inhibitory measures <strong>54.5% for NPC1</strong> and
+    <strong>37.5% for CFTR</strong>, against a predicted &ge;80%. <strong>The
+    generalisation is withdrawn.</strong></p>
+    <p style="margin-top:8px"><strong>What replaces it is narrower and more useful, because
+    it is diagnostic.</strong> The skew does not track loss-of-function. It tracks whether
+    the causal gene sits in a pathway oncology has invested in inhibiting &mdash;
+    <strong>BUB1B 95.8%</strong>, <strong>ATM 93.4%</strong>, against NPC1 and CFTR at
+    38&ndash;55%. Those programmes exist to kill dividing cells, so every tool they produce
+    lowers activity. That rule says <em>in advance</em> which rare diseases face this
+    problem, and it puts this child's gene in the worst category available.</p>
+    <p style="margin-top:8px">The practical corollary is unchanged: ask <em>&ldquo;what
+    raises this protein?&rdquo;</em> rather than <em>&ldquo;what binds it?&rdquo;</em>, and
+    expect the best answer to be a metabolite or a substrate &mdash; but check which
+    neighbourhood you are in first. Full replication:
+    <span class="mono">data-notes/scale/RESULTS.md</span>.</p>
+    <p style="margin-top:8px"><strong>An unremarked casualty in another disease.</strong>
+    All ten action-typed compounds against <span class="mono">ATM</span> are inhibitors, in
+    a disease defined by ATM <em>deficiency</em>. The same trap is sitting in
+    ataxia-telangiectasia.</p>
   </div>
 </section>
 

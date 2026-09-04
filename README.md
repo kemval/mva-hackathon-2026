@@ -30,7 +30,7 @@ update (2026-08-31).
 > machine with a key set. **Nothing in the submission depends on the graph** — it is a
 > navigation aid over files that are all present and readable directly. Query with `graphify query "<question>"` or `graphify path "<a>" "<b>"` instead of re-reading raw files. Re-run `/graphify /Users/kiki/mva-hackathon-2026 --update` after adding or editing files in `literature/` or `notes/`.
 
-## Track 1 status (2026-08-31) — analysis complete, submission-ready
+## Track 1 status (2026-08-31; audited 2026-09-04) — analysis complete, submission-ready
 
 A pipeline (region-restriction via `bcftools` → annotation via Ensembl VEP REST → ACMG/AMP-lite filtering) was run against the proband's own VCF and HPO-coded clinical phenotype. Result: a compound-heterozygous candidate in **BUB1B** — a ClinVar-classified pathogenic nonsense variant (p.Leu737Ter) paired with a rare missense variant (p.Asn1002Lys) in the kinase domain — plus a lower-confidence deep-intronic secondary finding.
 
@@ -80,8 +80,9 @@ the shared consequence is low abundance), and generates contraindications no pat
 search would surface.
 
 **The search's structural finding.** Across 24 pathway genes and two independent
-databases, **129 of 142 action-typed Open Targets entries are inhibitors** — ~95%
-inhibitory against a disease of deficiency. (Drug availability also rose with distance from
+databases, **129 of 142 action-typed Open Targets entries are strict `INHIBITOR`s** —
+135 of 142, ~95%, once antisense inhibitors, RNAi inhibitors and antagonists are counted —
+against a disease of deficiency. (Drug availability also rose with distance from
 the defect across this curated node set, 0 at BUB1B to 71 at the SASP tier, but that pattern
 did **not** survive a mechanical tier rule and is reported below as an artefact of the
 curation.) The only approved drug

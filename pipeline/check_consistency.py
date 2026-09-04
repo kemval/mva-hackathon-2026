@@ -43,6 +43,10 @@ READER_FACING = [
     "data-notes/track2_mechanism.md",
     "viz/track2_explainer.html",
     "viz/pitch_deck.html",
+    # The predictions CSV is the artefact the automated scorer reads first, and it
+    # carried a withdrawn claim ("full phenotype match") for longer than any prose
+    # file did, precisely because no check looked at it.
+    "submissions/track1/gummietech_vep-acmg-compound-het.csv",
 ]
 
 # (regex, what was withdrawn and where the current position lives)
@@ -59,6 +63,14 @@ WITHDRAWN = [
     (r"lowest minimum age",
      "refuted by our own trial table: navitoclax has six paediatric-eligible "
      "trials with minimum ages down to 1 year (data-notes/track2_trials.tsv)"),
+    (r"full phenotype match",
+     "Track 1 withdrew this: microcephaly, one of the three core MVA1 features, "
+     "is absent from the coded phenotype, so PP4 rests on a partial match"),
+    (r"\bhe depends on|\bfor him\b|\bgive him\b|\bmake him\b|"
+     r"(?<![.:\w])This part is about \*\*this child\*\*\. He\b",
+     "Part 9 states that sex is not reported, because demographic detail plus "
+     "tumour type is re-identifying in a cohort of fewer than 50 people; the "
+     "pitch checklist says the same. Refer to the proband as 'this child'"),
 ]
 
 

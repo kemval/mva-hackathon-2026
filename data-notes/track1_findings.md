@@ -384,7 +384,7 @@ where it lowers a code and 2015 where it would not.
   feature it does not have, then recommended only parental Sanger. Karyotype + SNP microarray is
   now the **first** recommended test, with both outcomes stated: positive lifts PP4 from partial
   to discriminating, negative undercuts the diagnosis in a way no variant-level evidence repairs.
-  The microarray also interrogates the five permissive deletion windows.
+  The microarray also interrogates the six permissive deletion windows.
 - **NF1 non-PASS miscount.** Report said seven records in NF1, six `MQ40`. Re-derived:
   `bcftools view -e 'FILTER="PASS"'` gives **8** in NF1 (17:31,092,883-31,384,116), **7** with
   `MQ40`. The undercount came from counting the 31,346,081-31,348,138 cluster rather than the
@@ -467,7 +467,10 @@ report's own Verification table so the next auditor does not "correct" a correct
 - UniProt O60566: 1,050 aa; Protein kinase domain 766-1050.
 - Ensembl ENST00000287598: 23 exons, CDS 3,153, final junction 2,957, exon 17 start 40,209,635
   (c.2210 at +66), exon 23 start 40,220,564 (c.3006 at +48), exon 21 acceptor 40,217,496.
-  **All five deletion windows contain exactly the exons claimed** (1-2, 3-5, 6-8, 9-16, 18-20).
+  **All five deletion windows then listed contain exactly the exons claimed** (1-2, 3-5, 6-8, 9-16, 18-20)
+  — but that check took the list as given. The 2026-09-04 completeness pass derived the list instead and
+  found a **sixth** window, 40,216,470-40,220,612 (exons 21-22, 279 nt, in-frame); see
+  `pipeline/deletion_windows.py`.
 - Raw VEP JSON: exactly **22 BUB1B transcripts** carry SpliceAI annotation on all three variants
   (Ensembl's 31 total includes transcripts the plugin did not annotate — the 22 is right);
   p.Leu737Ter DS_AG 0.03 with the other three scores 0; deep-intronic 0.00 on all four; the 0.02 on

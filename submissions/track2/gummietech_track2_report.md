@@ -579,7 +579,7 @@ artefact rather than an HSP90 inhibitor. An earlier version of this sentence sai
 others," implying eleven.)* Suijkerbuijk 2010 showed mutant BubR1 is an **HSP90 client**: geldanamycin severely
 reduced mutant but not wild-type BubR1, and cycloheximide plus geldanamycin "removed
 virtually all mutant BUBR1 protein." Inhibiting HSP90 in this child is predicted to
-**destroy the residual BubR1 he depends on**.
+**destroy the residual BubR1 this child depends on**.
 
 The inversion is worth stating plainly: **17-AAG is the lead compound of Tang et al.
 2011, the best-known "aneuploidy-selective" paper** — the single most likely hit for
@@ -635,11 +635,11 @@ thrombocytopenia.
 
 ### 4.1 Why this is here
 
-Everything above is disease-level. This part is about **this child**. He has a
+Everything above is disease-level. This part is about **this child**, who has a
 cancer-predisposition syndrome, has already had rhabdomyosarcoma, and — per Nakano et al.
 2024 — belongs to a class of disorders showing "exquisite sensitivity to anticancer
 treatments such as ionizing radiation and chemotherapy, which may further increase the
-risk of second cancers." Drug-metabolism genotype is therefore actionable for him
+risk of second cancers." Drug-metabolism genotype is therefore actionable for this child
 **whether or not any repurposing candidate is ever used**, and it is derivable at zero
 marginal cost from the genome already sequenced for Track 1.
 
@@ -662,6 +662,13 @@ PharmCAT provides a `--missing-to-ref` flag for exactly this situation, and its 
 labels it **"DANGEROUS!"**. We ran the analysis **both ways** and compared:
 
 **16 of 23 genes change their call when absent positions are assumed to be reference.**
+Seven of the sixteen are shown below — the ones whose flip manufactures a *reassuring*
+label, which is the failure mode that matters clinically. The other nine are ABCG2,
+CACNA1S, CFTR, CYP2B6, CYP2C19, CYP4F2, IFNL3, NAT2 and VKORC1; two of those are worth a
+line of their own, because they show the assumption does not only invent normality.
+**NAT2** goes `Unknown/Unknown` → `*5/*5`, a *slow-acetylator* call conjured out of absent
+positions, and **CYP2B6** collapses from 30 candidate diplotypes to the single `*2/*6`.
+Both are re-derivable from the two committed PharmCAT reports in `data-notes/pgx/`.
 
 | Gene | Strict (no assumption) | With `--missing-to-ref` |
 |---|---|---|
@@ -1106,7 +1113,7 @@ never reached the files that quote it.
 | 8 | **`csv.DictWriter` defaults to CRLF**, appending `\r` to the final column and silently breaking field comparisons in the output TSV | Fixed with explicit `lineterminator="\n"`; search re-run |
 | 9 | All 24 Ensembl gene IDs verified live against Ensembl REST | 24/24 correct |
 | 10 | All three observed PGx variants verified against ClinVar with SPDI coordinates matched to the VCF calls | 3/3 match to the digit |
-| 11 | Suijkerbuijk 2010 is cited in the Track 1 report for the claim that the kinase domain is "dispensable". The paper actually shows kinase-domain *missense mutants* fail **because they are unstable**, and argues the domain is structurally *important* | Track 2 cites catalytic dispensability to Kops et al. 2012 and structural importance to Suijkerbuijk 2010. Flagged for the Track 1 audit trail; it does not affect Track 1's PM1 rejection, which rests on gnomAD missense density |
+| 11 | **This row raised a misattribution against Track 1 that does not hold, and the correction runs against this table rather than for it.** It read: Suijkerbuijk 2010 is cited in the Track 1 report for the claim that the kinase domain is "dispensable", whereas the paper shows kinase-domain *missense mutants* fail because they are **unstable** and argues the domain is structurally *important*. Re-checked against the full text captured in this repository, the paper states the cited claim verbatim: *"neither the kinase activity nor the 265 amino-acid kinase domain are required for establishing mitotic checkpoint activity or stable microtubule attachments"* (`literature/15_...`, the LAP-731X truncation experiment, Fig. 5) | **The accusation is withdrawn; Track 1's citation is correct.** The paper makes both claims and they are compatible: the domain is dispensable for *checkpoint function* when the protein that lacks it is stable (731X), and required for the *stability* of the full-length protein. Track 1 cites the first, for PM1's "active site of an enzyme" archetype; Track 2 §1.2–1.3 relies on the second. Both stand. Two things did need fixing and are fixed: the "Precision note" in `literature/15_...` mischaracterised its own captured text, and Track 1 quoted the paper's **265**-aa domain beside UniProt's **285**-aa (766–1050) boundary without saying they are different definitions. Catalytic dispensability is separately attributable to Kops et al. 2012. No Track 1 evidence code moves — the PM1 rejection rests on gnomAD missense density, not on this sentence |
 | 12 | **Audit pass, 2026-09-02: the trial table conflated total trials with the API's 100-record retrieval cap.** Paediatric counts for ruxolitinib, baricitinib, sirolimus, metformin and NR were floors over the retrieved 100, presented as totals | Table now separates total / retrieved / paediatric and marks complete retrievals. The load-bearing row (D+Q, 22 of 22) was already exhaustive, so the zero-paediatric claim is unaffected |
 | 13 | **Audit pass: "returns zero in both databases" over-reached.** Only BUB1B, BUB3, CDC20, MAD2L1 and NMNAT1 are zero in both. CDKN1A and CDKN2A have 30 and 29 DGIdb interaction records; SIRT2 has 12 | Corrected, with the DGIdb confidence caveat stated and the SIRT2 point sharpened — every SIRT2 compound found is an inhibitor or unranked claim, and no activator exists in the searched space |
 | 14 | All other report figures re-derived from the artefacts: OT action-type tally (129/142), all six tier counts (0/2/1/16/30/71), DGIdb approved directionality (62 inhibitory / 1 activating), the ranking totals and every axis score | Reproduce exactly |

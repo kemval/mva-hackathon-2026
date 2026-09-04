@@ -77,14 +77,24 @@ rather than a broken-machine problem.
 
 ## Precision note — what this paper does and does not say about the kinase domain
 
-The Track 1 methods report cites this paper for the claim that "the 265-aa kinase domain
-is dispensable for both mitotic-checkpoint activity and microtubule attachment." That
-characterisation should be checked against the text before being reused in Track 2. What
-this paper demonstrates is that kinase-domain *missense mutants* fail **because they are
-unstable**, and that restoring their abundance restores function — i.e. the mutations
-"do not impose significant constraints on BUBR1 function other than affecting overall
-BUBR1 protein abundance." That is a claim about these mutations, not a direct assay of
-whether the domain itself is dispensable.
+**Corrected 2026-09-04.** An earlier version of this note claimed the Track 1 methods
+report misattributed to this paper the claim that "the 265-aa kinase domain is dispensable
+for both mitotic-checkpoint activity and microtubule attachment," on the grounds that the
+paper only shows kinase-domain *missense mutants* fail because they are unstable. **That
+was wrong, and it was wrong against the full text captured in this same file.** The paper
+states the cited claim verbatim at the LAP-731X truncation experiment (Fig. 5, quoted
+below): *"neither the kinase activity nor the 265 amino-acid kinase domain are required
+for establishing mitotic checkpoint activity or stable microtubule attachments."* 731X is
+a truncation lacking the domain, so it is a direct assay of whether the domain is
+dispensable, not an inference from the missense alleles. Track 1's citation is correct and
+the accusation is withdrawn (Track 2 report, Part 11 row 11).
+
+What the paper *also* shows — and this is the part Track 2 relies on — is that
+kinase-domain *missense mutants* fail **because they are unstable**, and that restoring
+their abundance restores function: the mutations "do not impose significant constraints on
+BUBR1 function other than affecting overall BUBR1 protein abundance." That is a claim
+about these mutations, and it is a different claim from the 731X result rather than a
+correction to it.
 
 The paper in fact argues the domain is structurally *important*: the residues involved
 "are needed for the overall integrity of the BUBR1 kinase domain," substitution is
@@ -92,11 +102,17 @@ expected to "disturb kinase domain folding and stability of the protein," and th
 shows "a strong tendency ... to misfolding, which raises the interesting possibility that
 this region of BUBR1 is highly sensitive to amino-acid substitutions."
 
-The two claims are compatible — catalytic activity dispensable (Kops et al. 2012,
-PMID 22698286, on BUBR1 as a pseudokinase), structural integrity required — but they are
-different claims from different sources, and Track 2 should cite each to the source that
-actually supports it. Flagged for the Track 1 audit trail; it does not change Track 1's
-PM1 rejection, which rests on gnomAD missense density, not on this sentence.
+The two claims are compatible — the domain is dispensable for *checkpoint function* when
+what lacks it is stable (731X), and required for the *stability* of the full-length
+protein — and this paper supports both. Catalytic dispensability specifically is also
+attributable to Kops et al. 2012 (PMID 22698286, on BUBR1 as a pseudokinase). Neither
+reading changes Track 1's PM1 rejection, which rests on gnomAD missense density, not on
+this sentence.
+
+One numeric trap this note should have caught and did not: the **265**-aa domain is this
+paper's own boundary; UniProt O60566 gives **766–1050**, which is **285** aa. Track 1
+quotes both figures in the same section, and now says they are different definitions
+rather than leaving the discrepancy to be found.
 
 ---
 
