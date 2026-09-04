@@ -5,14 +5,15 @@
 is a required field on the Track 2 submit form.
 
 **Word budget:** at a measured 145 wpm, 3:00 allows ~435 spoken words. The spoken lines
-below total **428**, leaving headroom for pauses and visual beats. Do not improvise
+below total **433**, leaving headroom for pauses and visual beats. Do not improvise
 additions — it will overrun. If a retake runs long, cut the last sentence of beat 3
 first, then the second sentence of beat 4.
 
-*Revised 2026-09-04 (see repo commit history): beat 2 now carries the structural
-counterexample and beat 5 marks the NAD⁺ mechanism as an inference, so the spoken script
-matches Limitation 1 and Verification item 1 of the report. Headroom is tighter than
-before — re-run the counter after any further edit.*
+*Revised 2026-09-04 (see repo commit history). Beat 2 carries the structural
+counterexample; beat 5 marks the NAD⁺ mechanism as an inference; beat 3 carries the
+withdrawn generalisation and the replication that withdrew it. The spoken script now
+matches Limitation 1, Verification item 1, and Part 8 of the report. Headroom is thin —
+re-run the counter after any further edit.*
 
 *(To re-check the count after any edit:*
 `awk '/^> /{gsub(/^> /,""); n+=split($0,a," ")} END{print n}' pitch_script.md`*)*
@@ -32,11 +33,11 @@ the pseudokinase domain, `p.Asn1002Lys` inside it. Then a struck-through caption
 > "Track 1 found this child's diagnosis: two variants in BUB1B — a nonsense allele, and a
 > missense allele in the kinase domain.
 >
-> The obvious next step is a drug that fixes a broken mitotic checkpoint. That step is
-> wrong, and it sends the whole search the wrong way.
+> The obvious next step is a drug that fixes a broken checkpoint. That step is wrong, and
+> it sends the whole search the wrong way.
 >
-> In 2010, Suijkerbuijk and colleagues studied MVA patient cells with exactly this
-> genotype. The defect isn't broken BubR1. It's not enough BubR1."
+> Suijkerbuijk and colleagues studied MVA patient cells with exactly this genotype. The
+> defect isn't broken BubR1. It's not enough BubR1."
 
 ## Beat 2 — Why that changes everything (0:32–1:08)
 
@@ -49,7 +50,7 @@ threshold as a dial with a marked cliff.
 > First: forcing two kinase-domain missense mutants back to normal abundance fully
 > restored checkpoint function. One sits ten residues from this child's variant — but we
 > modelled that, and it cut against us: a *tolerated* variant in the same domain is more
-> buried still. Position doesn't prove instability. It's why we lead with an assay.
+> buried still. Position doesn't prove instability. Hence the assay.
 >
 > Second: there's a threshold. At six percent of normal BubR1, cells missegregate
 > chromosomes. At thirteen percent, segregation is essentially normal. A small gain could
@@ -60,19 +61,20 @@ threshold as a dial with a marked cliff.
 ## Beat 3 — The search, and what its shape says (1:08–1:48)
 
 **Visuals:** the six-tier bar chart — 0 drugs at BUB1B rising to 71 at the SASP tier.
-Then a stark card: **129 of 142 = INHIBITOR**.
+Then a stark card: **129 of 142 = INHIBITOR**. Then the four-gene replication table, with
+the two failed predictions struck through.
 
 > "We searched twenty-four pathway genes across two drug databases — with the scoring
 > rubric committed to git before we ran a single query.
 >
-> BUB1B returns zero drugs. So does every other checkpoint gene. Availability rises the
-> further you get from the defect.
+> BUB1B returns zero drugs. So does every other checkpoint gene. And of a hundred and
+> forty-two drug actions retrieved, a hundred and twenty-nine are inhibitors.
 >
-> And of a hundred and forty-two drug actions retrieved, a hundred and twenty-nine are
-> inhibitors.
+> Medicine is built out of inhibitors. This is a disease of too little.
 >
-> Medicine is built out of inhibitors. This is a disease of too little. That mismatch is
-> why repurposing for loss-of-function disease is hard — well beyond this one child."
+> We pre-registered that as a general claim, tested three more diseases, and broke it. It
+> isn't true of loss-of-function disease generally — it's true where oncology wants to
+> inhibit the pathway. This child's gene is in the worst category."
 
 ## Beat 4 — What we would not give him (1:48–2:12)
 
@@ -83,9 +85,8 @@ here". Arrow showing HSP90 inhibition removing the residual protein.
 >
 > The best-known paper on drugs for aneuploidy proposes 17-AAG, an HSP90 inhibitor. But
 > mutant BubR1 is an HSP90 client — block HSP90 and you destroy the little protein this
-> child still has.
->
-> The top hit of a keyword search is among the most contraindicated agents available."
+> child still has. The top hit of a keyword search is among the most contraindicated
+> agents available."
 
 ## Beat 5 — The ranked answer, honestly labelled (2:12–2:38)
 
@@ -93,7 +94,7 @@ here". Arrow showing HSP90 inhibition removing the residual protein.
 
 > "Our highest-scoring candidate is nicotinamide riboside — an NAD-plus precursor
 > *inferred*, not shown, to raise BubR1 by slowing its degradation. It has a randomised
-> placebo-controlled trial in Werner syndrome, and paediatric use down to age one.
+> placebo-controlled trial in Werner syndrome, and paediatric use to age one.
 >
 > But it's a supplement, not an approved medicine, and we don't blur that. The
 > highest-scoring approved medicine is dasatinib plus quercetin — where none of twenty-two
@@ -107,7 +108,7 @@ here". Arrow showing HSP90 inhibition removing the residual protein.
 > "But our first recommendation isn't a drug. It's a western blot.
 >
 > If BubR1 is reduced but present, the hypothesis is live. If it's absent, the whole top
-> tier is futile — and we'd want to know that before anyone gives a child anything.
+> tier is futile — and we'd want to know before anyone gives a child anything.
 >
 > These are hypotheses for follow-up, not evidence that a medicine works. Measure first."
 

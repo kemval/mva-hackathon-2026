@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gummietech — Track 2 pitch deck</title>
+<style>
+  :root{
+    --bg:#0b0f14; --fg:#e8edf3; --dim:#8b9bb0; --line:#1e2936;
+    --accent:#5ab0f0; --warn:#ff6b6b; --good:#5ad1a0; --amber:#f0b45a;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font-family:var(--sans)}
+  #deck{position:relative;width:100vw;height:100vh;overflow:hidden}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;
+    padding:5vh 7vw;animation:fade .35s ease}
+  .slide.on{display:flex}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .beat{font-family:var(--mono);font-size:1.05vw;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--dim);margin-bottom:2.2vh}
+  h1{font-size:4.4vw;line-height:1.08;margin:0 0 2.5vh;font-weight:650;letter-spacing:-.02em}
+  h2{font-size:2.9vw;line-height:1.15;margin:0 0 2vh;font-weight:600;letter-spacing:-.01em}
+  p{font-size:1.65vw;line-height:1.5;margin:0 0 1.6vh;max-width:52ch;color:#cfd9e4}
+  .big{font-size:7.5vw;font-weight:700;letter-spacing:-.03em;line-height:1}
+  .mono{font-family:var(--mono)}
+  .dim{color:var(--dim)}
+  .warn{color:var(--warn)} .good{color:var(--good)} .accent{color:var(--accent)} .amber{color:var(--amber)}
+  .strike{text-decoration:line-through;text-decoration-thickness:.12em;opacity:.55}
+  .row{display:flex;gap:3vw;align-items:center}
+  .col{flex:1}
+  table{border-collapse:collapse;font-size:1.35vw;width:100%}
+  th,td{text-align:left;padding:.9vh 1.1vw;border-bottom:1px solid var(--line)}
+  th{color:var(--dim);font-weight:500;font-family:var(--mono);font-size:1.05vw;
+     text-transform:uppercase;letter-spacing:.1em}
+  td.num{font-family:var(--mono);text-align:right}
+  .bar{height:2.6vh;background:var(--accent);border-radius:2px}
+  .barrow{display:flex;align-items:center;gap:1vw;margin:.9vh 0;font-size:1.3vw}
+  .barrow .lab{width:11vw;font-family:var(--mono);color:var(--dim);text-align:right}
+  .barrow .val{font-family:var(--mono);width:4vw}
+  .card{border:2px solid var(--warn);border-radius:10px;padding:3vh 3vw;background:rgba(255,107,107,.07)}
+  .card.ok{border-color:var(--good);background:rgba(90,209,160,.07)}
+  .note{font-size:1.15vw;color:var(--dim);margin-top:2.5vh;max-width:60ch;line-height:1.5}
+  .domain{position:relative;height:7vh;background:#16202c;border-radius:5px;margin:2.5vh 0 1vh;
+    border:1px solid var(--line)}
+  .kin{position:absolute;left:73%;width:27%;top:0;bottom:0;background:rgba(90,176,240,.22);
+    border-left:1px solid var(--accent);border-right:1px solid var(--accent)}
+  .mark{position:absolute;top:-2.6vh;transform:translateX(-50%);font-family:var(--mono);font-size:1.05vw;white-space:nowrap}
+  .mark i{display:block;width:2px;height:7vh;background:currentColor;margin:.4vh auto 0}
+  #bar{position:fixed;left:0;bottom:0;height:3px;background:var(--accent);transition:width .3s}
+  #num{position:fixed;right:1.4vw;bottom:1.6vh;font-family:var(--mono);font-size:1vw;color:var(--dim)}
+  kbd{font-family:var(--mono);background:#16202c;border:1px solid var(--line);border-radius:4px;padding:.1em .4em}
+</style>
+</head>
+<body>
+<div id="deck">
+
+<section class="slide on">
+  <div class="beat">Gummietech · Track 2 · MVA Hackathon 2026</div>
+  <h1>The obvious drug target<br>for this child is <span class="warn">wrong</span>.</h1>
+  <p class="dim">Drug repurposing in BUB1B-related mosaic variegated aneuploidy.</p>
+  <div class="note">Press <kbd>→</kbd> to advance, <kbd>←</kbd> to go back. 6 beats, 3:00.</div>
+</section>
+
+<section class="slide">
+  <div class="beat">Beat 1 · 0:00–0:32 · The correction</div>
+  <h2>Two variants in BUB1B</h2>
+  <div class="domain">
+    <div class="kin"></div>
+    <div class="mark warn" style="left:70%">p.Leu737Ter<i></i></div>
+    <div class="mark accent" style="left:95%">p.Asn1002Lys<i></i></div>
+  </div>
+  <p class="dim mono" style="font-size:1.2vw">BubR1 &mdash; pseudokinase domain 766&ndash;1050 shaded</p>
+  <div class="row" style="margin-top:4vh">
+    <div class="col"><div class="big strike warn">broken kinase</div></div>
+    <div class="col"><div class="big good">not enough protein</div></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="beat">Beat 2 · 0:32–1:08 · Why that changes everything</div>
+  <h2>Restoring abundance restores function &mdash; but position doesn't prove instability</h2>
+  <div class="row">
+    <div class="col">
+      <div class="barrow"><span class="lab">mutant</span><div class="bar" style="width:14%;background:var(--warn)"></div><span class="val">low</span></div>
+      <div class="barrow"><span class="lab">+ overexpression</span><div class="bar" style="width:88%;background:var(--good)"></div><span class="val">normal</span></div>
+      <p class="note">Two kinase-domain missense mutants, forced back to wild-type levels,
+      fully restored the checkpoint. One sits ten residues from this child's variant.</p>
+    </div>
+    <div class="col">
+      <table>
+        <tr><th>residue</th><th>burial (RSA)</th><th>effect on protein</th></tr>
+        <tr><td class="mono">Q921</td><td class="num good">1.1%</td><td class="good">tolerated</td></tr>
+        <tr><td class="mono accent">Asn1002</td><td class="num accent">16.2%</td><td class="dim">unknown</td></tr>
+      </table>
+      <p class="note"><span class="amber">We modelled it and it cut against us.</span>
+      The tolerated variant is <em>more</em> buried. Hence the assay, not a prescription.</p>
+    </div>
+  </div>
+  <p class="note mono">Threshold: 6% of normal BubR1 &rarr; missegregation · 13% &rarr; essentially normal</p>
+</section>
+
+<section class="slide">
+  <div class="beat">Beat 3 · 1:08–1:48 · The search, and what its shape says</div>
+  <h2>Zero drugs at the defect. And the pharmacopeia points the wrong way.</h2>
+  <div class="row">
+    <div class="col">
+      <div class="barrow"><span class="lab">BUB1B</span><div class="bar" style="width:1%;background:var(--warn)"></div><span class="val warn">0</span></div>
+      <div class="barrow"><span class="lab">SAC</span><div class="bar" style="width:3%"></div><span class="val">2</span></div>
+      <div class="barrow"><span class="lab">sensing</span><div class="bar" style="width:2%"></div><span class="val">1</span></div>
+      <div class="barrow"><span class="lab">abundance</span><div class="bar" style="width:23%"></div><span class="val">16</span></div>
+      <div class="barrow"><span class="lab">senescence</span><div class="bar" style="width:42%"></div><span class="val">30</span></div>
+      <div class="barrow"><span class="lab">SASP</span><div class="bar" style="width:100%"></div><span class="val">71</span></div>
+    </div>
+    <div class="col">
+      <div class="card"><div class="big">129<span class="dim" style="font-size:3vw"> / 142</span></div>
+      <p style="margin:1vh 0 0">action-typed entries are <span class="warn">INHIBITORS</span></p></div>
+      <p class="note">Medicine is built out of inhibitors. This is a disease of too little.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="beat">Beat 3b · the generalisation, pre-registered and then broken</div>
+  <h2>We predicted this holds for loss-of-function disease. It doesn't.</h2>
+  <table>
+    <tr><th>gene</th><th>disease</th><th>drugs at defect</th><th>inhibitory</th><th>prediction</th></tr>
+    <tr><td class="mono accent">BUB1B</td><td>MVA &mdash; this case</td><td class="num warn">0</td><td class="num warn">97.7%</td><td class="good">held</td></tr>
+    <tr><td class="mono">ATM</td><td>Ataxia-telangiectasia</td><td class="num">84</td><td class="num warn">98.7%</td><td class="good">held</td></tr>
+    <tr><td class="mono">NPC1</td><td>Niemann-Pick C</td><td class="num">137</td><td class="num good">57.2%</td><td class="warn">FAILED</td></tr>
+    <tr><td class="mono">CFTR</td><td>Cystic fibrosis</td><td class="num">46</td><td class="num good">52.9%</td><td class="amber">broke, as designed</td></tr>
+  </table>
+  <p class="note">The skew doesn't track loss-of-function. It tracks whether oncology wants to
+  inhibit the pathway. <span class="accent">The corrected rule is diagnostic &mdash; and this
+  child's gene is in the worst category.</span></p>
+</section>
+
+<section class="slide">
+  <div class="beat">Beat 4 · 1:48–2:12 · What we would not give him</div>
+  <h2>The top hit of a keyword search is among the most contraindicated agents available</h2>
+  <div class="card">
+    <div class="row" style="align-items:flex-start">
+      <div class="col">
+        <div class="mono warn" style="font-size:2.2vw">17-AAG</div>
+        <p class="dim" style="font-size:1.3vw;margin-top:1vh">top hit of the best-known
+        &ldquo;drugs for aneuploidy&rdquo; paper</p>
+      </div>
+      <div class="col">
+        <p style="margin:0">Mutant BubR1 is an <strong>HSP90 client</strong>.</p>
+        <p style="margin:.8vh 0 0" class="warn">Block HSP90 &rarr; destroy the little protein
+        this child still has.</p>
+      </div>
+    </div>
+  </div>
+  <p class="note">Gates were written <em>before</em> the search. HSP90 inhibitors are also a
+  recognised senolytic class &mdash; so &ldquo;senolytic&rdquo; is not a safe class label here,
+  and the gate is applied agent by agent.</p>
+</section>
+
+<section class="slide">
+  <div class="beat">Beat 5 · 2:12–2:38 · The ranked answer, honestly labelled</div>
+  <h2>Two rankings, because the brief and the science point different ways</h2>
+  <table>
+    <tr><th>candidate</th><th>score</th><th>regulatory status</th><th>paediatric evidence</th></tr>
+    <tr><td><strong>Nicotinamide riboside</strong></td><td class="num">13/17</td>
+        <td class="amber">dietary supplement &mdash; <em>not</em> an approved medicine</td>
+        <td class="good">RCT in Werner syndrome; use to age 1</td></tr>
+    <tr><td><strong>Dasatinib + quercetin</strong></td><td class="num">10/17</td>
+        <td class="good">approved medications</td>
+        <td class="warn">0 of 22 trials enrolled a child</td></tr>
+  </table>
+  <p class="note">The NAD&#8314; mechanism is <span class="amber">inferred, not shown</span> &mdash;
+  the mouse work everyone cites used a different intervention in a different genotype.
+  We don't blur supplement and medicine.</p>
+</section>
+
+<section class="slide">
+  <div class="beat">Beat 6 · 2:38–3:00 · What we actually recommend</div>
+  <h2>Our first recommendation isn't a drug.</h2>
+  <div class="big accent" style="margin:1vh 0 3vh">A western blot for BubR1.</div>
+  <div class="row">
+    <div class="col card ok"><p style="margin:0"><strong>Reduced but present</strong><br>
+      <span class="dim">the hypothesis is live &mdash; and it generates PS3-grade functional
+      evidence on Track 1's unresolved VUS</span></p></div>
+    <div class="col card"><p style="margin:0"><strong>Absent</strong><br>
+      <span class="dim">the entire top tier is futile &mdash; and we'd want to know before
+      anyone gives a child anything</span></p></div>
+  </div>
+  <p class="note">These are hypotheses for follow-up, not evidence that a medicine works.
+  <strong>Measure first.</strong></p>
+</section>
+
+<section class="slide">
+  <div class="beat">Ends</div>
+  <h1>Measure before treating.</h1>
+  <p class="dim">Gummietech · github.com/kemval/mva-hackathon-2026</p>
+  <p class="note">This work was made possible through the Hackathon, organized by Sage
+  Bionetworks in partnership with the MVA Society, Hugging Face, and BEACON (The
+  Benchmarking, Evaluation, and Assessment Consortium for Science), with prize sponsorship
+  from AWS and Anthropic. We are deeply grateful to the child and their family who
+  generously contributed their data and their story to advance research into this rare
+  disease. We acknowledge their trust in making this Hackathon possible.</p>
+</section>
+
+</div>
+<div id="bar"></div><div id="num"></div>
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  let i=0;
+  function show(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+    document.getElementById('bar').style.width=((i+1)/slides.length*100)+'%';
+    document.getElementById('num').textContent=(i+1)+' / '+slides.length;
+  }
+  addEventListener('keydown',e=>{
+    if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(i+1)}
+    if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(i-1)}
+    if(e.key==='Home')show(0); if(e.key==='End')show(slides.length-1);
+  });
+  addEventListener('click',e=>show(i+(e.clientX>innerWidth/2?1:-1)));
+  show(0);
+</script>
+</body>
+</html>
