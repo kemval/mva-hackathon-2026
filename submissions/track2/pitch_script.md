@@ -5,9 +5,14 @@
 is a required field on the Track 2 submit form.
 
 **Word budget:** at a measured 145 wpm, 3:00 allows ~435 spoken words. The spoken lines
-below total **394**, leaving headroom for pauses and visual beats. Do not improvise
+below total **428**, leaving headroom for pauses and visual beats. Do not improvise
 additions — it will overrun. If a retake runs long, cut the last sentence of beat 3
 first, then the second sentence of beat 4.
+
+*Revised 2026-09-04 (see repo commit history): beat 2 now carries the structural
+counterexample and beat 5 marks the NAD⁺ mechanism as an inference, so the spoken script
+matches Limitation 1 and Verification item 1 of the report. Headroom is tighter than
+before — re-run the counter after any further edit.*
 
 *(To re-check the count after any edit:*
 `awk '/^> /{gsub(/^> /,""); n+=split($0,a," ")} END{print n}' pitch_script.md`*)*
@@ -35,13 +40,16 @@ the pseudokinase domain, `p.Asn1002Lys` inside it. Then a struck-through caption
 
 ## Beat 2 — Why that changes everything (0:32–1:08)
 
-**Visuals:** the rescue experiment as a before/after bar; then the 6%-vs-13% threshold as
-a dial with a marked cliff.
+**Visuals:** the rescue experiment as a before/after bar; a two-residue burial comparison
+(Q921 at 1.1% RSA vs Asn1002 at 16.2%) as the counterexample beat; then the 6%-vs-13%
+threshold as a dial with a marked cliff.
 
 > "Two results carry this submission.
 >
-> First: forcing two kinase-domain missense mutants back up to normal abundance fully
-> restored checkpoint function. One of them sits ten residues from this child's variant.
+> First: forcing two kinase-domain missense mutants back to normal abundance fully
+> restored checkpoint function. One sits ten residues from this child's variant — but we
+> modelled that, and it cut against us: a *tolerated* variant in the same domain is more
+> buried still. Position doesn't prove instability. It's why we lead with an assay.
 >
 > Second: there's a threshold. At six percent of normal BubR1, cells missegregate
 > chromosomes. At thirteen percent, segregation is essentially normal. A small gain could
@@ -83,13 +91,13 @@ here". Arrow showing HSP90 inhibition removing the residual protein.
 
 **Visuals:** the ranking table, with the regulatory-status column highlighted.
 
-> "Our highest-scoring candidate is nicotinamide riboside — an NAD-plus precursor that
-> raises BubR1 by blocking its degradation, with a randomised placebo-controlled trial in
-> Werner syndrome and paediatric use down to age one.
+> "Our highest-scoring candidate is nicotinamide riboside — an NAD-plus precursor
+> *inferred*, not shown, to raise BubR1 by slowing its degradation. It has a randomised
+> placebo-controlled trial in Werner syndrome, and paediatric use down to age one.
 >
-> It's a supplement, not an approved medicine, and we don't blur that. The highest-scoring
-> approved medicine is dasatinib plus quercetin — where none of twenty-two trials ever
-> enrolled a child."
+> But it's a supplement, not an approved medicine, and we don't blur that. The
+> highest-scoring approved medicine is dasatinib plus quercetin — where none of twenty-two
+> trials ever enrolled a child."
 
 ## Beat 6 — What we actually recommend (2:38–3:00)
 
