@@ -2,7 +2,41 @@
 
 Findings from `pipeline/gap_closure_brief.md` imply the edits below.
 
-Status: **Tasks 1, 4 and 6 complete. Tasks 2, 3 and 5 not started.**
+Status: **CLOSED 2026-09-04. All six tasks have now run.** Tasks 1, 4 and 6 completed
+2026-09-02; Tasks 2, 3 and 5 completed 2026-09-04. Every edit in this file is either
+applied or explicitly declined with its reason, below. **This file is now a record, not a
+queue** — nothing in it is waiting on anything.
+
+## Edit 9, resolved — and the resolution is a negative
+
+Edit 9 (the Kajii 1998 renal footnote) was held back because its own rationale required
+Task 2's exhaustive cohort search to have run. **Task 2 has now run
+(`literature/34_mva_cohort_genotype_phenotype.md`), and it does not supply what the edit
+needed.**
+
+Renal *tumour* is well represented in the published cohort — Wilms tumour appears in
+Kawame 1999, Ochiai 2019, Vempuluru 2026 and all six of Yost's TRIP13 patients. But
+**nephrocalcinosis specifically appears in no published MVA patient found by the harvest**,
+and exactly one patient (He 2018, PMID 30512160) has any non-tumour renal finding stated at
+all — recorded only as "renal lesions."
+
+So the third possibility Task 4 raised — that nephrocalcinosis might be an under-documented
+feature of MVA itself, and therefore neither acquired nor a second diagnosis — **is not
+supported.** It is also not refuted, because abstract-level coverage of a non-headline
+clinical sign is far too thin to carry a negative. That is a genuine limit and it is stated
+in the cohort file's LIMITS section rather than papered over.
+
+**Edit 9 is therefore DECLINED, on stronger grounds than when it was deferred.** Citing a
+single 1998 case report of renal cysts plus Wilms tumour as if it bore on nephrocalcinosis
+would be exactly the weak, non-exclusive inference the edit's own rationale warned against.
+**Task 4's adjudication stands unchanged at (c): unresolvable from available data, both
+hypotheses live** — which is what Task 4 pre-committed to as its likely and acceptable
+outcome.
+
+---
+
+*(original status line, retained for the record: "Tasks 1, 4 and 6 complete. Tasks 2, 3 and
+5 not started.")*
 
 **APPLIED 2026-09-02.** Edits 1–8 and 10–16 are now in the submission text, reviewed and
 applied together so the repository and the submission no longer disagree. Three departures

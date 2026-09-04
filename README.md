@@ -102,8 +102,51 @@ Materials: `submissions/track2/gummietech_track2_report.md` (report),
 `viz/track2_explainer.html` (visual explainer, companion to the Track 1 atlas). Working notes in
 `data-notes/track2_mechanism.md`; scripts and commands in `pipeline/README.md`.
 
-**Outstanding (account-holder actions):** record and upload the pitch video; submit via
-the "Submit – Track 2" tab.
+**Outstanding (account-holder actions):** record and upload the pitch video (deck ready at
+`viz/pitch_deck.html`, script at `submissions/track2/pitch_script.md`); submit via the
+"Submit – Track 2" tab.
+
+## Gap-closure programme (2026-09-02 to 2026-09-04) — all six tasks complete
+
+`pipeline/gap_closure_brief.md` pre-specified six gaps and a pre-committed acceptable-null
+outcome for each. All six have now run; the per-task outcome table is at the head of that
+file. Three of the six returned **honest negatives**, which the brief counts as completed
+tasks:
+
+- **Task 2** established that the genotype-stratified question it asked **cannot be
+  answered** — exactly one published patient shares the proband's architecture *and* has a
+  tumour outcome. What the 15-patient cohort does show is that the birth-to-7y renal
+  ultrasound window fits Wilms and is silent on everything else: the two published MVA
+  rhabdomyosarcomas were in the **soft palate** and the **orbit**, the only patient with
+  sequential primaries had her second at **12**, and one patient's first malignancy was at
+  **34**. It also found a third allelic class the brief did not anticipate — truncating
+  plus **non-coding regulatory**, in two independent pedigrees, which can only reduce
+  protein quantity.
+- **Task 3** confirmed its own premise quantitatively — of 62 "premature chromatid
+  separation" records, only **21** are reachable through the "mosaic variegated aneuploidy"
+  string — and then **did not close the gap**: seven national databases and the
+  native-script terms were not queried, and six full texts hit genuine walls. The blind
+  spot is now measured rather than asserted.
+- **Task 5** withdrew a standing overclaim of this repository's own (see item 13 above).
+
+**And one result was not asked for and cuts against the submission.** The Part 8
+generalisation — that the loss-of-function/inhibitor mismatch holds for rare disease
+broadly — was pre-registered as a falsifiable prediction, tested on NPC1, ATM and CFTR, and
+**partly refuted**. Two of three predictions failed. The claim is withdrawn and replaced
+with a narrower, diagnostic one: the skew tracks whether the causal gene sits in a pathway
+oncology has invested in inhibiting, not whether the disease is loss-of-function. BUB1B is
+in the worst category. Details in `data-notes/scale/RESULTS.md`.
+
+## Submission checklist
+
+| Item | Track 1 | Track 2 |
+|---|---|---|
+| Report | `submissions/track1/gummietech_track1_report.md` | `submissions/track2/gummietech_track2_report.md` |
+| Predictions CSV | `submissions/track1/gummietech_vep-acmg-compound-het.csv` | n/a |
+| **Methods description** | `submissions/methods_description_gummietech.xlsx` (+ Markdown mirror) | same file, Track 2 sheet |
+| GitHub repo URL | https://github.com/kemval/mva-hackathon-2026 | same |
+| Pitch video URL | n/a | **outstanding** — record from `viz/pitch_deck.html` |
+| Notes for judges (optional) | n/a | `submissions/track2/notes_for_judges.md` |
 
 ## Next actions
 

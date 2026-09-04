@@ -1,8 +1,28 @@
 # Gap-closure brief — MVA Hackathon 2026
 
-**Status: a task specification, written before the work, in the same spirit as
-`pipeline/track2_scoring_rubric.md`. Paste this whole file into a fresh session, or run
-any single numbered task from it — each is self-contained.**
+**Status: COMPLETE as of 2026-09-04. All six tasks have run.** This began as a task
+specification written before the work, in the same spirit as
+`pipeline/track2_scoring_rubric.md`, and is retained unedited below so that what was asked
+for can be compared against what came back. **What follows the table is the original brief,
+not a description of the results.**
+
+| Task | Outcome |
+|---|---|
+| **1 — Structural analysis of p.Asn1002Lys** | **Ran; result cuts against the thesis.** Q921, the tolerated counterexample, is *more* buried than Asn1002 (RSA 1.1% vs 16.2%) and also H-bonded. Position-based reasoning has a documented failure in this protein. Limitation 1 was **tightened**, not relaxed. ΔΔG attempted across three API shapes and **not obtained** — reported as inspection, never as ΔΔG. |
+| **2 — Genotype–phenotype across the published cohort** | **Ran; the question as posed is unanswerable and a better one is answered.** 15 published patients tabulated, every row cited. Exactly one has both the proband's architecture and a tumour outcome, so **no genotype-stratified age-at-first-tumour comparison is possible and none is offered.** What the cohort does show: the birth-to-7y renal-ultrasound window fits Wilms well and is silent on everything else — the two published MVA rhabdomyosarcomas were in the soft palate and the orbit, the one patient with sequential primaries had her second at 12, and one patient's first malignancy was at 34. Also found a third allelic class (truncating + non-coding regulatory) the brief did not anticipate. No p-values. |
+| **3 — Japanese and Chinese MVA literature** | **Ran; premise confirmed quantitatively, gap narrowed not closed.** Of 62 PCS-matching PubMed records only **21** are reachable through the "mosaic variegated aneuploidy" string — 41 are invisible to it. Recovered PMID 40555658, a Chinese-language 2025 report of two MVA fetuses. **CiNii, J-STAGE, J-GLOBAL, KAKEN, CNKI, Wanfang, VIP and the native-script terms were NOT queried**, and six full texts hit genuine walls with zero OA locations. Logged as an open acquisition gap, now measured rather than asserted. |
+| **4 — Is the nephrocalcinosis a category error?** | **Ran; adjudicated (c), as pre-committed.** Unresolvable — the distinguishing datum is an imaging date that exists in no available file, and recontact is prohibited. Both hypotheses stay live. Task 2's cohort search was expected to cross-check this and **could not**: no published MVA patient with nephrocalcinosis was found, but abstract-level coverage is too thin to carry that negative. |
+| **5 — Re-cost the coverage limitation** | **Ran; a standing overclaim withdrawn.** "Cannot be closed by acquiring data" rested on the RAM cost of a *whole-genome* index, which does not apply to the reduced reference anyone would actually use (~30 MB). The real objection is scientific, not resource-based: decoy-free realignment inflates MAPQ. That splits the route — BUB1B has **zero** segdups in its padded region, so it is sound there; CYP2D6 has **six**, so it is not. Corrected in four files. |
+| **6 — Surveillance after a first tumour** | **Ran; the finding is a guideline silence.** Both Nakano 2024 and the SIOP-E primary (Hol 2021) are **silent** on post-first-tumour surveillance, and the non-renal exclusion is explicit in the primary. The MVA-specific radiosensitivity claim was re-tiered as a **class generalisation** after a targeted search returned five records, all wrong-product. Not filled by inference. |
+
+**Two things this programme produced that were not asked for**, both recorded because
+suppressing them would defeat the point: the scalability generalisation published in Part 8
+was pre-registered, tested and **partly refuted by our own test**
+(`data-notes/scale/RESULTS.md`), and a fifth identifier/duplicate trap was caught in the
+cohort harvest.
+
+---
+
 
 The Track 2 submission has already survived an adversarial literature review (see
 `literature/_contradiction_matrix.md`, C1–C11). Six substantive gaps remain. Three of them
