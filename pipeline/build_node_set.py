@@ -56,10 +56,29 @@ def partners(symbols):
 
 
 def ensembl_id(symbol):
+    """Resolve a gene symbol to an Ensembl gene ID.
+
+    STRING's preferred names lag HGNC, so the direct symbol lookup misses renamed
+    genes (GBA -> GBA1, SLC9A3R1 -> NHERF1). Falling back to the xrefs endpoint,
+    which resolves synonyms, keeps those nodes in the search space instead of
+    silently dropping them. Caught when the drug search raised on GBA and
+    SLC9A3R1 rather than reporting them as zero-drug targets.
+    """
     try:
         return get(f"{ENSEMBL}{symbol}?content-type=application/json")["id"]
     except Exception:
-        return ""
+        pass
+    for attempt in range(3):
+        try:
+            xr = get(f"https://rest.ensembl.org/xrefs/symbol/homo_sapiens/"
+                     f"{symbol}?content-type=application/json")
+            genes = [x["id"] for x in xr if x.get("type") == "gene"]
+            if genes:
+                return genes[0]
+            return ""
+        except Exception:
+            time.sleep(2)
+    return ""
 
 
 def main():

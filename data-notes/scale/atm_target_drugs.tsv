@@ -1,0 +1,1531 @@
+gene	tier	source	drug	drug_id	drug_type	max_clinical_stage	approved	mechanism	action_type
+ABL1	d1_direct	dgidb	1-AZAKENPAULLONE	iuphar.ligand:8018			False		
+ABL1	d1_direct	dgidb	ACYCLOVIR	rxcui:281			True		
+ABL1	d1_direct	dgidb	ADAVOSERTIB	iuphar.ligand:7702			False		
+ABL1	d1_direct	dgidb	ADENOSINE TRIPHOSPHATE	rxcui:318			True		
+ABL1	d1_direct	dgidb	ALISERTIB	ncit:C71717			False		
+ABL1	d1_direct	dgidb	ALSTERPAULLONE	drugbank:DB04014			False		
+ABL1	d1_direct	dgidb	ASCIMINIB	rxcui:2584304			True	modulator	
+ABL1	d1_direct	dgidb	ASCIMINIB	rxcui:2584304			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	ASCIMINIB HYDROCHLORIDE	chembl:CHEMBL4297220			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	AST-487	iuphar.ligand:5661			False		
+ABL1	d1_direct	dgidb	AT-9283	chembl:CHEMBL495727			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	AT9283	drugbank:DB05169			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	AXITINIB	rxcui:1242999			True		
+ABL1	d1_direct	dgidb	AZACITIDINE	rxcui:1251			True		
+ABL1	d1_direct	dgidb	AZD-0424	chembl:CHEMBL5314408			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	AZM-475271	chembl:CHEMBL426161			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	BAFETINIB	ncit:C62516			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	BAFETINIB	ncit:C62516			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	BCR-ABL INHIBITOR GNF-2	iuphar.ligand:5935			False		
+ABL1	d1_direct	dgidb	BLINATUMOMAB	rxcui:1597258			True		
+ABL1	d1_direct	dgidb	BO1	iuphar.ligand:8963			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	BOSUTINIB	rxcui:1307619			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	BOSUTINIB	rxcui:1307619			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	BOSUTINIB MONOHYDRATE	chembl:CHEMBL2095206			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	BUSULFAN	rxcui:1828			True		
+ABL1	d1_direct	dgidb	CABOZANTINIB S-MALATE	rxcui:1363267			True		
+ABL1	d1_direct	dgidb	CEDIRANIB	ncit:C80867			False		
+ABL1	d1_direct	dgidb	CELECOXIB	rxcui:140587			True		
+ABL1	d1_direct	dgidb	CENISERTIB	ncit:C64540			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	CENISERTIB	chembl:CHEMBL1967878			False		
+ABL1	d1_direct	dgidb	CEP-11981	iuphar.ligand:8189			False		
+ABL1	d1_direct	dgidb	CHEMBL:CHEMBL379975	chembl:CHEMBL379975			False		
+ABL1	d1_direct	dgidb	CHEMBL:CHEMBL546797	chembl:CHEMBL546797			False		
+ABL1	d1_direct	dgidb	COMPOUND 24 [PMID: 23441572]	iuphar.ligand:8147			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	COMPOUND 2C [PMID: 24900538]	iuphar.ligand:8138			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	COMPOUND 33A [PMID: 35944901]	iuphar.ligand:12126			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	COMPOUND 8H [PMID: 21561767]	iuphar.ligand:8170			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	CP-547632	iuphar.ligand:7881			False		
+ABL1	d1_direct	dgidb	CRIZOTINIB	rxcui:1148495			True		
+ABL1	d1_direct	dgidb	CYC-116	chembl:CHEMBL482967			False		
+ABL1	d1_direct	dgidb	DASATINIB ANHYDROUS	rxcui:1546019			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	DASATINIB ANHYDROUS	rxcui:1546019			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	DDR1/2 INHIBITOR 5N	iuphar.ligand:10105			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	DOVITINIB	ncit:C76199			False		
+ABL1	d1_direct	dgidb	ECF506	iuphar.ligand:9186			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	EMBIBATINIB	iuphar.ligand:14354			False	modulator	
+ABL1	d1_direct	dgidb	ENMD-2076	iuphar.ligand:7885			False		
+ABL1	d1_direct	dgidb	ENTRECTINIB	rxcui:2197862			True		
+ABL1	d1_direct	dgidb	ERLOTINIB	rxcui:337525			True		
+ABL1	d1_direct	dgidb	FLUMATINIB	hemonc:38662			False		
+ABL1	d1_direct	dgidb	FLUMBATINIB	iuphar.ligand:9913			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	FLUMBATINIB	iuphar.ligand:9913			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	FORETINIB	ncit:C80058			False		
+ABL1	d1_direct	dgidb	GENISTEIN	rxcui:25696			True		
+ABL1	d1_direct	dgidb	GNF-5	iuphar.ligand:8065			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	HYDROXYUREA	rxcui:5552			True		
+ABL1	d1_direct	dgidb	ILORASERTIB	ncit:C116729			False		
+ABL1	d1_direct	dgidb	IMATINIB	rxcui:282388			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	IMATINIB	rxcui:282388			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	IMATINIB MESYLATE	chembl:CHEMBL1642			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	INOTUZUMAB OZOGAMICIN	rxcui:1942950			True		
+ABL1	d1_direct	dgidb	JNJ-7706621	iuphar.ligand:5932			False		
+ABL1	d1_direct	dgidb	KENPAULLONE	iuphar.ligand:6000			False		
+ABL1	d1_direct	dgidb	KW-2449	iuphar.ligand:5691			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	KW-2449	iuphar.ligand:5691			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	MASITINIB	ncit:C79910			False		
+ABL1	d1_direct	dgidb	MELPHALAN	rxcui:6718			True		
+ABL1	d1_direct	dgidb	MERIBATINIB	iuphar.ligand:14357			False	modulator	
+ABL1	d1_direct	dgidb	MLN-8054	iuphar.ligand:5696			False		
+ABL1	d1_direct	dgidb	NILOTINIB	rxcui:662281			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	NILOTINIB	rxcui:662281			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	NILOTINIB HYDROCHLORIDE MONOHYDRATE	chembl:CHEMBL1201740			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	NVP-TAE684	iuphar.ligand:5714			False		
+ABL1	d1_direct	dgidb	OLVEREMBATINIB	ncit:C165549			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	OLVEREMBATINIB	ncit:C165549			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	OMACETAXINE	rxcui:1546446			True		
+ABL1	d1_direct	dgidb	OMACETAXINE MEPESUCCINATE	rxcui:27100			True		
+ABL1	d1_direct	dgidb	OXALIPLATIN	rxcui:32592			True		
+ABL1	d1_direct	dgidb	PAZOPANIB	rxcui:714438			True		
+ABL1	d1_direct	dgidb	PD166285	iuphar.ligand:8183			False		
+ABL1	d1_direct	dgidb	PD173955	drugbank:DB02567			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	PEXMETINIB	ncit:C85481			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	PONATINIB	rxcui:1364347			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	PONATINIB	rxcui:1364347			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	PONATINIB HYDROCHLORIDE	chembl:CHEMBL2105708			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	PP-121	drugbank:DB08052			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	PP2	iuphar.ligand:9404			False		
+ABL1	d1_direct	dgidb	PROGESTERONE	rxcui:8727			True		
+ABL1	d1_direct	dgidb	QUERCETIN	ncit:C792			False		
+ABL1	d1_direct	dgidb	RADOTINIB	ncit:C98110			False		
+ABL1	d1_direct	dgidb	RADOTINIB	chembl:CHEMBL4297524			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	REBASTINIB	ncit:C152162			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	REBASTINIB	ncit:C152162			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	REGORAFENIB	rxcui:1312397			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	RELCOBATINIB	iuphar.ligand:14371			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	RISVODETINIB	iuphar.ligand:12383			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	RUSERONTINIB	iuphar.ligand:12089			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	SARACATINIB	ncit:C48378			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	SARACATINIB	ncit:C48378			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	SIAIS178	iuphar.ligand:10526			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	SORAFENIB	rxcui:495881			True		
+ABL1	d1_direct	dgidb	THERAPEUTIC GLUCOCORTICOID	ncit:C521			False		
+ABL1	d1_direct	dgidb	TOZASERTIB	ncit:C98053			False		
+ABL1	d1_direct	dgidb	TRAMETINIB DIMETHYL SULFOXIDE	rxcui:1425098			True		
+ABL1	d1_direct	dgidb	UMBRALISIB TOSYLATE	chembl:CHEMBL3989869			True	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	VAMOTINIB	drugbank:DB15396			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	VANDETANIB	rxcui:1098413			True		
+ABL1	d1_direct	dgidb	VENETOCLAX	rxcui:1747556			True		
+ABL1	d1_direct	dgidb	VINCRISTINE	rxcui:11202			True		
+ABL1	d1_direct	dgidb	VODOBATINIB	ncit:C174748			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	VODOBATINIB	ncit:C174748			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	XL-228	chembl:CHEMBL3545085			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	XL228	drugbank:DB05184			False	inhibitor	INHIBITORY
+ABL1	d1_direct	dgidb	ZAK INHIBITOR 6P	iuphar.ligand:10402			False	inhibitor	INHIBITORY
+ABL1	d1_direct	opentargets	ASCIMINIB	CHEMBL4208229	Small molecule	APPROVAL		Bcr/Abl fusion protein inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	ASCIMINIB	CHEMBL4208229	Small molecule	APPROVAL		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	ASCIMINIB HYDROCHLORIDE	CHEMBL4297220	Small molecule	APPROVAL		Bcr/Abl fusion protein inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	AT-9283	CHEMBL495727	Small molecule	PHASE_3		Serine/threonine-protein kinase Aurora-A inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	AT-9283	CHEMBL495727	Small molecule	PHASE_3		Tyrosine-protein kinase JAK3 inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	AT-9283	CHEMBL495727	Small molecule	PHASE_3		Tyrosine-protein kinase receptor FLT3 inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	AT-9283	CHEMBL495727	Small molecule	PHASE_3		Serine/threonine-protein kinase Aurora-B inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	AT-9283	CHEMBL495727	Small molecule	PHASE_3		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	AT-9283	CHEMBL495727	Small molecule	PHASE_3		Tyrosine-protein kinase JAK2 inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	AZD-0424	CHEMBL5314408	Small molecule	PHASE_1		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	AZD-0424	CHEMBL5314408	Small molecule	PHASE_1		Tyrosine-protein kinase SRC inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	BAFETINIB	CHEMBL206834	Small molecule	PHASE_2		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	BAFETINIB	CHEMBL206834	Small molecule	PHASE_2		Tyrosine-protein kinase Lyn inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	BOSUTINIB	CHEMBL288441	Small molecule	APPROVAL		Bcr/Abl fusion protein inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	BOSUTINIB	CHEMBL288441	Small molecule	APPROVAL		Tyrosine-protein kinase HCK inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	BOSUTINIB	CHEMBL288441	Small molecule	APPROVAL		Tyrosine-protein kinase Lyn inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	BOSUTINIB	CHEMBL288441	Small molecule	APPROVAL		Tyrosine-protein kinase SRC inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	BOSUTINIB	CHEMBL288441	Small molecule	APPROVAL		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	BOSUTINIB MONOHYDRATE	CHEMBL2095206	Small molecule	APPROVAL		Bcr/Abl fusion protein inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	DASATINIB	CHEMBL5416410	Small molecule	APPROVAL		Bcr/Abl fusion protein inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	DASATINIB ANHYDROUS	CHEMBL1421	Small molecule	APPROVAL		Bcr/Abl fusion protein inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	DASATINIB ANHYDROUS	CHEMBL1421	Small molecule	APPROVAL		Bcr/Abl fusion protein inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	DASATINIB ANHYDROUS	CHEMBL1421	Small molecule	APPROVAL		Ephrin type-A receptor 2 inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	DASATINIB ANHYDROUS	CHEMBL1421	Small molecule	APPROVAL		Platelet-derived growth factor receptor beta inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	DASATINIB ANHYDROUS	CHEMBL1421	Small molecule	APPROVAL		SRC inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	DASATINIB ANHYDROUS	CHEMBL1421	Small molecule	APPROVAL		Stem cell growth factor receptor inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	DASATINIB ANHYDROUS	CHEMBL1421	Small molecule	APPROVAL		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	FLUMATINIB	CHEMBL3545413	Small molecule	APPROVAL		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	IMATINIB	CHEMBL941	Small molecule	APPROVAL		Bcr/Abl fusion protein inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	IMATINIB	CHEMBL941	Small molecule	APPROVAL		Stem cell growth factor receptor inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	IMATINIB	CHEMBL941	Small molecule	APPROVAL		Platelet-derived growth factor receptor beta inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	IMATINIB	CHEMBL941	Small molecule	APPROVAL		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	IMATINIB MESYLATE	CHEMBL1642	Small molecule	APPROVAL		Bcr/Abl fusion protein inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	IMATINIB MESYLATE	CHEMBL1642	Small molecule	APPROVAL		Stem cell growth factor receptor inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	IMATINIB MESYLATE	CHEMBL1642	Small molecule	APPROVAL		Platelet-derived growth factor receptor beta inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	IMATINIB MESYLATE	CHEMBL1642	Small molecule	APPROVAL		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	KW-2449	CHEMBL1908397	Small molecule	PHASE_1		Serine/threonine-protein kinase Aurora-A inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	KW-2449	CHEMBL1908397	Small molecule	PHASE_1		Serine/threonine-protein kinase Aurora-B inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	KW-2449	CHEMBL1908397	Small molecule	PHASE_1		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	KW-2449	CHEMBL1908397	Small molecule	PHASE_1		Tyrosine-protein kinase receptor FLT3 inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	NILOTINIB	CHEMBL255863	Small molecule	APPROVAL		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	NILOTINIB	CHEMBL255863	Small molecule	APPROVAL		Bcr/Abl fusion protein inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	NILOTINIB HYDROCHLORIDE MONOHYDRATE	CHEMBL1201740	Small molecule	APPROVAL		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	NILOTINIB HYDROCHLORIDE MONOHYDRATE	CHEMBL1201740	Small molecule	APPROVAL		Bcr/Abl fusion protein inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	OLVEREMBATINIB	CHEMBL2316582	Small molecule	PHASE_3		Bcr/Abl fusion protein inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	PONATINIB	CHEMBL1171837	Small molecule	APPROVAL		Bcr/Abl fusion protein inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	PONATINIB HYDROCHLORIDE	CHEMBL2105708	Small molecule	APPROVAL		Bcr/Abl fusion protein inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	RADOTINIB	CHEMBL4297524	Small molecule	PHASE_3		Bcr/Abl fusion protein inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	REBASTINIB	CHEMBL1738757	Small molecule	PHASE_1_2		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	REGORAFENIB	CHEMBL1946170	Small molecule	APPROVAL		Discoidin domain-containing receptor 2 inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	REGORAFENIB	CHEMBL1946170	Small molecule	APPROVAL		Ephrin type-A receptor 2 inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	REGORAFENIB	CHEMBL1946170	Small molecule	APPROVAL		Fibroblast growth factor receptor 2 inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	REGORAFENIB	CHEMBL1946170	Small molecule	APPROVAL		MAP kinase p38 beta inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	REGORAFENIB	CHEMBL1946170	Small molecule	APPROVAL		Platelet-derived growth factor receptor inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	REGORAFENIB	CHEMBL1946170	Small molecule	APPROVAL		Serine/threonine-protein kinase B-raf inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	REGORAFENIB	CHEMBL1946170	Small molecule	APPROVAL		Stem cell growth factor receptor inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	REGORAFENIB	CHEMBL1946170	Small molecule	APPROVAL		Tyrosine-protein kinase TIE-2 inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	REGORAFENIB	CHEMBL1946170	Small molecule	APPROVAL		Fibroblast growth factor receptor 1 inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	REGORAFENIB	CHEMBL1946170	Small molecule	APPROVAL		Nerve growth factor receptor Trk-A inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	REGORAFENIB	CHEMBL1946170	Small molecule	APPROVAL		Serine/threonine-protein kinase RAF inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	REGORAFENIB	CHEMBL1946170	Small molecule	APPROVAL		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	REGORAFENIB	CHEMBL1946170	Small molecule	APPROVAL		Tyrosine-protein kinase FRK inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	REGORAFENIB	CHEMBL1946170	Small molecule	APPROVAL		Tyrosine-protein kinase receptor RET inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	REGORAFENIB	CHEMBL1946170	Small molecule	APPROVAL		Vascular endothelial growth factor receptor inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	RUSERONTINIB	CHEMBL3678958	Small molecule	PHASE_3		Epidermal growth factor receptor erbB1 inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	RUSERONTINIB	CHEMBL3678958	Small molecule	PHASE_3		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	RUSERONTINIB	CHEMBL3678958	Small molecule	PHASE_3		Tyrosine-protein kinase receptor FLT3 inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	SARACATINIB	CHEMBL217092	Small molecule	PHASE_2_3		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	SARACATINIB	CHEMBL217092	Small molecule	PHASE_2_3		Tyrosine-protein kinase SRC inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	UMBRALISIB	CHEMBL3948730	Small molecule	APPROVAL		Casein kinase I epsilon inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	UMBRALISIB	CHEMBL3948730	Small molecule	APPROVAL		PI3-kinase p110-delta subunit inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	UMBRALISIB	CHEMBL3948730	Small molecule	APPROVAL		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	UMBRALISIB TOSYLATE	CHEMBL3989869	Small molecule	APPROVAL		Casein kinase I epsilon inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	UMBRALISIB TOSYLATE	CHEMBL3989869	Small molecule	APPROVAL		PI3-kinase p110-delta subunit inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	UMBRALISIB TOSYLATE	CHEMBL3989869	Small molecule	APPROVAL		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	VODOBATINIB	CHEMBL4130229	Small molecule	PHASE_2		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	VODOBATINIB	CHEMBL4130229	Small molecule	PHASE_2		Bcr/Abl fusion protein inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	XL-228	CHEMBL3545085	Small molecule	PHASE_1		Insulin-like growth factor I receptor inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	XL-228	CHEMBL3545085	Small molecule	PHASE_1		SRC inhibitor	INHIBITOR
+ABL1	d1_direct	opentargets	XL-228	CHEMBL3545085	Small molecule	PHASE_1		Tyrosine-protein kinase ABL inhibitor	INHIBITOR
+ATM	d0_defect	dgidb	A011	iuphar.ligand:12776			False	inhibitor	INHIBITORY
+ATM	d0_defect	dgidb	ABIRATERONE ACETATE	rxcui:1100071			True		
+ATM	d0_defect	dgidb	ALNODESERTIB	ncit:C179292			False		
+ATM	d0_defect	dgidb	ATM INHIBITOR M 3541	ncit:C138076			False		
+ATM	d0_defect	dgidb	AVELUMAB	rxcui:1875534			True		
+ATM	d0_defect	dgidb	AZD0156	iuphar.ligand:9942			False	inhibitor	INHIBITORY
+ATM	d0_defect	dgidb	AZD1390	iuphar.ligand:11277			False	inhibitor	INHIBITORY
+ATM	d0_defect	dgidb	AZD6482	iuphar.ligand:8059			False		
+ATM	d0_defect	dgidb	AZD7648	iuphar.ligand:10601			False		
+ATM	d0_defect	dgidb	BAY-8400	iuphar.ligand:11732			False	inhibitor	INHIBITORY
+ATM	d0_defect	dgidb	BENDAMUSTINE	rxcui:134547			True		
+ATM	d0_defect	dgidb	BERZOSERTIB	ncit:C116355			False	inhibitor	INHIBITORY
+ATM	d0_defect	dgidb	BINIMETINIB	rxcui:2049122			True		
+ATM	d0_defect	dgidb	CAMONSERTIB	ncit:C174206			False		
+ATM	d0_defect	dgidb	CAMPTOTHECIN	ncit:C338			True		
+ATM	d0_defect	dgidb	CAPECITABINE	rxcui:194000			True		
+ATM	d0_defect	dgidb	CERALASERTIB	ncit:C111993			False		
+ATM	d0_defect	dgidb	CHEMBL:CHEMBL1329443	chembl:CHEMBL1329443			False		
+ATM	d0_defect	dgidb	CHEMBL:CHEMBL1519374	chembl:CHEMBL1519374			False		
+ATM	d0_defect	dgidb	CHEMBL:CHEMBL299853	chembl:CHEMBL299853			False		
+ATM	d0_defect	dgidb	CHEMBL:CHEMBL374632	chembl:CHEMBL374632			False		
+ATM	d0_defect	dgidb	CHEMBL:CHEMBL375673	chembl:CHEMBL375673			False		
+ATM	d0_defect	dgidb	CHEMBL:CHEMBL578061	chembl:CHEMBL578061			False		
+ATM	d0_defect	dgidb	CHEMBL:CHEMBL601933	chembl:CHEMBL601933			False		
+ATM	d0_defect	dgidb	CHEMBL:CHEMBL606460	chembl:CHEMBL606460			False		
+ATM	d0_defect	dgidb	CHEMBL:CHEMBL74852	chembl:CHEMBL74852			False		
+ATM	d0_defect	dgidb	CISPLATIN	rxcui:2555			True		
+ATM	d0_defect	dgidb	CP466722	iuphar.ligand:9359			False	inhibitor	INHIBITORY
+ATM	d0_defect	dgidb	CYCLOPHOSPHAMIDE ANHYDROUS	rxcui:1545988			True		
+ATM	d0_defect	dgidb	DIPYRIDAMOLE	rxcui:3521			True		
+ATM	d0_defect	dgidb	DITHIAZANINE IODIDE	chembl:CHEMBL421701			False		
+ATM	d0_defect	dgidb	DOXORUBICIN HYDROCHLORIDE	rxcui:142433			True		
+ATM	d0_defect	dgidb	DURVALUMAB	rxcui:1919503			True		
+ATM	d0_defect	dgidb	E-7820	drugbank:DB12505			False		
+ATM	d0_defect	dgidb	ELIMUSERTIB	ncit:C146807			False		
+ATM	d0_defect	dgidb	ENPIROLINE	chembl:CHEMBL1327821			False		
+ATM	d0_defect	dgidb	ENZALUTAMIDE	rxcui:1307298			True		
+ATM	d0_defect	dgidb	ESTRADIOL BENZOATE	chembl:CHEMBL282575			False		
+ATM	d0_defect	dgidb	ETOPOSIDE	rxcui:4179			True		
+ATM	d0_defect	dgidb	EVEROLIMUS	rxcui:141704			True		
+ATM	d0_defect	dgidb	FLUDARABINE	rxcui:24698			True		
+ATM	d0_defect	dgidb	FLUNARIZINE DIHYDROCHLORIDE	chembl:CHEMBL539027			False		
+ATM	d0_defect	dgidb	FLUOROURACIL	rxcui:4492			True		
+ATM	d0_defect	dgidb	HEPTACHLOR	chembl:CHEMBL194400			False		
+ATM	d0_defect	dgidb	IBRUTINIB	rxcui:1442981			True		
+ATM	d0_defect	dgidb	INDISULAM	ncit:C25797			False		
+ATM	d0_defect	dgidb	IPILIMUMAB	rxcui:1094833			True		
+ATM	d0_defect	dgidb	IRINOTECAN HYDROCHLORIDE	rxcui:153329			True		
+ATM	d0_defect	dgidb	ISOVELLERAL	iuphar.ligand:6287			False		
+ATM	d0_defect	dgidb	KU-0060648	iuphar.ligand:8011			False		
+ATM	d0_defect	dgidb	KU-55933	iuphar.ligand:5928			False	inhibitor	INHIBITORY
+ATM	d0_defect	dgidb	KU-60019	iuphar.ligand:8041			False	inhibitor	INHIBITORY
+ATM	d0_defect	dgidb	LARTESERTIB	iuphar.ligand:12319			False	inhibitor	INHIBITORY
+ATM	d0_defect	dgidb	LEUCOVORIN CALCIUM	rxcui:225852			True		
+ATM	d0_defect	dgidb	METHYLENE BLUE ANHYDROUS	chembl:CHEMBL405110			True		
+ATM	d0_defect	dgidb	MITOTANE	rxcui:7004			True		
+ATM	d0_defect	dgidb	NAFTIFINE HYDROCHLORIDE	chembl:CHEMBL1200493			True		
+ATM	d0_defect	dgidb	NIRAPARIB	rxcui:1918231			True		
+ATM	d0_defect	dgidb	NIVOLUMAB	rxcui:1597876			True		
+ATM	d0_defect	dgidb	NU-7441	iuphar.ligand:8010			False		
+ATM	d0_defect	dgidb	OLAPARIB	rxcui:1597582			True		
+ATM	d0_defect	dgidb	OXALIPLATIN	rxcui:32592			True		
+ATM	d0_defect	dgidb	PACLITAXEL PROTEIN-BOUND	rxcui:486610			True		
+ATM	d0_defect	dgidb	PARP/TANKYRASE INHIBITOR 2X-121	ncit:C102746			False		
+ATM	d0_defect	dgidb	PEGYLATED SN-38 CONJUGATE PLX038	ncit:C167334			False		
+ATM	d0_defect	dgidb	PERMETHRIN	rxcui:33199			True		
+ATM	d0_defect	dgidb	PHLORETIN	drugbank:DB07810			False		
+ATM	d0_defect	dgidb	PJ34	iuphar.ligand:11348			False		
+ATM	d0_defect	dgidb	PREDNISONE	rxcui:8640			True		
+ATM	d0_defect	dgidb	PROTOPORPHYRIN DISODIUM	chembl:CHEMBL2105866			False		
+ATM	d0_defect	dgidb	RUCAPARIB	rxcui:1862579			True		
+ATM	d0_defect	dgidb	SCHISANHENOL	chembl:CHEMBL490125			False		
+ATM	d0_defect	dgidb	SELUMETINIB	rxcui:2289380			True		
+ATM	d0_defect	dgidb	STREPTONIGRIN	chembl:CHEMBL11417			False		
+ATM	d0_defect	dgidb	TALAZOPARIB	rxcui:2099704			True		
+ATM	d0_defect	dgidb	TEMOZOLOMIDE	rxcui:37776			True		
+ATM	d0_defect	dgidb	TOLONIUM CHLORIDE	chembl:CHEMBL1790006			False		
+ATM	d0_defect	dgidb	TRAMETINIB DIMETHYL SULFOXIDE	rxcui:1425098			True		
+ATM	d0_defect	dgidb	TUVUSERTIB	ncit:C171067			False		
+ATM	d0_defect	dgidb	VALPROIC ACID	rxcui:11118			True		
+ATM	d0_defect	dgidb	VANDETANIB	rxcui:1098413			True		
+ATM	d0_defect	dgidb	VELIPARIB	ncit:C60768			False		
+ATM	d0_defect	dgidb	VENETOCLAX	rxcui:1747556			True		
+ATM	d0_defect	dgidb	XRD-0394	iuphar.ligand:13457			False	inhibitor	INHIBITORY
+ATR	d1_direct	dgidb	ALNODESERTIB	iuphar.ligand:13731			False	inhibitor	INHIBITORY
+ATR	d1_direct	dgidb	AZ20	iuphar.ligand:8477			False	inhibitor	INHIBITORY
+ATR	d1_direct	dgidb	BAY-8400	iuphar.ligand:11732			False	inhibitor	INHIBITORY
+ATR	d1_direct	dgidb	BERZOSERTIB	ncit:C116355			False	inhibitor	INHIBITORY
+ATR	d1_direct	dgidb	BERZOSERTIB	chembl:CHEMBL3989870			False	inhibitor	INHIBITORY
+ATR	d1_direct	dgidb	CAMONSERTIB	iuphar.ligand:12073			False	inhibitor	INHIBITORY
+ATR	d1_direct	dgidb	CERALASERTIB	iuphar.ligand:9390			False	inhibitor	INHIBITORY
+ATR	d1_direct	dgidb	CERALASERTIB	chembl:CHEMBL4285417			False	inhibitor	INHIBITORY
+ATR	d1_direct	dgidb	CERALASERTIB	ncit:C111993			False		
+ATR	d1_direct	dgidb	CISPLATIN	rxcui:2555			True		
+ATR	d1_direct	dgidb	DACTOLISIB	ncit:C74072			False	inhibitor	INHIBITORY
+ATR	d1_direct	dgidb	E-7820	drugbank:DB12505			False		
+ATR	d1_direct	dgidb	ELIMUSERTIB	iuphar.ligand:10354			False	inhibitor	INHIBITORY
+ATR	d1_direct	dgidb	ELIMUSERTIB	ncit:C146807			False		
+ATR	d1_direct	dgidb	ELIMUSERTIB	chembl:CHEMBL4647810			False	inhibitor	INHIBITORY
+ATR	d1_direct	dgidb	ENZALUTAMIDE	rxcui:1307298			True		
+ATR	d1_direct	dgidb	GARTISERTIB	ncit:C129693			False	inhibitor	INHIBITORY
+ATR	d1_direct	dgidb	INDISULAM	ncit:C25797			False		
+ATR	d1_direct	dgidb	M4344	chembl:CHEMBL4650286			False	inhibitor	INHIBITORY
+ATR	d1_direct	dgidb	NIRAPARIB	rxcui:1918231			True		
+ATR	d1_direct	dgidb	OLAPARIB	rxcui:1597582			True		
+ATR	d1_direct	dgidb	PARP/TANKYRASE INHIBITOR 2X-121	ncit:C102746			False		
+ATR	d1_direct	dgidb	PJ34	iuphar.ligand:11348			False		
+ATR	d1_direct	dgidb	RUCAPARIB	rxcui:1862579			True		
+ATR	d1_direct	dgidb	TALAZOPARIB	rxcui:2099704			True		
+ATR	d1_direct	dgidb	TEMOZOLOMIDE	rxcui:37776			True		
+ATR	d1_direct	dgidb	TUVUSERTIB	iuphar.ligand:12082			False	inhibitor	INHIBITORY
+ATR	d1_direct	dgidb	VE-821	iuphar.ligand:8042			False	inhibitor	INHIBITORY
+ATR	d1_direct	dgidb	VELIPARIB	ncit:C60768			False		
+ATR	d1_direct	opentargets	BERZOSERTIB	CHEMBL3989870	Small molecule	PHASE_2		Serine-protein kinase ATR inhibitor	INHIBITOR
+ATR	d1_direct	opentargets	CERALASERTIB	CHEMBL4285417	Small molecule	PHASE_3		Serine-protein kinase ATR inhibitor	INHIBITOR
+ATR	d1_direct	opentargets	ELIMUSERTIB	CHEMBL4647810	Small molecule	PHASE_1_2		Serine-protein kinase ATR inhibitor	INHIBITOR
+ATR	d1_direct	opentargets	M4344	CHEMBL4650286	Small molecule	PHASE_1_2		Serine-protein kinase ATR inhibitor	INHIBITOR
+BARD1	d2_pathway	dgidb	OLAPARIB	rxcui:1597582			True		
+BLM	d1_direct	dgidb	3-O-METHYLQUERCETIN	chembl:CHEMBL163316			False		
+BLM	d1_direct	dgidb	5,7-DIHYDROXYISOFLAVONE	chembl:CHEMBL1488393			False		
+BLM	d1_direct	dgidb	9,10-PHENANTHRENEQUINONE	chembl:CHEMBL51931			False		
+BLM	d1_direct	dgidb	ALAZANINE	chembl:CHEMBL578063			False		
+BLM	d1_direct	dgidb	ASTERRIC ACID	chembl:CHEMBL469424			False		
+BLM	d1_direct	dgidb	AURINTRICARBOXYLIC ACID	chembl:CHEMBL275938			False		
+BLM	d1_direct	dgidb	BAICALEIN	iuphar.ligand:5144			False		
+BLM	d1_direct	dgidb	BEXAROTENE	rxcui:233272			True		
+BLM	d1_direct	dgidb	CALMIDAZOLIUM CHLORIDE	chembl:CHEMBL1208858			False		
+BLM	d1_direct	dgidb	CARUBICIN	chembl:CHEMBL474260			False		
+BLM	d1_direct	dgidb	CAULIBUGULONE B	chembl:CHEMBL508779			False		
+BLM	d1_direct	dgidb	CAULIBUGULONE C	chembl:CHEMBL445969			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL1256813	chembl:CHEMBL1256813			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL1307453	chembl:CHEMBL1307453			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL1364172	chembl:CHEMBL1364172			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL1397270	chembl:CHEMBL1397270			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL1451216	chembl:CHEMBL1451216			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL1504679	chembl:CHEMBL1504679			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL175266	chembl:CHEMBL175266			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL177756	chembl:CHEMBL177756			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL211670	chembl:CHEMBL211670			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL234338	chembl:CHEMBL234338			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL337173	chembl:CHEMBL337173			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL429095	chembl:CHEMBL429095			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL463783	chembl:CHEMBL463783			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL515252	chembl:CHEMBL515252			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL515505	chembl:CHEMBL515505			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL530280	chembl:CHEMBL530280			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL56393	chembl:CHEMBL56393			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL578512	chembl:CHEMBL578512			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL578741	chembl:CHEMBL578741			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL580421	chembl:CHEMBL580421			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL587856	chembl:CHEMBL587856			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL592124	chembl:CHEMBL592124			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL599013	chembl:CHEMBL599013			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL601140	chembl:CHEMBL601140			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL601543	chembl:CHEMBL601543			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL601757	chembl:CHEMBL601757			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL67535	chembl:CHEMBL67535			False		
+BLM	d1_direct	dgidb	CHEMBL:CHEMBL68534	chembl:CHEMBL68534			False		
+BLM	d1_direct	dgidb	CONGO RED FREE ACID	chembl:CHEMBL116955			False		
+BLM	d1_direct	dgidb	DAUNORUBICIN HYDROCHLORIDE	chembl:CHEMBL1563			True		
+BLM	d1_direct	dgidb	DAUNORUBICIN LIPOSOMAL	rxcui:214468			True		
+BLM	d1_direct	dgidb	DEPHOSTATIN	chembl:CHEMBL269733			False		
+BLM	d1_direct	dgidb	DIHYDROGAMBOGIC ACID	chembl:CHEMBL1526240			False		
+BLM	d1_direct	dgidb	DOXORUBICIN HYDROCHLORIDE	rxcui:142433			True		
+BLM	d1_direct	dgidb	EICOSATETRANOIC ACID	iuphar.ligand:2669			False		
+BLM	d1_direct	dgidb	ELLAGIC ACID	iuphar.ligand:13035			False		
+BLM	d1_direct	dgidb	ERYTHROSINE	chembl:CHEMBL1332616			False		
+BLM	d1_direct	dgidb	ESTRAMUSTINE	rxcui:4089			True		
+BLM	d1_direct	dgidb	EUFLAVINE	chembl:CHEMBL354349			False		
+BLM	d1_direct	dgidb	FENOLDOPAM BROMIDE	chembl:CHEMBL1256646			False		
+BLM	d1_direct	dgidb	FENOLDOPAM MESYLATE	chembl:CHEMBL1026			True		
+BLM	d1_direct	dgidb	FLUPIRTINE MALEATE	chembl:CHEMBL1256752			False		
+BLM	d1_direct	dgidb	GENTIAN VIOLET CATION	rxcui:1546369			True		
+BLM	d1_direct	dgidb	GOSSYPOL	iuphar.ligand:4204			False		
+BLM	d1_direct	dgidb	GW5074	iuphar.ligand:8072			False		
+BLM	d1_direct	dgidb	GW7647	iuphar.ligand:2674			False		
+BLM	d1_direct	dgidb	HARMALOL	chembl:CHEMBL129177			False		
+BLM	d1_direct	dgidb	HELIOMYCIN	chembl:CHEMBL1320139			False		
+BLM	d1_direct	dgidb	HYDROXYUREA	rxcui:5552			True		
+BLM	d1_direct	dgidb	HYPERICIN	rxcui:1546455			False		
+BLM	d1_direct	dgidb	IDARUBICIN	rxcui:5650			True		
+BLM	d1_direct	dgidb	IRIGENOL	iuphar.ligand:11564			False		
+BLM	d1_direct	dgidb	IRIGINOL HEXAACEATATE	chembl:CHEMBL1440119			False		
+BLM	d1_direct	dgidb	JP1302	iuphar.ligand:3930			False		
+BLM	d1_direct	dgidb	JUGLONE	iuphar.ligand:13647			False		
+BLM	d1_direct	dgidb	L-NOREPINEPHRINE	chembl:CHEMBL18824			False		
+BLM	d1_direct	dgidb	LAPACHONE	chembl:CHEMBL15192			False		
+BLM	d1_direct	dgidb	LEVODOPA	rxcui:6375			True		
+BLM	d1_direct	dgidb	LIOTHYRONINE SODIUM	rxcui:142448			True		
+BLM	d1_direct	dgidb	LOMOFUNGIN	chembl:CHEMBL1505471			False		
+BLM	d1_direct	dgidb	LUTEOLIN	iuphar.ligand:5215			False		
+BLM	d1_direct	dgidb	METHOCTRAMINE HYDROCHLORIDE	chembl:CHEMBL500996			False		
+BLM	d1_direct	dgidb	METHYLDOPA ANHYDROUS	rxcui:1545996			True		
+BLM	d1_direct	dgidb	METHYLENE BLUE ANHYDROUS	chembl:CHEMBL405110			True		
+BLM	d1_direct	dgidb	METHYLENE BLUE CATION	chembl:CHEMBL191083			False		
+BLM	d1_direct	dgidb	MITOXANTRONE	rxcui:7005			True		
+BLM	d1_direct	dgidb	MITOXANTRONE HYDROCHLORIDE	chembl:CHEMBL1417019			True		
+BLM	d1_direct	dgidb	MYRICETIN	drugbank:DB02375			False		
+BLM	d1_direct	dgidb	NOREPINEPHRINE	rxcui:7512			True		
+BLM	d1_direct	dgidb	PHANQUONE	chembl:CHEMBL531048			False		
+BLM	d1_direct	dgidb	PURPUROGALLIN	chembl:CHEMBL66953			False		
+BLM	d1_direct	dgidb	PYROGALLOL RED	chembl:CHEMBL210208			False		
+BLM	d1_direct	dgidb	QUERCETIN	rxcui:9060			True		
+BLM	d1_direct	dgidb	QUERCETIN DIHYDRATE	chembl:CHEMBL1173475			False		
+BLM	d1_direct	dgidb	QUINALDINE BLUE	chembl:CHEMBL1433292			False		
+BLM	d1_direct	dgidb	RHEIN	chembl:CHEMBL418068			False		
+BLM	d1_direct	dgidb	RM-2 GA-68	chembl:CHEMBL4297341			False		
+BLM	d1_direct	dgidb	ROSE BENGAL	chembl:CHEMBL1160160			False		
+BLM	d1_direct	dgidb	ROSMARINIC ACID	chembl:CHEMBL324842			False		
+BLM	d1_direct	dgidb	SALIRASIB	ncit:C71146			False		
+BLM	d1_direct	dgidb	SODIUM TANSHINONE IIA SULFONATE	chembl:CHEMBL1473252			False		
+BLM	d1_direct	dgidb	SOFALCONE	chembl:CHEMBL1441961			False		
+BLM	d1_direct	dgidb	STREPTONIGRIN	chembl:CHEMBL11417			False		
+BLM	d1_direct	dgidb	TETRAIDOFLUORESCEIN	chembl:CHEMBL1160028			False		
+BLM	d1_direct	dgidb	THIOCTIC ACID	rxcui:6417			True		
+BLM	d1_direct	dgidb	TOLONIUM CHLORIDE	chembl:CHEMBL1790006			False		
+BLM	d1_direct	dgidb	TRICHOSTATIN A	ncit:C1261			False		
+BLM	d1_direct	dgidb	TRIMETREXATE	rxcui:42333			True		
+BLM	d1_direct	dgidb	VITAMIN K3	rxcui:6728			True		
+BLM	d1_direct	dgidb	WEDELOLACTONE	iuphar.ligand:5551			False		
+BRCA1	d1_direct	dgidb	2-PHENYLQUINOLINE	chembl:CHEMBL89786			False		
+BRCA1	d1_direct	dgidb	6-HYDROXYFLAVONE	chembl:CHEMBL138649			False		
+BRCA1	d1_direct	dgidb	7-HYDROXY ISOFLAVONE	chembl:CHEMBL491981			False		
+BRCA1	d1_direct	dgidb	7-HYDROXYFLAVONE	chembl:CHEMBL276915			False		
+BRCA1	d1_direct	dgidb	ANTHRACYCLINE ANTINEOPLASTIC ANTIBIOTIC	ncit:C1594			False		
+BRCA1	d1_direct	dgidb	APIGENIN	rxcui:1368130			True		
+BRCA1	d1_direct	dgidb	AURINTRICARBOXYLIC ACID	chembl:CHEMBL275938			False		
+BRCA1	d1_direct	dgidb	BLEOMYCIN	rxcui:1622			True		
+BRCA1	d1_direct	dgidb	CALYCOSIN	chembl:CHEMBL241608			False		
+BRCA1	d1_direct	dgidb	CARBOPLATIN	rxcui:40048			True		
+BRCA1	d1_direct	dgidb	CEDIRANIB	ncit:C80867			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL1078244	chembl:CHEMBL1078244			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL114544	chembl:CHEMBL114544			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL1214407	chembl:CHEMBL1214407			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL12658	chembl:CHEMBL12658			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL1308677	chembl:CHEMBL1308677			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL1320798	chembl:CHEMBL1320798			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL1404865	chembl:CHEMBL1404865			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL1405979	chembl:CHEMBL1405979			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL1420181	chembl:CHEMBL1420181			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL1481721	chembl:CHEMBL1481721			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL153505	chembl:CHEMBL153505			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL1574420	chembl:CHEMBL1574420			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL1709259	chembl:CHEMBL1709259			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL1998001	chembl:CHEMBL1998001			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL273891	chembl:CHEMBL273891			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL316796	chembl:CHEMBL316796			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL446567	chembl:CHEMBL446567			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL452954	chembl:CHEMBL452954			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL484663	chembl:CHEMBL484663			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL546649	chembl:CHEMBL546649			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL546865	chembl:CHEMBL546865			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL581910	chembl:CHEMBL581910			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL581929	chembl:CHEMBL581929			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL587620	chembl:CHEMBL587620			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL588525	chembl:CHEMBL588525			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL588683	chembl:CHEMBL588683			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL589207	chembl:CHEMBL589207			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL593254	chembl:CHEMBL593254			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL600315	chembl:CHEMBL600315			False		
+BRCA1	d1_direct	dgidb	CHEMBL:CHEMBL66279	chembl:CHEMBL66279			False		
+BRCA1	d1_direct	dgidb	CHRYSIN DIMETHYL ETHER	chembl:CHEMBL275391			False		
+BRCA1	d1_direct	dgidb	CISPLATIN	rxcui:2555			True		
+BRCA1	d1_direct	dgidb	DAIDZIN	chembl:CHEMBL486422			False		
+BRCA1	d1_direct	dgidb	DAUNORUBICIN HYDROCHLORIDE	chembl:CHEMBL1563			True		
+BRCA1	d1_direct	dgidb	DEPHOSTATIN	chembl:CHEMBL269733			False		
+BRCA1	d1_direct	dgidb	DIMETHYL YELLOW	chembl:CHEMBL263116			False		
+BRCA1	d1_direct	dgidb	DIPYRIDAMOLE	rxcui:3521			True		
+BRCA1	d1_direct	dgidb	DOXORUBICIN HYDROCHLORIDE	rxcui:142433			True		
+BRCA1	d1_direct	dgidb	EMODIN	ncit:C466			False		
+BRCA1	d1_direct	dgidb	EUFLAVINE	chembl:CHEMBL354349			False		
+BRCA1	d1_direct	dgidb	GAMMA-FAGARINE	chembl:CHEMBL252925			False		
+BRCA1	d1_direct	dgidb	GEMCITABINE	rxcui:12574			True		
+BRCA1	d1_direct	dgidb	GLABRIDIN	chembl:CHEMBL480477			False		
+BRCA1	d1_direct	dgidb	HARMALOL	chembl:CHEMBL129177			False		
+BRCA1	d1_direct	dgidb	ILEPCIMIDE	chembl:CHEMBL118478			False		
+BRCA1	d1_direct	dgidb	IROFULVEN	ncit:C1717			False		
+BRCA1	d1_direct	dgidb	MITOMYCIN	rxcui:632			True		
+BRCA1	d1_direct	dgidb	MITOXANTRONE HYDROCHLORIDE	rxcui:203129			True		
+BRCA1	d1_direct	dgidb	NILE RED	chembl:CHEMBL144472			False		
+BRCA1	d1_direct	dgidb	NIRAPARIB	rxcui:1918231			True		
+BRCA1	d1_direct	dgidb	OLAPARIB	rxcui:1597582			True		
+BRCA1	d1_direct	dgidb	ONONIN	chembl:CHEMBL465980			False		
+BRCA1	d1_direct	dgidb	OXALIPLATIN	rxcui:32592			True		
+BRCA1	d1_direct	dgidb	PACLITAXEL PROTEIN-BOUND	rxcui:486610			True		
+BRCA1	d1_direct	dgidb	PARP/TANKYRASE INHIBITOR 2X-121	ncit:C102746			False		
+BRCA1	d1_direct	dgidb	PHENAMIL METHANESULFONATE	chembl:CHEMBL1256775			False		
+BRCA1	d1_direct	dgidb	PHYTOESTROGEN	ncit:C1194			False		
+BRCA1	d1_direct	dgidb	PIDNARULEX	ncit:C126798			False		
+BRCA1	d1_direct	dgidb	PIFEXOLE	chembl:CHEMBL1402420			False		
+BRCA1	d1_direct	dgidb	PIPERINE	rxcui:1311146			True		
+BRCA1	d1_direct	dgidb	PLATINUM COMPOUND	ncit:C1450			False		
+BRCA1	d1_direct	dgidb	PURPURIN	chembl:CHEMBL294264			False		
+BRCA1	d1_direct	dgidb	QUARFLOXIN	ncit:C71726			False		
+BRCA1	d1_direct	dgidb	QUINALIZARIN	chembl:CHEMBL29898			False		
+BRCA1	d1_direct	dgidb	RESVERATROL	rxcui:1000492			True		
+BRCA1	d1_direct	dgidb	RIBOFLAVIN	rxcui:9346			True		
+BRCA1	d1_direct	dgidb	RUCAPARIB	rxcui:1862579			True		
+BRCA1	d1_direct	dgidb	SACITUZUMAB GOVITECAN	rxcui:2360232			True		
+BRCA1	d1_direct	dgidb	SB 204741	iuphar.ligand:221			False		
+BRCA1	d1_direct	dgidb	SEMUSTINE	ncit:C827			False		
+BRCA1	d1_direct	dgidb	SODIUM TANSHINONE IIA SULFONATE	chembl:CHEMBL1473252			False		
+BRCA1	d1_direct	dgidb	TALAZOPARIB	rxcui:2099704			True		
+BRCA1	d1_direct	dgidb	TAMOXIFEN CITRATE	rxcui:40137			True		
+BRCA1	d1_direct	dgidb	THERAPEUTIC HORMONE	ncit:C548			False		
+BRCA1	d1_direct	dgidb	THIABENDAZOLE	rxcui:10450			True		
+BRCA1	d1_direct	dgidb	THUNBERGINOL E	chembl:CHEMBL421486			False		
+BRCA1	d1_direct	dgidb	TIAPROFENIC ACID	rxcui:38253			False		
+BRCA1	d1_direct	dgidb	VELIPARIB	ncit:C60768			False		
+BRCA1	d1_direct	dgidb	VINORELBINE	rxcui:39541			True		
+BRCA1	d1_direct	dgidb	VU0001171	iuphar.ligand:6228			False		
+BRCA1	d1_direct	dgidb	WISTIN	chembl:CHEMBL464707			False		
+BRCA2	d1_direct	dgidb	BOSUTINIB	rxcui:1307619			True		
+BRCA2	d1_direct	dgidb	CARBOPLATIN	rxcui:40048			True		
+BRCA2	d1_direct	dgidb	CEDIRANIB	ncit:C80867			False		
+BRCA2	d1_direct	dgidb	CISPLATIN	rxcui:2555			True		
+BRCA2	d1_direct	dgidb	DASATINIB ANHYDROUS	rxcui:1546019			True		
+BRCA2	d1_direct	dgidb	ENZALUTAMIDE	rxcui:1307298			True		
+BRCA2	d1_direct	dgidb	GEMCITABINE	rxcui:12574			True		
+BRCA2	d1_direct	dgidb	INIPARIB	ncit:C62526			False		
+BRCA2	d1_direct	dgidb	NIRAPARIB	rxcui:1918231			True		
+BRCA2	d1_direct	dgidb	OLAPARIB	rxcui:1597582			True		
+BRCA2	d1_direct	dgidb	PARP/TANKYRASE INHIBITOR 2X-121	ncit:C102746			False		
+BRCA2	d1_direct	dgidb	PIDNARULEX	ncit:C126798			False		
+BRCA2	d1_direct	dgidb	PLATINUM COMPOUND	ncit:C1450			False		
+BRCA2	d1_direct	dgidb	QUARFLOXIN	ncit:C71726			False		
+BRCA2	d1_direct	dgidb	RUCAPARIB	rxcui:1862579			True		
+BRCA2	d1_direct	dgidb	SACITUZUMAB GOVITECAN	rxcui:2360232			True		
+BRCA2	d1_direct	dgidb	TALAZOPARIB	rxcui:2099704			True		
+BRCA2	d1_direct	dgidb	TEMOZOLOMIDE	rxcui:37776			True		
+BRCA2	d1_direct	dgidb	VELIPARIB	ncit:C60768			False		
+CHEK1	d1_direct	dgidb	7-HYDROXYSTAUROSPORINE	ncit:C1271			False		
+CHEK1	d1_direct	dgidb	7-HYDROXYSTAUROSPORINE	iuphar.ligand:7907			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	AZD7762	iuphar.ligand:7713			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	AZD7762	iuphar.ligand:7713			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	BEN-28010	iuphar.ligand:13893			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	BERZOSERTIB	ncit:C116355			False		
+CHEK1	d1_direct	dgidb	BX-795	iuphar.ligand:8006			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	BX-912	iuphar.ligand:8007			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	CCT241533	iuphar.ligand:8044			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	CCT244747	iuphar.ligand:8215			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	CCT245737	iuphar.ligand:9187			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	CENISERTIB	chembl:CHEMBL1967878			False		
+CHEK1	d1_direct	dgidb	CHEMBL:CHEMBL1997335	chembl:CHEMBL1997335			False		
+CHEK1	d1_direct	dgidb	CHEMBL:CHEMBL506048	chembl:CHEMBL506048			False		
+CHEK1	d1_direct	dgidb	CHEMBL:CHEMBL578061	chembl:CHEMBL578061			False		
+CHEK1	d1_direct	dgidb	CHIR-124	iuphar.ligand:9365			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	CI-1040	drugbank:DB12429			False		
+CHEK1	d1_direct	dgidb	CISPLATIN	rxcui:2555			True		
+CHEK1	d1_direct	dgidb	COMPOUND 25 [PMID: 17935989]	iuphar.ligand:8122			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	COMPOUND 25 [PMID: 20855207]	iuphar.ligand:8159			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	COMPOUND 33 [PMID: 19364658]	iuphar.ligand:8163			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	CYC-116	chembl:CHEMBL482967			False		
+CHEK1	d1_direct	dgidb	DACTOLISIB	ncit:C74072			False		
+CHEK1	d1_direct	dgidb	DIMETHYLADENINE	chembl:CHEMBL407391			False		
+CHEK1	d1_direct	dgidb	DOVITINIB	ncit:C76199			False		
+CHEK1	d1_direct	dgidb	DOXORUBICIN HYDROCHLORIDE	rxcui:142433			True		
+CHEK1	d1_direct	dgidb	ETOPOSIDE	rxcui:4179			True		
+CHEK1	d1_direct	dgidb	GDC-0425	drugbank:DB14791			False		
+CHEK1	d1_direct	dgidb	GEMCITABINE	rxcui:12574			True		
+CHEK1	d1_direct	dgidb	GEMTUZUMAB OZOGAMICIN	rxcui:1294580			True		
+CHEK1	d1_direct	dgidb	ISOGRANULATIMIDE	iuphar.ligand:5991			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	KENPAULLONE	iuphar.ligand:6000			False		
+CHEK1	d1_direct	dgidb	MK-8776	iuphar.ligand:7943			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	NVP-TAE684	iuphar.ligand:5714			False		
+CHEK1	d1_direct	dgidb	OLAPARIB	rxcui:1597582			True		
+CHEK1	d1_direct	dgidb	PACLITAXEL PROTEIN-BOUND	rxcui:486610			True		
+CHEK1	d1_direct	dgidb	PALBOCICLIB	rxcui:1601374			True		
+CHEK1	d1_direct	dgidb	PF-00477736	chembl:CHEMBL3545137			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	PF-477736	iuphar.ligand:8043			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	PREXASERTIB	ncit:C91392			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	PREXASERTIB	ncit:C91392			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	RABUSERTIB	ncit:C81937			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	RABUSERTIB	ncit:C81937			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	RG-1530	iuphar.ligand:10361			False		
+CHEK1	d1_direct	dgidb	RG-7602	chembl:CHEMBL5314388			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	RG-7741	chembl:CHEMBL3545199			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	SB 218078	iuphar.ligand:6037			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	SCH-900776	chembl:CHEMBL2386889			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	SP-600125	chembl:CHEMBL1725279			False		
+CHEK1	d1_direct	dgidb	TAMATINIB	iuphar.ligand:5706			False		
+CHEK1	d1_direct	dgidb	THYMIDINE	ncit:C880			False		
+CHEK1	d1_direct	dgidb	UCN-01	chembl:CHEMBL574737			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	WITHAFERIN A	iuphar.ligand:13097			False		
+CHEK1	d1_direct	dgidb	XL-844	chembl:CHEMBL3544936			False	inhibitor	INHIBITORY
+CHEK1	d1_direct	dgidb	XL844	drugbank:DB05149			False		
+CHEK1	d1_direct	opentargets	AZD-7762	CHEMBL2041933	Small molecule	PHASE_1		Serine/threonine-protein kinase Chk1 inhibitor	INHIBITOR
+CHEK1	d1_direct	opentargets	PF-00477736	CHEMBL3545137	Small molecule	PHASE_1		Serine/threonine-protein kinase Chk1 inhibitor	INHIBITOR
+CHEK1	d1_direct	opentargets	PREXASERTIB	CHEMBL3544911	Small molecule	PHASE_2		Serine/threonine-protein kinase Chk1 inhibitor	INHIBITOR
+CHEK1	d1_direct	opentargets	PREXASERTIB	CHEMBL3544911	Small molecule	PHASE_2		Serine/threonine-protein kinase Chk2 inhibitor	INHIBITOR
+CHEK1	d1_direct	opentargets	RABUSERTIB	CHEMBL3039517	Small molecule	PHASE_2		Serine/threonine-protein kinase Chk1 inhibitor	INHIBITOR
+CHEK1	d1_direct	opentargets	RG-7602	CHEMBL5314388	Small molecule	PHASE_1		Serine/threonine-protein kinase Chk1 inhibitor	INHIBITOR
+CHEK1	d1_direct	opentargets	RG-7741	CHEMBL3545199	Unknown	PHASE_1		Serine/threonine-protein kinase Chk1 inhibitor	INHIBITOR
+CHEK1	d1_direct	opentargets	SCH-900776	CHEMBL2386889	Small molecule	PHASE_2		Serine/threonine-protein kinase Chk1 inhibitor	INHIBITOR
+CHEK1	d1_direct	opentargets	UCN-01	CHEMBL574737	Small molecule	PHASE_2		3-phosphoinositide dependent protein kinase-1 inhibitor	INHIBITOR
+CHEK1	d1_direct	opentargets	UCN-01	CHEMBL574737	Small molecule	PHASE_2		Cyclin-dependent kinase 6 inhibitor	INHIBITOR
+CHEK1	d1_direct	opentargets	UCN-01	CHEMBL574737	Small molecule	PHASE_2		Protein kinase C (PKC) inhibitor	INHIBITOR
+CHEK1	d1_direct	opentargets	UCN-01	CHEMBL574737	Small molecule	PHASE_2		Cyclin-dependent kinase 2 inhibitor	INHIBITOR
+CHEK1	d1_direct	opentargets	UCN-01	CHEMBL574737	Small molecule	PHASE_2		Cyclin-dependent kinase 4 inhibitor	INHIBITOR
+CHEK1	d1_direct	opentargets	UCN-01	CHEMBL574737	Small molecule	PHASE_2		Serine/threonine-protein kinase Chk1 inhibitor	INHIBITOR
+CHEK1	d1_direct	opentargets	XL-844	CHEMBL3544936	Unknown	PHASE_1		Serine/threonine-protein kinase Chk2 inhibitor	INHIBITOR
+CHEK1	d1_direct	opentargets	XL-844	CHEMBL3544936	Unknown	PHASE_1		Serine/threonine-protein kinase Chk1 inhibitor	INHIBITOR
+CHEK2	d1_direct	dgidb	7-HYDROXYSTAUROSPORINE	iuphar.ligand:7907			False	inhibitor	INHIBITORY
+CHEK2	d1_direct	dgidb	ABIRATERONE ACETATE	rxcui:1100071			True		
+CHEK2	d1_direct	dgidb	ALSTERPAULLONE	drugbank:DB04014			False		
+CHEK2	d1_direct	dgidb	AZD7762	iuphar.ligand:7713			False	inhibitor	INHIBITORY
+CHEK2	d1_direct	dgidb	AZD7762	iuphar.ligand:7713			False	inhibitor	INHIBITORY
+CHEK2	d1_direct	dgidb	BARASERTIB-HQPA	iuphar.ligand:5663			False		
+CHEK2	d1_direct	dgidb	CCT241533	iuphar.ligand:8044			False	inhibitor	INHIBITORY
+CHEK2	d1_direct	dgidb	CCT245737	iuphar.ligand:9187			False	inhibitor	INHIBITORY
+CHEK2	d1_direct	dgidb	CDK INHIBITOR 4.35	iuphar.ligand:10357			False	inhibitor	INHIBITORY
+CHEK2	d1_direct	dgidb	CEDIRANIB	ncit:C80867			False		
+CHEK2	d1_direct	dgidb	CENISERTIB	chembl:CHEMBL1967878			False		
+CHEK2	d1_direct	dgidb	CHEMBL:CHEMBL578061	chembl:CHEMBL578061			False		
+CHEK2	d1_direct	dgidb	CHK2 INHIBITOR II	iuphar.ligand:5954			False	inhibitor	INHIBITORY
+CHEK2	d1_direct	dgidb	COMPOUND 25B [PMID: 22564207]	iuphar.ligand:8139			False	inhibitor	INHIBITORY
+CHEK2	d1_direct	dgidb	CYC-116	chembl:CHEMBL482967			False		
+CHEK2	d1_direct	dgidb	DIMETHYLADENINE	chembl:CHEMBL407391			False		
+CHEK2	d1_direct	dgidb	DOVITINIB	ncit:C76199			False		
+CHEK2	d1_direct	dgidb	ENZALUTAMIDE	rxcui:1307298			True		
+CHEK2	d1_direct	dgidb	FASUDIL	ncit:C65624			False		
+CHEK2	d1_direct	dgidb	G&OUML; 6976	iuphar.ligand:5973			False		
+CHEK2	d1_direct	dgidb	GEFITINIB	rxcui:328134			True		
+CHEK2	d1_direct	dgidb	GW441756X	chembl:CHEMBL1516890			False		
+CHEK2	d1_direct	dgidb	ILORASERTIB	ncit:C116729			False		
+CHEK2	d1_direct	dgidb	ISOGRANULATIMIDE	iuphar.ligand:5991			False	inhibitor	INHIBITORY
+CHEK2	d1_direct	dgidb	KENPAULLONE	iuphar.ligand:6000			False		
+CHEK2	d1_direct	dgidb	MLN-8054	iuphar.ligand:5696			False		
+CHEK2	d1_direct	dgidb	NIRAPARIB	rxcui:1918231			True		
+CHEK2	d1_direct	dgidb	NVP-TAE684	iuphar.ligand:5714			False		
+CHEK2	d1_direct	dgidb	OLAPARIB	rxcui:1597582			True		
+CHEK2	d1_direct	dgidb	PALBOCICLIB	rxcui:1601374			True		
+CHEK2	d1_direct	dgidb	PF-477736	iuphar.ligand:8043			False	inhibitor	INHIBITORY
+CHEK2	d1_direct	dgidb	PF-562271	iuphar.ligand:9381			False		
+CHEK2	d1_direct	dgidb	PREDNISONE	rxcui:8640			True		
+CHEK2	d1_direct	dgidb	PREXASERTIB	ncit:C91392			False	inhibitor	INHIBITORY
+CHEK2	d1_direct	dgidb	PREXASERTIB	ncit:C91392			False	inhibitor	INHIBITORY
+CHEK2	d1_direct	dgidb	RG-1530	iuphar.ligand:10361			False		
+CHEK2	d1_direct	dgidb	RUCAPARIB	rxcui:1862579			True		
+CHEK2	d1_direct	dgidb	SNS-314	chembl:CHEMBL482767			False		
+CHEK2	d1_direct	dgidb	SP-600125	chembl:CHEMBL1725279			False		
+CHEK2	d1_direct	dgidb	TALAZOPARIB	rxcui:2099704			True		
+CHEK2	d1_direct	dgidb	VEMURAFENIB	rxcui:1147220			True		
+CHEK2	d1_direct	dgidb	WITHAFERIN A	iuphar.ligand:13097			False		
+CHEK2	d1_direct	dgidb	XL-844	chembl:CHEMBL3544936			False	inhibitor	INHIBITORY
+CHEK2	d1_direct	dgidb	XL844	drugbank:DB05149			False		
+CHEK2	d1_direct	opentargets	PREXASERTIB	CHEMBL3544911	Small molecule	PHASE_2		Serine/threonine-protein kinase Chk1 inhibitor	INHIBITOR
+CHEK2	d1_direct	opentargets	PREXASERTIB	CHEMBL3544911	Small molecule	PHASE_2		Serine/threonine-protein kinase Chk2 inhibitor	INHIBITOR
+CHEK2	d1_direct	opentargets	XL-844	CHEMBL3544936	Unknown	PHASE_1		Serine/threonine-protein kinase Chk2 inhibitor	INHIBITOR
+CHEK2	d1_direct	opentargets	XL-844	CHEMBL3544936	Unknown	PHASE_1		Serine/threonine-protein kinase Chk1 inhibitor	INHIBITOR
+ERCC1	d2_pathway	dgidb	CARBOPLATIN	rxcui:40048			True		
+ERCC1	d2_pathway	dgidb	CISPLATIN	rxcui:2555			True		
+ERCC1	d2_pathway	dgidb	CYCLOSPORINE	rxcui:3008			True		
+ERCC1	d2_pathway	dgidb	DOXORUBICIN HYDROCHLORIDE	rxcui:142433			True		
+ERCC1	d2_pathway	dgidb	FLUOROURACIL	rxcui:4492			True		
+ERCC1	d2_pathway	dgidb	GEMCITABINE	rxcui:12574			True		
+ERCC1	d2_pathway	dgidb	HERBIMYCIN	ncit:C1124			False		
+ERCC1	d2_pathway	dgidb	PACLITAXEL PROTEIN-BOUND	rxcui:486610			True		
+ERCC1	d2_pathway	dgidb	PLATINUM	rxcui:1311280			False		
+ERCC1	d2_pathway	dgidb	PLATINUM COMPOUND	ncit:C1450			False		
+ERCC1	d2_pathway	dgidb	THALIDOMIDE	rxcui:10432			True		
+ERCC4	d2_pathway	dgidb	CISPLATIN	rxcui:2555			True		
+EXO1	d2_pathway	dgidb	CAPECITABINE	rxcui:194000			True		
+EXO1	d2_pathway	dgidb	FLUOROURACIL	rxcui:4492			True		
+EXO1	d2_pathway	dgidb	PEMETREXED DISODIUM	rxcui:282443			True		
+FANCA	d2_pathway	dgidb	CISPLATIN	rxcui:2555			True		
+FANCA	d2_pathway	dgidb	OLAPARIB	rxcui:1597582			True		
+FANCA	d2_pathway	dgidb	TALAZOPARIB	rxcui:2099704			True		
+FANCD2	d1_direct	dgidb	DOXORUBICIN HYDROCHLORIDE	rxcui:142433			True		
+H2AX	d1_direct	dgidb	ACETYLCYSTEINE	rxcui:197			True		
+H2AX	d1_direct	dgidb	DOXORUBICIN HYDROCHLORIDE	rxcui:142433			True		
+H2AX	d1_direct	dgidb	METHADONE HYDROCHLORIDE	rxcui:218337			True		
+H2AX	d1_direct	dgidb	TEMOZOLOMIDE	rxcui:37776			True		
+H2AX	d1_direct	dgidb	TESTOSTERONE	rxcui:10379			True		
+IKBKG	d1_direct	dgidb	ARTESUNATE	rxcui:18346			True		
+IKBKG	d1_direct	dgidb	PRIMAQUINE	rxcui:8687			True		
+IKBKG	d1_direct	dgidb	PYRIMETHAMINE	rxcui:9010			True		
+IKBKG	d1_direct	dgidb	SULFADOXINE	rxcui:10173			True		
+KAT5	d1_direct	dgidb	ANACARDIC ACID	chembl:CHEMBL33778			False		
+KAT5	d1_direct	dgidb	CHEMBL:CHEMBL416038	chembl:CHEMBL416038			False		
+KAT5	d1_direct	dgidb	MG149	iuphar.ligand:7488			False	inhibitor	INHIBITORY
+KAT5	d1_direct	dgidb	PF-9363	iuphar.ligand:12938			False	inhibitor	INHIBITORY
+MDM2	d1_direct	dgidb	ALRIZOMADLIN	ncit:C132991			False		
+MDM2	d1_direct	dgidb	ALRIZOMADLIN	chembl:CHEMBL4091801			False	inhibitor	INHIBITORY
+MDM2	d1_direct	dgidb	ANGIOGENESIS INHIBITOR	ncit:C1742			False		
+MDM2	d1_direct	dgidb	CHEMBL:CHEMBL1492017	chembl:CHEMBL1492017			False		
+MDM2	d1_direct	dgidb	CISPLATIN	rxcui:2555			True		
+MDM2	d1_direct	dgidb	DIPLAMINE B	chembl:CHEMBL513108			False		
+MDM2	d1_direct	dgidb	GAMBOGIC ACID	chembl:CHEMBL555017			False		
+MDM2	d1_direct	dgidb	HDM2 INHIBITOR MK-8242	ncit:C116867			False		
+MDM2	d1_direct	dgidb	HELENALIN	chembl:CHEMBL338474			False		
+MDM2	d1_direct	dgidb	IDASANUTLIN	ncit:C99131			False		
+MDM2	d1_direct	dgidb	IDASANUTLIN	chembl:CHEMBL2402737			False	inhibitor	INHIBITORY
+MDM2	d1_direct	dgidb	IPILIMUMAB	rxcui:1094833			True		
+MDM2	d1_direct	dgidb	JN122	iuphar.ligand:13126			False	inhibitor	INHIBITORY
+MDM2	d1_direct	dgidb	LISSOCLINIDINE B	chembl:CHEMBL461462			False		
+MDM2	d1_direct	dgidb	MANGOSTIN	rxcui:2619910			False		
+MDM2	d1_direct	dgidb	MDM2 ANTAGONIST RO5045337	ncit:C91724			False		
+MDM2	d1_direct	dgidb	MEK INHIBITOR PD-98059	ncit:C1625			False		
+MDM2	d1_direct	dgidb	MILADEMETAN	ncit:C141432			False		
+MDM2	d1_direct	dgidb	MILADEMETAN	drugbank:DB15257			False	inhibitor	INHIBITORY
+MDM2	d1_direct	dgidb	MILADEMETAN TOSYLATE	ncit:C107384			False		
+MDM2	d1_direct	dgidb	NAVTEMADLIN	ncit:C116624			False	inhibitor	INHIBITORY
+MDM2	d1_direct	dgidb	NAVTEMADLIN	ncit:C116624			False	inhibitor	INHIBITORY
+MDM2	d1_direct	dgidb	NIVOLUMAB	rxcui:1597876			True		
+MDM2	d1_direct	dgidb	NUTLIN-3	chembl:CHEMBL191334			False		
+MDM2	d1_direct	dgidb	NUTLIN-3	drugbank:DB17039			False		
+MDM2	d1_direct	dgidb	PEMBROLIZUMAB	rxcui:1547545			True		
+MDM2	d1_direct	dgidb	RG7112	iuphar.ligand:9599			False	inhibitor	INHIBITORY
+MDM2	d1_direct	dgidb	SERDEMETAN	ncit:C77904			False		
+MDM2	d1_direct	dgidb	SIREMADLIN	chembl:CHEMBL3653256			False	inhibitor	INHIBITORY
+MDM2	d1_direct	dgidb	SIREMADLIN	ncit:C116325			False		
+MDM2	d1_direct	dgidb	SULANEMADLIN	ncit:C118669			False		
+MDM2	d1_direct	dgidb	TCDD	iuphar.ligand:9642			False		
+MDM2	d1_direct	dgidb	THIRAM	chembl:CHEMBL120563			False		
+MDM2	d1_direct	opentargets	ALRIZOMADLIN	CHEMBL4091801	Small molecule	PHASE_2		Tumour suppressor p53/oncoprotein Mdm2 inhibitor	INHIBITOR
+MDM2	d1_direct	opentargets	IDASANUTLIN	CHEMBL2402737	Small molecule	PHASE_3		Tumour suppressor p53/oncoprotein Mdm2 inhibitor	INHIBITOR
+MDM2	d1_direct	opentargets	NAVTEMADLIN	CHEMBL3125702	Small molecule	PHASE_3		Tumour suppressor p53/oncoprotein Mdm2 inhibitor	INHIBITOR
+MDM2	d1_direct	opentargets	SIREMADLIN	CHEMBL3653256	Small molecule	PHASE_2		Tumour suppressor p53/oncoprotein Mdm2 inhibitor	INHIBITOR
+MLH1	d1_direct	dgidb	ATEZOLIZUMAB	rxcui:1792776			True		
+MLH1	d1_direct	dgidb	AVELUMAB	rxcui:1875534			True		
+MLH1	d1_direct	dgidb	CAPECITABINE	rxcui:194000			True		
+MLH1	d1_direct	dgidb	CARBOPLATIN	rxcui:40048			True		
+MLH1	d1_direct	dgidb	DOSTARLIMAB	rxcui:2539967			True		
+MLH1	d1_direct	dgidb	DURVALUMAB	rxcui:1919503			True		
+MLH1	d1_direct	dgidb	ENZALUTAMIDE	rxcui:1307298			True		
+MLH1	d1_direct	dgidb	FLUOROURACIL	rxcui:4492			True		
+MLH1	d1_direct	dgidb	IPILIMUMAB	rxcui:1094833			True		
+MLH1	d1_direct	dgidb	NIVOLUMAB	rxcui:1597876			True		
+MLH1	d1_direct	dgidb	OXALIPLATIN	rxcui:32592			True		
+MLH1	d1_direct	dgidb	PACLITAXEL PROTEIN-BOUND	rxcui:486610			True		
+MLH1	d1_direct	dgidb	PEMBROLIZUMAB	rxcui:1547545			True		
+MLH1	d1_direct	dgidb	TALAZOPARIB	rxcui:2099704			True		
+MLH1	d1_direct	dgidb	TREMELIMUMAB	rxcui:2619313			True		
+MRE11	d1_direct	dgidb	TALAZOPARIB	rxcui:2099704			True		
+MSH2	d1_direct	dgidb	ANTI-PD-1 MONOCLONAL ANTIBODY MEDI0680	ncit:C113332			False		
+MSH2	d1_direct	dgidb	CISPLATIN	rxcui:2555			True		
+MSH2	d1_direct	dgidb	DOXORUBICIN HYDROCHLORIDE	rxcui:142433			True		
+MSH2	d1_direct	dgidb	DURVALUMAB	rxcui:1919503			True		
+MSH6	d1_direct	dgidb	ANTI-PD-1 MONOCLONAL ANTIBODY MEDI0680	ncit:C113332			False		
+MSH6	d1_direct	dgidb	ATEZOLIZUMAB	rxcui:1792776			True		
+MSH6	d1_direct	dgidb	AVELUMAB	rxcui:1875534			True		
+MSH6	d1_direct	dgidb	CAPECITABINE	rxcui:194000			True		
+MSH6	d1_direct	dgidb	CARBOPLATIN	rxcui:40048			True		
+MSH6	d1_direct	dgidb	DOSTARLIMAB	rxcui:2539967			True		
+MSH6	d1_direct	dgidb	DURVALUMAB	rxcui:1919503			True		
+MSH6	d1_direct	dgidb	FLUOROURACIL	rxcui:4492			True		
+MSH6	d1_direct	dgidb	IPILIMUMAB	rxcui:1094833			True		
+MSH6	d1_direct	dgidb	LEUCOVORIN CALCIUM	rxcui:225852			True		
+MSH6	d1_direct	dgidb	NIVOLUMAB	rxcui:1597876			True		
+MSH6	d1_direct	dgidb	OXALIPLATIN	rxcui:32592			True		
+MSH6	d1_direct	dgidb	PACLITAXEL PROTEIN-BOUND	rxcui:486610			True		
+MSH6	d1_direct	dgidb	PEMBROLIZUMAB	rxcui:1547545			True		
+MSH6	d1_direct	dgidb	TEMOZOLOMIDE	rxcui:37776			True		
+MSH6	d1_direct	dgidb	TREMELIMUMAB	rxcui:2619313			True		
+NBN	d1_direct	dgidb	TALAZOPARIB	rxcui:2099704			True		
+PALB2	d2_pathway	dgidb	MITOMYCIN	rxcui:632			True		
+PALB2	d2_pathway	dgidb	OLAPARIB	rxcui:1597582			True		
+PALB2	d2_pathway	dgidb	RUCAPARIB	rxcui:1862579			True		
+PALB2	d2_pathway	dgidb	TALAZOPARIB	rxcui:2099704			True		
+PARP1	d2_pathway	dgidb	2X-121	chembl:CHEMBL3644587			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	2X-121	drugbank:DB16063			False		
+PARP1	d2_pathway	dgidb	4-[3-(1,4-DIAZEPAN-1-YLCARBONYL)-4-FLUOROBENZYL]PHTHALAZIN-1(2H)-ONE	drugbank:DB08058			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	AG14361	iuphar.ligand:8094			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	AMELPARIB DIHYDROCHLORIDE DIHYDRATE	chembl:CHEMBL5314421			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	AZ1366	iuphar.ligand:10676			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	BGP-15	chembl:CHEMBL4747845			False		
+PARP1	d2_pathway	dgidb	CEP-9722	drugbank:DB14882			False		
+PARP1	d2_pathway	dgidb	CICLOPIROX	rxcui:21090			True	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	COMPOUND 10B [PMID: 26222319]	iuphar.ligand:8731			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	COMPOUND 5 [TOMASSI ET AL., 2020]	iuphar.ligand:10672			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	COMPOUND 9 [LIN ET AL., 2023]	iuphar.ligand:12806			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	DUAL VEGFR/PARP INHIBITOR 14B	iuphar.ligand:12905			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	E-7016	chembl:CHEMBL3527000			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	FLUZOPARIB	iuphar.ligand:13763			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	INIPARIB	ncit:C62526			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	INIPARIB	ncit:C62526			False	other/unknown	
+PARP1	d2_pathway	dgidb	INO-1001	ncit:C61315			False		
+PARP1	d2_pathway	dgidb	LERZEPARIB	iuphar.ligand:12885			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	MC2050	iuphar.ligand:10671			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	ME0328	iuphar.ligand:8468			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	NIACIN	rxcui:7393			True		
+PARP1	d2_pathway	dgidb	NICARAVEN	ncit:C76580			False		
+PARP1	d2_pathway	dgidb	NIRAPARIB	rxcui:1918231			True	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	NIRAPARIB	rxcui:1918231			True	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	NIRAPARIB	rxcui:1918231			True	other/unknown	
+PARP1	d2_pathway	dgidb	NIRAPARIB TOSYLATE	rxcui:2637447			True		
+PARP1	d2_pathway	dgidb	NIRAPARIB TOSYLATE MONOHYDRATE	chembl:CHEMBL3989922			True	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	OLAPARIB	rxcui:1597582			True	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	OLAPARIB	rxcui:1597582			True	other/unknown	
+PARP1	d2_pathway	dgidb	OLAPARIB	rxcui:1597582			True	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	ORAL AZACITIDINE	ncit:C118288			False		
+PARP1	d2_pathway	dgidb	PALACAPARIB	iuphar.ligand:11946			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	PAMIPARIB	ncit:C120553			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	PAMIPARIB	ncit:C120553			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	PARP INHIBITOR E7016	ncit:C91387			False		
+PARP1	d2_pathway	dgidb	PARP-1/2 INHIBITOR ABT-767	ncit:C96795			False		
+PARP1	d2_pathway	dgidb	PARP1 INHIBITOR (S)-G9	iuphar.ligand:13961			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	PJ34	iuphar.ligand:11348			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	RUCAPARIB	rxcui:1862579			True	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	RUCAPARIB	rxcui:1862579			True	other/unknown	
+PARP1	d2_pathway	dgidb	RUCAPARIB	rxcui:1862579			True	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	RUCAPARIB CAMSYLATE	chembl:CHEMBL3833368			True	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	RUCAPARIB PHOSPHATE	ncit:C78186			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	SARUPARIB	iuphar.ligand:11526			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	SENAPARIB	chembl:CHEMBL4802152			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	TALAZOPARIB	rxcui:2099704			True	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	TALAZOPARIB	rxcui:2099704			True	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	TALAZOPARIB TOSYLATE	chembl:CHEMBL3137318			True	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	TRABECTEDIN	rxcui:1716278			True		
+PARP1	d2_pathway	dgidb	VELIPARIB	ncit:C60768			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	dgidb	VELIPARIB	ncit:C60768			False	other/unknown	
+PARP1	d2_pathway	dgidb	VENADAPARIB	ncit:C175871			False	inhibitor	INHIBITORY
+PARP1	d2_pathway	opentargets	2X-121	CHEMBL3644587	Small molecule	PHASE_2		Tankyrase 1/2 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	2X-121	CHEMBL3644587	Small molecule	PHASE_2		Poly [ADP-ribose] polymerase 2 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	2X-121	CHEMBL3644587	Small molecule	PHASE_2		Poly [ADP-ribose] polymerase-1 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	AMELPARIB DIHYDROCHLORIDE DIHYDRATE	CHEMBL5314421	Small molecule	PHASE_2		Poly [ADP-ribose] polymerase-1 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	E-7016	CHEMBL3527000	Small molecule	PHASE_2		PARP 1, 2 and 3 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	NIRAPARIB	CHEMBL1094636	Small molecule	APPROVAL		Poly [ADP-ribose] polymerase 2 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	NIRAPARIB	CHEMBL1094636	Small molecule	APPROVAL		Poly [ADP-ribose] polymerase-1 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	NIRAPARIB	CHEMBL1094636	Small molecule	APPROVAL		Poly [ADP-ribose] polymerase 2 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	NIRAPARIB	CHEMBL1094636	Small molecule	APPROVAL		Poly [ADP-ribose] polymerase-1 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	NIRAPARIB TOSYLATE MONOHYDRATE	CHEMBL3989922	Small molecule	APPROVAL		Poly [ADP-ribose] polymerase 2 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	NIRAPARIB TOSYLATE MONOHYDRATE	CHEMBL3989922	Small molecule	APPROVAL		Poly [ADP-ribose] polymerase-1 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	OLAPARIB	CHEMBL521686	Small molecule	APPROVAL		PARP 1, 2 and 3 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	PAMIPARIB	CHEMBL4112930	Small molecule	APPROVAL		Poly [ADP-ribose] polymerase 2 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	PAMIPARIB	CHEMBL4112930	Small molecule	APPROVAL		Poly [ADP-ribose] polymerase-1 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	RUCAPARIB	CHEMBL1173055	Small molecule	APPROVAL		PARP 1, 2 and 3 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	RUCAPARIB	CHEMBL1173055	Small molecule	APPROVAL		PARP 1, 2 and 3 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	RUCAPARIB CAMSYLATE	CHEMBL3833368	Small molecule	APPROVAL		PARP 1, 2 and 3 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	SENAPARIB	CHEMBL4802152	Small molecule	PHASE_3		Poly [ADP-ribose] polymerase 2 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	SENAPARIB	CHEMBL4802152	Small molecule	PHASE_3		Poly [ADP-ribose] polymerase-1 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	TALAZOPARIB	CHEMBL3137320	Small molecule	APPROVAL		Poly [ADP-ribose] polymerase-1 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	TALAZOPARIB	CHEMBL3137320	Small molecule	APPROVAL		Poly [ADP-ribose] polymerase-1 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	TALAZOPARIB	CHEMBL3137320	Small molecule	APPROVAL		Poly [ADP-ribose] polymerase 2 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	TALAZOPARIB	CHEMBL3137320	Small molecule	APPROVAL		Poly [ADP-ribose] polymerase 2 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	TALAZOPARIB TOSYLATE	CHEMBL3137318	Small molecule	APPROVAL		Poly [ADP-ribose] polymerase-1 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	TALAZOPARIB TOSYLATE	CHEMBL3137318	Small molecule	APPROVAL		Poly [ADP-ribose] polymerase 2 inhibitor	INHIBITOR
+PARP1	d2_pathway	opentargets	VELIPARIB	CHEMBL506871	Small molecule	APPROVAL		PARP 1, 2 and 3 inhibitor	INHIBITOR
+POLD1	d2_pathway	dgidb	ASPACYTARABINE	chembl:CHEMBL4297599			False	inhibitor	INHIBITORY
+POLD1	d2_pathway	dgidb	CLOFARABINE	rxcui:44151			True	inhibitor	INHIBITORY
+POLD1	d2_pathway	dgidb	CYTARABINE	rxcui:3041			True	inhibitor	INHIBITORY
+POLD1	d2_pathway	dgidb	FLUDARABINE	rxcui:24698			True	inhibitor	INHIBITORY
+POLD1	d2_pathway	dgidb	GEMCITABINE HYDROCHLORIDE	chembl:CHEMBL1637			True	inhibitor	INHIBITORY
+POLD1	d2_pathway	dgidb	HYMENOIC ACID	chembl:CHEMBL494213			False		
+POLD1	d2_pathway	dgidb	PEMBROLIZUMAB	rxcui:1547545			True		
+POLD1	d2_pathway	dgidb	TROXACITABINE	ncit:C1438			False	inhibitor	INHIBITORY
+POLD1	d2_pathway	opentargets	ASPACYTARABINE	CHEMBL4297599	Small molecule	PHASE_2		DNA polymerase (alpha/delta/epsilon) inhibitor	INHIBITOR
+POLD1	d2_pathway	opentargets	CLOFARABINE	CHEMBL1750	Small molecule	APPROVAL		DNA polymerase (alpha/delta/epsilon) inhibitor	INHIBITOR
+POLD1	d2_pathway	opentargets	CLOFARABINE	CHEMBL1750	Small molecule	APPROVAL		Ribonucleoside-diphosphate reductase RR1 inhibitor	INHIBITOR
+POLD1	d2_pathway	opentargets	CYTARABINE	CHEMBL803	Small molecule	APPROVAL		DNA polymerase (alpha/delta/epsilon) inhibitor	INHIBITOR
+POLD1	d2_pathway	opentargets	FLUDARABINE PHOSPHATE	CHEMBL1096882	Small molecule	APPROVAL		DNA polymerase (alpha/delta/epsilon) inhibitor	INHIBITOR
+POLD1	d2_pathway	opentargets	FLUDARABINE PHOSPHATE	CHEMBL1096882	Small molecule	APPROVAL		Ribonucleoside-diphosphate reductase RR1 inhibitor	INHIBITOR
+POLD1	d2_pathway	opentargets	GEMCITABINE	CHEMBL888	Small molecule	APPROVAL		DNA polymerase (alpha/delta/epsilon) inhibitor	INHIBITOR
+POLD1	d2_pathway	opentargets	GEMCITABINE	CHEMBL888	Small molecule	APPROVAL		Ribonucleoside-diphosphate reductase RR1 inhibitor	INHIBITOR
+POLD1	d2_pathway	opentargets	GEMCITABINE HYDROCHLORIDE	CHEMBL1637	Small molecule	APPROVAL		DNA polymerase (alpha/delta/epsilon) inhibitor	INHIBITOR
+POLD1	d2_pathway	opentargets	GEMCITABINE HYDROCHLORIDE	CHEMBL1637	Small molecule	APPROVAL		Ribonucleoside-diphosphate reductase RR1 inhibitor	INHIBITOR
+POLD1	d2_pathway	opentargets	TROXACITABINE	CHEMBL359164	Small molecule	PHASE_2		DNA polymerase (alpha/delta/epsilon) inhibitor	INHIBITOR
+PRKDC	d2_pathway	dgidb	AZD7648	iuphar.ligand:10601			False	inhibitor	INHIBITORY
+PRKDC	d2_pathway	dgidb	BAY-8400	iuphar.ligand:11732			False	inhibitor	INHIBITORY
+PRKDC	d2_pathway	dgidb	CC-115	chembl:CHEMBL3586573			False	inhibitor	INHIBITORY
+PRKDC	d2_pathway	dgidb	COMPOUND 82 [PMID: 21332118]	iuphar.ligand:8805			False	inhibitor	INHIBITORY
+PRKDC	d2_pathway	dgidb	DNA-PK INHIBITOR V	iuphar.ligand:5961			False	inhibitor	INHIBITORY
+PRKDC	d2_pathway	dgidb	KU-0060648	iuphar.ligand:8011			False	inhibitor	INHIBITORY
+PRKDC	d2_pathway	dgidb	LARTESERTIB	iuphar.ligand:12319			False	inhibitor	INHIBITORY
+PRKDC	d2_pathway	dgidb	NU-7026	iuphar.ligand:5959			False	inhibitor	INHIBITORY
+PRKDC	d2_pathway	dgidb	NU-7441	iuphar.ligand:8010			False	inhibitor	INHIBITORY
+PRKDC	d2_pathway	dgidb	PEPOSERTIB	ncit:C120036			False	inhibitor	INHIBITORY
+PRKDC	d2_pathway	dgidb	PI-103	iuphar.ligand:5701			False	inhibitor	INHIBITORY
+PRKDC	d2_pathway	dgidb	PIK-75	iuphar.ligand:8012			False	inhibitor	INHIBITORY
+PRKDC	d2_pathway	dgidb	PP-121	drugbank:DB08052			False	inhibitor	INHIBITORY
+PRKDC	d2_pathway	dgidb	SF1126	drugbank:DB05210			False		
+PRKDC	d2_pathway	dgidb	TORIN 2	iuphar.ligand:8839			False	inhibitor	INHIBITORY
+PRKDC	d2_pathway	dgidb	WORTMANNIN	drugbank:DB08059			False	inhibitor	INHIBITORY
+PRKDC	d2_pathway	dgidb	XRD-0394	iuphar.ligand:13457			False	inhibitor	INHIBITORY
+PRKDC	d2_pathway	opentargets	CC-115	CHEMBL3586573	Small molecule	PHASE_2		DNA-dependent protein kinase inhibitor	INHIBITOR
+PRKDC	d2_pathway	opentargets	CC-115	CHEMBL3586573	Small molecule	PHASE_2		Serine/threonine-protein kinase mTOR inhibitor	INHIBITOR
+RAD50	d1_direct	dgidb	CHECKPOINT KINASE INHIBITOR AZD7762	ncit:C66961			False		
+RAD50	d1_direct	dgidb	CYTARABINE	rxcui:3041			True		
+RAD50	d1_direct	dgidb	DAUNORUBICIN LIPOSOMAL	rxcui:214468			True		
+RAD50	d1_direct	dgidb	IRINOTECAN HYDROCHLORIDE	rxcui:153329			True		
+RAD51	d1_direct	dgidb	AMUVATINIB	ncit:C71750			False	inhibitor	INHIBITORY
+RAD52	d2_pathway	dgidb	5-(N,N-DIMETHYL)AMILORIDE HYDROCHLORIDE	chembl:CHEMBL1256020			False		
+RAD52	d2_pathway	dgidb	AMINACRINE HYDROCHLORIDE	chembl:CHEMBL1330022			False		
+RAD52	d2_pathway	dgidb	AMSACRINE HYDROCHLORIDE	chembl:CHEMBL1256655			False		
+RAD52	d2_pathway	dgidb	APOMORPHINE HYDROCHLORIDE	chembl:CHEMBL3187985			True		
+RAD52	d2_pathway	dgidb	AROMOLINE	chembl:CHEMBL509999			False		
+RAD52	d2_pathway	dgidb	BENOXINATE HYDROCHLORIDE	chembl:CHEMBL1200654			True		
+RAD52	d2_pathway	dgidb	BENZETHONIUM CHLORIDE	chembl:CHEMBL221753			False		
+RAD52	d2_pathway	dgidb	BERBERINE CHLORIDE	chembl:CHEMBL12089			False		
+RAD52	d2_pathway	dgidb	CETYLPYRIDINIUM BROMIDE	chembl:CHEMBL334255			False		
+RAD52	d2_pathway	dgidb	CETYLPYRIDINIUM CHLORIDE	chembl:CHEMBL2003538			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL1092508	chembl:CHEMBL1092508			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL1200792	chembl:CHEMBL1200792			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL1201074	chembl:CHEMBL1201074			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL124006	chembl:CHEMBL124006			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL1256660	chembl:CHEMBL1256660			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL1256735	chembl:CHEMBL1256735			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL1256995	chembl:CHEMBL1256995			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL1312050	chembl:CHEMBL1312050			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL1321398	chembl:CHEMBL1321398			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL1367933	chembl:CHEMBL1367933			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL1415258	chembl:CHEMBL1415258			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL1437888	chembl:CHEMBL1437888			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL1453126	chembl:CHEMBL1453126			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL1490332	chembl:CHEMBL1490332			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL1509103	chembl:CHEMBL1509103			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL1528359	chembl:CHEMBL1528359			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL19954	chembl:CHEMBL19954			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL22062	chembl:CHEMBL22062			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL353764	chembl:CHEMBL353764			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL461193	chembl:CHEMBL461193			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL463783	chembl:CHEMBL463783			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL478754	chembl:CHEMBL478754			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL493863	chembl:CHEMBL493863			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL522887	chembl:CHEMBL522887			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL528724	chembl:CHEMBL528724			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL532452	chembl:CHEMBL532452			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL547304	chembl:CHEMBL547304			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL547833	chembl:CHEMBL547833			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL577887	chembl:CHEMBL577887			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL578719	chembl:CHEMBL578719			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL578944	chembl:CHEMBL578944			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL580076	chembl:CHEMBL580076			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL581868	chembl:CHEMBL581868			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL582471	chembl:CHEMBL582471			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL583824	chembl:CHEMBL583824			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL584442	chembl:CHEMBL584442			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL584452	chembl:CHEMBL584452			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL585622	chembl:CHEMBL585622			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL587620	chembl:CHEMBL587620			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL589924	chembl:CHEMBL589924			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL590168	chembl:CHEMBL590168			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL592558	chembl:CHEMBL592558			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL596633	chembl:CHEMBL596633			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL596836	chembl:CHEMBL596836			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL599943	chembl:CHEMBL599943			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL600841	chembl:CHEMBL600841			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL602127	chembl:CHEMBL602127			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL602135	chembl:CHEMBL602135			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL606456	chembl:CHEMBL606456			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL609036	chembl:CHEMBL609036			False		
+RAD52	d2_pathway	dgidb	CHEMBL:CHEMBL68096	chembl:CHEMBL68096			False		
+RAD52	d2_pathway	dgidb	CHLORHEXIDINE GLUCONATE	rxcui:20791			True		
+RAD52	d2_pathway	dgidb	CHLORPROMAZINE HYDROCHLORIDE	chembl:CHEMBL1713			True		
+RAD52	d2_pathway	dgidb	FAGARONINE	chembl:CHEMBL282622			False		
+RAD52	d2_pathway	dgidb	FENOLDOPAM MESYLATE	chembl:CHEMBL1026			True		
+RAD52	d2_pathway	dgidb	GMQ	iuphar.ligand:4203			False		
+RAD52	d2_pathway	dgidb	GR 127935	iuphar.ligand:14			False		
+RAD52	d2_pathway	dgidb	HYCANTHONE	chembl:CHEMBL22077			False		
+RAD52	d2_pathway	dgidb	HYDROCHLOROTHIAZIDE	rxcui:5487			True		
+RAD52	d2_pathway	dgidb	HYDROXYSTILBAMIDINE ISETHIONATE	ncit:C65871			False		
+RAD52	d2_pathway	dgidb	IMATINIB MESYLATE	chembl:CHEMBL1642			True		
+RAD52	d2_pathway	dgidb	JATRORRHIZINE	chembl:CHEMBL251055			False		
+RAD52	d2_pathway	dgidb	JNJ-5207852	iuphar.ligand:1256			False		
+RAD52	d2_pathway	dgidb	METHIOTHEPIN MESYLATE	chembl:CHEMBL1256737			False		
+RAD52	d2_pathway	dgidb	METHYLENE BLUE ANHYDROUS	chembl:CHEMBL405110			True		
+RAD52	d2_pathway	dgidb	MITOXANTRONE	rxcui:7005			True		
+RAD52	d2_pathway	dgidb	MITOXANTRONE HYDROCHLORIDE	chembl:CHEMBL1417019			True		
+RAD52	d2_pathway	dgidb	OXIDOPAMINE HYDROCHLORIDE	chembl:CHEMBL451197			False		
+RAD52	d2_pathway	dgidb	PALMATINE CHLORIDE	chembl:CHEMBL274189			False		
+RAD52	d2_pathway	dgidb	PANCURONIUM BROMIDE	chembl:CHEMBL1200757			True		
+RAD52	d2_pathway	dgidb	PERPHENAZINE	rxcui:8076			True		
+RAD52	d2_pathway	dgidb	PINAFIDE	chembl:CHEMBL46874			False		
+RAD52	d2_pathway	dgidb	PROCHLORPERAZINE EDISYLATE	chembl:CHEMBL1201154			True		
+RAD52	d2_pathway	dgidb	PROPIONYLPROMAZINE HYDROCHLORIDE	chembl:CHEMBL1256661			False		
+RAD52	d2_pathway	dgidb	TALIPEXOLE HYDROCHLORIDE	chembl:CHEMBL1504869			False		
+RAD52	d2_pathway	dgidb	TEGASEROD MALEATE	chembl:CHEMBL1516474			True		
+RAD52	d2_pathway	dgidb	THIORIDAZINE HYDROCHLORIDE	chembl:CHEMBL1200916			True		
+RAD52	d2_pathway	dgidb	TRIFLUOPERAZINE	rxcui:10800			True		
+RNF8	d2_pathway	dgidb	CARBOPLATIN	rxcui:40048			True		
+RNF8	d2_pathway	dgidb	DOCETAXEL ANHYDROUS	rxcui:1299922			True		
+RNF8	d2_pathway	dgidb	TRASTUZUMAB	rxcui:224905			True		
+RPA1	d2_pathway	dgidb	CHEMBL:CHEMBL1765371	chembl:CHEMBL1765371			False		
+TP53	d1_direct	dgidb	(R)-INDOPROFEN	chembl:CHEMBL264931			False		
+TP53	d1_direct	dgidb	(R,S)-INDATRALINE	chembl:CHEMBL341898			False		
+TP53	d1_direct	dgidb	(Z)-PIPLARTINE	chembl:CHEMBL1456697			False		
+TP53	d1_direct	dgidb	2,6-DIMETHOXYQUINONE	chembl:CHEMBL448515			False		
+TP53	d1_direct	dgidb	2-AMINOANTHRACENE	chembl:CHEMBL83154			False		
+TP53	d1_direct	dgidb	2-CHLOROADENOSINE	iuphar.ligand:372			False		
+TP53	d1_direct	dgidb	2-IODOACETAMIDE	iuphar.ligand:6271			False		
+TP53	d1_direct	dgidb	3,4-DICHLOROBENZAMIL	iuphar.ligand:4597			False		
+TP53	d1_direct	dgidb	3-METHOXYCATECHOL	chembl:CHEMBL1518159			False		
+TP53	d1_direct	dgidb	4-METHOXYDALBERGIONE	chembl:CHEMBL1554531			False		
+TP53	d1_direct	dgidb	7,8-DIHYDROXYFLAVONE	chembl:CHEMBL75267			False		
+TP53	d1_direct	dgidb	ABEMACICLIB	rxcui:1946825			True		
+TP53	d1_direct	dgidb	ABIRATERONE ACETATE	rxcui:1100071			True		
+TP53	d1_direct	dgidb	ACALABRUTINIB	rxcui:1986808			True		
+TP53	d1_direct	dgidb	ACEQUINOCYL	chembl:CHEMBL1869353			False		
+TP53	d1_direct	dgidb	ADAVOSERTIB	ncit:C91725			False		
+TP53	d1_direct	dgidb	AHPN	iuphar.ligand:3431			False		
+TP53	d1_direct	dgidb	ALECTINIB	rxcui:1727455			True		
+TP53	d1_direct	dgidb	ALEMTUZUMAB	rxcui:117055			True		
+TP53	d1_direct	dgidb	ALEXIDINE DIHYDROCHLORIDE	chembl:CHEMBL554041			False		
+TP53	d1_direct	dgidb	ALK INHIBITOR TAE684	ncit:C171615			False		
+TP53	d1_direct	dgidb	ALPELISIB	rxcui:2169285			True		
+TP53	d1_direct	dgidb	ALPHA-NAPHTHOFLAVONE	chembl:CHEMBL283196			False		
+TP53	d1_direct	dgidb	ALRIZOMADLIN	chembl:CHEMBL4091801			False	inhibitor	INHIBITORY
+TP53	d1_direct	dgidb	ALRIZOMADLIN	ncit:C132991			False		
+TP53	d1_direct	dgidb	ALT-801	drugbank:DB15386			False		
+TP53	d1_direct	dgidb	ALVESPIMYCIN	ncit:C38142			False		
+TP53	d1_direct	dgidb	AMOXAPINE	rxcui:722			True		
+TP53	d1_direct	dgidb	ANISINDIONE	rxcui:17941			True		
+TP53	d1_direct	dgidb	ANTIMYCIN A	chembl:CHEMBL211501			False		
+TP53	d1_direct	dgidb	APOMORPHINE	rxcui:1043			True		
+TP53	d1_direct	dgidb	ASTEMIZOLE	rxcui:42328			True		
+TP53	d1_direct	dgidb	ATRACTYLENOLIDE I	chembl:CHEMBL449520			False		
+TP53	d1_direct	dgidb	AURORA KINASE INHIBITOR AMG 900	ncit:C82349			False		
+TP53	d1_direct	dgidb	AUTOLOGOUS DENDRITIC CELLS TRANSDUCED WITH WILD-TYPE P53 ADENOVIRUS VACCINE	ncit:C148241			False	vaccine	ACTIVATING
+TP53	d1_direct	dgidb	AXITINIB	rxcui:1242999			True		
+TP53	d1_direct	dgidb	AZACITIDINE	rxcui:1251			True		
+TP53	d1_direct	dgidb	AZATHIOPRINE	rxcui:1256			True		
+TP53	d1_direct	dgidb	AZD1390	iuphar.ligand:11277			False		
+TP53	d1_direct	dgidb	AZD6482	iuphar.ligand:8059			False		
+TP53	d1_direct	dgidb	AZD7648	iuphar.ligand:10601			False		
+TP53	d1_direct	dgidb	AZD7762	iuphar.ligand:7713			False		
+TP53	d1_direct	dgidb	BAICALEIN	iuphar.ligand:5144			False		
+TP53	d1_direct	dgidb	BENDAMUSTINE	rxcui:134547			True		
+TP53	d1_direct	dgidb	BENOMYL	chembl:CHEMBL327919			False		
+TP53	d1_direct	dgidb	BENZALKONIUM CHLORIDE	chembl:CHEMBL502109			False		
+TP53	d1_direct	dgidb	BENZETHONIUM CHLORIDE	chembl:CHEMBL221753			False		
+TP53	d1_direct	dgidb	BENZO(K)FLUORANTHENE	chembl:CHEMBL1441574			False		
+TP53	d1_direct	dgidb	BENZO[B]FLUORANTHENE	chembl:CHEMBL1337502			False		
+TP53	d1_direct	dgidb	BEVACIZUMAB	rxcui:253337			True		
+TP53	d1_direct	dgidb	BITHIONOL	ncit:C77030			True		
+TP53	d1_direct	dgidb	BOMEDEMSTAT	ncit:C131827			False		
+TP53	d1_direct	dgidb	BORTEZOMIB	rxcui:358258			True		
+TP53	d1_direct	dgidb	BRIGATINIB	rxcui:1921217			True		
+TP53	d1_direct	dgidb	BRIGIMADLIN	ncit:C156709			False		
+TP53	d1_direct	dgidb	BROXYQUINOLINE	chembl:CHEMBL223448			False		
+TP53	d1_direct	dgidb	BUPARLISIB	ncit:C90565			False		
+TP53	d1_direct	dgidb	CABOZANTINIB S-MALATE	rxcui:1363267			True		
+TP53	d1_direct	dgidb	CADMIUM ACETATE	chembl:CHEMBL1476898			False		
+TP53	d1_direct	dgidb	CADMIUM DICHLORIDE	chembl:CHEMBL1458880			False		
+TP53	d1_direct	dgidb	CAMPTOTHECIN	ncit:C338			True		
+TP53	d1_direct	dgidb	CAPECITABINE	rxcui:194000			True		
+TP53	d1_direct	dgidb	CAPIVASERTIB	rxcui:2669967			True		
+TP53	d1_direct	dgidb	CARBENDAZIM	chembl:CHEMBL70971			False		
+TP53	d1_direct	dgidb	CARBOPLATIN	rxcui:40048			True		
+TP53	d1_direct	dgidb	CAULIBUGULONE B	chembl:CHEMBL508779			False		
+TP53	d1_direct	dgidb	CAULIBUGULONE C	chembl:CHEMBL445969			False		
+TP53	d1_direct	dgidb	CAULIBUGULONE D	chembl:CHEMBL447876			False		
+TP53	d1_direct	dgidb	CEP-1347	iuphar.ligand:8173			False		
+TP53	d1_direct	dgidb	CERALASERTIB	ncit:C111993			False		
+TP53	d1_direct	dgidb	CERITINIB	rxcui:1535457			True		
+TP53	d1_direct	dgidb	CETUXIMAB	rxcui:318341			True		
+TP53	d1_direct	dgidb	CGP7930	iuphar.ligand:1079			False		
+TP53	d1_direct	dgidb	CHELERYTHRINE	iuphar.ligand:5953			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL1169388	chembl:CHEMBL1169388			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL1214407	chembl:CHEMBL1214407			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL1241268	chembl:CHEMBL1241268			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL1256869	chembl:CHEMBL1256869			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL1303948	chembl:CHEMBL1303948			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL1321398	chembl:CHEMBL1321398			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL1333386	chembl:CHEMBL1333386			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL1343568	chembl:CHEMBL1343568			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL1346468	chembl:CHEMBL1346468			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL1389794	chembl:CHEMBL1389794			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL1397308	chembl:CHEMBL1397308			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL1494650	chembl:CHEMBL1494650			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL1522984	chembl:CHEMBL1522984			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL154580	chembl:CHEMBL154580			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL16685	chembl:CHEMBL16685			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL1708	chembl:CHEMBL1708			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL177809	chembl:CHEMBL177809			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL1801219	chembl:CHEMBL1801219			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL184450	chembl:CHEMBL184450			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL195350	chembl:CHEMBL195350			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL198759	chembl:CHEMBL198759			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL2002487	chembl:CHEMBL2002487			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL201325	chembl:CHEMBL201325			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL225513	chembl:CHEMBL225513			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL227959	chembl:CHEMBL227959			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL233194	chembl:CHEMBL233194			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL242171	chembl:CHEMBL242171			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL259421	chembl:CHEMBL259421			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL259422	chembl:CHEMBL259422			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL259615	chembl:CHEMBL259615			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL259784	chembl:CHEMBL259784			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL259805	chembl:CHEMBL259805			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL260028	chembl:CHEMBL260028			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL260213	chembl:CHEMBL260213			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL260451	chembl:CHEMBL260451			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL260560	chembl:CHEMBL260560			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL261118	chembl:CHEMBL261118			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL261123	chembl:CHEMBL261123			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL261693	chembl:CHEMBL261693			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL265686	chembl:CHEMBL265686			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL267160	chembl:CHEMBL267160			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL271023	chembl:CHEMBL271023			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL291143	chembl:CHEMBL291143			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL320361	chembl:CHEMBL320361			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL329673	chembl:CHEMBL329673			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL337173	chembl:CHEMBL337173			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL374632	chembl:CHEMBL374632			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL405317	chembl:CHEMBL405317			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL405914	chembl:CHEMBL405914			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL406557	chembl:CHEMBL406557			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL407501	chembl:CHEMBL407501			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL408563	chembl:CHEMBL408563			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL408653	chembl:CHEMBL408653			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL408850	chembl:CHEMBL408850			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL410484	chembl:CHEMBL410484			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL411085	chembl:CHEMBL411085			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL4165848	chembl:CHEMBL4165848			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL421215	chembl:CHEMBL421215			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL422942	chembl:CHEMBL422942			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL428789	chembl:CHEMBL428789			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL429095	chembl:CHEMBL429095			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL429335	chembl:CHEMBL429335			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL444376	chembl:CHEMBL444376			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL473735	chembl:CHEMBL473735			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL528712	chembl:CHEMBL528712			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL528807	chembl:CHEMBL528807			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL530049	chembl:CHEMBL530049			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL533226	chembl:CHEMBL533226			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL545900	chembl:CHEMBL545900			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL546170	chembl:CHEMBL546170			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL563919	chembl:CHEMBL563919			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL578512	chembl:CHEMBL578512			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL578890	chembl:CHEMBL578890			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL579550	chembl:CHEMBL579550			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL580421	chembl:CHEMBL580421			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL582473	chembl:CHEMBL582473			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL582715	chembl:CHEMBL582715			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL587620	chembl:CHEMBL587620			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL590665	chembl:CHEMBL590665			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL591126	chembl:CHEMBL591126			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL591618	chembl:CHEMBL591618			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL592123	chembl:CHEMBL592123			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL596633	chembl:CHEMBL596633			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL599088	chembl:CHEMBL599088			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL599100	chembl:CHEMBL599100			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL599943	chembl:CHEMBL599943			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL600334	chembl:CHEMBL600334			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL600347	chembl:CHEMBL600347			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL601140	chembl:CHEMBL601140			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL601757	chembl:CHEMBL601757			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL602150	chembl:CHEMBL602150			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL602922	chembl:CHEMBL602922			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL66114	chembl:CHEMBL66114			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL85194	chembl:CHEMBL85194			False		
+TP53	d1_direct	dgidb	CHEMBL:CHEMBL99408	chembl:CHEMBL99408			False		
+TP53	d1_direct	dgidb	CHIR-124	drugbank:DB06852			False		
+TP53	d1_direct	dgidb	CHK1 INHIBITOR GDC-0575	ncit:C116845			False		
+TP53	d1_direct	dgidb	CHLORAMBUCIL	rxcui:2346			True		
+TP53	d1_direct	dgidb	CHLORANIL	chembl:CHEMBL192627			False		
+TP53	d1_direct	dgidb	CHLORFENAPYR	chembl:CHEMBL1869551			False		
+TP53	d1_direct	dgidb	CHLOROTHALONIL	chembl:CHEMBL468167			False		
+TP53	d1_direct	dgidb	CHLOROXINE	rxcui:20875			True		
+TP53	d1_direct	dgidb	CHLORPROMAZINE	rxcui:2403			True		
+TP53	d1_direct	dgidb	CINNARIZINE	rxcui:2549			True		
+TP53	d1_direct	dgidb	CIS-RESVERATROL	chembl:CHEMBL87333			False		
+TP53	d1_direct	dgidb	CISPLATIN	rxcui:2555			True		
+TP53	d1_direct	dgidb	CLADRIBINE	rxcui:44157			True		
+TP53	d1_direct	dgidb	CLEMASTINE	rxcui:2578			True		
+TP53	d1_direct	dgidb	CLIOQUINOL	rxcui:5942			True		
+TP53	d1_direct	dgidb	CLOFIBRATE	rxcui:2594			True		
+TP53	d1_direct	dgidb	CLOFOCTOL	ncit:C78048			False		
+TP53	d1_direct	dgidb	CLOMIPRAMINE	rxcui:2597			True		
+TP53	d1_direct	dgidb	CLOTRIMAZOLE	rxcui:2623			True		
+TP53	d1_direct	dgidb	CONTUSUGENE LADENOVEC	chembl:CHEMBL2108585			False		
+TP53	d1_direct	dgidb	CONTUSUGENE LADENOVEC	ncit:C2471			False		
+TP53	d1_direct	dgidb	COTI-2	drugbank:DB17507			False		
+TP53	d1_direct	dgidb	CRIZOTINIB	rxcui:1148495			True		
+TP53	d1_direct	dgidb	CYAZOFAMID	chembl:CHEMBL1863429			False		
+TP53	d1_direct	dgidb	CYCLOPHOSPHAMIDE ANHYDROUS	rxcui:1545988			True		
+TP53	d1_direct	dgidb	CYTARABINE	rxcui:3041			True		
+TP53	d1_direct	dgidb	DABRAFENIB	rxcui:1424911			True		
+TP53	d1_direct	dgidb	DAIDZEIN	iuphar.ligand:2828			False		
+TP53	d1_direct	dgidb	DAUNORUBICIN HYDROCHLORIDE	chembl:CHEMBL1563			True		
+TP53	d1_direct	dgidb	DECITABINE	rxcui:15657			True		
+TP53	d1_direct	dgidb	DENDRITIC CELL VACCINE	ncit:C28310			False		
+TP53	d1_direct	dgidb	DEOXIEPINEPHRINE	chembl:CHEMBL31088			False		
+TP53	d1_direct	dgidb	DIBENZ[A,H]ANTHRACENE	chembl:CHEMBL1346946			False		
+TP53	d1_direct	dgidb	DICHLOROPHEN	chembl:CHEMBL33845			False		
+TP53	d1_direct	dgidb	DIETHYLSTILBESTROL	rxcui:3390			True		
+TP53	d1_direct	dgidb	DIHYDROGAMBOGIC ACID	chembl:CHEMBL1526240			False		
+TP53	d1_direct	dgidb	DIMETHYL GAMBOGATE	chembl:CHEMBL1436860			False		
+TP53	d1_direct	dgidb	DINOSEB	chembl:CHEMBL1892987			False		
+TP53	d1_direct	dgidb	DNA VACCINE	ncit:C39619			False		
+TP53	d1_direct	dgidb	DOCETAXEL ANHYDROUS	rxcui:1299922			True		
+TP53	d1_direct	dgidb	DOPAMINE	rxcui:3628			True		
+TP53	d1_direct	dgidb	DORDAVIPRONE	rxcui:2721194			True		
+TP53	d1_direct	dgidb	DOXORUBICIN HYDROCHLORIDE	rxcui:142433			True		
+TP53	d1_direct	dgidb	DOXORUBICIN LIPOSOME	rxcui:214525			True		
+TP53	d1_direct	dgidb	DS-7423	iuphar.ligand:12616			False		
+TP53	d1_direct	dgidb	DUVELISIB	rxcui:2058509			True		
+TP53	d1_direct	dgidb	ECONAZOLE NITRATE	chembl:CHEMBL1201049			True		
+TP53	d1_direct	dgidb	EDODEKIN ALFA	rxcui:1371906			False		
+TP53	d1_direct	dgidb	ELLIPTECINE	chembl:CHEMBL123			False		
+TP53	d1_direct	dgidb	EMBELIN	chembl:CHEMBL221137			False		
+TP53	d1_direct	dgidb	EMODIN	chembl:CHEMBL289277			False		
+TP53	d1_direct	dgidb	ENALAPRIL MALEATE	rxcui:203123			True		
+TP53	d1_direct	dgidb	ENCORAFENIB	rxcui:2049106			True		
+TP53	d1_direct	dgidb	ENZALUTAMIDE	rxcui:1307298			True		
+TP53	d1_direct	dgidb	EPIRUBICIN	rxcui:3995			True		
+TP53	d1_direct	dgidb	EPRENETAPOPT	ncit:C85465			False		
+TP53	d1_direct	dgidb	EPRENETAPOPT	chembl:CHEMBL3186011			False	modulator	
+TP53	d1_direct	dgidb	ERLOTINIB	rxcui:337525			True		
+TP53	d1_direct	dgidb	ETHOPROPAZINE HYDROCHLORIDE	chembl:CHEMBL1200970			True		
+TP53	d1_direct	dgidb	ETOPOSIDE	rxcui:4179			True		
+TP53	d1_direct	dgidb	EZABENLIMAB	ncit:C132252			False		
+TP53	d1_direct	dgidb	FENOFIBRATE MICRONIZED	rxcui:221100			True		
+TP53	d1_direct	dgidb	FENRETINIDE	ncit:C1098			True		
+TP53	d1_direct	dgidb	FENTICLOR	chembl:CHEMBL473535			False		
+TP53	d1_direct	dgidb	FLAVANONE	iuphar.ligand:408			False		
+TP53	d1_direct	dgidb	FLUOROURACIL	rxcui:4492			True		
+TP53	d1_direct	dgidb	FLUPENTHIXOL	rxcui:4495			False		
+TP53	d1_direct	dgidb	FLUPHENAZINE HYDROCHLORIDE	rxcui:203207			True		
+TP53	d1_direct	dgidb	FULVESTRANT	rxcui:282357			True		
+TP53	d1_direct	dgidb	FURAZOLIDONE	chembl:CHEMBL1103			True		
+TP53	d1_direct	dgidb	FUROXAN	chembl:CHEMBL336467			False		
+TP53	d1_direct	dgidb	GALLIC ACID	ncit:C63648			False		
+TP53	d1_direct	dgidb	GANETESPIB	ncit:C77872			False		
+TP53	d1_direct	dgidb	GARLIC	ncit:C38706			False		
+TP53	d1_direct	dgidb	GDC-0425	drugbank:DB14791			False		
+TP53	d1_direct	dgidb	GEDATOLISIB	ncit:C91732			False		
+TP53	d1_direct	dgidb	GEMCITABINE	rxcui:12574			True		
+TP53	d1_direct	dgidb	GENISTEIN	rxcui:25696			True		
+TP53	d1_direct	dgidb	GLUTARAL	chembl:CHEMBL1235482			False		
+TP53	d1_direct	dgidb	GOSSYPOL	iuphar.ligand:4204			False		
+TP53	d1_direct	dgidb	GOSSYPOL	ncit:C529			False		
+TP53	d1_direct	dgidb	GR 127935	iuphar.ligand:14			False		
+TP53	d1_direct	dgidb	GRANISETRON	rxcui:26237			True	activator	ACTIVATING
+TP53	d1_direct	dgidb	GSK2830371	iuphar.ligand:11103			False		
+TP53	d1_direct	dgidb	HALOPERIDOL DECANOATE	rxcui:26420			True		
+TP53	d1_direct	dgidb	HDM2 INHIBITOR MK-8242	ncit:C116867			False		
+TP53	d1_direct	dgidb	HEXACHLOROPHENE	rxcui:5293			True		
+TP53	d1_direct	dgidb	HOMIDIUM BROMIDE	chembl:CHEMBL284328			False		
+TP53	d1_direct	dgidb	HYDRALAZINE HYDROCHLORIDE	chembl:CHEMBL542541			True		
+TP53	d1_direct	dgidb	IBRUTINIB	rxcui:1442981			True		
+TP53	d1_direct	dgidb	IDASANUTLIN	ncit:C99131			False		
+TP53	d1_direct	dgidb	IDASANUTLIN	chembl:CHEMBL2402737			False	inhibitor	INHIBITORY
+TP53	d1_direct	dgidb	IDELALISIB	rxcui:1544460			True		
+TP53	d1_direct	dgidb	IFOSFAMIDE	rxcui:5657			True		
+TP53	d1_direct	dgidb	IL-27 SUBUNIT &ALPHA;	iuphar.ligand:6152			False		
+TP53	d1_direct	dgidb	INDIRUBIN-3'-MONOXIME	drugbank:DB02052			False		
+TP53	d1_direct	dgidb	INDOPROFEN	ncit:C83801			True		
+TP53	d1_direct	dgidb	INOSITOL	rxcui:5833			True		
+TP53	d1_direct	dgidb	INTERFERON ALFA-2B	rxcui:5880			True		
+TP53	d1_direct	dgidb	IODOQUINOL	rxcui:3435			True		
+TP53	d1_direct	dgidb	IOXYNIL	chembl:CHEMBL509523			False		
+TP53	d1_direct	dgidb	IPILIMUMAB	rxcui:1094833			True		
+TP53	d1_direct	dgidb	IRINOTECAN HYDROCHLORIDE	rxcui:153329			True		
+TP53	d1_direct	dgidb	IXAZOMIB	rxcui:1723735			True		
+TP53	d1_direct	dgidb	JQ1	drugbank:DB17021			False		
+TP53	d1_direct	dgidb	KINETIN RIBOSIDE	chembl:CHEMBL411066			False		
+TP53	d1_direct	dgidb	KRESOXIM-METHYL	chembl:CHEMBL203191			False		
+TP53	d1_direct	dgidb	KU-60019	iuphar.ligand:8041			False		
+TP53	d1_direct	dgidb	L-733,060	iuphar.ligand:13432			False		
+TP53	d1_direct	dgidb	L-744,832	ncit:C1682			False		
+TP53	d1_direct	dgidb	LAPACHONE	chembl:CHEMBL15192			False		
+TP53	d1_direct	dgidb	LB-100	drugbank:DB15412			False		
+TP53	d1_direct	dgidb	LENALIDOMIDE	rxcui:342369			True		
+TP53	d1_direct	dgidb	LEVONORGESTREL	rxcui:6373			True		
+TP53	d1_direct	dgidb	LONTUCIREV	ncit:C2830			False		
+TP53	d1_direct	dgidb	LOPERAMIDE	rxcui:6468			True		
+TP53	d1_direct	dgidb	LORLATINIB	rxcui:2103164			True		
+TP53	d1_direct	dgidb	LUXEPTINIB	ncit:C162573			False		
+TP53	d1_direct	dgidb	LY3009120	iuphar.ligand:8943			False		
+TP53	d1_direct	dgidb	M8891	iuphar.ligand:12714			False		
+TP53	d1_direct	dgidb	MAGROLIMAB	ncit:C117730			False		
+TP53	d1_direct	dgidb	MANGOSTIN	rxcui:2619910			False		
+TP53	d1_direct	dgidb	MAPROTILINE	rxcui:6646			True		
+TP53	d1_direct	dgidb	MASOPROCOL	rxcui:227239			True		
+TP53	d1_direct	dgidb	MDM2 ANTAGONIST RO6839921	ncit:C114980			False		
+TP53	d1_direct	dgidb	MDM2 INHIBITOR AMGMDS3	ncit:C171616			False		
+TP53	d1_direct	dgidb	MECHLORETHAMINE HYDROCHLORIDE	chembl:CHEMBL1201001			True		
+TP53	d1_direct	dgidb	MEDROXYPROGESTERONE ACETATE	rxcui:1000112			True		
+TP53	d1_direct	dgidb	MELPHALAN	rxcui:6718			True		
+TP53	d1_direct	dgidb	MERCAPTOPURINE	rxcui:103			True		
+TP53	d1_direct	dgidb	MERCURIC CHLORIDE	chembl:CHEMBL1374360			False		
+TP53	d1_direct	dgidb	METHIMAZOLE	rxcui:6835			True		
+TP53	d1_direct	dgidb	METHOTREXATE	rxcui:6851			True		
+TP53	d1_direct	dgidb	METHYL ROBUSTONE	chembl:CHEMBL1403041			False		
+TP53	d1_direct	dgidb	METHYLENE BLUE	chembl:CHEMBL550495			True		
+TP53	d1_direct	dgidb	METHYLPREDNISOLONE	rxcui:6902			True		
+TP53	d1_direct	dgidb	MICHLER'S KETONE	chembl:CHEMBL15137			False		
+TP53	d1_direct	dgidb	MIRDAMETINIB	rxcui:2705551			True		
+TP53	d1_direct	dgidb	MITOMYCIN	rxcui:632			True		
+TP53	d1_direct	dgidb	MITOXANTRONE	rxcui:7005			True		
+TP53	d1_direct	dgidb	MITOXANTRONE HYDROCHLORIDE	chembl:CHEMBL1417019			True		
+TP53	d1_direct	dgidb	MPI-0479605	iuphar.ligand:9399			False		
+TP53	d1_direct	dgidb	MULTI-NEO-EPITOPE VACCINE OSE 2101	ncit:C26645			False	vaccine	ACTIVATING
+TP53	d1_direct	dgidb	MUNDULONE	chembl:CHEMBL465339			False		
+TP53	d1_direct	dgidb	N-OLEOYLDOPAMINE	iuphar.ligand:5552			False		
+TP53	d1_direct	dgidb	N6-BENZYLADENOSINE	chembl:CHEMBL388757			False		
+TP53	d1_direct	dgidb	NAPABUCASIN	ncit:C96429			False		
+TP53	d1_direct	dgidb	NAVITOCLAX	ncit:C64776			False		
+TP53	d1_direct	dgidb	NAVTEMADLIN	ncit:C116624			False	inhibitor	INHIBITORY
+TP53	d1_direct	dgidb	NEBULARINE	chembl:CHEMBL1399702			False		
+TP53	d1_direct	dgidb	NICLOSAMIDE	rxcui:7402			True		
+TP53	d1_direct	dgidb	NIGULDIPINE	ncit:C84018			False		
+TP53	d1_direct	dgidb	NITAZOXANIDE	rxcui:31819			True		
+TP53	d1_direct	dgidb	NIVOLUMAB	rxcui:1597876			True		
+TP53	d1_direct	dgidb	NORTRIPTYLINE	rxcui:7531			True		
+TP53	d1_direct	dgidb	NUTLIN-3	chembl:CHEMBL191334			False		
+TP53	d1_direct	dgidb	O-PHENANTHROLINE	rxcui:1872047			True		
+TP53	d1_direct	dgidb	OBINUTUZUMAB	rxcui:974779			True		
+TP53	d1_direct	dgidb	OCHRATOXIN A	iuphar.ligand:4672			False		
+TP53	d1_direct	dgidb	OLAPARIB	rxcui:1597582			True		
+TP53	d1_direct	dgidb	OLEAMIDE	iuphar.ligand:284			False		
+TP53	d1_direct	dgidb	OLVANIL	ncit:C166774			False		
+TP53	d1_direct	dgidb	ONONIN	chembl:CHEMBL465980			False		
+TP53	d1_direct	dgidb	OSIMERTINIB	rxcui:1721560			True		
+TP53	d1_direct	dgidb	OXALIPLATIN	rxcui:32592			True		
+TP53	d1_direct	dgidb	P53-HDM2 INTERACTION INHIBITOR MI-773	ncit:C106120			False		
+TP53	d1_direct	dgidb	P53/HDM2 INTERACTION INHIBITOR CGM097	ncit:C104280			False		
+TP53	d1_direct	dgidb	PACLITAXEL PROTEIN-BOUND	rxcui:486610			True		
+TP53	d1_direct	dgidb	PALBOCICLIB	rxcui:1601374			True		
+TP53	d1_direct	dgidb	PANITUMUMAB	rxcui:263034			True		
+TP53	d1_direct	dgidb	PATULIN	chembl:CHEMBL294018			False		
+TP53	d1_direct	dgidb	PAZOPANIB	rxcui:714438			True		
+TP53	d1_direct	dgidb	PD166285	iuphar.ligand:8183			False		
+TP53	d1_direct	dgidb	PD98059	iuphar.ligand:5241			False		
+TP53	d1_direct	dgidb	PEMBROLIZUMAB	rxcui:1547545			True		
+TP53	d1_direct	dgidb	PENTACHLOROPHENOL	chembl:CHEMBL75967			False		
+TP53	d1_direct	dgidb	PERPHENAZINE	rxcui:8076			True		
+TP53	d1_direct	dgidb	PF-00477736	chembl:CHEMBL3545137			False		
+TP53	d1_direct	dgidb	PF-04217903	drugbank:DB12848			False		
+TP53	d1_direct	dgidb	PHA-680632	chembl:CHEMBL363160			False		
+TP53	d1_direct	dgidb	PHENETHYLISOTHIOCYANATE	chembl:CHEMBL151649			False		
+TP53	d1_direct	dgidb	PHENYLMERCURIC ACETATE	chembl:CHEMBL1333953			False		
+TP53	d1_direct	dgidb	PIMASERTIB	ncit:C84864			False		
+TP53	d1_direct	dgidb	PIMOZIDE	rxcui:8331			True		
+TP53	d1_direct	dgidb	PIPERLONGUMINE	iuphar.ligand:13376			False		
+TP53	d1_direct	dgidb	PIRARUBICIN	rxcui:33764			False		
+TP53	d1_direct	dgidb	PIRTOBRUTINIB	rxcui:2629338			True		
+TP53	d1_direct	dgidb	PLUMBAGIN	iuphar.ligand:7003			False		
+TP53	d1_direct	dgidb	POTASSIUM DICHROMATE	chembl:CHEMBL1374101			False		
+TP53	d1_direct	dgidb	PRAMLINTIDE	rxcui:139953			True		
+TP53	d1_direct	dgidb	PROCHLORPERAZINE	rxcui:8704			True		
+TP53	d1_direct	dgidb	PROCHLORPERAZINE EDISYLATE	chembl:CHEMBL1201154			True		
+TP53	d1_direct	dgidb	PRODIGIOSIN	chembl:CHEMBL275787			False		
+TP53	d1_direct	dgidb	PROPACHLOR	chembl:CHEMBL1394829			False		
+TP53	d1_direct	dgidb	PROPARGITE	chembl:CHEMBL1416084			False		
+TP53	d1_direct	dgidb	PROPYLTHIOURACIL	rxcui:8794			True		
+TP53	d1_direct	dgidb	PSEUDOCHELERYTHRINE	iuphar.ligand:11563			False		
+TP53	d1_direct	dgidb	PUROMYCIN	ncit:C787			False		
+TP53	d1_direct	dgidb	PYRACLOSTROBIN	chembl:CHEMBL519873			False		
+TP53	d1_direct	dgidb	PYRITHIONE ZINC	ncit:C47698			True		
+TP53	d1_direct	dgidb	QUINACRINE DIHYDROCHLORIDE	chembl:CHEMBL554190			False		
+TP53	d1_direct	dgidb	QUINALIZARIN	chembl:CHEMBL29898			False		
+TP53	d1_direct	dgidb	R547	iuphar.ligand:5707			False		
+TP53	d1_direct	dgidb	RALOXIFENE HYDROCHLORIDE	rxcui:166551			True		
+TP53	d1_direct	dgidb	REBEMADLIN	ncit:C74594			False		
+TP53	d1_direct	dgidb	RECOMBINANT FAS LIGAND	ncit:C1538			False		
+TP53	d1_direct	dgidb	RECOMBINANT MONOCYTE CHEMOATTRACTANT PROTEIN-1	ncit:C1393			False		
+TP53	d1_direct	dgidb	RECOMBINANT VASCULAR ENDOTHELIAL GROWTH FACTOR	ncit:C1272			False		
+TP53	d1_direct	dgidb	RESVERATROL	rxcui:1000492			True		
+TP53	d1_direct	dgidb	REZATAPOPT	ncit:C203051			False		
+TP53	d1_direct	dgidb	RG7112	iuphar.ligand:9599			False		
+TP53	d1_direct	dgidb	RHODOMYRTOXIN B	chembl:CHEMBL1552997			False		
+TP53	d1_direct	dgidb	RIBAVIRIN	rxcui:9344			True		
+TP53	d1_direct	dgidb	RIMCAZOLE	chembl:CHEMBL275707			False		
+TP53	d1_direct	dgidb	RITUXIMAB	rxcui:121191			True		
+TP53	d1_direct	dgidb	ROBUSTIC ACID	chembl:CHEMBL400777			False		
+TP53	d1_direct	dgidb	ROTENONE	chembl:CHEMBL429023			False		
+TP53	d1_direct	dgidb	RS-17053	iuphar.ligand:495			False		
+TP53	d1_direct	dgidb	RUXOLITINIB	rxcui:1193326			True		
+TP53	d1_direct	dgidb	S(+)-APOMORPHINE	iuphar.ligand:8285			False		
+TP53	d1_direct	dgidb	SALMETEROL XINAFOATE	chembl:CHEMBL1082607			True		
+TP53	d1_direct	dgidb	SANGUINARINE SULFATE	chembl:CHEMBL1565133			False		
+TP53	d1_direct	dgidb	SAPANISERTIB	rxcui:2395271			True		
+TP53	d1_direct	dgidb	SAPONIN	ncit:C823			False		
+TP53	d1_direct	dgidb	SAR-405838	drugbank:DB12541			False		
+TP53	d1_direct	dgidb	SB 206553	iuphar.ligand:189			False		
+TP53	d1_direct	dgidb	SELECTIVE ESTROGEN RECEPTOR MODULATOR	ncit:C1821			False		
+TP53	d1_direct	dgidb	SELICICLIB	ncit:C62783			False		
+TP53	d1_direct	dgidb	SELINEXOR	rxcui:2178390			True		
+TP53	d1_direct	dgidb	SELUMETINIB	rxcui:2289380			True		
+TP53	d1_direct	dgidb	SERDEMETAN	ncit:C77904			False		
+TP53	d1_direct	dgidb	SERTRALINE HYDROCHLORIDE	rxcui:155137			True		
+TP53	d1_direct	dgidb	SERTRALINE HYDROCHLORIDE	chembl:CHEMBL1709			True		
+TP53	d1_direct	dgidb	SIREMADLIN	chembl:CHEMBL3653256			False	inhibitor	INHIBITORY
+TP53	d1_direct	dgidb	SIREMADLIN	ncit:C116325			False		
+TP53	d1_direct	dgidb	SIROLIMUS	rxcui:35302			True		
+TP53	d1_direct	dgidb	SN-38	drugbank:DB05482			False		
+TP53	d1_direct	dgidb	SORAFENIB	rxcui:495881			True		
+TP53	d1_direct	dgidb	SOTULETINIB	ncit:C129653			False		
+TP53	d1_direct	dgidb	SP600125	iuphar.ligand:5273			False		
+TP53	d1_direct	dgidb	SR59230A	iuphar.ligand:547			False		
+TP53	d1_direct	dgidb	STREPTONIGRIN	ncit:C844			False		
+TP53	d1_direct	dgidb	SULANEMADLIN	ncit:C118669			False		
+TP53	d1_direct	dgidb	SULCONAZOLE NITRATE	chembl:CHEMBL1200348			True		
+TP53	d1_direct	dgidb	SUNITINIB	rxcui:357977			True		
+TP53	d1_direct	dgidb	TAMOXIFEN	rxcui:10324			True		
+TP53	d1_direct	dgidb	TAMOXIFEN CITRATE	chembl:CHEMBL786			True		
+TP53	d1_direct	dgidb	TANESPIMYCIN	ncit:C37899			False		
+TP53	d1_direct	dgidb	TARENFLURBIL	ncit:C26666			False		
+TP53	d1_direct	dgidb	TEBUFENPYRAD	chembl:CHEMBL1897070			False		
+TP53	d1_direct	dgidb	TEMOZOLOMIDE	rxcui:37776			True		
+TP53	d1_direct	dgidb	TEPRASIRAN	chembl:CHEMBL4297574			False		
+TP53	d1_direct	dgidb	TEROXIRONE	chembl:CHEMBL453863			False		
+TP53	d1_direct	dgidb	TERPYRIDINE	chembl:CHEMBL89445			False		
+TP53	d1_direct	dgidb	TETRANDRINE	iuphar.ligand:11859			False		
+TP53	d1_direct	dgidb	THIMEROSAL	chembl:CHEMBL508338			False		
+TP53	d1_direct	dgidb	THIORIDAZINE HYDROCHLORIDE	chembl:CHEMBL1200916			True		
+TP53	d1_direct	dgidb	THIOTEPA	rxcui:10473			True		
+TP53	d1_direct	dgidb	THIOUREIDOBUTYRONITRILE	ncit:C102881			False		
+TP53	d1_direct	dgidb	THUNBERGINOL B	chembl:CHEMBL70501			False		
+TP53	d1_direct	dgidb	TIRAPAZAMINE	ncit:C1464			False		
+TP53	d1_direct	dgidb	TOPICAL CORTICOSTEROID	ncit:C29505			False		
+TP53	d1_direct	dgidb	TOPOTECAN HYDROCHLORIDE	rxcui:266573			True		
+TP53	d1_direct	dgidb	TPCK	chembl:CHEMBL60718			False		
+TP53	d1_direct	dgidb	TRABECTEDIN	rxcui:1716278			True		
+TP53	d1_direct	dgidb	TRACAZOLATE	ncit:C152706			False		
+TP53	d1_direct	dgidb	TRAMETINIB DIMETHYL SULFOXIDE	rxcui:1425098			True		
+TP53	d1_direct	dgidb	TRANILAST	rxcui:57330			False		
+TP53	d1_direct	dgidb	TRANSFERRIN RECEPTOR-TARGETED LIPOSOMAL P53 CDNA	ncit:C29474			False		
+TP53	d1_direct	dgidb	TRIACETYLRESVERATROL	chembl:CHEMBL597744			False		
+TP53	d1_direct	dgidb	TRIAMTERENE	rxcui:10763			True		
+TP53	d1_direct	dgidb	TRICLOCARBAN	chembl:CHEMBL1076347			False		
+TP53	d1_direct	dgidb	TRIFLOXYSTROBIN	chemidplus:141517-21-7			False		
+TP53	d1_direct	dgidb	TRIFLUOPERAZINE	rxcui:10800			True		
+TP53	d1_direct	dgidb	TRIFLUOPERAZINE HYDROCHLORIDE	rxcui:91130			True		
+TP53	d1_direct	dgidb	TRIFLUPROMAZINE	rxcui:10805			True		
+TP53	d1_direct	dgidb	TRIFLURIDINE	rxcui:10803			True		
+TP53	d1_direct	dgidb	TYRPHOSTIN A9	chembl:CHEMBL78150			False		
+TP53	d1_direct	dgidb	U50488	iuphar.ligand:1652			False		
+TP53	d1_direct	dgidb	URSODIOL	rxcui:11065			True		
+TP53	d1_direct	dgidb	VANOXERINE	iuphar.ligand:9983			False		
+TP53	d1_direct	dgidb	VEMURAFENIB	rxcui:1147220			True		
+TP53	d1_direct	dgidb	VENETOCLAX	rxcui:1747556			True		
+TP53	d1_direct	dgidb	VESNARINONE	ncit:C1415			False		
+TP53	d1_direct	dgidb	VITAMIN K3	rxcui:6728			True		
+TP53	d1_direct	dgidb	VORINOSTAT	rxcui:194337			True		
+TP53	d1_direct	dgidb	WARFARIN	rxcui:11289			True		
+TP53	d1_direct	dgidb	ZANUBRUTINIB	rxcui:2262435			True		
+TP53	d1_direct	dgidb	ZINC CHLORIDE	rxcui:39937			True		
+TP53	d1_direct	dgidb	ZIRAM	chembl:CHEMBL1519327			False		
+TP53	d1_direct	dgidb	ZM336372	iuphar.ligand:9130			False		
+TP53	d1_direct	dgidb	[3H]GBR12935	iuphar.ligand:4638			False		
+TP53	d1_direct	opentargets	ALRIZOMADLIN	CHEMBL4091801	Small molecule	PHASE_2		Tumour suppressor p53/oncoprotein Mdm2 inhibitor	INHIBITOR
+TP53	d1_direct	opentargets	CENERSEN	CHEMBL2108280	Oligonucleotide	PHASE_2		p53 mRNA antisense inhibitor	ANTISENSE INHIBITOR
+TP53	d1_direct	opentargets	CENERSEN SODIUM	CHEMBL2219776	Oligonucleotide	PHASE_2		p53 mRNA antisense inhibitor	ANTISENSE INHIBITOR
+TP53	d1_direct	opentargets	CONTUSUGENE LADENOVEC	CHEMBL2108585	Gene	PHASE_3		Cellular tumor antigen p53 exogenous gene	EXOGENOUS GENE
+TP53	d1_direct	opentargets	EPRENETAPOPT	CHEMBL3186011	Small molecule	PHASE_3		Cellular tumor antigen p53 stabiliser	STABILISER
+TP53	d1_direct	opentargets	IDASANUTLIN	CHEMBL2402737	Small molecule	PHASE_3		Tumour suppressor p53/oncoprotein Mdm2 inhibitor	INHIBITOR
+TP53	d1_direct	opentargets	NAVTEMADLIN	CHEMBL3125702	Small molecule	PHASE_3		Tumour suppressor p53/oncoprotein Mdm2 inhibitor	INHIBITOR
+TP53	d1_direct	opentargets	SIREMADLIN	CHEMBL3653256	Small molecule	PHASE_2		Tumour suppressor p53/oncoprotein Mdm2 inhibitor	INHIBITOR
+TP53	d1_direct	opentargets	TEPRASIRAN	CHEMBL4297574	Oligonucleotide	PHASE_3		p53 mRNA RNAi inhibitor	RNAI INHIBITOR
+WRN	d2_pathway	dgidb	2,6-DIMETHOXYQUINONE	chembl:CHEMBL448515			False		
+WRN	d2_pathway	dgidb	3-O-METHYLQUERCETIN	chembl:CHEMBL163316			False		
+WRN	d2_pathway	dgidb	ACID BLUE 129	chembl:CHEMBL133576			False		
+WRN	d2_pathway	dgidb	ALEXIDINE HYDROCHLORIDE	chembl:CHEMBL1487183			False		
+WRN	d2_pathway	dgidb	ASTERRIC ACID	chembl:CHEMBL469424			False		
+WRN	d2_pathway	dgidb	BERBERRUBINE	chembl:CHEMBL203135			False		
+WRN	d2_pathway	dgidb	BLEOMYCIN	rxcui:1622			True		
+WRN	d2_pathway	dgidb	CAMPTOTHECIN	ncit:C338			True		
+WRN	d2_pathway	dgidb	CARMINIC ACID	chembl:CHEMBL263094			False		
+WRN	d2_pathway	dgidb	CEFAMANDOLE SODIUM	chembl:CHEMBL1360024			False		
+WRN	d2_pathway	dgidb	CEPHALOTHIN	rxcui:2236			False		
+WRN	d2_pathway	dgidb	CEPHAPIRIN SODIUM	chembl:CHEMBL1201043			True		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL118678	chembl:CHEMBL118678			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL119878	chembl:CHEMBL119878			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL1287980	chembl:CHEMBL1287980			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL1310138	chembl:CHEMBL1310138			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL1504679	chembl:CHEMBL1504679			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL1527	chembl:CHEMBL1527			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL1576310	chembl:CHEMBL1576310			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL1701915	chembl:CHEMBL1701915			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL1707907	chembl:CHEMBL1707907			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL1814509	chembl:CHEMBL1814509			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL22062	chembl:CHEMBL22062			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL234338	chembl:CHEMBL234338			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL258756	chembl:CHEMBL258756			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL297304	chembl:CHEMBL297304			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL364729	chembl:CHEMBL364729			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL429095	chembl:CHEMBL429095			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL463783	chembl:CHEMBL463783			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL483206	chembl:CHEMBL483206			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL493863	chembl:CHEMBL493863			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL494668	chembl:CHEMBL494668			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL505670	chembl:CHEMBL505670			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL515252	chembl:CHEMBL515252			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL515505	chembl:CHEMBL515505			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL530280	chembl:CHEMBL530280			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL56393	chembl:CHEMBL56393			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL56542	chembl:CHEMBL56542			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL576409	chembl:CHEMBL576409			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL584458	chembl:CHEMBL584458			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL585502	chembl:CHEMBL585502			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL585622	chembl:CHEMBL585622			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL592124	chembl:CHEMBL592124			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL592316	chembl:CHEMBL592316			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL601543	chembl:CHEMBL601543			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL602127	chembl:CHEMBL602127			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL68096	chembl:CHEMBL68096			False		
+WRN	d2_pathway	dgidb	CHEMBL:CHEMBL81782	chembl:CHEMBL81782			False		
+WRN	d2_pathway	dgidb	DAUNORUBICIN HYDROCHLORIDE	chembl:CHEMBL1563			True		
+WRN	d2_pathway	dgidb	DEOXYVASICINONE	chembl:CHEMBL456881			False		
+WRN	d2_pathway	dgidb	DOXORUBICIN HYDROCHLORIDE	rxcui:142433			True		
+WRN	d2_pathway	dgidb	EPIRUBICIN HYDROCHLORIDE	chembl:CHEMBL1200981			True		
+WRN	d2_pathway	dgidb	EUFLAVINE	chembl:CHEMBL354349			False		
+WRN	d2_pathway	dgidb	EUPAFOLIN	chembl:CHEMBL172350			False		
+WRN	d2_pathway	dgidb	FENOLDOPAM MESYLATE	chembl:CHEMBL1026			True		
+WRN	d2_pathway	dgidb	GUTHION	chembl:CHEMBL530115			False		
+WRN	d2_pathway	dgidb	HAEMATOXYLIN	chembl:CHEMBL1479103			False		
+WRN	d2_pathway	dgidb	HOMIDIUM BROMIDE	chembl:CHEMBL284328			False		
+WRN	d2_pathway	dgidb	IDARUBICIN HYDROCHLORIDE	chembl:CHEMBL1200976			True		
+WRN	d2_pathway	dgidb	INDOCYANINE GREEN ACID FORM	rxcui:2199577			True		
+WRN	d2_pathway	dgidb	ISOKAEMPFERIDE	chembl:CHEMBL165064			False		
+WRN	d2_pathway	dgidb	JP1302	iuphar.ligand:3930			False		
+WRN	d2_pathway	dgidb	LEVODOPA	rxcui:6375			True		
+WRN	d2_pathway	dgidb	LINOLENIC ACID	rxcui:52071			True		
+WRN	d2_pathway	dgidb	LUTEOLIN	iuphar.ligand:5215			False		
+WRN	d2_pathway	dgidb	MASOPROCOL	rxcui:227239			True		
+WRN	d2_pathway	dgidb	MITOXANTRONE	rxcui:7005			True		
+WRN	d2_pathway	dgidb	MITOXANTRONE HYDROCHLORIDE	chembl:CHEMBL1417019			True		
+WRN	d2_pathway	dgidb	MYRICETIN	drugbank:DB02375			False		
+WRN	d2_pathway	dgidb	NANAOMYCIN	chembl:CHEMBL1212972			False		
+WRN	d2_pathway	dgidb	OXYTETRACYCLINE ANHYDROUS	rxcui:1545999			True		
+WRN	d2_pathway	dgidb	PHYSODIC ACID	chembl:CHEMBL171637			False		
+WRN	d2_pathway	dgidb	PROTOPORPHYRIN	drugbank:DB02285			False		
+WRN	d2_pathway	dgidb	PROTOPORPHYRIN DISODIUM	chembl:CHEMBL2105866			False		
+WRN	d2_pathway	dgidb	PURPUROGALLIN	chembl:CHEMBL66953			False		
+WRN	d2_pathway	dgidb	PYROGALLOL RED	chembl:CHEMBL210208			False		
+WRN	d2_pathway	dgidb	PYRONIN Y	chembl:CHEMBL1486690			False		
+WRN	d2_pathway	dgidb	QUERCETIN DIHYDRATE	chembl:CHEMBL1173475			False		
+WRN	d2_pathway	dgidb	RHEIN	chembl:CHEMBL418068			False		
+WRN	d2_pathway	dgidb	SCLEROTIORIN	chembl:CHEMBL1095515			False		
+WRN	d2_pathway	dgidb	SENNOSIDE B	chembl:CHEMBL445268			False		
+WRN	d2_pathway	dgidb	SLAZINIC ACID	chembl:CHEMBL172439			False		
+WRN	d2_pathway	dgidb	STICTIC ACID	chembl:CHEMBL173530			False		
+WRN	d2_pathway	dgidb	THUNBERGINOL B	chembl:CHEMBL70501			False		
+WRN	d2_pathway	dgidb	UREA	rxcui:11002			True		
+XRCC4	d2_pathway	dgidb	DOCETAXEL ANHYDROUS	rxcui:1299922			True		
+XRCC5	d1_direct	dgidb	4-PHENYLBUTYRIC ACID	rxcui:1546447			True		
+XRCC5	d1_direct	dgidb	CAMPTOTHECIN	ncit:C338			True		
+XRCC5	d1_direct	dgidb	CISPLATIN	rxcui:2555			True		
+XRCC5	d1_direct	dgidb	HYDROGEN PEROXIDE	rxcui:5499			True		
+XRCC5	d1_direct	dgidb	PLATINUM	rxcui:1311280			False		
+XRCC5	d1_direct	dgidb	THALIDOMIDE	rxcui:10432			True		
+XRCC5	d1_direct	dgidb	TRIBUTYRIN	ncit:C1260			False		

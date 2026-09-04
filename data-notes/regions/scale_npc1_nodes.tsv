@@ -34,7 +34,7 @@ VAPA	ENSG00000101558	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
 CYP7A1	ENSG00000167910	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
 APOA1	ENSG00000118137	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
 APOE	ENSG00000130203	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
-GBA		d2_pathway	STRING partner-of-partner, distance 2 from NPC1
+GBA	ENSG00000291137	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
 GP5	ENSG00000178732	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
 UGCG	ENSG00000148154	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
 NR1H2	ENSG00000131408	d2_pathway	STRING partner-of-partner, distance 2 from NPC1
