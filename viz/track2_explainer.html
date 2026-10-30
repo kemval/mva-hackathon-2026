@@ -230,7 +230,7 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
 .grad-row{display:grid;grid-template-columns:118px 1fr 44px;gap:12px;align-items:center}
 .grad-row .lbl{font-size:12px;color:var(--ink-2);text-align:right;line-height:1.25}
 .grad-bar{height:22px;background:var(--sunken);border:1px solid var(--rule);border-radius:2px;position:relative;overflow:hidden}
-.grad-bar i{position:absolute;inset:0 auto 0 0;background:var(--accent-soft);border-right:2px solid var(--accent);display:block}
+.grad-bar i{position:absolute;inset:0 auto 0 0;background:color-mix(in srgb,var(--accent) 38%,transparent);border-right:2px solid var(--accent);display:block}
 /* A measured zero is drawn EMPTY with a struck end-stop, never as a filled bar.
    Track 1's explainer reserves hatching for UNMEASURED; a zero here is measured,
    so it must not borrow that texture, and must not read as a large value. */
@@ -393,9 +393,9 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
       <p>Titrating BubR1 down with an inducible shRNA:</p>
       <div class="grad" style="margin-top:10px">
         <div class="grad-row"><span class="lbl">~6% of normal</span>
-          <span class="grad-bar"><i style="width:6%"></i></span><span class="num" style="color:var(--struck)">bad</span></div>
+          <span class="grad-bar"><i style="width:6%;background:color-mix(in srgb,var(--struck) 38%,transparent);border-right-color:var(--struck)"></i></span><span class="num" style="color:var(--struck)">bad</span></div>
         <div class="grad-row"><span class="lbl">~13% of normal</span>
-          <span class="grad-bar"><i style="width:13%;background:var(--applied-soft);border-right-color:var(--applied)"></i></span><span class="num" style="color:var(--applied)">fine</span></div>
+          <span class="grad-bar"><i style="width:13%;background:color-mix(in srgb,var(--applied) 38%,transparent);border-right-color:var(--applied)"></i></span><span class="num" style="color:var(--applied)">fine</span></div>
       </div>
       <p style="margin-top:10px">At 6%, most cells missegregate chromosomes. At 13%,
       segregation is &ldquo;virtually&rdquo; unaffected. <strong>A few percentage points of
@@ -416,7 +416,7 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
   <div class="sec-h"><span class="sec-n">03</span><h2>Zero drugs at the defect. The drugs are all on the consequences.</h2><span class="tag">24 genes &middot; 2 databases</span></div>
   <p class="lede">Unique drugs and clinical candidates per pathway tier, Open Targets.
   The gene we need to fix has none; the genes we can drug are consequences.</p>
-  <p class="lede" style="opacity:.75"><strong>Read the rise across tiers as a property of
+  <p class="lede" style="opacity:.75;margin-top:12px"><strong>Read the rise across tiers as a property of
   this curated node set, not a law.</strong> We later rebuilt the tiers mechanically from
   STRING network distance and the monotonic rise did not survive &mdash; it fails for BUB1B
   itself (0 &rarr; 375 &rarr; 198). The pattern was an artefact of our own curation. What
@@ -427,7 +427,7 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
       <span class="grad-bar"><i></i></span><span class="num">0</span></div>
     <div class="grad-row"><span class="lbl">checkpoint<br>6 genes</span>
       <span class="grad-bar"><i style="width:2.8%"></i></span><span class="num">2</span></div>
-    <div class="grad-row"><span class="lbl">micronucleus<br>sensing</span>
+    <div class="grad-row"><span class="lbl">micronucleus sensing<br>2 genes</span>
       <span class="grad-bar"><i style="width:1.4%"></i></span><span class="num">1</span></div>
     <div class="grad-row"><span class="lbl">senescence<br>5 genes</span>
       <span class="grad-bar"><i style="width:22.5%"></i></span><span class="num">16</span></div>
@@ -643,7 +643,14 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
     <div class="flip-row"><div>CYP2C9</div><div class="un">Unknown / Unknown</div><div class="art">*1/*1 &rarr; &ldquo;Normal Metaboliser&rdquo;</div></div>
     <div class="flip-row"><div>SLCO1B1</div><div class="un">Unknown / Unknown</div><div class="art">*1/*1 &rarr; &ldquo;Normal Function&rdquo;</div></div>
     <div class="flip-row"><div>G6PD</div><div class="un">Unknown</div><div class="art">B/B &rarr; &ldquo;Normal&rdquo;</div></div>
+    <div class="flip-row"><div>CYP3A4</div><div class="un">Unknown / Unknown</div><div class="art">*1/*1 &rarr; &ldquo;Normal Metaboliser&rdquo;</div></div>
   </div>
+  <p style="margin-top:10px">These are seven of the sixteen: the flips that manufacture a
+  <em>reassuring</em> label. The other nine are ABCG2, CACNA1S, CFTR, CYP2B6, CYP2C19,
+  CYP4F2, IFNL3, NAT2 and VKORC1, and they show the assumption does not only invent
+  normality: <span class="mono">NAT2</span> goes Unknown/Unknown &rarr; <span class="mono">*5/*5</span>,
+  a slow-acetylator call conjured out of absent positions, and <span class="mono">CYP2B6</span>
+  collapses from 30 candidate diplotypes to the single <span class="mono">*2/*6</span>.</p>
 
   <div class="callout warn" style="margin-top:16px">
     <p><strong>Every one of those reassuring calls is an artefact of the assumption, not a
