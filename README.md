@@ -1,7 +1,7 @@
 # MVA Hackathon 2026 — Project Workspace
 
 **Team:** Gummietech
-Working directory for "Rare Disease, Real Kid: The MVA Hackathon 2026" (SageBio / Hugging Face / MVA Society / BEACON, prizes from AWS + Anthropic). Submissions close **Oct 24, 2026 23:59 UTC**.
+Working directory for "Rare Disease, Real Kid: The MVA Hackathon 2026" (SageBio / Hugging Face / MVA Society / BEACON, prizes from AWS + Anthropic). Submissions closed **Oct 24, 2026 23:59 UTC**. **Both tracks were submitted; the Track 2 pitch video was not recorded**, so the Track 2 entry went in without one.
 
 
 ## Folder structure
@@ -11,6 +11,10 @@ Working directory for "Rare Disease, Real Kid: The MVA Hackathon 2026" (SageBio 
 - `data-notes/` — working analysis notes on the case (gene-panel coordinates, variant candidates, ACMG evidence, phasing analysis). Raw and derived patient genomic data are excluded from version control per the dataset's Data Transfer Agreement — see `data-notes/README.md`.
 - `pipeline/` — annotation and filtering scripts, plus `pipeline/README.md` recording the exact end-to-end command sequence (Ensembl REST coordinate lookup → padded BED → `bcftools` region restriction → VEP REST annotation → rare/damaging filter). Both scripts are CLI-parameterised; running them against the annotation output reproduces the submitted candidate list exactly.
 - `submissions/` — Track 1 and Track 2 submission materials (predictions CSV, methods reports, pitch script, clinician one-pager).
+- `viz/` — visual, self-contained HTML explainers of the same findings, for readers who would rather see the argument than read the reports (open any file directly in a browser):
+  - `viz/track1_explainer.html` — **BUB1B Evidence Atlas**: the Track 1 filtering funnel (two million records to two candidates), the gene and protein drawn to scale, the ACMG evidence ladder, predictors, splice screen, phenotype fit, and the confirmatory-test decision tree.
+  - `viz/track2_explainer.html` — **BubR1: A Dosage Problem**: the Track 2 mechanism (protein quantity, not enzymology), the inhibitor-skewed drug landscape, the ranked candidates, the first recommendation (a test, not a drug) and the pharmacogenomic layer.
+  - `viz/pitch_deck.html` — the Track 2 pitch deck that `submissions/track2/pitch_script.md` narrates.
 - `graphify-out/` — knowledge graph built from `literature/` + `notes/` (gitignored, regenerable via `/graphify --update`).
 
 ## Knowledge graph
@@ -59,8 +63,7 @@ Full analysis: `data-notes/track1_findings.md`. Final submission materials: `sub
 
 14. Completeness audit of the Track 1 bounds (2026-09-04), asking of each list in the report not whether its entries are right but whether the list is complete. Three defects, one of them substantive. **The permissive multi-exon-deletion window list was short by one window.** The report bounds a hemizygous BUB1B deletion to the intervals between the proband's heterozygous calls and named five; the interval between the deep-intronic call and p.Asn1002Lys — **40,216,470-40,220,612, 4,142 bp, fully containing exons 21 and 22** — is permissive on identical reasoning and was never listed. The two previous audits both verified that each listed window contained the exons claimed, which was true, and neither asked whether one was missing; `pipeline/coverage_analysis.py` carried the same five hardcoded, copied from the report's prose, so the code inherited the omission rather than catching it. The list is now **derived** by `pipeline/deletion_windows.py` from the het calls and the Ensembl exon structure, and `WINDOWS` is regenerated from it. The same derivation produced a second finding the prose had no column for: **three of the six windows delete in-frame** (402, 477 and 279 nt), so the allelic-architecture prior — which disfavours a deletion in trans because it would make a truncating/truncating genotype, and which was one of the two things pushing the EPCR *up* — applies to only half the windows and is correspondingly weakened. The other two defects are stale text that survived its own correction: the section on the two out-of-spectrum features still closed by asserting nephrocalcinosis had "a probable acquired cause," four paragraphs after withdrawing exactly that conclusion, and the Verification table still credited the Aziz *JCI* authors with *recommending* cancer surveillance — the precise overclaim the body text retracts. Both removed. **No variant, coordinate, classification, candidate-set figure or EPCR changed**; the deletion bound is wider than stated and the argument narrowing it is weaker.
 
-**Outstanding (does not block submission):**
-- Actual upload via the hackathon's "Submit – Track 1" tab, which requires the account holder's own Hugging Face session.
+**Submitted** via the hackathon's "Submit – Track 1" tab.
 
 ## Track 2 status (2026-09-02; audited 2026-09-04) — analysis complete, every figure re-derived
 
@@ -122,9 +125,9 @@ Materials: `submissions/track2/gummietech_track2_report.md` (report),
 `viz/track2_explainer.html` (visual explainer, companion to the Track 1 atlas). Working notes in
 `data-notes/track2_mechanism.md`; scripts and commands in `pipeline/README.md`.
 
-**Outstanding (account-holder actions):** record and upload the pitch video (deck ready at
-`viz/pitch_deck.html`, script at `submissions/track2/pitch_script.md`); submit via the
-"Submit – Track 2" tab.
+**Submitted** via the "Submit – Track 2" tab, **without the pitch video**: it was never
+recorded. The deck (`viz/pitch_deck.html`) and timed script
+(`submissions/track2/pitch_script.md`) it would have used are complete and in the repository.
 
 ## Gap-closure programme (2026-09-02 to 2026-09-04) — all six tasks complete
 
@@ -166,17 +169,16 @@ worst category. Details in `data-notes/scale/RESULTS.md`.
 | Predictions CSV | `submissions/track1/gummietech_vep-acmg-compound-het.csv` | n/a |
 | **Methods description** | `submissions/methods_description_gummietech.xlsx` (+ Markdown mirror) | same file, Track 2 sheet |
 | GitHub repo URL | https://github.com/kemval/mva-hackathon-2026 | same |
-| Pitch video URL | n/a | **outstanding** — record from `viz/pitch_deck.html` |
+| Pitch video URL | n/a | **not recorded** — Track 2 submitted without it (deck at `viz/pitch_deck.html`) |
 | Notes for judges (optional) | n/a | `submissions/track2/notes_for_judges.md` |
+| **Status** | **Submitted** | **Submitted** (no video) |
 
 ## Next actions
 
-1. Submit Track 1 via the hackathon site (account-holder action).
-2. Record the 3-minute Track 2 pitch video from `submissions/track2/pitch_script.md` and
-   submit Track 2 (one team member submits on the team's behalf; the panel reviews only
-   the latest of up to 3 entries).
+1. Delete every copy of the dataset by **Nov 23, 2026** (30 days after the Oct 24 close) and
+   confirm by email to both addresses — see Data deletion below.
 
 ## Standing obligations
 
-- **Data deletion.** Per the Official Rules, all dataset copies must be deleted from every environment (local machines, cloud instances, notebooks, private repos, intermediate and derived datasets) within **30 days of hackathon close**, and deletion must be confirmed by email. **Two different addresses appear in the source material and the confirmation should go to both:** the Official Rules give `RarediseaserealkidMVAhackathon2026@synapse.org`, while the gated-access agreement on the dataset card itself — the text actually agreed to at download — gives `MVAHackathon2026@synapse.org`. This covers `data-notes/raw/`, `data-notes/annotated/`, and the region-restricted VCFs — all gitignored, so none of it is in git history, but all of it is on disk.
-- **Repository visibility.** The repo may stay private during the hackathon but must be made public once it closes so the expert panel can review the code.
+- **Data deletion.** Per the Official Rules, all dataset copies must be deleted from every environment (local machines, cloud instances, notebooks, private repos, intermediate and derived datasets) within **30 days of hackathon close (by Nov 23, 2026)**, and deletion must be confirmed by email. **Two different addresses appear in the source material and the confirmation should go to both:** the Official Rules give `RarediseaserealkidMVAhackathon2026@synapse.org`, while the gated-access agreement on the dataset card itself — the text actually agreed to at download — gives `MVAHackathon2026@synapse.org`. This covers `data-notes/raw/`, `data-notes/annotated/`, and the region-restricted VCFs — all gitignored, so none of it is in git history, but all of it is on disk.
+- **Repository visibility.** The rules require the repo to be public after the close so the expert panel can review the code. **Done** — it is public.
