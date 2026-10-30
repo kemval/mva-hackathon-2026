@@ -108,6 +108,17 @@ child. Three agents excluded by hard gates fixed before the search, including HS
 inhibitors — predicted to destroy the residual BubR1 this child depends on, and
 simultaneously the lead compound of the best-known "drugs for aneuploidy" paper.
 
+> **Erratum (2026-10-30, after the close; the submitted files are unchanged).** The Track 2
+> report, the methods form and the materials that quote them label dasatinib + quercetin an
+> "approved medication". Dasatinib is approved; **quercetin is a dietary supplement**, so
+> the regimen is an approved drug plus a supplement. That is the standard the report
+> applies to nicotinamide riboside, NMN and fisetin, and it was not applied here. The report
+> itself draws the distinction for age ("true of the drug and false of the regimen",
+> §2.4), but not for regulatory status. Regulatory status is recorded and not scored
+> (§3.1), so **no score or rank changes**. Under a strict reading, though, the
+> highest-scoring approved single medication is **metformin**, tied at 10/17. The report
+> ranks dasatinib + quercetin above it only on a tie-break (human biomarker trials).
+
 **What is actually recommended first is not a drug** but a western blot for BubR1, which
 forks the whole hypothesis and would additionally generate PS3-grade functional evidence
 on Track 1's unresolved VUS.
