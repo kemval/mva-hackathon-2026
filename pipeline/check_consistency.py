@@ -139,17 +139,20 @@ def check_derived(root, fails):
     # up to the commit that writes it -- committing the fix increments the count
     # it just fixed. So the figure is allowed to trail HEAD by one, and only by
     # one; two means it was not updated in the commit that should have.
-    head = subprocess.run(["git", "-C", str(root), "rev-list", "--count", "HEAD"],
-                          capture_output=True, text=True).stdout.strip()
-    if head:
-        quoted = re.findall(r"(\d+) commits", methods)
-        if not quoted:
-            fails.append("methods_description.md: commit-count sentence not found")
-        for q in quoted:
-            if not 0 <= int(head) - int(q) <= 1:
-                fails.append(f"methods_description.md: form says {q} commits, "
-                             f"HEAD is at {head} (a lag of one is allowed, "
-                             "since committing the update increments it)")
+    # The sentence counts commits over a stated period ("... to 2026-09-04, 41
+    # commits"), so it is compared with the commits up to that end date, not HEAD:
+    # work committed after the period closed does not make it stale.
+    quoted = re.findall(r"to (\d{4}-\d{2}-\d{2})\D{0,20}?(\d+) commits", methods)
+    if not quoted:
+        fails.append("methods_description.md: commit-count sentence not found")
+    for end, q in quoted:
+        n = subprocess.run(["git", "-C", str(root), "rev-list", "--count",
+                            f"--until={end} 23:59:59", "HEAD"],
+                           capture_output=True, text=True).stdout.strip()
+        if n and not 0 <= int(n) - int(q) <= 1:
+            fails.append(f"methods_description.md: form says {q} commits to {end}, "
+                         f"git has {n} (a lag of one is allowed, "
+                         "since committing the update increments it)")
 
     for i, m in enumerate(re.finditer(r"^### Method abstract.*?\n(.*?)(?=^### |^# |\Z)",
                                       methods, re.S | re.M), start=1):

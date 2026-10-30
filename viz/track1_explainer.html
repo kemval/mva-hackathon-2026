@@ -1,4 +1,6 @@
+<!doctype html>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BUB1B Evidence Atlas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -615,7 +617,7 @@ const HATCH='<defs><pattern id="hx" width="7" height="7" patternUnits="userSpace
 
 /* =========================================================== 1 · FUNNEL */
 (function(){
-  const W=1100,L=250,BX=262,BW=548,rowH=52,top=44;
+  const W=1100,L=250,BX=262,BW=548,rowH=52,top=58;
   const stages=[
     ["Genome-wide VCF","single-sample GATK/Sentieon",2000000,2000000],
     ["Region-restricted","bcftools view -R  (±2 kb pad)",1288,1085],
@@ -1163,43 +1165,46 @@ const svg=(w,h,inner,extra)=>'<svg viewBox="0 0 '+w+' '+h+'" width="'+w+'" heigh
 
 /* =========================================================== 11 · DECISION TREE */
 (function(){
-  const W=1400;
+  const W=1100;
   const TESTS=[
-    {t:"1 · Peripheral-blood karyotype",s:"with SNP microarray alongside · tests the DIAGNOSIS",x:36,w:320,pri:true,
+    {t:"1 · Peripheral-blood karyotype",s:"with SNP microarray alongside · tests the DIAGNOSIS",pri:true,
      leaves:[
       {l:"Aneuploidy found",sub:"MVA confirmed",e:"→ 0.98",k:"applied",
        d:"<strong>A positive karyotype independently establishes MVA</strong> and lifts PP4 from the partial, non-specific phenotype match described in §10 to a discriminating one. The microarray run alongside it also interrogates the six permissive deletion windows from §2, so it addresses the leading alternative second-allele hypothesis at the same time."},
       {l:"Normal karyotype",sub:"diagnosis undercut",e:"drops sharply",k:"struck",
        d:"<strong>A negative substantially undercuts the diagnosis</strong> — and does so in a way no further variant-level evidence repairs. Every other open question in this analysis is downstream of a diagnosis this assay has never confirmed. One caveat in the other direction: MVA's aneuploidies are variegated across tissues, so a normal blood karyotype does not fully exclude it."}]},
-    {t:"2 · Parental Sanger sequencing",s:"both variants, both parents · tests the PHASE",x:372,w:320,pri:false,
+    {t:"2 · Parental Sanger sequencing",s:"both variants, both parents · tests the PHASE",pri:false,
      leaves:[
       {l:"One per parent",sub:"in trans",e:"→ 0.98",k:"applied",
        d:"Phase established. Under the SVI scheme that lifts PM3 from 0.25 to 1.0 point — <strong>and variant 2 remains a VUS either way</strong>, at 4 points at best. What the test delivers is not a reclassification: it is confirmation that the two variants sit on opposite alleles, which closes out the alternative second-allele hypotheses and secures the compound-heterozygous genotype."},
       {l:"Both from one parent",sub:"in cis",e:"refuted",k:"struck",
        d:"<strong>The primary hypothesis is refuted.</strong> A CNV or structural-variant assay across BUB1B — MLPA, microarray, or read-depth calling on the BAM/CRAM — becomes the immediate next step, the deep-intronic candidate having already been largely excluded on the splice evidence in §8."}]},
-    {t:"3 · Long-read sequencing",s:"where parental samples cannot be obtained",x:708,w:320,pri:false,
+    {t:"3 · Long-read sequencing",s:"where parental samples cannot be obtained",pri:false,
      leaves:[
       {l:"Resolves phase directly",sub:"no parental samples needed",e:"fallback route",k:"indet",
        d:"Resolves phase directly in the proband, spanning the 11 kb that defeats short-read fragments. This is the alternative where parental samples cannot be obtained — the same question as test 2, by an assay that does not need the parents."}]},
-    {t:"4 · BubR1 western blot",s:"patient cells vs controls · tests the VARIANT",x:1044,w:320,pri:false,
+    {t:"4 · BubR1 western blot",s:"patient cells vs controls · tests the VARIANT",pri:false,
      leaves:[
       {l:"Reduced but present",sub:"hypomorphic state",e:"VUS → LP",k:"applied",
        d:"<strong>The only test here whose result the ACMG arithmetic is sensitive to.</strong> Functional evidence of an abundance defect is the substance of <strong>PS3</strong> — 4 points at full Strength under the same framework used in §5, taking variant 2 from 2 points to <strong>6, Likely Pathogenic</strong>, or 8 with phase confirmed in trans. Whether such an assay earns full Strength depends on the ClinGen SVI functional-evidence calibration, which this analysis does not pre-judge. Note what it does <em>not</em> do: <strong>the EPCR does not move</strong>, because the diagnosis rests on variant 1 plus PP4 and never waited on variant 2 classifying independently."},
       {l:"Absent / near-zero",sub:"nothing to stabilise",e:"top tier futile",k:"struck",
        d:"No stable protein from allele 2. Variant 2 stays a VUS and the EPCR still does not move — but the companion Track 2 report forks here: its entire abundance tier, including its highest-scoring candidate, is predicated on there being residual BubR1 to stabilise. An absent band makes that tier futile, and its ranking is to be re-read from the senolytic tier down (Track 2 §5.1). This is the one assay both tracks nominate, reached from opposite directions."}]}
   ];
-  const rootY=30,testY=92,leafY=176;
+  /* Two tests per row: four across forced a 1400-wide viewBox that scaled to ~60% in the
+     column and made every label unreadable. Lower-row connectors run down the centre gutter. */
+  const rootY=30,M=36,GAP=40,TW=(W-2*M-GAP)/2,ROW=170;
+  TESTS.forEach((t,ti)=>{t.x=M+(ti%2)*(TW+GAP);t.w=TW;t.row=ti>>1;});
   let g='';
   g+='<rect x="'+(W/2-96)+'" y="'+rootY+'" width="192" height="42" rx="3" fill="var(--accent)" opacity=".1" stroke="var(--accent)"/>'+
      '<text x="'+(W/2)+'" y="'+(rootY+19)+'" font-size="12" fill="var(--ink-2)" text-anchor="middle" class="lbl">current EPCR</text>'+
      '<text x="'+(W/2)+'" y="'+(rootY+36)+'" font-size="17" font-weight="600" fill="var(--accent)" text-anchor="middle">0.95</text>';
   TESTS.forEach((t,ti)=>{
-    const cx=t.x+t.w/2;
+    const cx=t.x+t.w/2,testY=92+t.row*ROW,leafY=176+t.row*ROW;
     g+='<path d="M'+(W/2)+' '+(rootY+42)+'V'+(testY-16)+'H'+cx+'V'+testY+'" fill="none" stroke="var(--rule-strong)" stroke-width="1"/>';
     g+='<rect x="'+t.x+'" y="'+testY+'" width="'+t.w+'" height="50" rx="3" fill="var(--surface)" stroke="'+
        (t.pri?"var(--accent)":"var(--rule-strong)")+'" stroke-width="'+(t.pri?1.8:1)+'"/>'+
-       '<text class="lbl" x="'+cx+'" y="'+(testY+21)+'" font-size="12.5" font-weight="600" fill="'+(t.pri?"var(--accent)":"var(--ink)")+'" text-anchor="middle">'+esc(t.t)+'</text>'+
-       '<text class="lbl" x="'+cx+'" y="'+(testY+38)+'" font-size="10" fill="var(--ink-3)" text-anchor="middle">'+esc(t.s)+'</text>';
+       '<text class="lbl" x="'+cx+'" y="'+(testY+22)+'" font-size="14" font-weight="600" fill="'+(t.pri?"var(--accent)":"var(--ink)")+'" text-anchor="middle">'+esc(t.t)+'</text>'+
+       '<text class="lbl" x="'+cx+'" y="'+(testY+39)+'" font-size="11.5" fill="var(--ink-3)" text-anchor="middle">'+esc(t.s)+'</text>';
     const lw=t.leaves.length>1?(t.w-14)/2:t.w;
     t.leaves.forEach((lf,li)=>{
       const lx=t.x+li*(lw+14),lcx=lx+lw/2;
@@ -1208,13 +1213,13 @@ const svg=(w,h,inner,extra)=>'<svg viewBox="0 0 '+w+' '+h+'" width="'+w+'" heigh
       g+='<g class="leaf" data-t="'+ti+'" data-l="'+li+'" tabindex="0" role="button" aria-label="'+esc(lf.l)+'">'+
          '<rect class="leaf-box" x="'+lx+'" y="'+leafY+'" width="'+lw+'" height="56" rx="3" fill="'+col+'" opacity=".08"/>'+
          '<rect class="leaf-box" x="'+lx+'" y="'+leafY+'" width="'+lw+'" height="56" rx="3" fill="none" stroke="'+col+'" stroke-width="1"/>'+
-         '<text class="lbl" x="'+lcx+'" y="'+(leafY+17)+'" font-size="11.5" font-weight="500" fill="var(--ink)" text-anchor="middle">'+esc(lf.l)+'</text>'+
-         '<text class="lbl" x="'+lcx+'" y="'+(leafY+30)+'" font-size="9.5" fill="var(--ink-3)" text-anchor="middle">'+esc(lf.sub)+'</text>'+
-         '<text x="'+lcx+'" y="'+(leafY+48)+'" font-size="13" font-weight="600" fill="'+col+'" text-anchor="middle">'+esc(lf.e)+'</text></g>';
+         '<text class="lbl" x="'+lcx+'" y="'+(leafY+18)+'" font-size="13" font-weight="500" fill="var(--ink)" text-anchor="middle">'+esc(lf.l)+'</text>'+
+         '<text class="lbl" x="'+lcx+'" y="'+(leafY+32)+'" font-size="11" fill="var(--ink-3)" text-anchor="middle">'+esc(lf.sub)+'</text>'+
+         '<text x="'+lcx+'" y="'+(leafY+49)+'" font-size="14" font-weight="600" fill="'+col+'" text-anchor="middle">'+esc(lf.e)+'</text></g>';
     });
   });
   const DEF=$("treeCap").innerHTML;
-  $("tree").innerHTML=svg(W,leafY+70,g,'aria-label="Confirmatory test decision tree from EPCR 0.95: four tests — karyotype, parental Sanger, long-read sequencing, BubR1 western blot"');
+  $("tree").innerHTML=svg(W,176+TESTS[TESTS.length-1].row*ROW+70,g,'aria-label="Confirmatory test decision tree from EPCR 0.95: four tests — karyotype, parental Sanger, long-read sequencing, BubR1 western blot"');
   function pick(el){
     const t=TESTS[+el.dataset.t],lf=t.leaves[+el.dataset.l];
     $("tree").querySelectorAll(".leaf").forEach(n=>n.style.opacity=n===el?"1":".42");
